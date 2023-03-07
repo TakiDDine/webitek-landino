@@ -58,7 +58,7 @@
         		</label>
 
         <!-- Button trigger modal -->
-        <button button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
             Launch The Builder
         </button>
   
@@ -76,7 +76,9 @@
                 
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">
+                        Close
+                    </button>
                 </div>
             </div>
             </div>
