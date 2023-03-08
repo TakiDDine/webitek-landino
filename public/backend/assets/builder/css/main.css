@@ -6664,7 +6664,7 @@ input[type="radio"] + .lbl::after {
 button.btn.btn-success {
   position: relative;
   z-index: 999999;
-  background-color: #01bcd4;
+  background-color: #4353ff;
   color: #fff;
   font-weight: bold;
   display: flex;
@@ -6676,6 +6676,9 @@ button.btn.btn-success {
   justify-content: center;
   cursor: pointer;
 }
+button.btn.btn-success:hover {
+  background-color: #4353ffba;
+}
 div#exampleModalLong {
   position: absolute;
   z-index: 9999;
@@ -6686,13 +6689,13 @@ div#exampleModalLong {
   position: absolute;
   left: 0;
   top: 10%;
+  width: auto;
 }
 .modal-dialog {
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
-  width: 500px;
   height: 100vh;
   position: absolute;
   padding: 5em 0 0 0.5em;
@@ -6732,4 +6735,5 @@ div#modalSections {
 }
 li.wrap-hover.d-flex.justify-content-center.align-items-center {
   height: auto;
+  cursor: grab;
 }
