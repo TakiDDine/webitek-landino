@@ -72,9 +72,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body" id="modalContent">
                 
+                <div class="modaliritys">
+                    <div class="modal-body-1" id="modalSections">
+                    </div>
+                    <div class="modal-body" id="modalContent">
+                    </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">
                         Close

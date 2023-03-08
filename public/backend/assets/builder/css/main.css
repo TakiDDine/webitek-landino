@@ -6683,6 +6683,9 @@ div#exampleModalLong {
 .modal-content {
   border-radius: 0px !important;
   border: 0;
+  position: absolute;
+  left: 0;
+  top: 10%;
 }
 .modal-dialog {
   display: grid;
@@ -6707,13 +6710,26 @@ div#exampleModalLong ul {
   margin: 0;
   padding: 0;
 }
-.add-sections-items.supra.myDiv li:nth-child(even) {
+.add-sections-items.supra.myDiv a:nth-child(even) {
   background-color: whitesmoke;
 }
-.add-sections-items.supra.myDiv li {
-  list-style: none;
+.add-sections-items.supra.myDiv a {
   font-weight: bold;
   padding: 5px 0;
+  font-size: 1.25em;
   border-bottom: 1px solid #ededed;
   cursor: pointer;
+  text-decoration: none;
+  color: #212121;
+  display: block;
+}
+div#modalSections {
+  margin: 0 1em;
+}
+.modaliritys {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+li.wrap-hover.d-flex.justify-content-center.align-items-center {
+  height: auto;
 }
