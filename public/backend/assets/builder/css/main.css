@@ -6697,15 +6697,7 @@ div#exampleModalLong {
   z-index: 9999;
 }
 .modal-content {
-  border-radius: 0px !important;
-  border: 0;
-  position: absolute;
-  left: 0;
-  top: 8%;
-  width: auto;
-  height: 600px;
-  overflow: scroll;
-  width: 800px;
+  width: 650px; /* ----- */
 }
 .modal-dialog {
   width: 0;

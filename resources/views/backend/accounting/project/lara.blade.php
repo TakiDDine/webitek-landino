@@ -81,7 +81,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Navigation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="close-btn-times" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"></span>
                 </button>
                 </div>
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close">
+                    <button type="button" id="close-btn" class="btn btn-success" data-dismiss="modal" aria-label="Close">
                         Close
                     </button>
                 </div>
