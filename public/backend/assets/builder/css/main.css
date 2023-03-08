@@ -6745,6 +6745,7 @@ div#modalSections {
 .modaliritys {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  background-color: #ff6727;
 }
 li.wrap-hover.d-flex.justify-content-center.align-items-center {
   height: auto;

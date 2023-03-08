@@ -87,6 +87,9 @@
                 </div>
 
                 <div class="modaliritys">
+                    <div id="closeConsole"></div>
+                    <div class="modal-body-0" id="test">
+                    </div>
                     <div class="modal-body-1" id="modalSections">
                     </div>
                     <div class="modal-body" id="modalContent">
