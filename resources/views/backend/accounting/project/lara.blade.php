@@ -58,13 +58,26 @@
         		</label>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
-            Launch The Builder
-        </button>
-  
+        <div class="flexibile-buttons">
+            <button type="button" id="showHide" data-backdrop="false" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                Launch The Builder
+            </button>
+            <button type="button" class="btn btn-warning redirectBtn" >
+                Go To Dashboard
+            </button>  
+        </div>
+        
+        
+        <!-- 
+            data-modal-target="#modal" ==> 
+            this attribut has a target : <div class="modal" id="modal">
+            -->
+
+
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+{{--         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ --}}
+            <div class="modal-dialog" role="document" id="modalDialogToggle">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Navigation</h5>
@@ -87,8 +100,8 @@
                 </div>
             </div>
             </div>
-        </div>
-        <!-- Modal -->
+{{--             </div>
+ --}}        <!-- Modal --> 
   
 
                 <iframe id="main" src="{{ url('project/larabuilder') }}">
