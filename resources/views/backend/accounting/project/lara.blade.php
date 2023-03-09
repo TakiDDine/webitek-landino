@@ -50,68 +50,75 @@
             <div class="title">{{_lang('Page modals')}}</div>
             <div class="container-thumb"></div>
         </div>
-        <div class="wrap-iframe d-flex justify-content-center align-items-center">
-        	<div class="wrap viewing-desctop">
-        		<label>
-        			<span class="width" contenteditable="true"></span> x <span class="height" contenteditable="true"></span>
-        			<i class="rotate icon-blr-lg-mobile"></i>
-        		</label>
 
-        <!-- Button trigger modal -->
-        <div class="flexibile-buttons">
-            <button type="button" id="showHide" data-backdrop="false" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
-                Launch The Builder
-            </button>
-            <button type="button" class="btn btn-warning redirectBtn" >
-                Go To Dashboard
-            </button>  
-        </div>
-        
-        
-        <!-- 
-            data-modal-target="#modal" ==> 
-            this attribut has a target : <div class="modal" id="modal">
-            -->
+        <div class="landino_container">
+            <div class="wrapper">
 
+                <div class="sidebar">sidebar</div>
 
-        <!-- Modal -->
-{{--         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
- --}}
-            <div class="modal-dialog" role="document" id="modalDialogToggle">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Navigation</h5>
-                <button id="close-btn-times" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"></span>
-                </button>
+                <div class="preview_modal">
+                    <div class="header_menu">
+
+                        <div class="flexibile-buttons">
+                            <button type="button" id="showHide" data-backdrop="false" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                                Launch The Builder
+                            </button>
+                            <button type="button" class="btn btn-warning redirectBtn" >
+                                Go To Dashboard
+                            </button>  
+                        </div> 
+                    </div>
+
+                    <div class="wrap-iframe d-flex justify-content-center align-items-center">
+                        <div class="wrap viewing-desctop">          
+                            <label>
+                                <span class="width" contenteditable="true"></span> x <span class="height" contenteditable="true"></span>
+                                <i class="rotate icon-blr-lg-mobile"></i>
+                            </label> 
+
+                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            
+                                <div class="modal-dialog" role="document" id="modalDialogToggle">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Navigation</h5>
+                                    <button id="close-btn-times" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"></span>
+                                    </button>
+                                    </div>
+            
+                                    <div class="modaliritys">
+                                        <div id="closeConsole"></div>
+                                        <div class="modal-body-0" id="test">
+                                        </div>
+                                        <div class="modal-body-1" id="modalSections">
+                                        </div>
+                                        <div class="modal-body" id="modalContent">
+                                        </div>
+                                    </div>
+            
+                                    <div class="modal-footer">
+                                        <button type="button" id="close-btn" class="btn btn-success" data-dismiss="modal" aria-label="Close">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+            
+                            <iframe id="main" src="{{ url('project/larabuilder') }}">
+                            </iframe>
+            
+                        </div>
+                    </div>
                 </div>
 
-                <div class="modaliritys">
-                    <div id="closeConsole"></div>
-                    <div class="modal-body-0" id="test">
-                    </div>
-                    <div class="modal-body-1" id="modalSections">
-                    </div>
-                    <div class="modal-body" id="modalContent">
-                    </div>
-                </div>
+                <div class="right_bar_section">right_bar_section</div>
 
-                <div class="modal-footer">
-                    <button type="button" id="close-btn" class="btn btn-success" data-dismiss="modal" aria-label="Close">
-                        Close
-                    </button>
-                </div>
             </div>
-            </div>
-{{--             </div>
- --}}        <!-- Modal --> 
-  
-
-                <iframe id="main" src="{{ url('project/larabuilder') }}">
-                </iframe>
-
-        	</div>
         </div>
+
+
         <div id="modal-container" class="supra"></div>
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
