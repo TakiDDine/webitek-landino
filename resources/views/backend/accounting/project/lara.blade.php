@@ -51,23 +51,29 @@
             <div class="container-thumb"></div>
         </div>
 
-        <div class="landino_container">
+        <div class="container-fluid">
             <div class="wrapper">
+                {{-- Sidebar Area --}}
+                <aside class="sidebar">
+                    <nav class="menu_inner">
+                        <div class="nav_logo">
+                            <a href="/">
+                                <img class="logo" src="https://logo.templateo.com/app/data/cj1/cj1ndcl2yv-i5t1r3u2u3.jpg" alt="landino brand">
+                            </a>
+                        </div>
+                    <ul id="modal_section" class="nav_m nav_section">
+                        <h5 class="head-modal">Ui base library</h5>
+                    </ul>
+                    </nav>
+                    {{-- Content Section Viewd --}}
+                </aside>
+                <div id="components-preview" class="components-preview bg-light shadow-sm">
+                    <h2 id="section_title"></h2>
+                </div>
 
-                <div class="sidebar">sidebar</div>
 
-                <div class="preview_modal">
-                    <div class="header_menu">
-
-                        <div class="flexibile-buttons">
-                            <button type="button" id="showHide" data-backdrop="false" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
-                                Launch The Builder
-                            </button>
-                            <button type="button" class="btn btn-warning redirectBtn" >
-                                Go To Dashboard
-                            </button>  
-                        </div> 
-                    </div>
+                {{-- preview modal section --}}
+                <section class="preview_modal">
 
                     <div class="wrap-iframe d-flex justify-content-center align-items-center">
                         <div class="wrap viewing-desctop">          
@@ -76,45 +82,16 @@
                                 <i class="rotate icon-blr-lg-mobile"></i>
                             </label> 
 
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            
-                                <div class="modal-dialog" role="document" id="modalDialogToggle">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Navigation</h5>
-                                    <button id="close-btn-times" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true"></span>
-                                    </button>
-                                    </div>
-            
-                                    <div class="modaliritys">
-                                        <div id="closeConsole"></div>
-                                        <div class="modal-body-0" id="test">
-                                        </div>
-                                        <div class="modal-body-1" id="modalSections">
-                                        </div>
-                                        <div class="modal-body" id="modalContent">
-                                        </div>
-                                    </div>
-            
-                                    <div class="modal-footer">
-                                        <button type="button" id="close-btn" class="btn btn-success" data-dismiss="modal" aria-label="Close">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+
             
                             <iframe id="main" src="{{ url('project/larabuilder') }}">
                             </iframe>
             
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="right_bar_section">right_bar_section</div>
-
+                <aside class="right_bar_section">right_bar_section</aside>
             </div>
         </div>
 
