@@ -68,7 +68,8 @@
                     {{-- Content Section Viewd --}}
                 </aside>
                 <div id="components-preview" class="components-preview bg-light shadow-sm">
-                    <h2 id="section_title"></h2>
+                    <h2 id="section_title" class="section_title"></h2>
+                    <p class="instructure">Select a component 👇  and drag it to the canvas 👉</p>
                 </div>
 
 
