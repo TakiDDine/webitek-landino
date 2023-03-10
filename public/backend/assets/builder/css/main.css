@@ -6695,8 +6695,8 @@ button.btn.btn-success:hover {
 } */
 aside.left.supra.black,
 aside.control-panel:not(.custom-styling) {
-  /* display: none; */
-  visibility: hidden;
+  /*   display: none;
+  visibility: hidden; */
   width: 0 !important;
 }
 .wrap-iframe.d-flex.justify-content-center.align-items-center {
@@ -6917,10 +6917,6 @@ ul.nav_section li:hover {
 .view_media_screen {
   display: flex;
   justify-content: space-between;
-  background: #fff;
-  border-radius: 12px;
-  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
-  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
   padding: 0.25rem;
   margin: 0;
 }
@@ -6930,45 +6926,87 @@ ul.nav_section li:hover {
   padding: 0 5px;
 }
 .view_media_screen li i {
-  padding: 1.3rem;
-  background-color: #3658f9;
+  background-color: #ffffff;
   border-radius: 12px;
   display: block;
   cursor: pointer;
   -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
   box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  font-size: 22px;
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  line-height: 44px;
+  color: #536487;
 }
 .view_media_screen li:hover i {
-  background-color: #3656f9cb;
-  margin: 0;
+  color: #3656f9cb;
 }
 section.main_topsection {
   background-color: transparent;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
-  margin: 2em;
+  margin: 2em 0;
   gap: 2em;
 }
 .redo_undo_actions {
   display: flex;
   justify-content: space-between;
-  background: #fff;
-  border-radius: 12px;
-  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
-  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
-  padding: 0.25rem;
 }
-.redo_undo_actions .undo i.icon-blr-lg-undo,
+.redo_undo_actions .undo i,
 .redo i {
-  padding: 1.3rem;
-  background-color: #3658f9;
+  background-color: #ffffff;
   border-radius: 12px;
   display: block;
   cursor: pointer;
   -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
   box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  font-size: 22px;
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  line-height: 44px;
+  color: #536487;
 }
 .redo_undo_actions li {
   padding: 0 5px;
+}
+.redo_undo_actions li:hover i {
+  color: #3656f9cb;
+}
+/* -------Global Style Button-------- */
+.global_style_section {
+  display: flex;
+  justify-content: space-between;
+}
+.global_style_section li {
+  padding: 0 5px;
+}
+.global_style_section i {
+  background-color: #fff;
+  border-radius: 12px;
+  display: block;
+  cursor: pointer;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  font-size: 22px;
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  line-height: 44px;
+  color: #bdbdbd;
+}
+li h2.icon-blr-mode-plus {
+  display: none;
+}
+.global_style_section li:hover i {
+  color: #3656f9cb;
+}
+/* ~~~~~~~~~~~~~~~ */
+.view_media_screen li.active i {
+  color: #3658f9;
+}
+.global_style_section li.unactive i {
+  color: #ff00d0cb !important;
 }

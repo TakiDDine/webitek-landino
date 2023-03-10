@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="./../builder/css/fonts.css" />
     	<link rel="stylesheet" href="./../builder/css/main.css" />
     	<link rel="stylesheet" href="./../builder/css/preloader.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body class="first-show">
         <script src="./../builder/js/lib/jquery-2.1.4.min.js"></script>
@@ -76,11 +77,15 @@
                 {{-- preview modal section --}}
                 <main class="preview_modal">
                     <section class="main_topsection">
+                        {{-- Media ViewPort --}}
                         <div id="view_media_screen" class="view_media_screen"></div>
+                        {{-- Undo Redo --}}
                         <div class="redo_undo_actions">
                             <div id="undo_action"></div>
                             <div id="redo_action"></div>
                         </div>
+                        {{-- Global Style --}}
+                        <div id="global_style_section" class="global_style_section"></div>
                     </section>
                     <div class="wrap-iframe d-flex justify-content-center align-items-center">
                         <div class="wrap viewing-desctop">          
