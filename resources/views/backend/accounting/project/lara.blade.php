@@ -68,14 +68,20 @@
                     {{-- Content Section Viewd --}}
                 </aside>
                 <div id="components-preview" class="components-preview bg-light shadow-sm">
-                    <h3 id="view_media_screen" class="view_media_screen"></h3>
                     <h2 id="section_title" class="section_title"></h2>
                     <p class="instructure">Select a component 👇  and drag it to the canvas 👉, or just click on it!</p>
                 </div>
 
 
                 {{-- preview modal section --}}
-                <section class="preview_modal">
+                <main class="preview_modal">
+                    <section class="main_topsection">
+                        <div id="view_media_screen" class="view_media_screen"></div>
+                        <div class="redo_undo_actions">
+                            <div id="undo_action"></div>
+                            <div id="redo_action"></div>
+                        </div>
+                    </section>
                     <div class="wrap-iframe d-flex justify-content-center align-items-center">
                         <div class="wrap viewing-desctop">          
                             <label>
@@ -90,7 +96,7 @@
             
                         </div>
                     </div>
-                </section>
+                </main>
 
                 <aside class="right_bar_section">right_bar_section</aside>
             </div>

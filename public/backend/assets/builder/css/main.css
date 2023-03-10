@@ -1566,23 +1566,6 @@ aside.left {
   -webkit-transition: left 0.8s 0.8s;
   outline: none;
 }
-/* Start Edited Project Section */
-.testing {
-  background-color: #f943ff;
-}
-.test-icon {
-  border: 0;
-  outline: 0;
-  background: transparent;
-  font-size: 2em;
-  font-weight: bold;
-  cursor: pointer;
-  color: #fff;
-}
-.testing:hover {
-  background-color: #9a3e43;
-}
-/* End Edited Project Section */
 
 aside.left nav {
   height: 100%;
@@ -6712,7 +6695,7 @@ button.btn.btn-success:hover {
 } */
 aside.left.supra.black,
 aside.control-panel:not(.custom-styling) {
-  display: none;
+  /* display: none; */
   visibility: hidden;
   width: 0 !important;
 }
@@ -6917,12 +6900,12 @@ ul.nav_section li:hover {
   overflow: hidden;
   margin: 1.5em auto;
   cursor: grabbing;
-  width: 99%;
+  width: 98%;
   box-sizing: border-box;
   padding: 4px;
 }
 .preview_image ul li:hover {
-  border: 4px dashed #3658f9;
+  outline: 4px dashed #3658f9;
 }
 .preview_image ul li img {
   width: 100%;
@@ -6933,21 +6916,59 @@ ul.nav_section li:hover {
 }
 .view_media_screen {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  padding: 0.25rem;
+  margin: 0;
 }
 .view_media_screen li {
-  margin: 0 0.5em;
   -webkit-transition: left 0.4s ease-in-out;
   transition: left 0.4s ease-in-out;
+  padding: 0 5px;
 }
 .view_media_screen li i {
-  height: 36px;
-  width: 36px;
+  padding: 1.3rem;
   background-color: #3658f9;
-  border-radius: 2px;
+  border-radius: 12px;
   display: block;
   cursor: pointer;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
 }
 .view_media_screen li:hover i {
   background-color: #3656f9cb;
+  margin: 0;
+}
+section.main_topsection {
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  margin: 2em;
+  gap: 2em;
+}
+.redo_undo_actions {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  padding: 0.25rem;
+}
+.redo_undo_actions .undo i.icon-blr-lg-undo,
+.redo i {
+  padding: 1.3rem;
+  background-color: #3658f9;
+  border-radius: 12px;
+  display: block;
+  cursor: pointer;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+}
+.redo_undo_actions li {
+  padding: 0 5px;
 }
