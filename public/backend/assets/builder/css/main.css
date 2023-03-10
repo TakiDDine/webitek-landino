@@ -6995,7 +6995,7 @@ section.main_topsection {
   width: 44px;
   text-align: center;
   line-height: 44px;
-  color: #bdbdbd;
+  color: red;
 }
 li h2.icon-blr-mode-plus {
   display: none;
@@ -7007,6 +7007,23 @@ li h2.icon-blr-mode-plus {
 .view_media_screen li.active i {
   color: #3658f9;
 }
-.global_style_section li.unactive i {
-  color: #ff00d0cb !important;
+.redo_undo_actions li.unactive i {
+  opacity: 0.2;
+}
+.redo_undo_actions li.unactive:hover i {
+  color: #536487;
+}
+.wrap.viewing-mobile label i {
+  border-radius: 12px;
+  display: block !important;
+  cursor: pointer !important;
+  font-size: 30px;
+  height: 44px !important;
+  width: 44px !important;
+  text-align: center;
+  line-height: 44px;
+  color: #ffffff !important;
+}
+.wrap.viewing-mobile label i.activeMobileOposite {
+  color: #3658f9 !important;
 }
