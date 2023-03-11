@@ -86,6 +86,14 @@
                         </div>
                         {{-- Global Style --}}
                         <div id="global_style_section" class="global_style_section"></div>
+                        <div id="backToDashboard" class="back-dashboard">
+                            <li class="item-check d-flex justify-content-center align-items-center" id="back-dashboard">
+                                <a href="https://larabuilde3.takiddine.art/dashboard">
+                                    <i class="fa fa-arrow-left"></i>
+                                    <span class="text">dashboard</span>
+                                </a>
+                            </li>
+                        </div>
                     </section>
                     <div class="wrap-iframe d-flex justify-content-center align-items-center">
                         <div class="wrap viewing-desctop">          
