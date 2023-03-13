@@ -111,7 +111,14 @@
                     </div>
                 </main>
 
-                <aside class="right_bar_section">right_bar_section</aside>
+                <aside class="right_bar_section">
+                    <nav class="editable_component_area">
+                        <div class="title">
+                            <h2>Editable Area</h2>
+                            <button id="close_editable"></button>
+                        </div>
+                    </nav>
+                </aside>
             </div>
         </div>
 

@@ -6770,6 +6770,8 @@ div#modalContent {
 .container-fluid .right_bar_section {
   grid-column: 11/13;
   background-color: #fff;
+  border-left: 1px solid #f4f5f7;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 /* ----Stylesheets---- */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
@@ -6998,9 +7000,9 @@ section.main_topsection {
   line-height: 44px;
   color: red;
 }
-li h2.icon-blr-mode-plus {
+/* li h2.icon-blr-mode-plus {
   display: none;
-}
+} */
 .global_style_section li:hover i {
   color: #3656f9cb;
 }
@@ -7026,12 +7028,11 @@ li h2.icon-blr-mode-plus {
   width: 44px !important;
   text-align: center;
   line-height: 44px;
-  color: #ffffff !important;
+  color: #536487 !important;
 }
 .wrap.viewing-mobile label i.activeMobileOposite {
   color: #3658f9 !important;
 }
-
 /* ~~~~~~~dashboard btn~~~~~~~~~ */
 .back-dashboard {
   display: flex;
@@ -7064,6 +7065,35 @@ li h2.icon-blr-mode-plus {
 .back-dashboard li:hover a span {
   text-decoration: underline;
 }
-
-
-
+/* --------Editable Comp Style-------- */
+.right_bar_section nav.editable_component_area .title {
+  /* padding: 1rem 0 1rem 2rem; */
+  border-bottom: 1px solid #f4f5f7;
+  display: flex;
+  justify-content: space-between;
+}
+.editable_component_area .title h2 {
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.125rem;
+  padding: 1.8rem 1.8rem 1.25rem 1rem;
+  position: relative;
+}
+.editable_component_area .title button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  padding: 0 0.6em 0 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-weight: bold;
+}
+.editable_component_area .title button:hover {
+  color: #3758f9;
+}
+.editable_component_area .title button h2 {
+  font-size: 1.95em;
+}
