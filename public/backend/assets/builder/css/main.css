@@ -6842,7 +6842,8 @@ ul.nav_section li:hover {
   border-radius: 3px;
 }
 /* ------comp preview------- */
-.components-preview {
+.components-preview,
+.content_previewd {
   background-color: #fbfbfb;
   border: 0;
   bottom: 0;
@@ -6862,6 +6863,14 @@ ul.nav_section li:hover {
   width: 520px;
   z-index: 2;
 }
+/*  */
+.content_previewd {
+  right: -520px;
+}
+.content_previewd--show {
+  left: 753px;
+}
+/*  */
 .shadow-sm {
   -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
@@ -7097,3 +7106,15 @@ section.main_topsection {
 .editable_component_area .title button h2 {
   font-size: 1.95em;
 }
+/* ««««« */
+/* .run aside.control-panel.active:not(.custom-styling) {
+  left: 86%;
+  top: 18%;"
+} */
+.run .main .wrap-drag .point-to-drag img {
+  margin-bottom: 20px;
+  opacity: 0.5;
+  background-color: blue;
+}
+
+/* »»~~»»» */
