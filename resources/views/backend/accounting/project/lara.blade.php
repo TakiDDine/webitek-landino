@@ -121,7 +121,10 @@
                     <section id="right_content">
                         <div id="content_button_switch"></div>
                     </section>
-                    <div class="content_previewd">
+                    <div class="content_previewd" id="content_previewd_wrapper">
+                        <div>
+                            <button id="close_content_previewd">&times;</button>
+                        </div>
                         <h3 id="content_h3_name"></h3>
                         <span id="content_view_mode"></span>
                         <div id="content_previewd">
