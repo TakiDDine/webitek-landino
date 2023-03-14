@@ -1,0 +1,4 @@
+.env
+
+public/tmp/
+node_modules
