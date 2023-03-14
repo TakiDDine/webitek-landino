@@ -725,16 +725,18 @@ button.close:hover {
 /*------------------------*/
 
 .btn-group {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  display: -webkit-flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 0.25rem;
+  position: relative;
+  vertical-align: middle;
 }
-
 .supra-btn {
   border-radius: 1px;
   display: inline-block;
@@ -6696,9 +6698,9 @@ button.btn.btn-success:hover {
 } */
 aside.left.supra.black,
 aside.control-panel:not(.custom-styling) {
-  /*   display: none;
-  visibility: hidden; 
-  width: 0 !important;*/
+  /*      display: none;
+  visibility: hidden;  */
+  width: 0 !important;
 }
 .wrap-iframe.d-flex.justify-content-center.align-items-center {
   padding: 0;
@@ -6842,8 +6844,7 @@ ul.nav_section li:hover {
   border-radius: 3px;
 }
 /* ------comp preview------- */
-.components-preview,
-.content_previewd {
+.components-preview {
   background-color: #fbfbfb;
   border: 0;
   bottom: 0;
@@ -6863,14 +6864,7 @@ ul.nav_section li:hover {
   width: 520px;
   z-index: 2;
 }
-/*  */
-.content_previewd {
-  right: -520px;
-}
-.content_previewd--show {
-  left: 753px;
-}
-/*  */
+
 .shadow-sm {
   -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
@@ -7106,15 +7100,49 @@ section.main_topsection {
 .editable_component_area .title button h2 {
   font-size: 1.95em;
 }
-/* ««««« */
-/* .run aside.control-panel.active:not(.custom-styling) {
-  left: 86%;
-  top: 18%;"
-} */
-.run .main .wrap-drag .point-to-drag img {
-  margin-bottom: 20px;
-  opacity: 0.5;
-  background-color: blue;
+.btn-group button {
+  background-color: transparent;
+  border-radius: 8px !important;
+  color: #536387;
+  font-size: 14px;
+  width: 50%;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+}
+.btn-group button.active {
+  background-color: #f4f5f7;
+  color: #161e2e;
+}
+.btn-group button span {
+  color: #536387;
+}
+.supra-btn.btn-default {
+  background-color: #fff;
+  color: #536387;
+  font-size: 14px;
 }
 
-/* »»~~»»» */
+/* -----Content Previewd----- */
+.content_previewd {
+  background-color: #fbfbfb;
+  border: 0;
+  bottom: 0;
+  -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  right: 0;
+  margin: 0;
+  outline: 0;
+  overflow-y: auto;
+  padding: 0.8rem 1.5rem 1.5rem;
+  position: absolute;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  top: 0;
+  -webkit-transition: left 0.4s ease-in-out;
+  transition: left 0.4s ease-in-out;
+  width: 520px;
+  z-index: 2;
+  /*----*/
+  display: none;
+}
+/* -----Content Previewd----- */

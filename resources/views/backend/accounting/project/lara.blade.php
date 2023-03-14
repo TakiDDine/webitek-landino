@@ -121,9 +121,8 @@
                     <section id="right_content">
                         <h3 id="content_name"></h3>
                         <div id="content_button_switch"></div>
-                        <div id="content_elements"></div>
                     </section>
-                    <div class="content_previewd bg-light shadow-sm content_previewd--show">
+                    <div class="content_previewd">
                         <h3 id="content_h3_name"></h3>
                         <span id="content_view_mode"></span>
                         <div id="content_previewd">
