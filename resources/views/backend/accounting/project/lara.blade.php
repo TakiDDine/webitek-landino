@@ -126,7 +126,9 @@
                     <div class="content_previewd bg-light shadow-sm content_previewd--show">
                         <h3 id="content_h3_name"></h3>
                         <span id="content_view_mode"></span>
-                        <div id="content_previewd"></div>
+                        <div id="content_previewd">
+                            <div id="testingT"></div>
+                        </div>
                     </div>
                 </aside>
             </div>
