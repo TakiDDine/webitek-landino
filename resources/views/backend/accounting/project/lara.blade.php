@@ -60,9 +60,9 @@
                   <li>
                     <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button" data-collapsed="true" ><i class="fa fa-plus-circle"></i><span>Add Element</span></button>
                   </li>
-                  <li>
-                    <button type="button" id=" global-styles__Triggerer" class="btn btn-primary" 
-                    data-name="global styles" role="button" data-active="false" ><i class="fa fa-pencil-square-o"></i><span>Edit Element</span></button>
+                  <li id="global-styles__Triggerer">
+                    {{-- <button type="button"  class="btn btn-primary" 
+                    data-name="global styles" role="button" data-active="false" ><i class="fa fa-pencil-square-o"></i><span>Edit Element</span></button> --}}
                   </li>
                   
                   
@@ -107,26 +107,6 @@
           </div>
         </div>
 
-        <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false"  role="document">
-          <div class="sidebar-content">
-            <div class="sidebarContainer">
-              <div id="sidebar_contentHeader" class="myDiv">
-                <div class="sidebar-header">
-                  <a class="sidebar-title">Landino</a>
-                </div>
-                <div id="sidebarContent__headerList">
-                  <h6>UI LIBRARY</h6>
-                  <ul id="uiContainer"></ul>
-                </div>  
-              </div>
-              <div id="sidebar_contentList" class="sidebar-body myDiv">
-                <div class="sidebar-body__content" id="sidebarContent__contentList">
-                  <h3 id="sidebarTitle__list-title"></h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         
         <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false"  role="document">
           <div class="sidebar-content">
