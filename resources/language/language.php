@@ -1148,3 +1148,11 @@ $language["Write Your CSS Code without style tag"] = "Write Your CSS Code withou
 $language["Save CSS"] = "Save CSS";
 $language["Membership Payment"] = "Membership Payment";
 $language["Upgrade your membership to use more features"] = "Upgrade your membership to use more features";
+$language["Support"] = "Support";
+$language["Preview"] = "Preview";
+$language["use template"] = "use template";
+$language["account"] = "Account";
+$language["Add Project"] = "Add Project";
+$language["Created at"] = "Created at";
+
+

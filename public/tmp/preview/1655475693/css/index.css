@@ -1,0 +1,20 @@
+#benefits-3col-3 .bg-wrap {
+    background-color: #f4f5f6;
+}
+#text-1col .bg {
+    background-image: url('../images/bg-sign-primary.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    opacity: 0.2;
+}
+#benefits-4col-8 .bg-wrap {
+    background-color: #F2F0ED;
+}
+#desc-halfbg-text-img-text .bg-wrap {
+    background-color: #f4f5f6;
+}#contact-form-2 .bg {
+    background-position: center bottom;
+    background-size: cover;
+    opacity: 1;
+    background-image: url(../images/bg-11.jpg);
+}

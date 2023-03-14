@@ -32,11 +32,11 @@
 					<td class='role_id'>{{ $user->role->name }}</td>					
 					<td class="text-center">
 					  <form action="{{action('StaffController@destroy', $user['id'])}}" method="post">
-						<a href="{{action('StaffController@edit', $user['id'])}}" data-title="{{ _lang('Update Staf') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i> Edit</a>
-						<a href="{{action('StaffController@show', $user['id'])}}" data-title="{{ _lang('View Staf') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i> Show</a>
+						<a href="{{action('StaffController@edit', $user['id'])}}" data-title="{{ _lang('Update Staf') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i></a>
+						<a href="{{action('StaffController@show', $user['id'])}}" data-title="{{ _lang('View Staf') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i></a>
 						{{ csrf_field() }}
 						<input name="_method" type="hidden" value="DELETE">
-						<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete</button>
+						<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 					  </form>
 					</td>
 			    </tr>

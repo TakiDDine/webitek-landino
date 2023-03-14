@@ -4,7 +4,7 @@
 <section class="text-center imagebg space--lg" data-overlay="3">
     @if (get_option('sub_banner_image'))
     <div class="background-image-holder">
-        <img alt="background" src="{{ asset('public/uploads/media/'.get_array_option('sub_banner_image')) }}" />
+        <img alt="background" src="{{ get_option('sub_banner_image') }}" />
     </div>
     @endif
     <div class="container">

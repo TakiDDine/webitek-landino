@@ -30,7 +30,7 @@ namespace App\Utilities\Builder;
     }
 
     private function connect() {
-        $this->conn_id = ftp_connect($this->ftp_server,21,120);
+        $this->conn_id = ftp_connect($this->ftp_server);
         if (!$this->conn_id)
             throw new Exception("<span style='color:#FF0000'>Couldn't connect to $this->ftp_server</span>");
         $login_result = ftp_login($this->conn_id, $this->ftp_user_name, $this->ftp_user_pass);

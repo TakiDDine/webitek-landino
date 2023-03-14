@@ -4,7 +4,7 @@
 <section class="text-center imagebg space--lg" data-overlay="3">
     @if (get_option('sub_banner_image'))
     <div class="background-image-holder">
-        <img alt="background" src="{{ asset('public/uploads/media/'.get_array_option('sub_banner_image')) }}" />
+        <img alt="background" src="{{ get_option('sub_banner_image') }}" />
     </div>
     @endif
     <div class="container">
@@ -43,7 +43,6 @@
 
                                     <div class="alert alert-success d-none" id="contact-message"></div>
                                     <form action="{{ url('contact/send_message') }}" method="post" autocomplete="off" class="text-left form-email row" id="contact-form-2-form" data-success="Thanks for your enquiry, we'll be in touch shortly." data-error="Please fill in all fields correctly.">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="col-md-12">
                                             <input type="text" class="spr-text-field form-control" name="name" value="{{ old('name') }}" placeholder="{{ _lang('Your Name') }}" required="required">
                                             @if ($errors->has('name'))
@@ -54,12 +53,6 @@
                                             <input type="text" class="spr-text-field form-control" name="email" value="{{ old('email') }}" placeholder="{{ _lang('Your Email') }}" required="required">
                                             @if ($errors->has('email'))
                                                 <div class="help-block with-errors">{{ $errors->first('email') }}</div>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-12">
-                                            <input type="text" class="spr-text-field form-control" name="subject" value="{{ old('subject') }}" placeholder="{{ _lang('Your Subject') }}" required="required">
-                                            @if ($errors->has('subject'))
-                                                <div class="help-block with-errors">{{ $errors->first('subject') }}</div>
                                             @endif
                                         </div>
                                         <div class="col-md-12">

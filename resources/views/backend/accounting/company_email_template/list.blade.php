@@ -30,7 +30,7 @@
 						<a href="{{ action('CompanyEmailTemplateController@show', $companyemailtemplate['id']) }}" class="btn btn-primary btn-xs ajax-modal" data-title="{{ _lang('View Email Template') }}"><i class="ti-eye"></i></a>
 						{{ csrf_field() }}
 						<input name="_method" type="hidden" value="DELETE">
-						<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete</button>
+						<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 					  </form>
 					</td>
 				  </tr>

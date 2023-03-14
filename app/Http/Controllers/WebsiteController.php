@@ -53,7 +53,7 @@ class WebsiteController extends Controller
         } else {
             $p = \App\Project::where('custom_domain', $request->domain)
             ->orWhere('sub_domain', $request->domain)->first();
-
+            // dd($p);
             return File::get(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/index.html');
           
         }

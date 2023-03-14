@@ -24,11 +24,11 @@
 						<td class='name'>{{ $paymentmethod->name }}</td>	
 						<td class="text-center">
 						  <form action="{{ action('PaymentMethodController@destroy', $paymentmethod['id']) }}" method="post">
-							<a href="{{ action('PaymentMethodController@edit', $paymentmethod['id']) }}" data-title="{{ _lang('Update Payment Method') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i> Edit</a>
-							<a href="{{ action('PaymentMethodController@show', $paymentmethod['id']) }}" data-title="{{ _lang('View Payment Method') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i> Show</a>
+							<a href="{{ action('PaymentMethodController@edit', $paymentmethod['id']) }}" data-title="{{ _lang('Update Payment Method') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i></a>
+							<a href="{{ action('PaymentMethodController@show', $paymentmethod['id']) }}" data-title="{{ _lang('View Payment Method') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i></a>
 							{{ csrf_field() }}
 							<input name="_method" type="hidden" value="DELETE">
-							<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete</button>
+							<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 						  </form>
 						</td>
 					  </tr>

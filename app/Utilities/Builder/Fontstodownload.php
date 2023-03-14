@@ -36,8 +36,8 @@ class FontsToDownload extends Fonts {
 
         $fontCSSContent = $this->getFontCSSContent();
         $font_css = $fontCSSContent['css'];
-        $font_css = preg_replace('#('.$this->basePath.')?(/[\w/_()-]*/)#im', '/fonts/', $font_css);
 
+        $font_css = preg_replace('#('.$this->basePath.')?(/[\w/_()-]*/)#im', '/fonts/', $font_css);
         $this->zip->addFromString(
             'css/fonts.css'
             , $font_css

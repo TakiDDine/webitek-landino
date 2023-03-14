@@ -76,7 +76,7 @@ hr {
   overflow: visible; }
 
 h1, h2, h3, h4, h5, h6,.kt-subheader__desc,.kt-menu__section-text,.kt-link,.kt-subheader__breadcrumbs-link,.kt-nav__link-text,.kt-notification__item-title,.kt-user-card__name,.btn,.kt-menu__link-text,.col-form-label,.kt-checkbox,.text-muted,.kt-link,.kt-notification .kt-notification__item .kt-notification__item-details .kt-notification__item-title,.kt-widget4__title,.kt-portlet__head-title,.kt-widget26__desc,.kt-dialog--loader,.daterangepicker .ranges li,.kt-subheader__btn-daterange-title,.kt-quick-search.kt-quick-search--result-compact .kt-quick-search__result .kt-quick-search__category,.nav-tabs.nav-tabs-line.nav.nav-tabs .nav-link, .nav-tabs.nav-tabs-line a.nav-link,.kt-datatable.kt-datatable--default > .kt-datatable__table > .kt-datatable__head .kt-datatable__row > .kt-datatable__cell > span, .kt-datatable.kt-datatable--default > .kt-datatable__table > .kt-datatable__foot .kt-datatable__row > .kt-datatable__cell > span {
-font-family: "Cairo" !important;
+font-family: "Vazir" !important;
 font-weight: bold !important;
 }
 .kt-quick-search__item-desc {

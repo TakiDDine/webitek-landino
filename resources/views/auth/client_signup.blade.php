@@ -144,18 +144,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mt-3">
-                                   <div class="col-md-12">
-                                        {!! NoCaptcha::renderJs('en', false, 'recaptchaCallback') !!}
-                                        {!! NoCaptcha::display() !!}
-                                        
-                                        @if ($errors->has('g-recaptcha-response'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                            </span>
-                                        @endif
-                                   </div>
-                               </div>
+
+
+
+
                                 
 								<div class="kt-login__actions mt-3">
 									<button type="submit" class="btn btn-primary btn-elevate kt-login__btn-primary">{{ _lang('Sign Up') }}</button>
@@ -172,17 +164,4 @@
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('js-script')
-<script src="{{ asset('public/theme/default/assets/js/jquery-3.1.1.min.js') }}"></script>
-<script>
-
-var package = "{{ isset($_GET['package']) ? $_GET['package'] : '' }}";
-$("#package").val(package);
-
-var package_type = "{{ isset($_GET['package_type']) ? $_GET['package_type'] : '' }}";
-$("#package_type").val(package_type);
-
-</script>
 @endsection

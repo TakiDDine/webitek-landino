@@ -30,11 +30,11 @@
 					<td class='tax_method'>{{ ucwords($item->service->tax_method) }}</td>
 					<td class="text-center">
 						<form action="{{action('ServiceController@destroy', $item['id'])}}" method="post">
-						<a href="{{action('ServiceController@edit', $item['id'])}}" data-title="{{ _lang('Update Service') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i> Edit Edit</a>
-						<a href="{{action('ServiceController@show', $item['id'])}}" data-title="{{ _lang('View Service') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i> Show</a>
+						<a href="{{action('ServiceController@edit', $item['id'])}}" data-title="{{ _lang('Update Service') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i></a>
+						<a href="{{action('ServiceController@show', $item['id'])}}" data-title="{{ _lang('View Service') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i></a>
 						{{ csrf_field() }}
 						<input name="_method" type="hidden" value="DELETE">
-						<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete</button>
+						<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 						</form>
 					</td>
 			  </tr>

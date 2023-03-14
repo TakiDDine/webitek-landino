@@ -34,11 +34,11 @@
 						<td class='opening_balance text-right'>{{ decimalPlace($account->balance, currency($account->account_currency)) }}</td>
 						<td class="text-center">
 						  <form action="{{ action('AccountController@destroy', $account->id) }}" method="post">
-							<a href="{{ action('AccountController@edit', $account->id) }}" data-title="{{ _lang('Update Account') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"> Edit</i></a>
-							<a href="{{ action('AccountController@show', $account->id) }}" data-title="{{ _lang('View Account') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i> Show View</a>
+							<a href="{{ action('AccountController@edit', $account->id) }}" data-title="{{ _lang('Update Account') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i></a>
+							<a href="{{ action('AccountController@show', $account->id) }}" data-title="{{ _lang('View Account') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i></a>
 							{{ csrf_field() }}
 							<input name="_method" type="hidden" value="DELETE">
-							<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete Delete</button>
+							<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 						  </form>
 						</td>
 					  </tr>

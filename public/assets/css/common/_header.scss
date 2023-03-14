@@ -1,0 +1,367 @@
+$badge-color: #F2574A;
+$divider-color: #CCCCCC;
+
+.header {
+  position: absolute;
+  display: flex;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: height(header);
+  z-index: z(header);
+
+  &:not(.header--fixed){
+    // reset inline style when there is sticky notification and header is not fixed
+    // review stickyNotif.js for more info
+    margin-top: 0 !important;
+  }
+
+  @include mq_max($sm) {
+	  height: height(header_sm);
+  }
+  @include mq_max($xs) {
+	  height: height(header_xs);
+  }
+
+  .modal-open & {
+    @include mq_min($md) {
+      padding-right: 17px;
+    }
+  }
+  .menu-open & {
+    position: fixed;
+    transform: translateY(0);
+  }
+
+  &--fixed {
+    background-color: #fff;
+    position: fixed;
+    transform: translateY(-100%);
+    height: height(header_fixed);
+
+    @include mq_max($sm) {
+      height: 70px;
+    }
+
+    @include mq_max($xs) {
+      height: 60px;
+    }
+  }
+  &--trans {
+	  transition: transform 0.3s ease-in-out, box-shadow 0.3s linear;
+  }
+  &--show {
+    transform: translateY(0);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1) !important;
+  }
+  .page-pricing &{
+    background-color: #fff;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    max-width: rem(1280);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 5;
+
+    img {
+      display: block;
+      width: rem(55);
+      transition: all 0.2s;
+
+      @include mq_max($xs) {
+        width: rem(45);
+      }
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      margin-right: rem(18);
+
+      @include mq_max(680px) {
+        display: none;
+      }
+
+      p{
+        @extend %type-bold;
+        font-size: rem(24);
+        color: color(gray_4);
+        line-height: 1.3;
+        margin-bottom: rem(10);
+      }
+      span{
+        font-size: rem(14);
+        @extend %type-light;
+        color: color(gray_6);
+        margin-top: rem(-8);
+      }
+    }
+  }
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-out;
+
+    .resizing & {
+      transition: none;
+    }
+
+    @include mq_max($sm) {
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      text-align: center;
+      background-color: #fff;
+      width: 100%;
+      left: 0;
+      top: 0;
+      box-shadow: 0 rem(10) rem(20) rgba(#000, 0.07);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s, visibility 0s 0.3s;
+
+      @include mq_max_h(400px){
+        justify-content: flex-start;
+        padding: 100px 15px 0;
+        overflow: auto;
+      }
+
+      @at-root .menu-open .header-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 0.3s, visibility 0s;
+      }
+    }
+  }
+
+  &-nav {
+
+    @include mq_max_h(400px) {
+      padding-bottom: 50px;
+    }
+
+    &--mobile {
+      display: none;
+      margin-left: rem(40);
+
+      @include mq_max($sm) {
+        display: block;
+      }
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+
+      @include mq_max($sm) {
+        flex-direction: column;
+      }
+    }
+
+    li {
+      position: relative;
+      white-space: nowrap;
+
+      &:last-child{
+        margin-right: rem(20);
+
+        @include mq_max($sm){
+          margin-right: 0;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-left: rem(5);
+
+        @include mq_max($sm) {
+          margin-left: rem(10);
+          margin-left: 0;
+          margin-bottom: rem(30);
+        }
+        @include mq_max($xs){
+          margin-left: 0;
+        }
+      }
+    }
+
+    a:not(.btn) {
+      @extend %type-light;
+      display: inline-block;
+      padding: rem(10) rem(15);
+      color: color(gray_39);
+      font-size: rem(18);
+      transition: all 0.1s;
+
+      &:hover {
+        @include mq_min($sm) {
+          color: color(blue);
+        }
+      }
+
+      @at-root .header--light .header-nav a {
+        @include mq_min($sm) {
+          color: #fff;
+        }
+      }
+
+      @at-root .header-nav li.active a {
+        @extend %type-medium;
+        color: color(blue);
+      }
+      @include mq_max($xs){
+        padding-left: rem(10);
+        padding-right: rem(10);
+      }
+    }
+  }
+
+  &-badge{
+    color: #FFFFFF;
+    background-color: color(red);
+    border-radius: rem(5);
+    display: inline-block;
+    height: rem(24);
+    padding: 0 rem(6);
+    text-align: center;
+    margin-right: rem(-15);
+
+    @include mq_max($xs){
+      font-size: rem(12);
+      margin-right: rem(-10);
+      padding: rem(2) rem(6);
+      transform: translateY(#{rem(-2)});
+      height: auto;
+    }
+    @include mq_max($xxxs){
+      font-size: rem(10);
+      margin-right: rem(-10);
+      padding: rem(2) rem(4);
+    }
+  }
+
+  &-sign {
+    position: relative;
+    padding-right: rem(30);
+    transform: translateY(-2px); // Q: why?! A: to make other links and sign links center align correctly
+
+    @include mq_max($sm) {
+      padding: 30px 0 0;
+      margin-top: 10px;
+    }
+
+    &::after {
+      /* divider vertical line */
+      content: "";
+      height: rem(17);
+      width: 1px;
+      background-color: color(gray_4);
+      position: absolute;
+      top: rem(3);
+      bottom: 0;
+      margin: auto;
+      right: 0;
+      opacity: .3;
+
+      @include mq_max($sm) {
+        top: 0;
+        left: 0;
+        bottom: auto;
+        width: 33px;
+        height: 1px;
+      }
+    }
+
+    .btn {
+      @include mq_max($sm) {
+        display: none;
+      }
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    display: none;
+    font-size: 0;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    z-index: 10;
+
+    @include mq_max($sm) {
+      display: block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+      transform-origin: center;
+      transition: all 0.2s ease-in-out;
+
+      @at-root .menu-open .header-btn {
+
+        &::before,
+        &::after {
+          background-color: color(gray_d);
+        }
+      }
+    }
+
+    &::before {
+      top: 8px;
+      background-color: color(blue);
+
+      @at-root body.menu-open .header-btn::before {
+        top: 50%;
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+
+    &::after {
+      bottom: 8px;
+      background-color: color(gray_d);
+
+      @at-root body.menu-open .header-btn::after {
+        bottom: 50%;
+        transform: translateY(50%) rotate(45deg);
+      }
+    }
+  }
+}
+
+#signin {// TODO remove when there is more items in menu
+  display: none;
+  color: color(gray_39);
+  font-size: rem(18);
+  transition: all 0.1s;
+  height: rem(40);
+  line-height: 1;
+  padding: rem(10);
+  margin-left: rem(40);
+
+  @include mq_max($sm) {
+    display: inline-block;
+  }
+}

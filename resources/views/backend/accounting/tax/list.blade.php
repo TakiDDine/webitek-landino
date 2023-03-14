@@ -28,11 +28,11 @@
 						<td class='type'>{{ ucwords($tax->type) }}</td>	
 						<td class="text-center">
 						  <form action="{{action('TaxController@destroy', $tax['id'])}}" method="post">
-							<a href="{{action('TaxController@edit', $tax['id'])}}" data-title="{{ _lang('Update Tax') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i> Edit</a>
-							<a href="{{action('TaxController@show', $tax['id'])}}" data-title="{{ _lang('View Tax') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i> Show</a>
+							<a href="{{action('TaxController@edit', $tax['id'])}}" data-title="{{ _lang('Update Tax') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i></a>
+							<a href="{{action('TaxController@show', $tax['id'])}}" data-title="{{ _lang('View Tax') }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i></a>
 							{{ csrf_field() }}
 							<input name="_method" type="hidden" value="DELETE">
-							<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete</button>
+							<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 						  </form>
 						</td>
 					  </tr>

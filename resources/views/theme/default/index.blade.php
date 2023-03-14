@@ -46,10 +46,10 @@
 
             <div class="row pricing-headline">
                 <div class="col-md-12 text-center"> 
-                    <button class="btn btn--primary type--uppercase btn-hop" id="btn-monthly">
+                    <button class="btn btn--primary type--uppercase btn-not-hop" id="btn-monthly">
                         {{ _lang('Monthly Plan') }}
                     </button>
-                    <button class="btn btn--primary type--uppercase btn-not-hop"  id="btn-yearly">
+                    <button class="btn btn--primary type--uppercase btn-hop"  id="btn-yearly">
                         {{ _lang('Yearly Plan') }}
                     </button>
                 </div>
@@ -77,7 +77,7 @@
                                     <span>{{ _dlang(unserialize($package->websites_limit)['monthly']).' '._lang('Websites') }}</span>
                                 </li>
                             </ul>
-                            <a class="btn btn--{{ $package->is_featured == 1 ? 'primary-1' : 'primary' }}" href="{{ url('register/client_signup?package_type=monthly&package='.$package->id) }}">
+                            <a class="btn btn--{{ $package->is_featured == 1 ? 'primary-1' : 'primary' }}" href="{{ url('sign_up?package_type=monthly&package='.$package->id) }}">
                                 <span class="btn__text">
                                     {{ _lang('Get Started') }}
                                 </span>
@@ -102,7 +102,7 @@
                                     <span>{{ _dlang(unserialize($package->websites_limit)['yearly']).' '._lang('Websites') }}</span>
                                 </li>
                             </ul>
-                            <a class="btn btn--{{ $package->is_featured == 1 ? 'primary-1' : 'primary' }}" href="{{ url('register/client_signup?package_type=yearly&package='.$package->id) }}">
+                            <a class="btn btn--{{ $package->is_featured == 1 ? 'primary-1' : 'primary' }}" href="{{ url('sign_up?package_type=yearly&package='.$package->id) }}">
                                 <span class="btn__text">
                                     {{ _lang('Get Started') }}
                                 </span>

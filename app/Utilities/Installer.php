@@ -18,17 +18,17 @@ use File;
  * @package App\Utilities
  */
 class Installer
-{ 
+{
     private static $minPhpVersion = '7.1.3';
 
     public static function checkServerRequirements()
     {
         $requirements = array();
 
-		if (phpversion() < self::$minPhpVersion) {
+        if (phpversion() < self::$minPhpVersion) {
             $requirements[] = 'Minimum PHP Version 7.1.3 required';
         }
-		
+
         if (ini_get('safe_mode')) {
             $requirements[] = 'Safe Mode feature needs to be disabled!';
         }
@@ -72,8 +72,8 @@ class Installer
         if (!extension_loaded('zip')) {
             $requirements[] = 'ZIP extension needs to be loaded!';
         }
-		
-		if (!extension_loaded('fileinfo')) {
+
+        if (!extension_loaded('fileinfo')) {
             $requirements[] = 'fileinfo extension needs to be loaded!';
         }
 
@@ -88,20 +88,20 @@ class Installer
         if (!is_writable(base_path('storage/logs'))) {
             $requirements[] = 'storage/logs directory needs to be writable!';
         }
-		
-		if (!is_writable(base_path('resources/language'))) {
+
+        if (!is_writable(base_path('resources/language'))) {
             $requirements[] = 'resources/language directory needs to be writable!';
         }
-		
-		if (!is_writable(base_path('public/uploads'))) {
+
+        if (!is_writable(base_path('public/uploads'))) {
             $requirements[] = 'public/uploads directory needs to be writable!';
         }
-		
-		if (!is_writable(base_path('public/backup'))) {
+
+        if (!is_writable(base_path('public/backup'))) {
             $requirements[] = 'public/backup directory needs to be writable!';
         }
-		
-		if (!is_writable(base_path('.env'))) {
+
+        if (!is_writable(base_path('.env'))) {
             $requirements[] = '.env file needs to be writable!';
         }
 
@@ -122,12 +122,12 @@ class Installer
 
         // Create tables
         Artisan::call('migrate', ['--force' => true]);
-		
-		/*Artisan::call('migrate:refresh', [
+
+        /*Artisan::call('migrate:refresh', [
 			'--force' => true,
 			'--path' => 'vendor/laravel/passport/database/migrations'
 		]);*/
-		
+
         // Create Roles
         Artisan::call('db:seed', ['--force' => true]);
 
@@ -204,44 +204,43 @@ class Installer
 
     public static function updateSettings($post)
     {
-	    foreach($post as $key => $value){
-			 if($key == "_token"){
-				 continue;
-			 }
-			 
-			 $data = array();
-			 $data['value'] = $value; 
-			 $data['updated_at'] = Carbon::now();
-			 if(Setting::where('name', $key)->exists()){				
-				Setting::where('name','=',$key)->update($data);			
-			 }else{
-				$data['name'] = $key; 
-				$data['created_at'] = Carbon::now();
-				Setting::insert($data); 
-			 }
-		}
+        foreach ($post as $key => $value) {
+            if ($key == "_token") {
+                continue;
+            }
+
+            $data = array();
+            $data['value'] = $value;
+            $data['updated_at'] = Carbon::now();
+            if (Setting::where('name', $key)->exists()) {
+                Setting::where('name', '=', $key)->update($data);
+            } else {
+                $data['name'] = $key;
+                $data['created_at'] = Carbon::now();
+                Setting::insert($data);
+            }
+        }
     }
 
     public static function createUser($name, $email, $password)
     {
         // Create the user
-		$user = new User();
-		$user->name = $name;
-		$user->email = $email;
-		$user->email_verified_at = date('Y-m-d H:i:s');
-		$user->password = $password;
-		$user->status = 1;
-		$user->profile_picture = 'default.png';
-		$user->user_type = 'admin';
-		$user->save();
-
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
+        $user->email_verified_at = date('Y-m-d H:i:s');
+        $user->password = $password;
+        $user->status = 1;
+        $user->profile_picture = 'default.png';
+        $user->user_type = 'admin';
+        $user->save();
     }
 
     public static function finalTouches($app_name = 'TrickBiz')
     {
         // Update .env file
         static::updateEnv([
-            'APP_NAME'      => '"'. $app_name .'"',
+            'APP_NAME'      => '"' . $app_name . '"',
             'APP_LOCALE'    =>  session('locale'),
             'APP_INSTALLED' =>  'true',
             'APP_DEBUG'     =>  'false',

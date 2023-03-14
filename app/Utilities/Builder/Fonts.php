@@ -79,17 +79,17 @@ class Fonts {
     protected function _getFontDeclaration($ext, $file, $path) {
         switch ($ext) {
             case "svg":
-                return "\tsrc: url('..$path/$file#ciclefina') format('svg');\n";
+                return "\tsrc: url('../$path/$file#ciclefina') format('svg');\n";
             case "woff":
-                return "\tsrc: url('..$path/{$file}') format('woff');\n";
-    //                    "\t\turl('..$path/$file') format('woff2');\n";
+                return "\tsrc: url('../$path/{$file}') format('woff');\n";
+    //                    "\t\turl('../$path/$file') format('woff2');\n";
                 break;
             case "eot":
-                return "\tsrc: url('..$path/$file');\n".
-                    "\tsrc: url('..$path/$file?#iefix') format('embedded-opentype');\n";
+                return "\tsrc: url('../$path/$file');\n".
+                    "\tsrc: url('../$path/$file?#iefix') format('embedded-opentype');\n";
             default:
             case "ttf":
-                return "\tsrc: url('..$path/$file') format('truetype');\n";
+                return "\tsrc: url('../$path/$file') format('truetype');\n";
         }
     }
 
