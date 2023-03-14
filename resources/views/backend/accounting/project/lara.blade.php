@@ -119,7 +119,6 @@
                         </div>
                     </nav>
                     <section id="right_content">
-                        <h3 id="content_name"></h3>
                         <div id="content_button_switch"></div>
                     </section>
                     <div class="content_previewd">

@@ -733,7 +733,6 @@ button.close:hover {
   display: flex;
   background: #fff;
   border-radius: 12px;
-  padding: 0.25rem;
   position: relative;
   vertical-align: middle;
 }
@@ -788,16 +787,16 @@ button.close:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.supra-btn.btn-default {
+/* .supra-btn.btn-default {
   background-color: #444;
   color: #888 !important;
-}
+} */
 
-.supra-btn.btn-default:hover,
+/* .supra-btn.btn-default:hover,
 .supra-btn.btn-default:focus {
   color: #fff !important;
   border: 1px solid transparent;
-}
+} */
 
 .supra-btn.btn-default-dark {
   color: #969696;
@@ -7070,7 +7069,6 @@ section.main_topsection {
 }
 /* --------Editable Comp Style-------- */
 .right_bar_section nav.editable_component_area .title {
-  /* padding: 1rem 0 1rem 2rem; */
   border-bottom: 1px solid #f4f5f7;
   display: flex;
   justify-content: space-between;
@@ -7100,6 +7098,12 @@ section.main_topsection {
 .editable_component_area .title button h2 {
   font-size: 1.95em;
 }
+.global-styles {
+  padding: 1rem;
+}
+.btn-group {
+  gap: 12px;
+}
 .btn-group button {
   background-color: transparent;
   border-radius: 8px !important;
@@ -7108,19 +7112,47 @@ section.main_topsection {
   width: 50%;
   -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
   box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
+  font-weight: 700;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn-group button i {
+  font-weight: bold;
+  margin-right: 5px;
 }
 .btn-group button.active {
   background-color: #f4f5f7;
-  color: #161e2e;
+  color: #161e2e !important;
 }
-.btn-group button span {
-  color: #536387;
+.btn-group button.active span,
+.btn-group button.active i {
+  color: #161e2e !important;
 }
-.supra-btn.btn-default {
+button.supra-btn.btn-default {
   background-color: #fff;
   color: #536387;
   font-size: 14px;
+  border: 1px solid #dadbde;
 }
+#right_content .global-styles ul {
+  overflow-y: hidden;
+  padding: 1rem;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+#right_content .global-styles ul li {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  width: 100%;
+  color: #0d172a;
+  cursor: pointer;
+  font-size: 14px;
+  padding-left: 0.75rem;
+  display: block;
+  padding: 0.5rem 0;
+}
+
 
 /* -----Content Previewd----- */
 .content_previewd {
@@ -7129,7 +7161,7 @@ section.main_topsection {
   bottom: 0;
   -webkit-box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
   box-shadow: 0 1px 2px rgba(166, 175, 195, 0.25);
-  right: 0;
+  right: 300px;
   margin: 0;
   outline: 0;
   overflow-y: auto;
@@ -7142,7 +7174,7 @@ section.main_topsection {
   transition: left 0.4s ease-in-out;
   width: 520px;
   z-index: 2;
-  /*----*/
-  display: none;
+  /*----
+  display: none;*/
 }
 /* -----Content Previewd----- */
