@@ -57,8 +57,10 @@
           <div class="iframeHeader">
               <div>
                 <ul id="sidebarTriggerers" >
-                  <li>
+                  <li id="sections-sidebar__Triggerer">
                     <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button" data-collapsed="true" ><i class="fa fa-plus-circle"></i><span>Add Element</span></button>
+                  </li>
+                  <li id="edit-section__Triggerer">
                   </li>
                   <li id="global-styles__Triggerer">
                     {{-- <button type="button"  class="btn btn-primary" 
