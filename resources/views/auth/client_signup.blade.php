@@ -93,14 +93,11 @@
                                         @endif
                                     </div>
                                 </div>
-                                @php $free = DB::table('packages')->where('type', 'free')->first(); @endphp
+
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <select id="package" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="package" required>
                                             <option value="">{{ _lang('Select Package') }}</option>
-                                            @if(isset($free) && $free != '')
-                                                <option type="{{$free->type}}" value="{{$free->id}}">{{$free->package_name}}</option>
-                                            @endif
                                             {{ create_option('packages','id','package_name') }}
                                         </select>    
 
@@ -112,7 +109,7 @@
                                     </div>
                                 </div>
 
-                                <div class="package_type form-group row">
+                                <div class="form-group row">
                                     <div class="col-md-12">
                                         <select id="package_type" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="package_type" required>
                                             <option value="">{{ _lang('Select Package Type') }}</option>
@@ -147,18 +144,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row mt-3">
-                                   <div class="col-md-12">
-                                        {!! NoCaptcha::renderJs('en', false, 'recaptchaCallback') !!}
-                                        {!! NoCaptcha::display() !!}
-                                        
-                                        @if ($errors->has('g-recaptcha-response'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                            </span>
-                                        @endif
-                                   </div>
-                               </div>
+
+
+
+
                                 
 								<div class="kt-login__actions mt-3">
 									<button type="submit" class="btn btn-primary btn-elevate kt-login__btn-primary">{{ _lang('Sign Up') }}</button>

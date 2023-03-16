@@ -23,8 +23,22 @@ Route::group(['middleware' => ['install']], function () {
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
 	Route::group(['middleware' => ['auth','verified']], function () {
+		//Payment CMI
+		Route::get('payments', 'PaymentController@index');
+		Route::get('payments/{payment}/download', 'PaymentController@download');
+		Route::get('/affiliate', 'AffiliateController@index')->name('affiliate.index');
+
+		Route::any('payment/cmi/process', 'PaymentController@cmi')->name('cmi.proccess');
+		Route::any('payment/cmi/success', 'PaymentController@successCmi')->name('cmi.success');
+		Route::get('payment/cmi/failed', 'PaymentController@successCmi')->name('cmi.failed');
 
 		Route::get('/dashboard', 'DashboardController@index');
+
+		// Templtes
+		Route::get('/all_templates', 'TemplateController@index');
+
+		Route::get('/affiliate', 'AffiliateController@index')->name('affiliate.index');
+
 
 		//Profile Controller
 		Route::get('profile/edit', 'ProfileController@edit');
@@ -54,6 +68,9 @@ Route::group(['middleware' => ['install']], function () {
 		//Billplz Gateway RazorPay
 		Route::post('membership/billplz_payment/{payment_id}','MembershipController@billplz_payment');
 		Route::get('membership/billplz_success/{payment_id}','MembershipController@billplz_success');
+
+
+		Route::get('/get_templates/{template_name}/preview', 'TemplateController@preview')->name('template.preview');
 
 		//Paddle Payment Gateway
 		Route::post('membership/Paddle_payment/{payment_id}','MembershipController@Paddle_payment');
@@ -109,7 +126,14 @@ Route::group(['middleware' => ['install']], function () {
 
 			//Project Controller
 			Route::post('projects/get_table_data','ProjectController@get_table_data');
-			Route::resource('projects','ProjectController');
+			Route::get('/projects', 'ProjectController@index')->name('projects.index');
+			Route::get('/projects/create', 'ProjectController@create');
+			Route::post('/projects/store', 'ProjectController@store');
+			Route::get('/projects/{id}/edit', 'ProjectController@edit');
+			Route::post('/projects/{id}/update', 'ProjectController@update');
+			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
+
+			// Route::resource('projects','ProjectController');
 
 			//Builder
 			Route::resource('project/builder','BuilderController');
@@ -236,3 +260,7 @@ Route::post('membership/paypal_ipn','MembershipController@paypal_ipn');
 Route::post('client/paypal_ipn','ClientController@paypal_ipn');
 
 Route::get('console/run','CronJobsController@run');
+
+// Affiliate
+Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
+Route::post('/s/{affiliate_id}', 'Auth\RegisterController@register');

@@ -4039,9 +4039,8 @@ var builderOptions = {
             , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
         ]
     }
-    , fullVersionSource: '../../../../membership/extend'
+    , fullVersionSource: 'https://codecanyon.net/item/larabuilder-dragdrop-site-builder-and-cms/25279120'
     , previewSettings: {
-        //Auth::user()->id
-        dir: publicpath+'/tmp/' + userId + '/' + project_id +'/preview' //Directory to upload like /preview or /../preview
+        dir: '/tmp/preview' //Directory to upload like /preview or /../preview
     }
 };

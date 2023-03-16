@@ -71,4 +71,8 @@ class User extends Authenticatable implements MustVerifyEmail
                             ->orderBy('created_at', 'desc');
     }
 
+    public function affiliate()
+    {
+        return $this->hasOne(Affiliate::class);
+    }
 }

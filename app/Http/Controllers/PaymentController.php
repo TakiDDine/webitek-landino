@@ -36,6 +36,12 @@ class PaymentController extends Controller
 		return view('backend.user.payments',compact('payment_history'));
     }
 
+	public function index()
+	{
+		$payments = PaymentHistory::where('user_id', Auth::user()->id)->paginate();
+		return view('backend.payments.index', compact('payments'));
+	}
+
     public function create_offline_payment(){
        return view('backend.offline_payment.create');
     }
@@ -122,5 +128,97 @@ class PaymentController extends Controller
 		}
     	
     }
+
+	public function cmi(Request $request)
+	{
+		if ($request->isMethod('get')) {
+			$package = Package::find(1);
+			$payment = new PaymentHistory();
+			$payment->title = $package->package_name;
+			$payment->method = 'CMI';
+			$payment->amount = 24;
+
+			$download = false;
+
+			return view('backend.payments.download', compact('payment', 'download'));
+		} else {
+			ini_set('display_errors', 1);
+			ini_set('display_startup_errors', 1);
+			error_reporting(E_ALL);
+
+			require_once(app_path('Connect2Pay/Connect2PayClient.php'));
+
+			# Configuration
+			$configCMI = config('app.cmi');
+
+			$url = $configCMI['url'];
+			$originator = $configCMI['originator'];
+			$password = $configCMI['password'];
+			$success_url              = url(route('cmi.success'));
+			$failure_url              = url(route('cmi.failed'));
+
+
+			// dd($configCMI);
+
+			$user = auth()->user();
+			# payment  info
+			$order_id                 = uniqid();
+			$client_id                =  $user->id;
+			$client_first_name        = $user->name;
+			$client_last_name         = '';
+			$client_phone_number      = $user->phone;
+			$client_email             = $user->email;
+			$country_code             = $configCMI['country_code'];
+			$currency                 = $configCMI['currency'];
+			$amount                   = $configCMI['amount'];
+			$description              = $configCMI['description'];
+
+			$c2pClient = new Connect2PayClient($url, $originator, $password);
+
+			// Set all information for the payment
+			$c2pClient->setOrderID($order_id);
+			$c2pClient->setPaymentMethod(Connect2PayClient::PAYMENT_METHOD_CREDITCARD); // or PAYMENT_METHOD_DIRECTDEBIT for SEPA, for example
+			$c2pClient->setPaymentMode(Connect2PayClient::PAYMENT_MODE_SINGLE);
+			$c2pClient->setShopperID($client_id);
+			$c2pClient->setShippingType(Connect2PayClient::SHIPPING_TYPE_VIRTUAL);
+			$c2pClient->setCurrency($currency);
+			$c2pClient->setAmount($amount * 100);
+			$c2pClient->setOrderDescription($description);
+			$c2pClient->setShopperFirstName($client_first_name);
+			$c2pClient->setShopperLastName($client_last_name);
+			$c2pClient->setShopperAddress("NA");
+			$c2pClient->setShopperZipcode("NA");
+			$c2pClient->setShopperCity("NA");
+			$c2pClient->setShopperCountryCode($country_code);
+			$c2pClient->setShopperPhone($client_phone_number);
+			$c2pClient->setShopperEmail($client_email);
+
+			// Extra custom data that are returned with the payment status
+			$c2pClient->setCtrlCustomData("Give that back to me please !!");
+			// Where the customer will be redirected after the payment
+			$c2pClient->setCtrlRedirectURL($success_url);
+			// URL on the merchant site that will receive the callback notification
+			$c2pClient->setCtrlCallbackURL($failure_url);
+
+			if ($c2pClient->validate()) {
+				if ($c2pClient->preparePayment()) {
+					// The customer token info returned by the payment page could be saved in session (may
+					// be used later when the customer will be redirected from the payment page)
+					session(['merchantToken' => $c2pClient->getMerchantToken()]);
+
+					// The merchantToken must also be used later to validate the callback to avoid that anyone
+					// could call it and abusively validate the payment. It may be stored in local database for this.
+
+					// Now redirect the customer to the payment page
+					return redirect($c2pClient->getCustomerRedirectURL());
+				} else {
+					echo "error prepareTransaction: ";
+					echo $c2pClient->getClientErrorMessage() . "\n";
+				}
+			} else {
+				echo "Validation error occurred: " . $c2pClient->getClientErrorMessage() . "\n";
+			}
+		}
+	}
 	
 }

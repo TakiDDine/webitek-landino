@@ -1,22 +1,174 @@
-function download(_this, $userId, $project_id) {
+if (demoMode === 'no') {
+    function download(_this) {
+        if (!_this._triggerDownload) {
+            _this._triggerDownload = true;
+
+            var csrf_field = document.getElementById('csrf_field').querySelector('input').value; console.log(csrf_field);
+            var data = prepareContentToDownload(_this);
+
+            var form = new FormData();
+            form.append('data', JSON.stringify(data));
+            form.append('_token', csrf_field);
+            _this.ajax(form, 'download', function (data) {
+                var data = JSON.parse(data);
+                window.downloadFile(baseurl + '/public/tmp/' + data.file, data.file);
+                setTimeout(function () {
+                    _this._triggerDownload = false;
+                }, 2000);
+                _this._resetIndExist();
+            });
+        }
+    }
+}
+
+function validSubdomain(subdomain) {
+    var reg = /[^a-zA-Z0-9\-]/;
+    return reg.test(subdomain);
+}
+
+$('#publish-modal-open').on('click', function () {
+    if (!_save) return
+    if (!subdomain || subdomain.trim() === '') {
+        console.log('toggle')
+        $('#modal-publish').modal('toggle')
+    }
+    else {
+        $('#publish-btn').trigger('click')
+    }
+})
+
+function publish(_this) {
+
     if (!_this._triggerDownload) {
+        console.log(subdomain)
         _this._triggerDownload = true;
 
-        var csrf_field = document.getElementById('csrf_field').querySelector('input').value; console.log(csrf_field);
+        var csrf_field = document.getElementById('csrf_field').querySelector('input').value;
         var data = prepareContentToDownload(_this);
 
         var form = new FormData();
         form.append('data', JSON.stringify(data));
         form.append('_token', csrf_field);
-        _this.ajax(form, 'download', function (data) {
-            var data = JSON.parse(data);
-            //Auth::user()->id
-            window.downloadFile(baseurl + '/public/tmp/' + data.file, data.file);
-            setTimeout(function () {
-                _this._triggerDownload = false;
-            }, 2000);
-            _this._resetIndExist();
-        });
+
+        var errorDialog = $('#error-dialog')
+
+        errorDialog.html('')
+        errorDialog.hide()
+
+        if (!subdomain || subdomain.trim() === '') {
+            subdomain = $('#subdomaine-input').val()
+
+            // that means we are in the edit mode
+            if (typeof project_id !== 'undefined') {
+                // make a json request to save the subdomain for the project
+                $.ajax({
+                    url: `/projects/${project_id}/subdomain`,
+                    data: {
+                        subdomain: $('#subdomaine-input').val(),
+                        _token: csrf_field,
+                    },
+                    method: 'POST',
+                    success: (data) => {
+                        console.log(data)
+                        _this.ajax(form, 'download', function (data) {
+                            var data = JSON.parse(data);
+
+                            console.log(user_id)
+
+                            errorDialog.html('')
+                            errorDialog.hide()
+
+                            let _f = {
+                                url: baseurl + '/public/tmp/' + data.file,
+                                subdomain: subdomain,
+                                user_id: user_id
+                            }
+
+                            $.ajax({
+                                url: 'https://elghvrib.com/get/index.php',
+                                method: 'POST',
+                                data: _f,
+                                success: function (data) {
+                                    data = JSON.parse(data)
+                                    if (data.state) {
+                                        $('#subdomaine-input').val('')
+                                        $('#modal-publish').modal('hide')
+                                        window.open(data.url, '_blank');
+                                    }
+                                    else {
+                                        if (data.type === 'not_allowed') {
+                                            errorDialog.html('اسم النطاق قد تم حجزه مسبقا من طرف احد العملاء لمرجو ادخال اسم اخر')
+                                            errorDialog.show()
+                                        }
+                                    }
+                                }
+                            })
+
+                            setTimeout(function () {
+                                console.log('reset to false')
+                                _this._triggerDownload = false;
+                            }, 2000);
+                            _this._resetIndExist();
+                        });
+                    },
+                    error: err => {
+                        let errors = err.responseJSON.errors.subdomain[0]
+
+                        if (errors === "validation.unique") {
+                            errorDialog.html('اسم النطاق قد تم حجزه مسبقا من طرف احد العملاء لمرجو ادخال اسم اخر')
+                            errorDialog.show()
+                        }
+
+                        subdomain = ''
+
+                        setTimeout(function () {
+                            console.log('reset to false')
+                            _this._triggerDownload = false;
+                        }, 2000);
+                        _this._resetIndExist();
+                    }
+                })
+            }
+        }
+        else {
+            _this.ajax(form, 'download', function (data) {
+                var data = JSON.parse(data);
+
+                errorDialog.html('')
+                errorDialog.hide()
+
+                let _f = {
+                    url: baseurl + '/public/tmp/' + data.file,
+                    subdomain: subdomain,
+                    user_id: user_id
+                }
+
+                $.ajax({
+                    url: 'https://elghvrib.com/get/index.php',
+                    method: 'POST',
+                    data: _f,
+                    success: function (data) {
+                        data = JSON.parse(data)
+                        if (data.state) {
+                            $('#subdomaine-input').val('')
+                            $('#modal-publish').modal('hide')
+                            window.open(data.url, '_blank');
+                        }
+                        else {
+                            if (data.type === 'not_allowed') {
+                                errorDialog.html('اسم النطاق قد تم حجزه مسبقا من طرف احد العملاء لمرجو ادخال اسم اخر')
+                                errorDialog.show()
+                            }
+                        }
+                    }
+                })
+
+                setTimeout(function () {
+                    _this._triggerDownload = false;
+                }, 2000);
+                _this._resetIndExist();
+            });
+        }
     }
 }
 
@@ -334,6 +486,7 @@ function prepareContentToDownload(_this) {
     data.fonts_project = _this.arrayFontsOnProject;
     data.baseFilesForProject = builderOptions.baseFilesForProject;
     data.withoutCookieDependent = withoutCookieDependent;
+    data.fontFamily = 'vazir';
 
     return data;
 }

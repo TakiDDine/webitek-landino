@@ -633,7 +633,7 @@ button.close:hover {
     left: 0;
 }
 
-.choice-element > i.ok {
+.choice-element>i.ok {
     display: none;
     position: absolute;
     top: -8px;
@@ -657,10 +657,10 @@ button.close:hover {
     cursor: pointer;
 }
 
-.choice-element.active > i.ok,
-.choice-element:hover > i.ok,
-.choice-element:focus > i.ok,
-.choice-element.choosen > i.ok {
+.choice-element.active>i.ok,
+.choice-element:hover>i.ok,
+.choice-element:focus>i.ok,
+.choice-element.choosen>i.ok {
     display: block;
 }
 
@@ -711,10 +711,10 @@ button.close:hover {
     border-radius: 1px;
 }
 
-.choice-element.active > .bg-white-circle,
-.choice-element:hover > .bg-white-circle,
-.choice-element:focus > .bg-white-circle,
-.choice-element.choosen > .bg-white-circle {
+.choice-element.active>.bg-white-circle,
+.choice-element:hover>.bg-white-circle,
+.choice-element:focus>.bg-white-circle,
+.choice-element.choosen>.bg-white-circle {
     content: "";
     display: block;
     background-color: #ffffff;
@@ -930,8 +930,8 @@ label.label-section:before {
     overflow-y: auto;
 }
 
-.dropdown-menu > li > a,
-.dropdown-menu > li {
+.dropdown-menu>li>a,
+.dropdown-menu>li {
     padding: 0 8px;
     color: #888 !important;
     font-weight: inherit;
@@ -940,10 +940,10 @@ label.label-section:before {
     display: block;
 }
 
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus,
-.dropdown-menu > li:hover,
-.dropdown-menu > li:focus {
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li:hover,
+.dropdown-menu>li:focus {
     color: #fff !important;
     text-decoration: none;
 }
@@ -1010,7 +1010,7 @@ label.label-section:before {
     cursor: default;
 }
 
-.dropdown button > span {
+.dropdown button>span {
     width: calc(100% - 15px);
     overflow: hidden;
     text-align: left;
@@ -1024,12 +1024,12 @@ label.label-section:before {
     top: 7px;
 }
 
-.dropdown.open > .dropdown-menu {
+.dropdown.open>.dropdown-menu {
     border-radius: 0;
 }
 
-.dropdown ul > li:hover,
-.dropdown ul > li:focus {
+.dropdown ul>li:hover,
+.dropdown ul>li:focus {
     cursor: pointer;
 }
 
@@ -1103,21 +1103,25 @@ ul:not(.page-mode-edit-sections) .wrap-control {
         transform: matrix(.97, 0, 0, 1, 0, 12);
         opacity: 0;
     }
+
     20% {
         -webkit-transform: matrix(.99, 0, 0, 1, 0, 2);
         transform: matrix(.99, 0, 0, 1, 0, 2);
         opacity: .7;
     }
+
     40% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
         transform: matrix(1, 0, 0, 1, 0, -1);
         opacity: 1;
     }
+
     70% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
         opacity: 1;
     }
+
     100% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
@@ -1131,21 +1135,25 @@ ul:not(.page-mode-edit-sections) .wrap-control {
         transform: matrix(.97, 0, 0, 1, 0, 12);
         opacity: 0;
     }
+
     20% {
         -webkit-transform: matrix(.99, 0, 0, 1, 0, 2);
         transform: matrix(.99, 0, 0, 1, 0, 2);
         opacity: .7;
     }
+
     40% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
         transform: matrix(1, 0, 0, 1, 0, -1);
         opacity: 1;
     }
+
     70% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
         opacity: 1;
     }
+
     100% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
@@ -1173,14 +1181,14 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     -webkit-justify-content: flex-start;
 }
 
-.modal.in ~ .wrap-control-element,
-.modal.in ~ .wrap-control-element-icons,
-.modal.in ~ .wrap-control-element-typography {
+.modal.in~.wrap-control-element,
+.modal.in~.wrap-control-element-icons,
+.modal.in~.wrap-control-element-typography {
     z-index: 2055;
 }
 
-.main > ul.page-mode-edit-sections li:hover .modal.in ~ .wrap-control,
-.main > ul.page-mode-edit-sections li:focus .modal.in ~ .wrap-control {
+.main>ul.page-mode-edit-sections li:hover .modal.in~.wrap-control,
+.main>ul.page-mode-edit-sections li:focus .modal.in~.wrap-control {
     position: fixed;
     top: 0;
     right: 0;
@@ -1431,12 +1439,14 @@ iframe#main {
     left: 0;
 }
 
-.run aside.control-panel.active {
-    left: 50px;
+.run aside.control-panel.active:not(.custom-styling) {
+    /* left: 0 !important;
+    top: 50px; */
 }
 
+
 .run:after {
-    content: "";
+    /* content: ""; */
     display: block;
     position: fixed;
     left: 0;
@@ -1639,6 +1649,8 @@ aside.left ul li.viewing.active {
     background: #333;
 }
 
+/* .c-element .item:first-child {display: none;}
+.c-element .item:nth-child(2) {margin-top: 0;} */
 
 /*
  * 4. Control panel
@@ -1647,10 +1659,11 @@ aside.left ul li.viewing.active {
 aside.control-panel {
     padding: 0;
     position: fixed;
-    top: 0;
+    top: 60;
+    padding: 20px;
+    width: 300px;
     bottom: 0;
-    left: 50px;
-    width: 220px;
+    left: 0px;
     color: #ffffff;
     background-color: #444;
     z-index: 1100;
@@ -1662,7 +1675,7 @@ aside.control-panel {
     outline: none;
 }
 
-aside.control-panel > * {
+aside.control-panel>* {
     padding: 0 10px;
 }
 
@@ -1717,7 +1730,7 @@ aside.control-panel .project-pages .wrapper {
     margin: 0 -10px;
 }
 
-aside.control-panel .project-pages .wrapper > ul {
+aside.control-panel .project-pages .wrapper>ul {
     padding: 0 10px;
 }
 
@@ -1752,7 +1765,7 @@ aside.control-panel .typography {
 
 /*aside.control-panel ul#list-tag-gs,*/
 /*aside.control-panel ul.sections {*/
-    /*padding: 0;*/
+/*padding: 0;*/
 /*}*/
 
 aside.control-panel ul#list-tag-gs {
@@ -1910,29 +1923,29 @@ aside.control-panel.custom-styling .btn-group button:hover {
     border-bottom: 2px solid #00BFFF;
 }
 
-aside.control-panel .global-styles > ul {
+aside.control-panel .global-styles>ul {
     display: none;
     margin: 15px 0;
 }
 
-aside.control-panel .global-styles > ul.active {
+aside.control-panel .global-styles>ul.active {
     display: block;
 }
 
-aside.control-panel .global-styles > ul li {
+aside.control-panel .global-styles>ul li {
     padding: 15px 10px;
     margin: 0 -10px;
     border-bottom: 1px solid #515151;
 }
 
-aside.control-panel .global-styles > ul li:hover,
-aside.control-panel .global-styles > ul li:focus,
-aside.control-panel .global-styles > ul li.active {
+aside.control-panel .global-styles>ul li:hover,
+aside.control-panel .global-styles>ul li:focus,
+aside.control-panel .global-styles>ul li.active {
     background-color: #515151;
     cursor: pointer;
 }
 
-aside.control-panel .global-styles > ul li label {
+aside.control-panel .global-styles>ul li label {
     margin-right: 10px;
     margin-bottom: 0;
     line-height: 1.3;
@@ -1997,7 +2010,7 @@ aside.global-style-controls.show {
     opacity: 1;
 }
 
-aside.global-style-controls > div {
+aside.global-style-controls>div {
     width: 200px;
 }
 
@@ -2014,7 +2027,7 @@ aside.global-style-controls .title h3 {
 }
 
 aside.global-style-controls .c-element {
-    height: calc( 100vh - 65px );
+    height: calc(100vh - 65px);
 }
 
 .c-element .media-group {
@@ -2050,12 +2063,12 @@ aside.global-style-controls .c-element {
 
 aside.custom-styling .c-element {
     margin: 15px 0 0;
-    height: calc( 100vh - 65px );
+    height: calc(100vh - 65px);
 }
 
 aside.custom-styling.bg-settings .c-element {
     margin: 15px 0 0;
-    height: calc( 100vh - 105px );
+    height: calc(100vh - 105px);
 }
 
 aside.custom-styling .c-element.check-buttons .image-mode,
@@ -2077,9 +2090,9 @@ aside.custom-styling .c-element .campaignmonitor-mode {
     display: none;
 }
 
-aside.custom-styling .image ~ .c-element.check-buttons .image-mode,
-aside.custom-styling .video ~ .c-element.check-buttons .video-mode,
-aside.custom-styling .none ~ .c-element.check-buttons .none-mode,
+aside.custom-styling .image~.c-element.check-buttons .image-mode,
+aside.custom-styling .video~.c-element.check-buttons .video-mode,
+aside.custom-styling .none~.c-element.check-buttons .none-mode,
 aside.custom-styling .c-element.image .image-mode,
 aside.custom-styling .c-element.video-popup .video-mode,
 aside.custom-styling .c-element.external .external-mode,
@@ -2096,17 +2109,17 @@ aside.custom-styling .c-element.campaignmonitor .campaignmonitor-mode {
     display: block;
 }
 
-aside.custom-styling .c-element .cs-radio-control ~ .modal-popup-mode,
-aside.custom-styling .c-element .cs-radio-control ~ .redirect-mode {
+aside.custom-styling .c-element .cs-radio-control~.modal-popup-mode,
+aside.custom-styling .c-element .cs-radio-control~.redirect-mode {
     display: none;
 }
 
-aside.custom-styling .c-element .cs-radio-control.modal-popup ~ .modal-popup-mode,
-aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
+aside.custom-styling .c-element .cs-radio-control.modal-popup~.modal-popup-mode,
+aside.custom-styling .c-element .cs-radio-control.redirect~.redirect-mode {
     display: block;
 }
 
-.c-element > .item:nth-last-child(1) {
+.c-element>.item:nth-last-child(1) {
     margin-bottom: 20px;
 }
 
@@ -2488,12 +2501,12 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
     width: 49% !important;
 }
 
-.cs-element.bg-color.none .spectrum.first ~ .sp-replacer,
-.cs-element.bg-color.none .spectrum.second ~ .sp-replacer {
+.cs-element.bg-color.none .spectrum.first~.sp-replacer,
+.cs-element.bg-color.none .spectrum.second~.sp-replacer {
     display: none;
 }
 
-.cs-element.bg-color.solid .spectrum.second ~ .sp-replacer {
+.cs-element.bg-color.solid .spectrum.second~.sp-replacer {
     display: none;
 }
 
@@ -2739,7 +2752,7 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
     background-color: #444;
 }
 
-.cs-element.buttons-switch.custom-buttons .item .preview-container > * {
+.cs-element.buttons-switch.custom-buttons .item .preview-container>* {
     margin: 0;
 }
 
@@ -3091,11 +3104,11 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
     background-color: transparent;
 }
 
-.cs-element.buttons-type ~ .show-image-mode {
+.cs-element.buttons-type~.show-image-mode {
     display: none;
 }
 
-.cs-element.buttons-type.image ~ .show-image-mode {
+.cs-element.buttons-type.image~.show-image-mode {
     display: block;
 }
 
@@ -3129,7 +3142,7 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
     text-align: center;
 }
 
-.cs-element.media-padding .dropdown button > span {
+.cs-element.media-padding .dropdown button>span {
     width: auto;
     padding-right: 15px;
 }
@@ -3330,7 +3343,7 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
 }
 
 .cs-element.button-unlink.hide {
-    display: none!important;
+    display: none !important;
 }
 
 /*project-pages*/
@@ -3507,11 +3520,11 @@ aside.control-panel .apply {
 }
 
 aside.control-panel .nice-scroll {
-    height: calc( 100vh - 66px );
+    height: calc(100vh - 66px);
 }
 
 aside.control-panel #list-tag-gs {
-    height: calc( 100vh - 125px );
+    height: calc(100vh - 125px);
 }
 
 
@@ -3550,13 +3563,13 @@ aside.add-sections-items.show {
     opacity: 0;
 }
 
-aside.add-sections-items > ul {
+aside.add-sections-items>ul {
     padding: 0;
     overflow: hidden;
     line-height: 0;
 }
 
-aside.add-sections-items > ul li {
+aside.add-sections-items>ul li {
     display: block;
     margin-bottom: 5px;
     position: relative;
@@ -3566,30 +3579,30 @@ aside.add-sections-items > ul li {
     height: auto;
 }
 
-aside.add-sections-items > ul li:first-child {
+aside.add-sections-items>ul li:first-child {
     margin-top: 0;
 }
 
-aside.add-sections-items > ul li img {
+aside.add-sections-items>ul li img {
     max-width: 230px;
     width: 100%;
 }
 
-aside.add-sections-items > ul li:first-child {
+aside.add-sections-items>ul li:first-child {
     margin-top: 0;
 }
 
-aside.add-sections-items > ul li .add-section {
+aside.add-sections-items>ul li .add-section {
     background-color: rgba(0, 192, 255, 0.9);
 }
 
-aside.add-sections-items > ul li.wrap-hover:hover,
-aside.add-sections-items > ul li.wrap-hover:focus {
+aside.add-sections-items>ul li.wrap-hover:hover,
+aside.add-sections-items>ul li.wrap-hover:focus {
     cursor: grab;
     cursor: -webkit-grab;
 }
 
-aside.add-sections-items > ul li.wrap-hover {
+aside.add-sections-items>ul li.wrap-hover {
     background: none;
 }
 
@@ -3804,14 +3817,14 @@ aside.add-sections-items > ul li.wrap-hover {
     height: 15px;
 }
 
-#modal-container .modal-content .item > div:not(.radio) label,
-#modal-container .modal-content .item > label,
+#modal-container .modal-content .item>div:not(.radio) label,
+#modal-container .modal-content .item>label,
 #modal-container .modal-content .item.lbl {
     color: #888888;
 }
 
-#modal-container .modal-content.checkbox-inline + .checkbox-inline,
-#modal-container .modal-content.radio-inline + .radio-inline {
+#modal-container .modal-content.checkbox-inline+.checkbox-inline,
+#modal-container .modal-content.radio-inline+.radio-inline {
     margin-right: 40px;
 }
 
@@ -3821,9 +3834,9 @@ aside.add-sections-items > ul li.wrap-hover {
     width: 100%;
 }
 
-#modal-container .choice-images ~ i,
-#modal-container .choice-videos ~ i,
-#modal-container .choice-text ~ i {
+#modal-container .choice-images~i,
+#modal-container .choice-videos~i,
+#modal-container .choice-text~i {
     position: absolute;
     right: 10px;
     margin-top: 10px;
@@ -3880,12 +3893,12 @@ aside.add-sections-items > ul li.wrap-hover {
     margin-left: 1px;
 }
 
-#modal-container .modal-content .colorpicker.two-cp [name=colorpicker_main] + .sp-replacer,
-#modal-container .modal-content .colorpicker.one-cp [name=colorpicker_main] + .sp-replacer {
+#modal-container .modal-content .colorpicker.two-cp [name=colorpicker_main]+.sp-replacer,
+#modal-container .modal-content .colorpicker.one-cp [name=colorpicker_main]+.sp-replacer {
     display: inline-block;
 }
 
-#modal-container .modal-content .colorpicker.two-cp [name=colorpicker_grnt] + .sp-replacer {
+#modal-container .modal-content .colorpicker.two-cp [name=colorpicker_grnt]+.sp-replacer {
     display: inline-block;
 }
 
@@ -4018,7 +4031,7 @@ aside.add-sections-items > ul li.wrap-hover {
 
 /* switch skin */
 
-#modal-container .switch-skin > button {
+#modal-container .switch-skin>button {
     width: 50%;
     height: 40px;
     background-color: #444444;
@@ -4033,38 +4046,38 @@ aside.add-sections-items > ul li.wrap-hover {
     cursor: pointer;
 }
 
-#modal-container .switch-skin > button:first-child {
+#modal-container .switch-skin>button:first-child {
     border-radius: 1px 0 0 1px;
 }
 
-#modal-container .switch-skin > button:last-child {
+#modal-container .switch-skin>button:last-child {
     border-radius: 0 1px 1px 0;
 }
 
-#modal-container .switch-skin > button:hover {
+#modal-container .switch-skin>button:hover {
     outline: none;
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#modal-container .switch-skin > button i {
+#modal-container .switch-skin>button i {
     margin-right: 10px;
 }
 
-#modal-container .switch-skin.light-skin > .light-skin {
+#modal-container .switch-skin.light-skin>.light-skin {
     color: #fff;
     background-color: #00C0FF;
 }
 
-#modal-container .switch-skin.dark-skin > .dark-skin {
+#modal-container .switch-skin.dark-skin>.dark-skin {
     color: #fff;
     background-color: #00C0FF;
 }
 
 /* switch custom */
 
-#modal-container .switch-custom > button {
+#modal-container .switch-custom>button {
     width: 50%;
     height: 40px;
     background-color: #444444;
@@ -4079,26 +4092,26 @@ aside.add-sections-items > ul li.wrap-hover {
     cursor: pointer;
 }
 
-#modal-container .switch-custom > button:first-child {
+#modal-container .switch-custom>button:first-child {
     border-radius: 1px 0 0 1px;
 }
 
-#modal-container .switch-custom > button:last-child {
+#modal-container .switch-custom>button:last-child {
     border-radius: 0 1px 1px 0;
 }
 
-#modal-container .switch-custom > button:hover {
+#modal-container .switch-custom>button:hover {
     outline: none;
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-#modal-container .switch-custom > button i {
+#modal-container .switch-custom>button i {
     margin-right: 10px;
 }
 
-#modal-container .switch-custom > .active {
+#modal-container .switch-custom>.active {
     color: #fff;
     background-color: #00C0FF;
 }
@@ -4133,8 +4146,8 @@ aside.add-sections-items > ul li.wrap-hover {
     top: -2px;
 }
 
-#modal-container .switch-visibility > button,
-#modal-container .switch-align > button {
+#modal-container .switch-visibility>button,
+#modal-container .switch-align>button {
     width: 32%;
     height: 40px;
     background-color: #efefef;
@@ -4149,8 +4162,8 @@ aside.add-sections-items > ul li.wrap-hover {
     cursor: pointer;
 }
 
-#modal-container .switch-visibility > button:hover,
-#modal-container .switch-align > button:hover {
+#modal-container .switch-visibility>button:hover,
+#modal-container .switch-align>button:hover {
     outline: none;
     border: none;
     -webkit-box-shadow: none;
@@ -4220,11 +4233,11 @@ aside.add-sections-items > ul li.wrap-hover {
     width: 44%;
 }
 
-#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown > button,
-#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown > button:hover,
-#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown > button:focus,
-#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown.open > button:hover,
-#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown.open > button:focus {
+#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown>button,
+#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown>button:hover,
+#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown>button:focus,
+#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown.open>button:hover,
+#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown.open>button:focus {
     /*padding-top: 0;*/
     /*padding-bottom: 0;*/
     padding: 0;
@@ -4233,7 +4246,7 @@ aside.add-sections-items > ul li.wrap-hover {
     border: none !important;
 }
 
-#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown > button i {
+#modal-container .modal-content .section-set-dropdown .item:not(.item-separator) .dropdown>button i {
     line-height: 20px;
     top: 0;
 }
@@ -4473,8 +4486,8 @@ aside.add-sections-items > ul li.wrap-hover {
     -webkit-justify-content: space-between;
 }
 
-#modal-container .switch-visibility > button,
-#modal-container .switch-align > button {
+#modal-container .switch-visibility>button,
+#modal-container .switch-align>button {
     width: 32%;
     height: 40px;
     background-color: #efefef;
@@ -4489,8 +4502,8 @@ aside.add-sections-items > ul li.wrap-hover {
     cursor: pointer;
 }
 
-#modal-container .switch-visibility > button:hover,
-#modal-container .switch-align > button:hover {
+#modal-container .switch-visibility>button:hover,
+#modal-container .switch-align>button:hover {
     outline: none;
     border: none;
     -webkit-box-shadow: none;
@@ -4833,25 +4846,25 @@ aside.add-sections-items > ul li.wrap-hover {
     margin-top: -10px !important;
 }
 
-#modal-container .modal-content .btn-page-control ~ div {
+#modal-container .modal-content .btn-page-control~div {
     display: none;
 }
 
-#modal-container .modal-content .btn-page-control ~ div.seo {
+#modal-container .modal-content .btn-page-control~div.seo {
     display: none !important;
 }
 
-#modal-container .modal-content .btn-page-control.general ~ .general {
+#modal-container .modal-content .btn-page-control.general~.general {
     display: block;
 }
 
-#modal-container .modal-content .btn-page-control.seo ~ .seo {
+#modal-container .modal-content .btn-page-control.seo~.seo {
     display: -ms-flexbox !important;
     display: -webkit-box !important;
     display: flex !important;
 }
 
-#modal-container .modal-content .btn-page-control.s-preloader ~ .s-preloader {
+#modal-container .modal-content .btn-page-control.s-preloader~.s-preloader {
     display: block;
 }
 
@@ -4905,99 +4918,99 @@ aside.add-sections-items > ul li.wrap-hover {
     user-select: none;
 }
 
-#modal-container .modal-content #prev-preload > div > div,
-#modal-container .modal-content #prev-preload > div > div > *,
-#modal-container .modal-content #prev-preload > div > div:before,
-#modal-container .modal-content #prev-preload > div > div:after {
+#modal-container .modal-content #prev-preload>div>div,
+#modal-container .modal-content #prev-preload>div>div>*,
+#modal-container .modal-content #prev-preload>div>div:before,
+#modal-container .modal-content #prev-preload>div>div:after {
     background-color: #000;
     border-color: #000;
 }
 
-#modal-container .modal-content .radio-control ~ div {
+#modal-container .modal-content .radio-control~div {
     display: none;
 }
 
-#modal-container .modal-content .radio-control.simple-mail-php ~ .simple-mail-php {
+#modal-container .modal-content .radio-control.simple-mail-php~.simple-mail-php {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.smtp ~ .smtp {
+#modal-container .modal-content .radio-control.smtp~.smtp {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.mailchimp ~ .mailchimp {
+#modal-container .modal-content .radio-control.mailchimp~.mailchimp {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.mailerlite ~ .mailerlite {
+#modal-container .modal-content .radio-control.mailerlite~.mailerlite {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.activecampaing ~ .activecampaing {
+#modal-container .modal-content .radio-control.activecampaing~.activecampaing {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.getresponse ~ .getresponse {
+#modal-container .modal-content .radio-control.getresponse~.getresponse {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.aweber ~ .aweber {
+#modal-container .modal-content .radio-control.aweber~.aweber {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.campaignmonitor ~ .campaignmonitor {
+#modal-container .modal-content .radio-control.campaignmonitor~.campaignmonitor {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.external ~ .external {
+#modal-container .modal-content .radio-control.external~.external {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.section ~ .section {
+#modal-container .modal-content .radio-control.section~.section {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.section-page ~ .section-page {
+#modal-container .modal-content .radio-control.section-page~.section-page {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.image ~ .image {
+#modal-container .modal-content .radio-control.image~.image {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.video-popup ~ .video-popup {
+#modal-container .modal-content .radio-control.video-popup~.video-popup {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.modal-popup ~ .modal-popup {
+#modal-container .modal-content .radio-control.modal-popup~.modal-popup {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.redirect ~ .redirect {
+#modal-container .modal-content .radio-control.redirect~.redirect {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.image-background ~ .image-background {
+#modal-container .modal-content .radio-control.image-background~.image-background {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.video-background ~ .video-background {
+#modal-container .modal-content .radio-control.video-background~.video-background {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.none ~ .none {
+#modal-container .modal-content .radio-control.none~.none {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.ftp ~ .ftp {
+#modal-container .modal-content .radio-control.ftp~.ftp {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.ftps ~ .ftps {
+#modal-container .modal-content .radio-control.ftps~.ftps {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.sftp ~ .sftp {
+#modal-container .modal-content .radio-control.sftp~.sftp {
     display: block;
 }
 
@@ -5009,30 +5022,30 @@ aside.add-sections-items > ul li.wrap-hover {
     margin-bottom: 15px;
 }
 
-#modal-container .modal-content .radio-control.image-background ~ .preview-bg,
-#modal-container .modal-content .radio-control.video-background ~ .preview-bg {
+#modal-container .modal-content .radio-control.image-background~.preview-bg,
+#modal-container .modal-content .radio-control.video-background~.preview-bg {
     min-height: 500px;
 }
 
-#modal-container .modal-content .radio-control.none ~ .preview-bg,
+#modal-container .modal-content .radio-control.none~.preview-bg,
 #modal-container .modal-content .nav-pr-bg {
     float: right;
 }
 
-#modal-container .modal-content .nav-pr-bg ~ .image-background,
-#modal-container .modal-content .radio-control.none ~ .none .range,
-#modal-container .modal-content .radio-control.none ~ .none figcaption,
-#modal-container .modal-content .radio-control.none ~ .none .none,
+#modal-container .modal-content .nav-pr-bg~.image-background,
+#modal-container .modal-content .radio-control.none~.none .range,
+#modal-container .modal-content .radio-control.none~.none figcaption,
+#modal-container .modal-content .radio-control.none~.none .none,
 #modal-container .modal-content .hide-switch .none,
 #modal-container .modal-content .nav-pr-bg figcaption {
     display: none;
 }
 
-#modal-container .modal-content .radio-control.google-maps-embed-api ~ .google-maps-embed-api {
+#modal-container .modal-content .radio-control.google-maps-embed-api~.google-maps-embed-api {
     display: block;
 }
 
-#modal-container .modal-content .radio-control.google-maps-javascript-api ~ .google-maps-javascript-api {
+#modal-container .modal-content .radio-control.google-maps-javascript-api~.google-maps-javascript-api {
     display: block;
 }
 
@@ -5134,6 +5147,7 @@ aside.add-sections-items > ul li.wrap-hover {
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -5144,6 +5158,7 @@ aside.add-sections-items > ul li.wrap-hover {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -5192,7 +5207,7 @@ aside.add-sections-items > ul li.wrap-hover {
     right: 0;
 }
 
-#modal-thumb.collapse-thumb + .wrap-iframe {
+#modal-thumb.collapse-thumb+.wrap-iframe {
     padding: 0 70px 0 50px;
 }
 
@@ -5283,12 +5298,12 @@ aside.add-sections-items > ul li.wrap-hover {
     display: block;
 }
 
-#modal-thumb.collapse-thumb + #collapse-popup-thumb {
+#modal-thumb.collapse-thumb+#collapse-popup-thumb {
     right: 100px;
 }
 
 
-#modal-thumb.edit-project-page + #collapse-popup-thumb {
+#modal-thumb.edit-project-page+#collapse-popup-thumb {
     display: none !important;
 }
 
@@ -5304,7 +5319,7 @@ aside.add-sections-items > ul li.wrap-hover {
     color: #ffffff;
 }
 
-.control-buttons-group > button {
+.control-buttons-group>button {
     margin: 0 !important;
 }
 
@@ -5319,12 +5334,12 @@ aside.add-sections-items > ul li.wrap-hover {
     opacity: 1;
 }
 
-.main > ul.loading {
+.main>ul.loading {
     display: none;
     height: 100vh;
 }
 
-.main > ul.loading.blr-active-page {
+.main>ul.loading.blr-active-page {
     display: block;
 }
 
@@ -5370,7 +5385,7 @@ aside.add-sections-items > ul li.wrap-hover {
     -webkit-transition: margin 0.8s 0.8s, opacity 1.6s 1.6s;
 }
 
-.main > ul {
+.main>ul {
     padding: 0;
     margin: 0;
 }
@@ -5383,49 +5398,49 @@ aside.add-sections-items > ul li.wrap-hover {
 
 /*}*/
 
-.main > ul.load-page {
+.main>ul.load-page {
     display: block;
     visibility: hidden;
 }
 
-.main > ul > li {
+.main>ul>li {
     display: block;
     padding: 0;
     margin: 0;
     position: relative;
 }
 
-.main > ul > li.section-item.absolute-top,
-.main > ul > li.section-item.fixed-top,
-.main > ul > li.section-item.fixed-bottom,
-.main > ul > li.section-item.sticky-top {
+.main>ul>li.section-item.absolute-top,
+.main>ul>li.section-item.fixed-top,
+.main>ul>li.section-item.fixed-bottom,
+.main>ul>li.section-item.sticky-top {
     position: initial;
 }
 
-.main > ul > li.section-item.absolute-top nav,
-.main > ul > li.section-item.fixed-top nav,
-.main > ul > li.section-item.fixed-bottom nav,
-.main > ul > li.section-item.sticky-top nav {
+.main>ul>li.section-item.absolute-top nav,
+.main>ul>li.section-item.fixed-top nav,
+.main>ul>li.section-item.fixed-bottom nav,
+.main>ul>li.section-item.sticky-top nav {
     position: static;
 }
 
-.main > ul > li.section-item .wrap-control {
+.main>ul>li.section-item .wrap-control {
     cursor: grab;
     cursor: -webkit-grab;
 }
 
-.main > ul > li.section-item .modal ~ .wrap-control {
+.main>ul>li.section-item .modal~.wrap-control {
     cursor: default;
 }
 
-.main > ul > li.section-item .modal:not(.show) ~ .wrap-control {
+.main>ul>li.section-item .modal:not(.show)~.wrap-control {
     display: none !important;
 }
 
-.main > ul .buttons-control,
-.main > ul .buttons-control-typography,
-.main > ul .buttons-control-form,
-.main > ul .buttons-control-icons,
+.main>ul .buttons-control,
+.main>ul .buttons-control-typography,
+.main>ul .buttons-control-form,
+.main>ul .buttons-control-icons,
 #modal-form-container .buttons-control,
 #modal-form-container .buttons-control-typography,
 #modal-form-container .buttons-control-form,
@@ -5433,26 +5448,26 @@ aside.add-sections-items > ul li.wrap-hover {
     position: relative;
 }
 
-.main > ul .buttons-control-icons,
+.main>ul .buttons-control-icons,
 #modal-form-container .buttons-control-icons {
     line-height: 1;
 }
 
-.main > ul .buttons-control-typography > *,
-#modal-form-container .buttons-control-typography > * {
+.main>ul .buttons-control-typography>*,
+#modal-form-container .buttons-control-typography>* {
     outline: 0px solid transparent;
     outline: none;
     word-wrap: normal;
 }
 
-.main > ul.edit-elements .buttons-control:hover,
-.main > ul.edit-elements .buttons-control:focus,
-.main > ul.edit-elements .buttons-control-form:hover,
-.main > ul.edit-elements .buttons-control-form:focus,
-.main > ul.edit-typography .buttons-control-typography:hover,
-.main > ul.edit-typography .buttons-control-typography:focus,
-.main > ul.edit-typography .buttons-control-icons:hover,
-.main > ul.edit-typography .buttons-control-icons:focus,
+.main>ul.edit-elements .buttons-control:hover,
+.main>ul.edit-elements .buttons-control:focus,
+.main>ul.edit-elements .buttons-control-form:hover,
+.main>ul.edit-elements .buttons-control-form:focus,
+.main>ul.edit-typography .buttons-control-typography:hover,
+.main>ul.edit-typography .buttons-control-typography:focus,
+.main>ul.edit-typography .buttons-control-icons:hover,
+.main>ul.edit-typography .buttons-control-icons:focus,
 #modal-form-container.edit-elements .buttons-control:hover,
 #modal-form-container.edit-elements .buttons-control:focus,
 #modal-form-container.edit-elements .buttons-control-form:hover,
@@ -5467,10 +5482,10 @@ aside.add-sections-items > ul li.wrap-hover {
     z-index: 1000 !important;
 }
 
-.main > ul.edit-elements .buttons-control:hover,
-.main > ul.edit-elements .buttons-control:focus,
-.main > ul.edit-elements .buttons-control-form:hover,
-.main > ul.edit-elements .buttons-control-form:focus,
+.main>ul.edit-elements .buttons-control:hover,
+.main>ul.edit-elements .buttons-control:focus,
+.main>ul.edit-elements .buttons-control-form:hover,
+.main>ul.edit-elements .buttons-control-form:focus,
 #modal-form-container.edit-elements .buttons-control:hover,
 #modal-form-container.edit-elements .buttons-control:focus,
 #modal-form-container.edit-elements .buttons-control-form:hover,
@@ -5483,22 +5498,22 @@ aside.add-sections-items > ul li.wrap-hover {
     outline-offset: -1px;
 }
 
-.main > ul.edit-typography .buttons-control-typography:hover > *:first-child,
-.main > ul.edit-typography .buttons-control-typography:focus > *:first-child,
-.main > ul.edit-typography .buttons-control-icons:hover > *:first-child,
-.main > ul.edit-typography .buttons-control-icons:focus > *:first-child {
+.main>ul.edit-typography .buttons-control-typography:hover>*:first-child,
+.main>ul.edit-typography .buttons-control-typography:focus>*:first-child,
+.main>ul.edit-typography .buttons-control-icons:hover>*:first-child,
+.main>ul.edit-typography .buttons-control-icons:focus>*:first-child {
     outline: 1px dotted rgba(0, 0, 0, 0.8);
     outline-offset: -1px;
 }
 
-.main > ul.edit-elements .spr-child-active:hover,
-.main > ul.edit-elements .spr-child-active:focus,
-.main > ul.edit-elements .spr-child-active:hover,
-.main > ul.edit-elements .spr-child-active:focus,
-.main > ul.edit-typography .buttons-control-typography.spr-child-active:hover,
-.main > ul.edit-typography .buttons-control-typography.spr-child-active:focus,
-.main > ul.edit-typography .buttons-control-icons.spr-child-active:hover,
-.main > ul.edit-typography .buttons-control-icons.spr-child-active:focus,
+.main>ul.edit-elements .spr-child-active:hover,
+.main>ul.edit-elements .spr-child-active:focus,
+.main>ul.edit-elements .spr-child-active:hover,
+.main>ul.edit-elements .spr-child-active:focus,
+.main>ul.edit-typography .buttons-control-typography.spr-child-active:hover,
+.main>ul.edit-typography .buttons-control-typography.spr-child-active:focus,
+.main>ul.edit-typography .buttons-control-icons.spr-child-active:hover,
+.main>ul.edit-typography .buttons-control-icons.spr-child-active:focus,
 #modal-form-container.edit-elements .spr-child-active:hover,
 #modal-form-container.edit-elements .spr-child-active:focus,
 #modal-form-container.edit-elements .spr-child-active:hover,
@@ -5511,15 +5526,15 @@ aside.add-sections-items > ul li.wrap-hover {
     outline-offset: -1px !important;
 }
 
-.main > ul.edit-elements .buttons-control:hover > .g-map,
-.main > ul.edit-elements .buttons-control:focus > .g-map {
+.main>ul.edit-elements .buttons-control:hover>.g-map,
+.main>ul.edit-elements .buttons-control:focus>.g-map {
     outline-offset: 0;
 }
 
-.main > ul.edit-elements .buttons-control:hover .buttons-control:hover,
-.main > ul.edit-elements .buttons-control:focus .buttons-control:focus,
-.main > ul.edit-elements .buttons-control-form:hover .buttons-control:hover,
-.main > ul.edit-elements .buttons-control-form:focus .buttons-control:focus,
+.main>ul.edit-elements .buttons-control:hover .buttons-control:hover,
+.main>ul.edit-elements .buttons-control:focus .buttons-control:focus,
+.main>ul.edit-elements .buttons-control-form:hover .buttons-control:hover,
+.main>ul.edit-elements .buttons-control-form:focus .buttons-control:focus,
 #modal-form-container.edit-elements .buttons-control:hover .buttons-control:hover,
 #modal-form-container.edit-elements .buttons-control:focus .buttons-control:focus,
 #modal-form-container.edit-elements .buttons-control-form:hover .buttons-control:hover,
@@ -5527,10 +5542,10 @@ aside.add-sections-items > ul li.wrap-hover {
     z-index: 1091 !important;
 }
 
-.main > ul.edit-elements .buttons-control:hover .buttons-control:hover .buttons-control:hover,
-.main > ul.edit-elements .buttons-control:focus .buttons-control:focus .buttons-control:focus,
-.main > ul.edit-elements .buttons-control-form:hover .buttons-control:hover .buttons-control:hover,
-.main > ul.edit-elements .buttons-control-form:focus .buttons-control:focus .buttons-control:focus,
+.main>ul.edit-elements .buttons-control:hover .buttons-control:hover .buttons-control:hover,
+.main>ul.edit-elements .buttons-control:focus .buttons-control:focus .buttons-control:focus,
+.main>ul.edit-elements .buttons-control-form:hover .buttons-control:hover .buttons-control:hover,
+.main>ul.edit-elements .buttons-control-form:focus .buttons-control:focus .buttons-control:focus,
 #modal-form-container.edit-elements .buttons-control:hover .buttons-control:hover .buttons-control:hover,
 #modal-form-container.edit-elements .buttons-control:focus .buttons-control:focus .buttons-control:focus,
 #modal-form-container.edit-elements .buttons-control-form:hover .buttons-control:hover .buttons-control:hover,
@@ -5538,85 +5553,85 @@ aside.add-sections-items > ul li.wrap-hover {
     z-index: 1092 !important;
 }
 
-.main > ul.page-mode-edit-sections li:hover .wrap-control,
-.main > ul.page-mode-edit-sections li:focus .wrap-control,
-.main > ul.edit-elements .buttons-control:hover > .wrap-control-element,
-.main > ul.edit-elements .buttons-control:focus > .wrap-control-element,
-.main > ul.edit-elements .buttons-control-form:hover > .wrap-control-element,
-.main > ul.edit-elements .buttons-control-form:focus > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-icons:hover > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-icons:focus > .wrap-control-element,
-#modal-form-container.page-mode-edit-sections .buttons-control:hover > .wrap-control-element,
-#modal-form-container.page-mode-edit-sections .buttons-control:focus > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control:hover > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control:focus > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control-form:hover > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control-form:focus > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-icons:hover > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-icons:focus > .wrap-control-element {
+.main>ul.page-mode-edit-sections li:hover .wrap-control,
+.main>ul.page-mode-edit-sections li:focus .wrap-control,
+.main>ul.edit-elements .buttons-control:hover>.wrap-control-element,
+.main>ul.edit-elements .buttons-control:focus>.wrap-control-element,
+.main>ul.edit-elements .buttons-control-form:hover>.wrap-control-element,
+.main>ul.edit-elements .buttons-control-form:focus>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-icons:hover>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-icons:focus>.wrap-control-element,
+#modal-form-container.page-mode-edit-sections .buttons-control:hover>.wrap-control-element,
+#modal-form-container.page-mode-edit-sections .buttons-control:focus>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control:hover>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control:focus>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control-form:hover>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control-form:focus>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-icons:hover>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-icons:focus>.wrap-control-element {
     opacity: 1;
 }
 
-.main > ul.page-mode-edit-sections li:hover .nav-start-hide,
-.main > ul.page-mode-edit-sections li:focus .nav-start-hide {
+.main>ul.page-mode-edit-sections li:hover .nav-start-hide,
+.main>ul.page-mode-edit-sections li:focus .nav-start-hide {
     -webkit-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
 }
 
-.main > ul.page-mode-edit-sections li:hover .wrap-control,
-.main > ul.page-mode-edit-sections li:focus .wrap-control,
-.main > ul.edit-elements .buttons-control:hover > .wrap-control-element,
-.main > ul.edit-elements .buttons-control:focus > .wrap-control-element,
-.main > ul.edit-elements .buttons-control-form:hover > .wrap-control-element,
-.main > ul.edit-elements .buttons-control-form:focus > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-typography:hover > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-typography:focus > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-icons:hover > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-icons:focus > .wrap-control-element,
-#modal-form-container.page-mode-edit-sections .buttons-control:hover > .wrap-control-element,
-#modal-form-container.page-mode-edit-sections .buttons-control:focus > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control:hover > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control:focus > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control-form:hover > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control-form:focus > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-typography:hover > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-typography:focus > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-icons:hover > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-icons:focus > .wrap-control-element {
+.main>ul.page-mode-edit-sections li:hover .wrap-control,
+.main>ul.page-mode-edit-sections li:focus .wrap-control,
+.main>ul.edit-elements .buttons-control:hover>.wrap-control-element,
+.main>ul.edit-elements .buttons-control:focus>.wrap-control-element,
+.main>ul.edit-elements .buttons-control-form:hover>.wrap-control-element,
+.main>ul.edit-elements .buttons-control-form:focus>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-typography:hover>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-typography:focus>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-icons:hover>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-icons:focus>.wrap-control-element,
+#modal-form-container.page-mode-edit-sections .buttons-control:hover>.wrap-control-element,
+#modal-form-container.page-mode-edit-sections .buttons-control:focus>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control:hover>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control:focus>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control-form:hover>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control-form:focus>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-typography:hover>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-typography:focus>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-icons:hover>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-icons:focus>.wrap-control-element {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     display: -webkit-flex;
 }
 
-.main > ul.edit-elements .buttons-control.spr-child-active > .wrap-control-element,
-.main > ul.edit-elements .buttons-control.spr-child-active > .wrap-control-element,
-.main > ul.edit-elements .buttons-control-form.spr-child-active > .wrap-control-element,
-.main > ul.edit-elements .buttons-control-form.spr-child-active > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-typography.spr-child-active > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-typography.spr-child-active > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-icons.spr-child-active > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-icons.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control-form.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-elements .buttons-control-form.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-typography.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-typography.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-icons.spr-child-active > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-icons.spr-child-active > .wrap-control-element {
+.main>ul.edit-elements .buttons-control.spr-child-active>.wrap-control-element,
+.main>ul.edit-elements .buttons-control.spr-child-active>.wrap-control-element,
+.main>ul.edit-elements .buttons-control-form.spr-child-active>.wrap-control-element,
+.main>ul.edit-elements .buttons-control-form.spr-child-active>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-typography.spr-child-active>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-typography.spr-child-active>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-icons.spr-child-active>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-icons.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control-form.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-elements .buttons-control-form.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-typography.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-typography.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-icons.spr-child-active>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-icons.spr-child-active>.wrap-control-element {
     display: none;
 }
 
-.main > ul.edit-typography .buttons-control-typography > .wrap-control-element,
-#modal-form-container .buttons-control-typography > .wrap-control-element {
+.main>ul.edit-typography .buttons-control-typography>.wrap-control-element,
+#modal-form-container .buttons-control-typography>.wrap-control-element {
     visibility: hidden;
 }
 
-.main > ul.edit-typography .buttons-control-typography:hover > .wrap-control-element,
-.main > ul.edit-typography .buttons-control-typography:focus > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-typography:hover > .wrap-control-element,
-#modal-form-container.edit-typography .buttons-control-typography:focus > .wrap-control-element {
+.main>ul.edit-typography .buttons-control-typography:hover>.wrap-control-element,
+.main>ul.edit-typography .buttons-control-typography:focus>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-typography:hover>.wrap-control-element,
+#modal-form-container.edit-typography .buttons-control-typography:focus>.wrap-control-element {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -5624,8 +5639,8 @@ aside.add-sections-items > ul li.wrap-hover {
 }
 
 .main .wrap-control-element .arrow,
-.main > ul.edit-typography .buttons-control-typography > .wrap-control-element .arrow,
-#modal-form-container.edit-typography .buttons-control-typography > .wrap-control-element .arrow {
+.main>ul.edit-typography .buttons-control-typography>.wrap-control-element .arrow,
+#modal-form-container.edit-typography .buttons-control-typography>.wrap-control-element .arrow {
     display: block;
     position: absolute;
     width: 0;
@@ -5639,15 +5654,15 @@ aside.add-sections-items > ul li.wrap-hover {
     margin: auto;
 }
 
-.main > ul.edit-elements .buttons-control:hover > .g-map + .wrap-control-element,
-.main > ul.edit-elements .buttons-control:focus > .g-map + .wrap-control-element {
+.main>ul.edit-elements .buttons-control:hover>.g-map+.wrap-control-element,
+.main>ul.edit-elements .buttons-control:focus>.g-map+.wrap-control-element {
     left: -1px;
 }
 
-.main > ul.edit-typography .buttons-control-typography:hover > a,
-.main > ul.edit-typography .buttons-control-typography:focus > a,
-#modal-form-container.edit-typography .buttons-control-typography:hover > a,
-#modal-form-container.edit-typography .buttons-control-typography:focus > a {
+.main>ul.edit-typography .buttons-control-typography:hover>a,
+.main>ul.edit-typography .buttons-control-typography:focus>a,
+#modal-form-container.edit-typography .buttons-control-typography:hover>a,
+#modal-form-container.edit-typography .buttons-control-typography:focus>a {
     cursor: text;
 }
 
@@ -5682,8 +5697,8 @@ input[type=radio]:focus {
     outline: none !important;
 }
 
-input[type=checkbox] + .lbl,
-input[type=radio] + .lbl {
+input[type=checkbox]+.lbl,
+input[type=radio]+.lbl {
     position: relative;
     z-index: 10;
     display: inline-block;
@@ -5697,8 +5712,8 @@ input[type=radio] + .lbl {
 
 /* Basic Checkbox styles */
 
-input[type=checkbox] + .lbl::before,
-input[type=radio] + .lbl::before {
+input[type=checkbox]+.lbl::before,
+input[type=radio]+.lbl::before {
     content: "";
     display: block;
     position: absolute;
@@ -5711,13 +5726,13 @@ input[type=radio] + .lbl::before {
     left: 0;
 }
 
-input[type=checkbox].error + .lbl::before,
-input[type=radio].error + .lbl::before {
+input[type=checkbox].error+.lbl::before,
+input[type=radio].error+.lbl::before {
     border: 1px solid #e44646;
 }
 
-.supra input[type=checkbox] + .lbl::after,
-.supra input[type=radio] + .lbl::after {
+.supra input[type=checkbox]+.lbl::after,
+.supra input[type=radio]+.lbl::after {
     content: "";
     display: block;
     position: absolute;
@@ -5733,15 +5748,15 @@ input[type=radio].error + .lbl::before {
     transition: all 0.1s ease-in;
 }
 
-input[type=radio] + .lbl::before {
+input[type=radio]+.lbl::before {
     border-radius: 50%;
 }
 
 
 /* Checked state styles */
 
-input[type=checkbox]:checked + .lbl::after,
-input[type=radio]:checked + .lbl::after {
+input[type=checkbox]:checked+.lbl::after,
+input[type=radio]:checked+.lbl::after {
     height: 14px;
     width: 14px;
     top: 3px;
@@ -5752,32 +5767,32 @@ input[type=radio]:checked + .lbl::after {
 
 /* Hover state styles */
 
-input[type=checkbox]:hover + .lbl::after,
-input[type=checkbox]:focus + .lbl::after,
-input[type=radio]:hover + .lbl::after,
-input[type=radio]:focus + .lbl::after,
-input[type=checkbox] + .lbl:hover::after,
-input[type=checkbox] + .lbl:focus::after,
-input[type=radio] + .lbl:hover::after,
-input[type=radio] + .lbl:focus::after {
+input[type=checkbox]:hover+.lbl::after,
+input[type=checkbox]:focus+.lbl::after,
+input[type=radio]:hover+.lbl::after,
+input[type=radio]:focus+.lbl::after,
+input[type=checkbox]+.lbl:hover::after,
+input[type=checkbox]+.lbl:focus::after,
+input[type=radio]+.lbl:hover::after,
+input[type=radio]+.lbl:focus::after {
     opacity: 1;
 }
 
 
 /* Disabled state styles */
 
-input[type=checkbox]:disabled + .lbl::before,
-input[type=radio]:disabled + .lbl::before,
-input[type=checkbox][disabled] + .lbl::before,
-input[type=radio][disabled] + .lbl::before,
-input[type=checkbox].disabled + .lbl::before,
-input[type=radio].disabled + .lbl::before,
-input[type=checkbox]:disabled + .lbl::after,
-input[type=radio]:disabled + .lbl::after,
-input[type=checkbox][disabled] + .lbl::after,
-input[type=radio][disabled] + .lbl::after,
-input[type=checkbox].disabled + .lbl::after,
-input[type=radio].disabled + .lbl::after {
+input[type=checkbox]:disabled+.lbl::before,
+input[type=radio]:disabled+.lbl::before,
+input[type=checkbox][disabled]+.lbl::before,
+input[type=radio][disabled]+.lbl::before,
+input[type=checkbox].disabled+.lbl::before,
+input[type=radio].disabled+.lbl::before,
+input[type=checkbox]:disabled+.lbl::after,
+input[type=radio]:disabled+.lbl::after,
+input[type=checkbox][disabled]+.lbl::after,
+input[type=radio][disabled]+.lbl::after,
+input[type=checkbox].disabled+.lbl::after,
+input[type=radio].disabled+.lbl::after {
     background-color: #eee !important;
     border-color: #eee !important;
     -webkit-box-shadow: none !important;
@@ -5787,15 +5802,15 @@ input[type=radio].disabled + .lbl::after {
 
 /* Styles for Radio button */
 
-.supra input[type=radio] + .lbl::before {
+.supra input[type=radio]+.lbl::before {
     border-radius: 50%;
 }
 
-.supra input[type=radio] + .lbl::after {
+.supra input[type=radio]+.lbl::after {
     border-radius: 50%;
 }
 
-input[type=radio]:checked + .lbl::after {
+input[type=radio]:checked+.lbl::after {
     opacity: 1;
 }
 
@@ -5839,6 +5854,7 @@ input[type=radio]:checked + .lbl::after {
 }
 
 @media all and (max-width: 1024px) {
+
     aside.left ul li:nth-last-child(3),
     aside.left ul li:nth-last-child(4),
     aside.left ul li:nth-last-child(5) {
@@ -5883,11 +5899,13 @@ input[type=radio]:checked + .lbl::after {
 }
 
 @media all and (max-width: 500px) {
+
     /*section*/
     aside.control-panel ul.sections li {
         transition: max-height 0.8s;
         -webkit-transition: max-height 0.8s;
     }
+
     aside.control-panel ul.sections li.nopadding {
         padding: 0 5px;
         max-height: 0;
@@ -5943,9 +5961,9 @@ input[type=radio]:checked + .lbl::after {
         display: none;
     }
 
-    aside.control-panel.active ul.sections li.active + li.nopadding ul li.wrap-hover:hover i,
-    aside.control-panel.active ul.sections li.active + li.nopadding ul li.wrap-hover:focus i,
-    aside.control-panel.active ul.sections li.active + li.nopadding.active ul li.wrap-hover i {
+    aside.control-panel.active ul.sections li.active+li.nopadding ul li.wrap-hover:hover i,
+    aside.control-panel.active ul.sections li.active+li.nopadding ul li.wrap-hover:focus i,
+    aside.control-panel.active ul.sections li.active+li.nopadding.active ul li.wrap-hover i {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -5957,96 +5975,122 @@ input[type=radio]:checked + .lbl::after {
         right: 5px;
     }
 
-    aside.control-panel ul.sections li.active + li.nopadding {
+    aside.control-panel ul.sections li.active+li.nopadding {
         max-height: 4000px;
     }
+
     aside.control-panel ul.sections li.nopadding ul li {
         padding: 5px 5px 0;
         min-height: 30px;
     }
+
     aside.add-sections-items {
         right: 34px;
     }
+
     aside.add-sections-items.show {
         position: static;
         width: 100%;
     }
-    aside.add-sections-items > ul li {
+
+    aside.add-sections-items>ul li {
         width: 100%;
         padding: 0 !important;
         margin: 5px 0 0 0 !important;
     }
+
     .message {
         padding: 5px 15px 5px 5px;
         margin: 10px auto 0;
     }
+
     .message i {
         top: 5px;
         right: 5px;
     }
+
     .modal.fade.in {
         overflow: scroll !important;
         display: block;
     }
+
     .height-500 {
         height: 350px;
     }
+
     .modal-gallery {
         width: 100vw;
         height: 350px;
     }
+
     #modal-container .modal-content .preview-bg figure .wrap-hover {
         max-height: 100px;
     }
+
     #modal-container .modal-content .dropdown button {
         width: 100%;
     }
+
     #modal-container .modal-content .icons .ico {
         width: 13%;
     }
+
     #modal-container .modal-content .radio .radio-inline {
         display: block !important;
         margin-left: 0;
         margin-top: 5px;
     }
+
     #modal-container .modal-content .radio .radio-inline:first-child {
         margin-top: 0;
     }
+
     #modal-container .modal-content .nopadding-right-10 {
         padding: 0;
     }
+
     #modal-container .modal-content .section-set-dropdown {
         padding: 0 15px;
     }
+
     #modal-container .modal-content .section-set-dropdown label {
         width: 65%;
     }
+
     #modal-container .modal-content .section-set-dropdown .dropdown {
         width: 35%;
     }
-    #modal-container .modal-content .section-set-dropdown .dropdown > button {
+
+    #modal-container .modal-content .section-set-dropdown .dropdown>button {
         padding: 0;
     }
+
     #modal-container .modal-content .section-settings {
         margin-top: 15px;
     }
+
     #modal-container .modal-content .section-settings .item {
         padding-left: 15px;
     }
+
     #modal-container .modal-content .choice-element {
         width: 48%;
         margin: 5px 2% 20px 0;
     }
+
     #modal-container .modal-content .seo .nopadding-left-10 {
         padding: 0;
     }
+
     #modal-container .modal-header .modal-title h4 {
         margin: 0 7px 0 0;
     }
-    #modal-container .modal-content .radio-control.none ~ .preview-bg,
+
+    #modal-container .modal-content .radio-control.none~.preview-bg,
     #modal-container .modal-content .nav-pr-bg {
         float: none;
     }
+
     #modal-container .modal-content .double-dropdown,
     #modal-container .modal-content .show-custom-size .custom-size {
         width: 46.7%;
@@ -6265,7 +6309,7 @@ nav.navbar {
     outline: none;
 }
 
-#modal-container .object-area > .row {
+#modal-container .object-area>.row {
     margin-right: 0px;
     margin-left: 0px;
 }
@@ -6400,8 +6444,8 @@ nav.navbar {
 
 /* Site style after insert constructor form */
 
-input[type=checkbox] + .lbl::after,
-input[type=radio] + .lbl::after {
+input[type=checkbox]+.lbl::after,
+input[type=radio]+.lbl::after {
     background-color: #00c0ff;
 }
 

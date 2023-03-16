@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="109.999" height="110" viewBox="0 0 109.999 110">
+  <defs>
+    <filter id="Path_26387" x="0" y="0" width="109.999" height="110" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-color="#1658bb" flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="code" transform="translate(-687 -394)">
+    <g transform="matrix(1, 0, 0, 1, 687, 394)" filter="url(#Path_26387)">
+      <path id="Path_26387-2" data-name="Path 26387" d="M40.658.4C62.907.4,80,17.492,80,39.741S62.907,80.4,40.658,80.4A40.92,40.92,0,0,1,0,39.741C0,17.492,18.409.4,40.658.4Z" transform="translate(15 9.6)" fill="#fff"/>
+    </g>
+    <path id="Path_26421" data-name="Path 26421" d="M6.5,10.5l4.425,4.527L6.5,19.555" transform="translate(742.633 432.782)" fill="none" stroke="#3081e9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_26422" data-name="Path 26422" d="M10.925,10.5,6.5,15.028l4.425,4.528" transform="translate(724.088 432.782)" fill="none" stroke="#3081e9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <line id="Line_2013" data-name="Line 2013" x2="10.144" transform="translate(739.917 452.435) rotate(-65)" fill="none" stroke="#3081e9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_31364" data-name="Path 31364" d="M2,0H34a2,2,0,0,1,2,2V30a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0Z" transform="translate(724 428)" fill="none" stroke="#3081e9" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_2014" data-name="Line 2014" x2="36" transform="translate(724 435)" fill="none" stroke="#3081e9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>

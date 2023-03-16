@@ -108,7 +108,7 @@
 		 * @param $arr {array}
 		 * @param $mode {string}
 		 */
-		protected function _upload_file($path, $arr, $mode,$userId,$project_id) {
+		protected function _upload_file($path, $arr, $mode) {
 			$file_name = $_POST['name_file'];
 			$sub_folder = isset($_POST['sub_folder']) ? $_POST['sub_folder'] : '';
 			if ($this->_validation($file_name, 'string')) {
@@ -123,15 +123,14 @@
 								echo json_encode( array( 'fileName' => '/video/gallery/' . $file_name ) );
 							} else if ($mode === 'import') {
 								$zip = new ZipArchive();
-								$file_name = 'tmp/'.$userId.'/'.$project_id.'/' . $file_name;
-								
+								$file_name = 'tmp/' . $file_name;
 								if (preg_match('/.*\.zip/i', $file_name)) {
 									if ( $zip->open( $file_name ) ) {
-										$zip->extractTo( 'tmp/'.$userId.'/'.$project_id.'/' );
+										$zip->extractTo( 'tmp/' );
 										$zip->close();
 										unlink( $file_name );
 
-										$this->_readFileProject('tmp/'.$userId.'/'.$project_id.'/project.supra');
+										$this->_readFileProject('tmp/project.supra');
 									}
 								} else if (preg_match('/.*\.supra/i', $file_name)) {
 									$this->_readFileProject($file_name);
@@ -178,14 +177,14 @@
 		 * Calling from ajax to add the gallery new an image
 		 */
 		public function Addgallery() {
-			$this->_upload_file($this->_base_path .'/images/gallery/', array( '.png', '.jpg', '.jpeg', '.gif', '.svg' ), 'addgallery',$_POST['userId'],$_POST['project_id']);
+			$this->_upload_file($this->_base_path .'/images/gallery/', array( '.png', '.jpg', '.jpeg', '.gif', '.svg' ), 'addgallery');
 		}
 
 		/**
 		 * Calling from ajax to add the gallery new an image
 		 */
 		public function Addgalleryvideo() {
-			$this->_upload_file($this->_base_path .'/video/gallery/', array( '.mp4', '.ogv', '.jpg' ), 'addgalleryvideo',$_POST['userId'],$_POST['project_id']);
+			$this->_upload_file($this->_base_path .'/video/gallery/', array( '.mp4', '.ogv', '.jpg' ), 'addgalleryvideo');
 		}
 
         /**
@@ -224,14 +223,14 @@
                 $output_dir ='tmp/' . preg_replace('#\.zip#' , '', $file_name);
 
                 try {
-                    if ($zip->open('tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/' . $file_name)) {
+                    if ($zip->open('tmp/' . $file_name)) {
                         $zip->extractTo($output_dir);
                         $zip->close();
-                        unlink('tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/' . $file_name);
+                        unlink('tmp/' . $file_name);
                     }
 
                     $ftp = new ftpUploading(
-                        'tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/' . preg_replace('#\.zip#', '', $file_name)
+                        'tmp/' . preg_replace('#\.zip#', '', $file_name)
                         , [
                             'type' => $_POST['type'],
                             'mode' => $_POST['mode'],
@@ -295,10 +294,10 @@
                         }
                     }
 
-                    if ($zip->open('tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/' . $file_name)) {
+                    if ($zip->open('tmp/' . $file_name)) {
                         $zip->extractTo($output_dir . '/');
                         $zip->close();
-                        unlink('tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/' . $file_name);
+                        unlink('tmp/' . $file_name);
                     }
                     echo json_encode([
                         'status' => 200,
@@ -526,7 +525,7 @@ EOT;
 				$data = stripslashes($data);
 			}
 
-			$filename = 'tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/' . uniqid() . "_project.zip";
+			$filename = "tmp/" . uniqid() . "_project.zip";
 			$zip = new ZipArchive();
 			$zip->open($filename, ZipArchive::CREATE);
 
@@ -544,7 +543,7 @@ EOT;
 		 * Calling from ajax to upload a file that contains intermediate work of the project
 		 */
 		public function Import() {
-			$this->_upload_file($this->_base_path .'/tmp/', array( '.zip', '.supra' ), 'import',$_POST['userId'],$_POST['project_id']);
+			$this->_upload_file($this->_base_path .'/tmp/', array( '.zip', '.supra' ), 'import');
 		}
 
 		/**
@@ -1084,7 +1083,6 @@ EOT;
 		public function Delete() {
 			$data = $_POST['data'];
 			if (preg_match('/[a-z0-9]*_(project|website)\.zip/i', $data)) {
-				//Auth::user()->id
 				unlink($this->_base_path.'/tmp/'.$data);
 			}
 			exit();

@@ -11,7 +11,7 @@ use App\PaymentHistory;
 use App\EmailTemplate;
 use App\Package;
 use App\Company;
-use App\User;
+use App\User; 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PremiumMembershipMail;
 use App\Utilities\Overrider;

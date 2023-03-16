@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="174" height="167.557" viewBox="0 0 174 167.557">
+  <g id="Group_13439" data-name="Group 13439" transform="translate(-47.784 -68.204)">
+    <g id="Group_13437" data-name="Group 13437">
+      <path id="Path_26146" data-name="Path 26146" d="M187.968,111.93a8.408,8.408,0,0,0-8.066,6.082H146.321l-9.346-9.345h22.537a8.4,8.4,0,1,0,0-4.632H132.343l-6.159-6.159-22.453,22.452,22.453,22.453,6.16-6.16h27.168a8.4,8.4,0,1,0,0-4.632H136.976l9.345-9.345H179.9a8.4,8.4,0,1,0,8.066-10.714Zm-20.389-9.346a3.767,3.767,0,1,1-3.767,3.767A3.771,3.771,0,0,1,167.579,102.584Zm0,27.955a3.767,3.767,0,1,1-3.767,3.766A3.77,3.77,0,0,1,167.579,130.539Zm-41.395,5.693-15.9-15.9,15.9-15.9,15.9,15.9ZM187.968,124.1a3.767,3.767,0,1,1,3.767-3.767A3.771,3.771,0,0,1,187.968,124.1Z" fill="#fff"/>
+      <path id="Path_26147" data-name="Path 26147" d="M158.9,139.732H143.621l-17.437,17.437-36.841-36.84,36.841-36.841,17.437,17.438H158.9L126.184,68.2,74.059,120.328l52.125,52.124Z" fill="#fff"/>
+    </g>
+    <g id="Group_13438" data-name="Group 13438">
+      <text id="Lead_Generation" data-name="Lead Generation" transform="translate(134.784 212.699)" fill="#fff" font-size="23.884" font-family="SegoeUI, Segoe UI"><tspan x="-86.61" y="0">Lead Generation</tspan></text>
+      <text id="Company" transform="translate(134.784 231.761)" fill="#fff" font-size="13.933" font-family="SegoeUI, Segoe UI"><tspan x="-29.349" y="0">Company</tspan></text>
+    </g>
+  </g>
+</svg>

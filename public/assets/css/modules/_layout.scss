@@ -1,0 +1,87 @@
+.layout {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -15px -30px;
+
+  &--flip{
+    &:first-of-type{
+      margin-bottom: rem(120);
+
+      @include mq_max($sm){
+        margin-bottom: 100px;
+      }
+      @include mq_max($xs){
+        margin-bottom: 80px;
+      }
+    }
+  }
+
+  &-col {
+    display: flex;
+    width: auto;
+    padding: 0 15px;
+    margin-bottom: 30px;
+
+    .layout--about &{
+      position: relative;
+      max-width: rem(280);
+
+      &:not(:last-of-type){
+        @include mq_max($sm) {
+          margin-bottom: 100px;
+        }
+      }
+      &::after{
+        content: '';
+        display: none;
+        position: absolute;
+        width: calc(100% - 60px);
+        height: 1px;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        opacity: .2;
+        background: #fff;
+
+        @at-root .layout--about .layout-col:not(:last-of-type)::after{
+          @include mq_max($sm) {
+            display: block;
+          }
+        }
+      }
+	  }
+
+    .layout--310 &{
+      max-width: rem(310);
+    }
+
+    .layout--3 &{
+      width: 33.33%;
+
+      @include mq_max($sm) {
+        width: 100%;
+        max-width: none;
+	    }
+	  }
+
+    .layout--flip & {
+      align-items: center;
+      width: 50%;
+
+      &:last-of-type{
+        justify-content: flex-end;
+      }
+      @include mq_max($sm) {
+        width: 100%;
+        order: 2;
+
+        &.first{
+          order: 1;
+        }
+      }
+    }
+  }
+}

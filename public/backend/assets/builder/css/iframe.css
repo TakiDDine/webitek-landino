@@ -23,9 +23,17 @@
 /*width: 100vw;*/
 /*}*/
 
+aside.control-panel.custom-styling.supra.active {
+    left: 0;
+    padding: 10px;
+    top: 60px;
+    width: 300px;
+    height: 100%;
+}
+
 .cursor-grab {
-    cursor: grabbing!important;
-    cursor: -webkit-grabbing!important;
+    cursor: grabbing !important;
+    cursor: -webkit-grabbing !important;
 }
 
 /* ------------------ */
@@ -47,7 +55,6 @@ nav.navbar {
     z-index: 1001250;
 }
 
-
 /* ------------------ */
 
 .edit-elements .owl-theme .owl-controls,
@@ -64,7 +71,7 @@ nav.navbar {
 
 .thin .nicescroll-rails,
 .nicescroll-rails-hr {
-    display: none!important;
+    display: none !important;
 }
 
 /*.page-mode-edit-style .spr-gallery .item:hover:after {*/
@@ -199,7 +206,7 @@ nav.navbar {
 }
 
 label.label-section {
-    font-family: 'Open Sans', sans-serif!important;
+    font-family: 'Vazir', sans-serif !important;
     margin: 0;
     height: 36px;
     font-size: 13px;
@@ -276,7 +283,7 @@ label.label-section:before {
     z-index: 1002190;
 }
 
-nav ~ .wrap-control {
+nav~.wrap-control {
     z-index: 2001190;
 }
 
@@ -288,13 +295,13 @@ nav ~ .wrap-control {
     flex-direction: column;
 }
 
-.modal-alert ~ .wrap-control,
-.modal-panel ~ .wrap-control {
+.modal-alert~.wrap-control,
+.modal-panel~.wrap-control {
     z-index: 1001100;
 }
 
 ul:not(.page-mode-edit-sections) .wrap-control {
-    display: none!important;
+    display: none !important;
 }
 
 .nav .wrap-control .wrapper label.label-section {
@@ -317,21 +324,25 @@ ul:not(.page-mode-edit-sections) .wrap-control {
         transform: matrix(.97, 0, 0, 1, 0, 12);
         opacity: 0;
     }
+
     20% {
         -webkit-transform: matrix(.99, 0, 0, 1, 0, 2);
         transform: matrix(.99, 0, 0, 1, 0, 2);
         opacity: .7;
     }
+
     40% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
         transform: matrix(1, 0, 0, 1, 0, -1);
         opacity: 1;
     }
+
     70% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
         opacity: 1;
     }
+
     100% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
@@ -345,21 +356,25 @@ ul:not(.page-mode-edit-sections) .wrap-control {
         transform: matrix(.97, 0, 0, 1, 0, 12);
         opacity: 0;
     }
+
     20% {
         -webkit-transform: matrix(.99, 0, 0, 1, 0, 2);
         transform: matrix(.99, 0, 0, 1, 0, 2);
         opacity: .7;
     }
+
     40% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
         transform: matrix(1, 0, 0, 1, 0, -1);
         opacity: 1;
     }
+
     70% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
         opacity: 1;
     }
+
     100% {
         -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
         transform: matrix(1, 0, 0, 1, 0, 0);
@@ -391,8 +406,8 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 .unactive:hover,
 .unactive:focus,
 .unactive {
-    cursor: default!important;
-    color: #444!important;
+    cursor: default !important;
+    color: #444 !important;
 }
 
 
@@ -400,17 +415,17 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 
 .spr-outline-control,
 .spr-oc-show {
-    outline: 1px solid rgba(0, 0, 0, 0.9)!important;
-    outline-offset: -1px!important;
-    cursor: default!important;
+    outline: 1px solid rgba(0, 0, 0, 0.9) !important;
+    outline-offset: -1px !important;
+    cursor: default !important;
 }
 
 .spr-wout {
-    outline: none!important;
+    outline: none !important;
 }
 
 .spr-oc-show {
-    z-index: 1000000!important;
+    z-index: 1000000 !important;
 }
 
 /*.page-mode-edit-sections .spr-oc-show {*/
@@ -431,15 +446,15 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 
 .spr-outline-control.spr-layer {
     position: relative;
-    z-index: 20!important;
+    z-index: 20 !important;
 }
 
 .spr-outline-control.spr-layer .spr-outline-control {
-    z-index: 25!important;
+    z-index: 25 !important;
 }
 
 .spr-outline-control.spr-layer .spr-outline-control .spr-outline-control {
-    z-index: 30!important;
+    z-index: 30 !important;
 }
 
 /**
@@ -741,7 +756,7 @@ i.icon-blr-data-settings {
 }
 
 .supra-preloader .rights p {
-    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-family: 'Vazir', Helvetica, sans-serif;
     font-weight: 400;
     font-size: 13px;
     margin: 0;
@@ -783,7 +798,7 @@ i.icon-blr-data-settings {
 /* ------------------ */
 
 .sp-container {
-    position: fixed!important;
+    position: fixed !important;
 }
 
 #modal-container .nomargintop .radio-inline {
@@ -830,6 +845,7 @@ i.icon-blr-data-settings {
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -840,6 +856,7 @@ i.icon-blr-data-settings {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
@@ -856,12 +873,12 @@ i.icon-blr-data-settings {
     opacity: 1;
 }
 
-.main > ul.loading {
+.main>ul.loading {
     display: none;
     height: 100vh;
 }
 
-.main > ul.loading.blr-active-page {
+.main>ul.loading.blr-active-page {
     display: block;
 }
 
@@ -885,7 +902,7 @@ i.icon-blr-data-settings {
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-family: 'Vazir', Helvetica, sans-serif;
     font-weight: 600;
     font-size: 14px;
     text-align: center;
@@ -906,85 +923,85 @@ i.icon-blr-data-settings {
     -webkit-transition: margin 0.8s 0.8s, opacity 1.6s 1.6s;
 }
 
-.main > ul {
+.main>ul {
     padding: 0;
     margin: 0;
 }
 
-.main > ul.load-page {
+.main>ul.load-page {
     display: block;
     visibility: hidden;
 }
 
-.main > ul > li {
+.main>ul>li {
     display: block;
     padding: 0;
     margin: 0;
     position: relative;
 }
 
-.main > ul > li.section-item.absolute-top,
-.main > ul > li.section-item.fixed-top,
-.main > ul > li.section-item.fixed-bottom,
-.main > ul > li.section-item.sticky-top {
+.main>ul>li.section-item.absolute-top,
+.main>ul>li.section-item.fixed-top,
+.main>ul>li.section-item.fixed-bottom,
+.main>ul>li.section-item.sticky-top {
     position: initial;
 }
 
-.main > ul > li.section-item.absolute-top nav,
-.main > ul > li.section-item.fixed-top nav,
-.main > ul > li.section-item.fixed-bottom nav,
-.main > ul > li.section-item.sticky-top nav {
+.main>ul>li.section-item.absolute-top nav,
+.main>ul>li.section-item.fixed-top nav,
+.main>ul>li.section-item.fixed-bottom nav,
+.main>ul>li.section-item.sticky-top nav {
     position: static;
 }
 
-.main > ul > li.section-item .wrap-control {
+.main>ul>li.section-item .wrap-control {
     cursor: grab;
     cursor: -webkit-grab;
 }
 
-.main > ul > li.section-item .modal ~ .wrap-control {
+.main>ul>li.section-item .modal~.wrap-control {
     cursor: default;
 }
 
-.main > ul > li.section-item .modal:not(.show) ~ .wrap-control {
-    display: none!important;
+.main>ul>li.section-item .modal:not(.show)~.wrap-control {
+    display: none !important;
 }
 
-.main > ul > li.section-item.no-transform > *:nth-child(1) {
+.main>ul>li.section-item.no-transform>*:nth-child(1) {
     -webkit-transform: none;
     transform: none;
 }
 
-.main > ul .buttons-control,
-.main > ul .buttons-control-typography,
-.main > ul .buttons-control-form,
-.main > ul .buttons-control-icons {
+.main>ul .buttons-control,
+.main>ul .buttons-control-typography,
+.main>ul .buttons-control-form,
+.main>ul .buttons-control-icons {
     position: relative;
 }
 
-.main > ul .buttons-control-icons {
+.main>ul .buttons-control-icons {
     line-height: 1;
 }
 
-.main > ul .buttons-control-typography > * {
+.main>ul .buttons-control-typography>* {
     outline: 0px solid transparent;
     outline: none;
     word-wrap: normal;
 }
 
-.main > ul.page-mode-edit-sections li:hover .wrap-control,
-.main > ul.page-mode-edit-sections li:focus .wrap-control {
+.main>ul.page-mode-edit-sections li:hover .wrap-control,
+.main>ul.page-mode-edit-sections li:focus .wrap-control {
     opacity: 1;
 }
 
-.main > ul.page-mode-edit-sections li:hover .nav-start-hide,
-.main > ul.page-mode-edit-sections li:focus .nav-start-hide {
+.main>ul.page-mode-edit-sections li:hover .nav-start-hide,
+.main>ul.page-mode-edit-sections li:focus .nav-start-hide {
     -webkit-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
 }
 
-.main > ul.page-mode-edit-sections li:hover .wrap-control,
-.main > ul.page-mode-edit-sections li:focus .wrap-control {
+.main>ul.page-mode-edit-sections li:hover .wrap-control,
+.main>ul.page-mode-edit-sections li:focus .wrap-control {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -992,7 +1009,7 @@ i.icon-blr-data-settings {
 }
 
 .main .wrap-control-element .arrow,
-.main > ul.edit-typography .buttons-control-typography > .wrap-control-element .arrow {
+.main>ul.edit-typography .buttons-control-typography>.wrap-control-element .arrow {
     display: block;
     position: absolute;
     width: 0;
@@ -1006,13 +1023,13 @@ i.icon-blr-data-settings {
     margin: auto;
 }
 
-.main > ul.edit-elements .buttons-control:hover > .g-map + .wrap-control-element,
-.main > ul.edit-elements .buttons-control:focus > .g-map + .wrap-control-element {
+.main>ul.edit-elements .buttons-control:hover>.g-map+.wrap-control-element,
+.main>ul.edit-elements .buttons-control:focus>.g-map+.wrap-control-element {
     left: -1px;
 }
 
-.main > ul.edit-typography .buttons-control-typography:hover > a,
-.main > ul.edit-typography .buttons-control-typography:focus > a {
+.main>ul.edit-typography .buttons-control-typography:hover>a,
+.main>ul.edit-typography .buttons-control-typography:focus>a {
     cursor: text;
 }
 

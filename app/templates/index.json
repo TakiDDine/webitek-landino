@@ -1,0 +1,104 @@
+{
+    "templates": [
+        {
+            "name": "color games",
+            "cover": "/public/thumbnails/thumbnail-color-games.png",
+            "category": "products"
+        },
+        {
+            "name": "watch",
+            "cover": "/public/thumbnails/thumbnail-watch.png",
+            "category": "products"
+        },
+        {
+            "name": "digikala",
+            "cover": "/public/thumbnails/thumbnail-digikala.png",
+            "category": "products"
+        },
+        {
+            "name": "organic",
+            "cover": "/public/thumbnails/thumbnail-organic.png",
+            "category": "products"
+        },
+        {
+            "name": "hair",
+            "cover": "/public/thumbnails/thumbnail-hair.jpg",
+            "category": "products"
+        },
+        {
+            "name": "hotel",
+            "cover": "/public/thumbnails/thumbnail-hotel.png",
+            "category": "tourism"
+        },
+        {
+            "name": "table",
+            "cover": "/public/thumbnails/thumbnail-table.png",
+            "category": "products"
+        },
+        {
+            "name": "tombola",
+            "cover": "/public/thumbnails/thumbnail-tombola.png",
+            "category": "cosmetic"
+        },
+        {
+            "name": "event",
+            "cover": "/public/thumbnails/thumbnail-event.png",
+            "category": "courses"
+        },
+        {
+            "name": "doctor",
+            "cover": "/public/thumbnails/thumbnail-doctor.png",
+            "category": "cosmetic"
+        },
+        {
+            "name": "course",
+            "cover": "/public/thumbnails/thumbnail-course.png",
+            "category": "courses"
+        },
+        {
+            "name": "sport",
+            "cover": "/public/thumbnails/thumbnail-sport.png",
+            "category": "personal"
+        },
+        {
+            "name": "personal",
+            "cover": "/public/thumbnails/thumbnail-personal.png",
+            "category": "personal"
+        },
+        {
+            "name": "personal2",
+            "cover": "/public/thumbnails/thumbnail-personal2.png",
+            "category": "personal"
+        },
+        {
+            "name": "course2",
+            "cover": "/public/thumbnails/thumbnail-course2.png",
+            "category": "cosmitic"
+        },
+        {
+            "name": "game",
+            "cover": "/public/thumbnails/thumbnail-game.png",
+            "category": "cosmetic"
+        },
+        {
+            "name": "juice",
+            "cover": "/public/thumbnails/thumbnail-juice.png",
+            "category": "products"
+        },
+        {
+            "name": "service1",
+            "cover": "/public/thumbnails/thumbnail-service1.png",
+            "category": "courses"
+        },
+        {
+            "name": "tourism1",
+            "cover": "/public/thumbnails/thumbnail-tourism1.png",
+            "category": "tourism"
+        },
+        {
+            "name": "tourism7",
+            "cover": "/public/thumbnails/thumbnail-tourism7.png",
+            "category": "tourism"
+        }
+    ]
+}

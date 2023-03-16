@@ -1,5 +1,33 @@
 <?php
 
+if (!function_exists('getTemplate')) {
+	function getTemplate($name = '')
+	{
+		$templates = getTemplates();
+
+		foreach ($templates as $template) {
+			if ($template['name'] == $name) {
+				return $template;
+			}
+		}
+
+		return null;
+	}
+}
+
+if (!function_exists('getTemplates')) {
+	function getTemplates()
+	{
+		$path = app_path() . '/templates/index.json';
+
+		if (file_exists($path)) {
+			return json_decode(file_get_contents($path), true)['templates'];
+		}
+
+		return null;
+	}
+}
+
 if ( ! function_exists('_lang')){
 	function _lang($string = ''){
 
