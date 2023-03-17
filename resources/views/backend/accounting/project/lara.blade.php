@@ -88,7 +88,7 @@
         	</div>
         </div>
         
-        <div class="sidebar-dialog-left" id="elementsSidebar" data-collapsed="false"  role="document">
+        <div class="sidebar-dialog-left" id="elementsSidebar" data-collapsed="true"  role="document">
           <div class="sidebar-content">
             <div class="sidebarContainer">
               <div id="sidebar_contentHeader" class="myDiv">
