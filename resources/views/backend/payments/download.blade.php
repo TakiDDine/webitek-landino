@@ -143,7 +143,7 @@
 
     <div class="wrapper">
         <div class="header">
-            <img class="logo" src="https://landino.io/public/front/logo.svg" />
+            <img class="logo" src="{{asset('/front/logo.svg')}}" />
             <h2 class="title">لاندينو</h2>
         </div>
 

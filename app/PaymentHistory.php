@@ -22,4 +22,17 @@ class PaymentHistory extends Model
     {
         return $this->belongsTo('App\Package',"package_id")->withDefault();
     }
+
+    public function getToDate()
+    {
+        if (!$this->created_at) {
+            return null;
+        } else {
+            if ($this->package_type === 'monthly') {
+                return $this->created_at->addMonth()->format('M d, Y');
+            } else {
+                return $this->created_at->addYear()->format('M d, Y');
+            }
+        }
+    }
 }

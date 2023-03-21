@@ -8,7 +8,7 @@ use App\ProjectMember;
 use Validator;
 use DataTables;
 use Auth;
-use DB;
+use DB; 
 use Notification;
 use App\Notifications\ProjectCreated;
 use App\Notifications\ProjectUpdated;
@@ -26,15 +26,15 @@ class BuilderController extends Controller
         date_default_timezone_set(get_company_option('timezone', get_option('timezone','Asia/Dhaka')));
 
         $this->middleware(function ($request, $next) {
-            if( has_membership_system() == 'enabled' ){
-                if( ! has_feature( 'websites_limit' ) ){
-                    if( ! $request->ajax()){
-                        return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
-                    }else{
-                        return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
-                    }
-                }
-            }
+            // if( has_membership_system() == 'enabled' ){
+            //     if( ! has_feature( 'websites_limit' ) ){
+            //         if( ! $request->ajax()){
+            //             return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
+            //         }else{
+            //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
+            //         }
+            //     }
+            // }
 
             return $next($request);
         });
@@ -90,17 +90,71 @@ class BuilderController extends Controller
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;
       }
+    //   dd($request->template);
 
 
       define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-      define('SUPRA_BASE_URL', asset('public/backend/assets/builder'));
+      define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
 
 
       $Viewbuilder = new \App\Utilities\Builder\Html;
 
       $data['groups'] =   $Viewbuilder->groups;
+      if ($request->has('template')) {
+        $template =  $request->template;
+        if (!empty($template)) {
 
 
+            //                dd($template);
+
+            // $project = new Project();
+            // $project->name = "untiteld project";
+            // $project->client_id = "0";
+            // $project->status = 'lara';
+            // $project->user_id = Auth::id();
+            // $project->company_id = company_id();
+            // $project->save();
+
+            // create_log('projects', $project->id, _lang('Created Project'));
+
+
+            // //Store Project Members
+            // if (isset($request->members)) {
+            //     foreach ($request->members as $member) {
+            //         $project_member  = new ProjectMember();
+            //         $project_member->project_id = $project->id;
+            //         $project_member->user_id = $member;
+            //         $project_member->save();
+
+            //         create_log('projects', $project->id, _lang('Assign to') . ' ' . $project_member->user->name);
+            //     }
+            // }
+
+
+            // if ($project->client->user->id != null) {
+            //     Notification::send($project->client->user, new ProjectCreated($project));
+            // }
+            // Notification::send($project->members, new ProjectCreated($project));
+
+            // DB::commit();
+
+            // $projectfile = new \App\ProjectFile();
+            // $projectfile->file = "/var/www/landino.io/public/uploads/project_files/$template.supra";
+            // // dd($projectfile->file);
+            // $projectfile->user_id = Auth::id();
+            // $projectfile->company_id = company_id();
+            // $projectfile->related_to = 'projects';
+            // $projectfile->related_id = $project->id;
+            // $projectfile->save();
+
+            $data['project']        =   null;
+            $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('/uploads/project_files') . '/', public_path()."/uploads/project_files/$template.supra");
+            $data['id']             =   0;
+                // dd($data, public_path(), $data['projectfile']);
+            define('SUPRA', 1);
+            return view('backend.accounting.project.editlara', ['data' => $data, 'id' => $data['id'], 'projectfile' => $data['projectfile'], 'groups' => $data['groups'] , 'project' => $data['project']]);
+        }
+    }
 
       return view('backend.accounting.project.lara', $data);
   }

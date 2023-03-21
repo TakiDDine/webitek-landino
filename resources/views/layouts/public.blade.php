@@ -19,6 +19,7 @@
 
 	<body class="{{ _lang('SYS_DIRECTION_DIR') }}">
         <div class="page-wrapper">
+
             <!-- Page Content-->
             <div class="page-content pt-5">
                 <div class="container">

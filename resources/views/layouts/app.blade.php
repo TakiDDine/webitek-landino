@@ -539,7 +539,6 @@
 <body
     class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed">
 
-
     @php $user = Auth::user(); @endphp
 
 
@@ -645,7 +644,7 @@
                             @if (membership_validity() < date('Y-m-d'))
                                 <div class="alert alert-danger" role="alert">
                                     <b
-                                        class="float-left pt-2">{{ _lang('Please make your membership payment for further process !') }}</b>
+                                        class="float-left pt-2">{{ _lang('Please_make_your_membership_payment') }}</b>
                                     <a href="{{ url('membership/extend') }}"
                                         class="btn btn-primary btn-xs float-right"><b>{{ _lang('Pay Now') }}</b></a>
                                     <div class="clearfix"></div>

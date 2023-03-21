@@ -32,6 +32,27 @@ class WebsiteController extends Controller
 		}
     }
 
+    public function pricing()
+    {
+        return view('theme.default.pricing');
+    }
+
+    public function terms()
+    {
+        return view('website.terms');
+    }
+
+
+    public function privacy_policy()
+    {
+        return view('website.privacy');
+    }
+
+    public function features()
+    {
+        return view('theme.default.features');
+    }
+
     /**
      * Show the website frontpage.
      *

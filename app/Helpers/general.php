@@ -1,4 +1,9 @@
 <?php
+if (!function_exists('generate_affiliate_id')) {
+	function generate_affiliate_id($limit){
+		return strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit));
+	}
+}
 
 if (!function_exists('getTemplate')) {
 	function getTemplate($name = '')
@@ -307,7 +312,7 @@ if ( ! function_exists('get_array_option')){
 }
 
 if ( ! function_exists('get_array_data')){
-	function get_array_data($data, $key = '') 
+	function get_array_data($data, $key = '')  
 	{
        if($key == ''){
 			if(session('language') == ''){
@@ -1286,7 +1291,7 @@ if (!function_exists('setMailConfig')) {
         $MAIL_ENCRYPTION = get_option('smtp_encryption');
         $MAIL_FROM_ADDRESS = get_option('from_email');
         $MAIL_FROM_NAME = get_option('from_name');
-
+		
         //Set the data in an array variable from settings table
         $mailConfig = [
             'driver'     => 'smtp',

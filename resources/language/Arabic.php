@@ -1251,3 +1251,6 @@ $language['Reply ticket'] = 'الإجابة على التذكرة';
 $language['Enter your comment here'] = 'ضع تعليقك هنا';
 $language['Reopen'] = 'إعادة الفتح';
 $language['Delete account'] = 'حذف الحساب';
+$language['Please_make_your_membership_payment'] = '!يرجى دفع اشتراكك لمتابعة العملية';
+$language['Pay Now'] = 'ادفع الآن';
+$language['System Update'] = 'تحديث النظام';

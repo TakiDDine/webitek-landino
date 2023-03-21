@@ -262,6 +262,15 @@
 	</div>
 </li>
 
+<li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('tickets')) kt-menu__item--open kt-menu__item--here @endif">
+    <a href="{{ url('tickets') }}" class="kt-menu__link">
+        <span class="kt-menu__link-icon">
+            <img src="/public/icons/support.svg" alt="">
+        </span>
+        <span class="kt-menu__link-text">{{ _lang('Support') }}</span>
+    </a>
+</li>
+
 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if(Request::is('administration/general_settings') || Request::is('email_templates') || Request::is('administration/currency_rates') || Request::is('administration/backup_database')) kt-menu__item--open @endif" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
 	<a href="{{ url('system-update') }}" class="kt-menu__link kt-menu__toggle">
 		<span class="kt-menu__link-icon">

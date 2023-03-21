@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\User;
+use App\Policies\TicketPolicy;
 use Illuminate\Support\Facades\Gate;
+use RexlManu\LaravelTickets\Models\Ticket;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        // Ticket::class => TicketPolicy::class,
     ];
 
     /**
@@ -25,6 +28,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::before(function(User $user, $ability) {
+            if ($ability == 'can:tickets.all') {
+                return $user->user_type == 'admin';
+            } else {
+                return true;
+            }
+        });
     }
 }

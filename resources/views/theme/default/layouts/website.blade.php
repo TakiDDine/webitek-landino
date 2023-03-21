@@ -503,9 +503,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="/public/assets/js/script.js?v1.3.5"></script>
+    <script src="{{asset('assets/js/script.js?v1.3.5')}}"></script>
 
-    <script src="/public/build/js/intlTelInput-jquery.min.js"></script>
+    <script src="{{asset('build/js/intlTelInput-jquery.min.js')}}"></script>
     @yield('js')
 </body>
 

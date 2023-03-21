@@ -200,11 +200,11 @@
 											<td>{{ $task->end_date  }}</td>
 											<td class="text-center">
 												<form action="{{ action('TaskController@destroy', $task['id']) }}" class="text-center" method="post">
-													<a href="{{ action('TaskController@show', $task['id']) }}" data-title="{{ $task->title }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i> Show</a>
-													<a href="{{ action('TaskController@edit', $task['id']) }}" data-title="{{ _lang('Update Task') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i> Edit</a>
+													<a href="{{ action('TaskController@show', $task['id']) }}" data-title="{{ $task->title }}" class="btn btn-primary btn-xs ajax-modal"><i class="ti-eye"></i></a>
+													<a href="{{ action('TaskController@edit', $task['id']) }}" data-title="{{ _lang('Update Task') }}" class="btn btn-warning btn-xs ajax-modal"><i class="ti-pencil"></i></a>
 													{{ csrf_field() }}
 													<input name="_method" type="hidden" value="DELETE">
-													<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> Delete</button>
+													<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i></button>
 												</form>
 											</td>
 										</tr>

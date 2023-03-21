@@ -15,60 +15,61 @@ use Validator;
 use DB;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB as FacadesDB;
+use CMI\CmiClient;
+use App\Connect2Pay\Connect2PayClient;
 
 class PaymentController extends Controller
 {
-	
+
 	public function __construct()
-    {	
-		date_default_timezone_set(get_option('timezone','Asia/Dhaka'));	
-    }
-   
-    public function payment_history()
-    {	
-		$payment_history = \App\PaymentHistory::where("status","pending")
-											  ->where('created_at', '<=', Carbon::now()->subHours(2)->toDateTimeString());
-		$payment_history->delete();
-		
-		$payment_history = \App\PaymentHistory::where("status","paid")
-											  ->orderBy('id','desc')
-											  ->paginate(15);
-		return view('backend.user.payments',compact('payment_history'));
-    }
+	{
+		date_default_timezone_set(get_option('timezone', 'Asia/Dhaka'));
+	}
 
 	public function index()
 	{
-		$payments = PaymentHistory::where('user_id', Auth::user()->id)->paginate();
+		$payments = PaymentHistory::where('user_id', auth()->user()->id)->paginate();
 		return view('backend.payments.index', compact('payments'));
 	}
 
-    public function create_offline_payment(){
-       return view('backend.offline_payment.create');
-    }
+	public function payment_history()
+	{
+		$payment_history = \App\PaymentHistory::with('user')->latest()->paginate();
+		return view('backend.user.payments', compact('payment_history'));
+	}
 
-    public function store_offline_payment(Request $request){
+	public function create_offline_payment()
+	{
+		return view('backend.offline_payment.create');
+	}
 
-    	$validator = Validator::make($request->all(), [
+
+	// TODO: CHECK THIS FOR ONOINE PAYMENT
+	public function store_offline_payment(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
 			'package' => 'required',
 			'package_type' => 'required',
 			'user' => 'required',
 		]);
-		
+
 		if ($validator->fails()) {
-			return back()->withErrors($validator)->withInput();				
+			return back()->withErrors($validator)->withInput();
 		}
 
 		DB::beginTransaction();
-		
 
 		$package = Package::find($request->package);
 		$user = User::find($request->user);
 		$company = Company::find($user->company_id);
 
-		if($request->package_type == 'monthly'){
+		$package_type = $request->package_type;
+
+		if ($package_type == 'monthly') {
 			$company->valid_to = date('Y-m-d', strtotime('+1 months'));
 			$company->package_type = 'monthly';
-		}else{
+		} else {
 			$company->valid_to = date('Y-m-d', strtotime('+1 year'));
 			$company->package_type = 'yearly';
 		}
@@ -76,11 +77,11 @@ class PaymentController extends Controller
 		$company->membership_type = 'member';
 		$company->last_email = NULL;
 
-		 //Update Package Details
-        $company->package_id = $package->id;
-        $company->websites_limit = unserialize($package->websites_limit)[$company->package_type];
+		//Update Package Details
+		$company->package_id = $package->id;
+		$company->websites_limit = unserialize($package->websites_limit)[$company->package_type];
 		$company->recurring_transaction = unserialize($package->recurring_transaction)[$company->package_type];
-        $company->online_payment = unserialize($package->online_payment)[$company->package_type];
+		$company->online_payment = unserialize($package->online_payment)[$company->package_type];
 
 		$company->save();
 
@@ -89,15 +90,15 @@ class PaymentController extends Controller
 		$payment->company_id = $company->id;
 		$payment->title = "Buy {$package->package_name} Package";
 		$payment->method = "Offline";
-		$payment->currency = get_option('currency','USD');
-		
-		if($request->package_type == 'monthly'){
-		    $payment->amount = $package->cost_per_month;
-		}else{
-		    $payment->amount = $package->cost_per_year;
+		$payment->currency = get_option('currency', 'USD');
+
+		if ($package_type == 'monthly') {
+			$payment->amount = $package->cost_per_month;
+		} else {
+			$payment->amount = $package->cost_per_year;
 		}
 		$payment->package_id = $package->id;
-		$payment->package_type = $request->package_type;
+		$payment->package_type = $package_type;
 		$payment->status = 'paid';
 		$payment->save();
 
@@ -109,25 +110,154 @@ class PaymentController extends Controller
 			'{email}' => $user->email,
 			'{valid_to}' => date('d M,Y', strtotime($company->valid_to)),
 		);
-		
+
 		//Send email Confrimation
 		Overrider::load("Settings");
-		$template = EmailTemplate::where('name','premium_membership')->first();
+		$template = EmailTemplate::where('name', 'premium_membership')->first();
 		$template->body = process_string($replace, $template->body);
 
-		try{
+		try {
 			Mail::to($user->email)->send(new PremiumMembershipMail($template));
-		}catch (\Exception $e) {
+		} catch (\Exception $e) {
 			//Nothing
 		}
 
-        if($payment->id >0){
+		if ($payment->id > 0) {
 			return back()->with('success', _lang('Offline Payment Made Sucessfully'));
-		}else{
+		} else {
 			return back()->with('error', _lang('Error Occured, Please try again !'));
 		}
-    	
-    }
+	}
+
+	public function accept(int $id)
+	{
+		$payment = PaymentHistory::with('user')->findOrFail($id);
+		$user = $payment->user;
+
+		if (!$user->referal && $affId = $user->affiliate_user_id) {
+			$affiliateUser = User::findOrFail($affId);
+			$id = $affiliateUser->id;
+			FacadesDB::update("UPDATE affiliates SET referrals = referrals + 1 WHERE user_id = $id");
+		}
+
+		$company = Company::findOrFail($user->company_id);
+		$package = Package::findOrFail($company->package_id);
+
+		$company->membership_type = 'member';
+		$company->last_email = NULL;
+		$company->websites_limit = unserialize($package->websites_limit)[$company->package_type];
+		$company->recurring_transaction = unserialize($package->recurring_transaction)[$company->package_type];
+		$company->online_payment = unserialize($package->online_payment)[$company->package_type];
+		$company->save();
+
+		$payment->update([
+			'is_accepted' => true,
+			'accepted_at' => now(),
+			'status' => 'accepted',
+		]);
+
+		return redirect('members/payment_history')->with('success', _lang('The payment was accepted with success'));
+	}
+
+	public function deletePayment(int $id)
+	{
+		PaymentHistory::with('user')->where(['method' => 'cih', 'id' => $id])->firstOrFail()->delete();
+		\Session::flash('success', _lang('The payment was deleted with success'));
+		return redirect('members/payment_history');
+	}
+
+	public function download(PaymentHistory $payment)
+	{
+		if (!$payment->getToDate() || $payment->user_id !== auth()->user()->id) {
+			return redirect()->back();
+		}
+
+		return view('backend.payments.download', compact('payment'));
+	}
+
+	public function failedCmi(Request $request)
+	{
+		$request->session()->forget('merchantToken');
+		return redirect('/dashboard')->with('error', _lang('Payment error '));
+	}
+
+	public function successCmi(Request $request)
+	{
+		if ($request->session()->has('merchantToken')) {
+			$request->session()->forget('merchantToken');
+
+			DB::beginTransaction();
+
+			$package = Package::find(1);
+			$user = auth()->user();
+			$company = Company::find($user->company_id);
+			$package_type = "monthly";
+			if ($package_type == 'monthly') {
+				$company->valid_to = date('Y-m-d', strtotime('+1 months'));
+				$company->package_type = 'monthly';
+			} else {
+				$company->valid_to = date('Y-m-d', strtotime('+1 year'));
+				$company->package_type = 'yearly';
+			}
+
+			$company->membership_type = 'member';
+			$company->last_email = NULL;
+
+			//Update Package Details
+			$company->package_id = $package->id;
+			$company->websites_limit = unserialize($package->websites_limit)[$company->package_type];
+			$company->recurring_transaction = unserialize($package->recurring_transaction)[$company->package_type];
+			$company->online_payment = unserialize($package->online_payment)[$company->package_type];
+
+			$company->save();
+
+			//Create Payment History
+			$payment = new PaymentHistory();
+			$payment->company_id = $company->id;
+			$payment->title = "Buy {$package->package_name} Package";
+			$payment->method = "CMI";
+			$payment->currency = get_option('currency', 'USD');
+			$payment->user_id = $user->id;
+
+			if ($package_type == 'monthly') {
+				$payment->amount = $package->cost_per_month;
+			} else {
+				$payment->amount = $package->cost_per_year;
+			}
+			$payment->package_id = $package->id;
+			$payment->package_type = $package_type;
+			$payment->status = 'paid';
+			$payment->save();
+
+			DB::commit();
+
+			//Replace paremeter
+			$replace = array(
+				'{name}' => $user->name,
+				'{email}' => $user->email,
+				'{valid_to}' => date('d M,Y', strtotime($company->valid_to)),
+			);
+
+			//Send email Confrimation
+			Overrider::load("Settings");
+			$template = EmailTemplate::where('name', 'premium_membership')->first();
+			$template->body = process_string($replace, $template->body);
+
+			// try {
+			// 	Mail::to($user->email)->send(new PremiumMembershipMail($template));
+			// } catch (\Exception $e) {
+			// 	//Nothing
+			// }
+
+			if ($payment->id > 0) {
+				return redirect('/dashboard')->with('success', _lang('شكراً لك ، لقد تم تفعيل حسابك بنجاح'));
+			} else {
+				return back()->with('error', _lang('Error Occured, Please try again !'));
+			}
+		}
+
+		return redirect('/dashboard');
+	}
 
 	public function cmi(Request $request)
 	{
@@ -137,9 +267,9 @@ class PaymentController extends Controller
 			$payment->title = $package->package_name;
 			$payment->method = 'CMI';
 			$payment->amount = 24;
-
+			
 			$download = false;
-
+			
 			return view('backend.payments.download', compact('payment', 'download'));
 		} else {
 			ini_set('display_errors', 1);
@@ -158,15 +288,16 @@ class PaymentController extends Controller
 			$failure_url              = url(route('cmi.failed'));
 
 
-			// dd($configCMI);
 
 			$user = auth()->user();
+			// dd($user);
 			# payment  info
 			$order_id                 = uniqid();
 			$client_id                =  $user->id;
 			$client_first_name        = $user->name;
 			$client_last_name         = '';
-			$client_phone_number      = $user->phone;
+			// $client_phone_number      = $user->phone;
+			$client_phone_number      = '0658457789';
 			$client_email             = $user->email;
 			$country_code             = $configCMI['country_code'];
 			$currency                 = $configCMI['currency'];
@@ -199,8 +330,9 @@ class PaymentController extends Controller
 			$c2pClient->setCtrlRedirectURL($success_url);
 			// URL on the merchant site that will receive the callback notification
 			$c2pClient->setCtrlCallbackURL($failure_url);
-
+			
 			if ($c2pClient->validate()) {
+				// dd($c2pClient);
 				if ($c2pClient->preparePayment()) {
 					// The customer token info returned by the payment page could be saved in session (may
 					// be used later when the customer will be redirected from the payment page)
@@ -220,5 +352,4 @@ class PaymentController extends Controller
 			}
 		}
 	}
-	
 }

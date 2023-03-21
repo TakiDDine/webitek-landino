@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TicketController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,14 @@ Route::group(['middleware' => ['install']], function () {
 	Route::get('site/contactus', 'WebsiteController@contactus');
 	Route::get('site/{page}', 'WebsiteController@site');
 	Route::post('contact/send_message', 'WebsiteController@send_message');
+
+	Route::get('/pricing', 'WebsiteController@pricing')->name('pricing');
+	Route::get('/features', 'WebsiteController@features');
+
+
+	Route::get('/email/verify', function () {
+		return view('auth.verify-email');
+	})->middleware('auth')->name('verification.notice');
 
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
@@ -39,6 +49,18 @@ Route::group(['middleware' => ['install']], function () {
 
 		Route::get('/affiliate', 'AffiliateController@index')->name('affiliate.index');
 
+		// Tickets
+		// Route::get('tickets/create', "TicketController@create");
+		// Route::get('tickets/{status?}', "TicketController@index");
+		// Route::get('tickets/show/{ticket}', "TicketController@show");
+		// Route::get('tickets/{ticket}/update', "TicketController@changestatus");
+		// Route::post('tickets/store', "TicketController@store");
+		// Route::put('tickets/{ticket}', "TicketController@update");
+		// Route::delete('tickets/{ticket}', "TicketController@delete");
+		// Route::post('tickets/comments/store/{ticket}', "TicketController@reply");
+
+		// Ticket 
+		Route::tickets( TicketController::class );
 
 		//Profile Controller
 		Route::get('profile/edit', 'ProfileController@edit');
@@ -89,7 +111,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('members/payment_history','PaymentController@payment_history');
 
 			//Feature Controller
-			Route::resource('features','FeatureController');
+			// Route::resource('features','FeatureController');
 
 			//FAQ Controller
 			Route::resource('faqs','FaqController');
@@ -137,10 +159,11 @@ Route::group(['middleware' => ['install']], function () {
 
 			//Builder
 			Route::resource('project/builder','BuilderController');
-			Route::get('updateproject/builder/{id}','BuilderController@index');
+			Route::get('updateproject/builder/{id}','BuilderController@index'); 
 			Route::get('project/larabuilder','BuilderController@larabuilder');
 			Route::get('builder/novi','BuilderController@novi');
 			Route::get('builder/lara','BuilderController@lara');
+			Route::get('/editor', 'BuilderController@lara');
 			Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
 			Route::get('test/backend/assets/builder','BuilderController@empty');
 
@@ -158,8 +181,8 @@ Route::group(['middleware' => ['install']], function () {
 
 			//File Manager Controller
 			Route::get('file_manager/directory/{parent_id}','FileManagerController@index')->name('file_manager.index');
-			Route::get('file_manager/create_folder/{parent_id?}','FileManagerController@create_folder')->name('file_manager.create_folder');
 			Route::post('file_manager/store_folder','FileManagerController@store_folder')->name('file_manager.create_folder');
+			Route::get('file_manager/create_folder/{parent_id?}','FileManagerController@create_folder')->name('file_manager.create_folder');
 			Route::get('file_manager/edit_folder/{id}','FileManagerController@edit_folder')->name('file_manager.edit_folder');
 			Route::patch('file_manager/update_folder/{id}','FileManagerController@update_folder')->name('file_manager.edit_folder');
 			Route::get('file_manager/create/{parent_id?}','FileManagerController@create')->name('file_manager.create');
@@ -200,7 +223,7 @@ Route::group(['middleware' => ['install']], function () {
 	Route::get('convert_currency/{from}/{to}/{amount}','AccountController@convert_currency');
 
 	//Get Client Info
-	Route::get('contacts/get_client_info/{id}','ContactController@get_client_info');
+	// Route::get('contacts/get_client_info/{id}','ContactController@get_client_info');
 
 	//Get Client Info
 	Route::get('projects/get_project_info/{id}','ProjectController@get_project_info');
@@ -264,3 +287,4 @@ Route::get('console/run','CronJobsController@run');
 // Affiliate
 Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
 Route::post('/s/{affiliate_id}', 'Auth\RegisterController@register');
+

@@ -86,7 +86,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 		Laravel\Socialite\SocialiteServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
 		Barryvdh\DomPDF\ServiceProvider::class,
@@ -243,5 +244,16 @@ return [
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'Cpanel' => ZanySoft\Cpanel\Facades\Cpanel::class,
     ],
+
+
+    'cmi' => [
+        'originator' => '108647',
+        'password' => 'G2O@E7p91kj2rU7j',
+        'url' => 'https://paiement.payzone.ma',
+        'currency' => 'MAD',
+        'country_code' => 'MA',
+        'amount' => 250,
+        'description' => 'landino subscription for one month'
+    ]
 
 ];
