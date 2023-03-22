@@ -25,186 +25,209 @@
     <link rel="stylesheet" href="./../builder/css/fonts.css" />
     <link rel="stylesheet" href="./../builder/css/main.css" />
     <link rel="stylesheet" href="./../builder/css/preloader.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css"
-        integrity="sha512-NtU/Act0MEcVPyqC153eyoq9L+UHkd0s22FjIaKByyA6KtZPrkm/O5c5xzaia4pyCfReCS634HyQ7tJwKNxC/g=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="first-show">
     <script src="./../builder/js/lib/jquery-2.1.4.min.js"></script>
     <style id="builder-style"></style>
-    <div class="supra-preloader">
-        <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
-            alt="{{ _lang('Project Creator') }}" />
-        <div class="progress-bar-s">
-            <div class="progress">
-                <div class="load"></div>
+    <div id="main_body" style="display: none;">
+        <div class="supra-preloader">
+            <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
+                alt="{{ _lang('Project Creator') }}" />
+            <div class="progress-bar-s">
+                <div class="progress">
+                    <div class="load"></div>
+                </div>
+            </div>
+            <div class="rights">
+                <p>&copy; {{ date('Y') . ' ' . get_option('company_name') }}</p>
             </div>
         </div>
-        <div class="rights">
-            <p>&copy; {{ date('Y') . ' ' . get_option('company_name') }}</p>
+        <aside class="left supra black"></aside>
+        <aside class="control-panel supra black">
+            <div class="title d-flex justify-content-between align-items-center">
+                <h3>{{ _lang('Sections') }}</h3>
+                <i class="supra bookmark"></i>
+            </div>
+            <ul class="sections">
+                @foreach ($groups as $key => $node)
+                    <li data-group="{{ $key }}">{{ $node['name'] }}</li>
+                @endforeach
+            </ul>
+        </aside>
+        <div id="modal-thumb" class="supra">
+            <div class="title">{{ _lang('Page modals') }}</div>
+            <div class="container-thumb"></div>
         </div>
-    </div>
-    <aside class="left supra black"></aside>
-    <aside class="control-panel supra black">
-        <div class="title d-flex justify-content-between align-items-center">
-            <h3>{{ _lang('Sections') }}</h3>
-            <i class="supra bookmark"></i>
-        </div>
-        <ul class="sections">
-            @foreach ($groups as $key => $node)
-                <li data-group="{{ $key }}">{{ $node['name'] }}</li>
-            @endforeach
-        </ul>
-    </aside>
-    <div id="modal-thumb" class="supra">
-        <div class="title">{{ _lang('Page modals') }}</div>
-        <div class="container-thumb"></div>
-    </div>
 
 
-    <div class="wrap-iframe d-flex flex-column justify-content-center align">
-        <div class="iframeHeader">
-            <div>
-                <ul id="sidebarTriggerers">
-                    <li id="sections-sidebar__Triggerer">
-                        <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
-                            data-toggle="modal" data-target="#elementsSidebar" data-collapsed="true"><i
-                                class="fa fa-plus-circle"></i></button>
-                    </li>
-                    <li id="edit-section__Triggerer">
-                    </li>
-                    <li id="global-styles__Triggerer">
-                    </li>
-                </ul>
+        <div class="wrap-iframe d-flex flex-column justify-content-center align">
+            <div class="iframeHeader">
+                <div class="iframeHeader__left">
+                    <ul id="sidebarTriggerers">
+                        <li id="sections-sidebar__Triggerer">
+                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
+                                data-toggle="modal" data-target="#elementsSidebar" data-collapsed="true"><i
+                                    class="fa fa-plus-circle"></i></button>
+                        </li>
+                        <li id="edit-section__Triggerer">
+                        </li>
+                        <li id="global-styles__Triggerer">
+                        </li>
+                    </ul>
+                </div>
+                <div class="iframeHeader__right">
+                    <div id="backToDashboard"></div>
+                    <div id="previewTemplate">
+                    </div>
+                    <div id="allExportsBtn">
+
+                    </div>
+
+                </div>
             </div>
-        </div>
-        {{-- <div class="modes-wraper">
-            <div id="iframeViewPort">
-                <ul id="iframeViewPort__list-container"></ul>
-            </div>
-            <div id="iframeUndoRedo">
-                <ul id="iframeUndoRedo__list-container"></ul>
-            </div>
-        </div> --}}
-        <div class="wrap viewing-desctop">
-            <div class="modes-wraper">
+            {{-- <div class="modes-wraper">
                 <div id="iframeViewPort">
                     <ul id="iframeViewPort__list-container"></ul>
                 </div>
                 <div id="iframeUndoRedo">
                     <ul id="iframeUndoRedo__list-container"></ul>
                 </div>
-            </div>
-            <label>
-                <div>
-                    <span class="width" contenteditable="true"></span> x <span class="height"
-                        contenteditable="true"></span>
-                    <i class="rotate icon-blr-lg-mobile"></i>
-                </div>
-            </label>
-            <iframe id="main" src="{{ url('project/larabuilder') }}"></iframe>
-        </div>
-    </div>
+            </div> --}}
+            <div class="wrap viewing-desctop">
+                <div class="modes-wraper">
+                    <div id="iframeViewPort">
+                        <ul id="iframeViewPort__list-container"></ul>
+                    </div>
+                    <div id="iframePageControl">
+                        <a class="iframePageControl__pages-titles" data-toggle="dropdown">
+                            <span id="pages_name" class="iframePageControl__pagesName">index.html</span>
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu" id="dropdown-menu-drop"></div>
+                    </div>
 
-    <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+                    <div id="iframeUndoRedo">
+                        <ul id="iframeUndoRedo__list-container"></ul>
+                    </div>
+                </div>
+                <label>
+                    <div>
+                        <span class="width" contenteditable="true"></span> x <span class="height"
+                            contenteditable="true"></span>
+                        <i class="rotate icon-blr-lg-mobile"></i>
+                    </div>
+                </label>
+                <iframe id="main" src="{{ url('project/larabuilder') }}"></iframe>
+            </div>
+        </div>
+
+        <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="sidebarContainer">
+                        <div id="sidebar_contentHeader" class="myDiv">
+                            <div class="sidebar-header">
+                                {{-- <a class="sidebar-title">Landino</a> --}}
+                                <h6>UI LIBRARY</h6>
+                            </div>
+                            <div id="sidebarContent__headerList">
+
+                                <ul id="uiContainer"></ul>
+                            </div>
+                        </div>
+                        <div id="sidebar_contentList" class="sidebar-body myDiv">
+                            <div class="sidebar__elements-header">
+                                <h3 id="sidebarTitle__list-title"></h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="sidebar-body__content" id="sidebarContent__contentList">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="sidebar-dialog-left" id="elementsSidebar" data-collapsed="true" role="document">
+            <div class="sidebar-content">
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader" class="myDiv">
                         <div class="sidebar-header">
-                            {{-- <a class="sidebar-title">Landino</a> --}}
-                            <h6>UI LIBRARY</h6>
+                            <a class="sidebar-title">Landino</a>
                         </div>
                         <div id="sidebarContent__headerList">
-
+                            <h6>UI LIBRARY</h6>
                             <ul id="uiContainer"></ul>
                         </div>
                     </div>
                     <div id="sidebar_contentList" class="sidebar-body myDiv">
-                        <div class="sidebar__elements-header">
-                            <h3 id="sidebarTitle__list-title"></h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            </button>
-                        </div>
                         <div class="sidebar-body__content" id="sidebarContent__contentList">
-
+                            <h3 id="sidebarTitle__list-title"></h3>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    {{-- <div class="sidebar-dialog-left" id="elementsSidebar" data-collapsed="true" role="document">
-        <div class="sidebar-content">
-            <div class="sidebarContainer">
-                <div id="sidebar_contentHeader" class="myDiv">
-                    <div class="sidebar-header">
-                        <a class="sidebar-title">Landino</a>
-                    </div>
-                    <div id="sidebarContent__headerList">
-                        <h6>UI LIBRARY</h6>
-                        <ul id="uiContainer"></ul>
-                    </div>
-                </div>
-                <div id="sidebar_contentList" class="sidebar-body myDiv">
-                    <div class="sidebar-body__content" id="sidebarContent__contentList">
-                        <h3 id="sidebarTitle__list-title"></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+        </div> --}}
 
 
-    <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false" role="document">
-        <div class="sidebar-content">
-            <div class="sidebarContainer">
-                <div id="sidebar_contentHeader-right" class="myDiv">
-                    <div class="global-style__container">
-                        <div class="sidebar-header">
-                            <h2 class="sidebar-title">Global Styles</h2>
-                        </div>
-                        <div id="sidebarRight__Content">
-                            <div class="sidebarRight__btns"></div>
-                            <ul id="gStyle__list-container"></ul>
-                        </div>
-                    </div>
-                    <div class="project-page__container">
-                        <div class="sidebar-header">
-                            <a class="sidebar-title"></a>
-                        </div>
-                        <div id="sidebarRight__project-page__content">
-                            <div>
-                                <ul id="project-page__list-container"></ul>
+        <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false" role="document">
+            <div class="sidebar-content">
+                <div class="sidebarContainer">
+                    <div id="sidebar_contentHeader-right" class="myDiv">
+                        <div class="global-style__container">
+                            <div class="sidebar-header">
+                                <h2 class="sidebar-title">Global Styles</h2>
                             </div>
-                            <div class="project-page__btns"></div>
+                            <div id="sidebarRight__Content">
+                                <div class="sidebarRight__btns"></div>
+                                <ul id="gStyle__list-container"></ul>
+                            </div>
+                        </div>
+                        <div class="project-page__container">
+                            <div class="sidebar-header">
+                                <a class="sidebar-title"></a>
+                            </div>
+                            <div id="sidebarRight__project-page__content">
+                                <div>
+                                    <ul id="project-page__list-container"></ul>
+                                </div>
+                                <div class="project-page__btns"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="containers-results" class="sidebar-body myDiv">
-                    <div>
-                        <button class="close-btn"><i class="fa fa-times"></i></button>
-                        <div class="containers-results__control">
-                            <h3 id="containers-results__control-title"></h3>
-                            <div id="containers-results__control-viewport"></div>
+                    <div id="containers-results" class="sidebar-body myDiv">
+                        <div class="containers-results__header">
+                            <button class="close-btn"></button>
+                            <div class="containers-results__control">
+                                <h6 id="containers-results__control-title"></h6>
+                                <div id="containers-results__control-viewport"></div>
+                            </div>
                         </div>
+                        <div id="containers-results__content"></div>
                     </div>
-                    <div id="containers-results__content"></div>
                 </div>
             </div>
         </div>
+
+        <div id="modal-container" class="supra"></div>
+        <div id="modal-project-container" class="supra"></div>
+        <div id="modal-form-container" class="supra font-style-supra"></div>
+        <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::user()->id }}</div>
+        <div id="project_id" class="project_id" style="display: none">0</div>
+        <div id="makeSureAlert" title="Basic dialog">
+            <p>This is the default dialog which is useful for displaying information. The dialog window can be moved,
+                resized and closed with the 'x' icon.</p>
+            <button>ok</button>
+        </div>
     </div>
-
-    <div id="modal-container" class="supra"></div>
-    <div id="modal-project-container" class="supra"></div>
-    <div id="modal-form-container" class="supra font-style-supra"></div>
-    <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-    <div id="userId" class="userId" style="display: none">{{ Auth::user()->id }}</div>
-    <div id="project_id" class="project_id" style="display: none">0</div>
-
 
     <script>
         localStorage.clear();
@@ -246,6 +269,50 @@
     <script src="./../builder/js/download.js"></script>
     <script src="./../builder/js/builder.min.js"></script>
 
+    <script type="text/javascript">
+        document.getElementById("main_body").style.display = "block!important";
+    </script>
+    <noscript>
+        <style>
+            .js_enabled_builder {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+                margin: auto;
+                height: 100%;
+                width: 50%;
+                gap: 1em;
+            }
+
+            .js_enabled_builder h2 {
+                text-align: center;
+                font-size: 3rem;
+                font-weight: 900;
+                line-height: 1.7;
+                color: #ff494b;
+            }
+
+            .js_enabled_builder h3 {
+                text-align: center;
+                font-weight: 600;
+                line-height: 1.7;
+                color: black;
+                margin-bottom: 2rem;
+            }
+        </style>
+        <section class="js_enabled_builder">
+            <h2> An Error occurred </h2>
+            <h3>
+                To Load this page properly, we invite you to
+                enable JavaScript in your browser and reload the page.
+            </h3>
+
+            <img src="https://i.postimg.cc/W12vXvCT/Capture-d-e-cran-2023-03-22-a-11-35-20.png" alt="js_popUp" />
+        </section>
+
+    </noscript>
 </body>
 
 </html>
