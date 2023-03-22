@@ -599,11 +599,11 @@
                     <div class="kt-aside__brand-tools">
 
 
-                        <div class="landino-llogo">
+                        <a href="/dashboard" class="landino-llogo">
                             <img src="/public/front/logo.svg" alt="">
                             <span> لندينو </span>
 
-                        </div>
+                        </a>
 
                     </div>
                 </div>

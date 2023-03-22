@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use DB;
+use Auth;
+use Hash;
+use Image;
 use App\User;
 use App\Contact;
-use Hash;
-use Auth;
-use Image;
-use DB;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
 	public function __construct()
     {	
 		$this->middleware(function ($request, $next) {
-			if(has_membership_system() == 'enabled' && Auth::user()->user_type == "user"){
-				if( membership_validity() < date('Y-m-d')){
-					return redirect('membership/extend')->with('message',_lang('Your membership has expired. Please renew your membership !'));
-				}
-			}
+			// if(has_membership_system() == 'enabled' && Auth::user()->user_type == "user"){
+			// 	if( membership_validity() < date('Y-m-d')){
+			// 		return redirect('membership/extend')->with('message',_lang('Your membership has expired. Please renew your membership !'));
+			// 	}
+			// }
 
 			return $next($request);
 		});
@@ -44,21 +45,28 @@ class ProfileController extends Controller
             }
         }
 
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => [
                 'required',
-                Rule::unique('users')->ignore(Auth::User()->id),
+                Rule::unique('users')->ignore(Auth::User()->id),'email'
             ],
             'profile_picture' => 'nullable|image|max:5120',
+            'phone' => 'required|string'
         ]);
-       
+
+        // Validation
+       if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+       }
+       //Update profile
         DB::beginTransaction();
 
         $profile = Auth::user();
         $profile->name = $request->name;
         $profile->email = $request->email;
         $profile->language = $request->language;
+        $profile->phone = $request->phone;
         
 		if ($request->hasFile('profile_picture')){
             $image = $request->file('profile_picture');
@@ -111,19 +119,40 @@ class ProfileController extends Controller
             }
         }
 
-        $this->validate($request, [
-            'oldpassword' => 'required',
+        // Validation 
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|current_password:web',
             'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|string|min:6',
         ]);
 
+        // Redirect back with errors 
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        //Update pasword 
         $user = User::find(Auth::User()->id);
-        if(Hash::check($request->oldpassword, $user->password)){
+        if(Hash::check($request->current_password, $user->password)){
             $user->password = Hash::make($request->password);
             $user->save();
         }else{
             return back()->with('error', _lang('Old Password did not match !'));
         }
         return back()->with('success', _lang('Password has been changed'));
+    }
+
+    /**
+     * Delete User
+     *
+     * @return void
+     */
+    public function delete_account()
+    {
+        $user = auth()->user();
+        Auth::logout();
+        $user->delete();
+        return redirect('/');
     }
 
 }

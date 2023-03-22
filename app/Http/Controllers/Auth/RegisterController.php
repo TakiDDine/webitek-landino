@@ -408,8 +408,7 @@ class RegisterController extends Controller
 
         event(new Registered($user));
         
-        $user->sendEmailVerificationNotification();
-        dd($user);
+        // $user->sendEmailVerificationNotification();
 
         $this->guard()->login($user);
 

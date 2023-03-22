@@ -67,6 +67,8 @@ Route::group(['middleware' => ['install']], function () {
 		Route::post('profile/update', 'ProfileController@update');
 		Route::get('profile/change_password', 'ProfileController@change_password');
 		Route::post('profile/update_password', 'ProfileController@update_password');
+		Route::delete('profile/delete', 'ProfileController@delete_account');
+
 
 		//Membertship Controller
 		Route::get('membership/my_subscription', 'MembershipController@my_subscription');  //View Subscription Details

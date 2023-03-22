@@ -116,6 +116,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'current_password' => 'كلمة السر الحالية غير متطابق',
 
     /*
     |--------------------------------------------------------------------------
@@ -148,6 +149,8 @@ return [
     'attributes' => [
         'email' => "البريد الالكتروني",
         'password' => "كلمة المرور",
+        'password_confirmation' => "كلمة المرور الجديدة",
+        'oldpassword' => "كلمة المرور القديمة",
         'name' => "الإسم",
         'phone' => "رقم الهاتف",
         'subject' => 'الموضوع', 
