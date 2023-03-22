@@ -18,6 +18,7 @@ class CreateEmailTemplatesTable extends Migration
             $table->string('name');
             $table->text('subject');
             $table->longText('body');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -29,6 +29,7 @@ class CreateRepeatingTransactionsTable extends Migration
             $table->bigInteger('company_id');
 			$table->tinyInteger('status')->nullable()->default(0);
 			$table->bigInteger('trans_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

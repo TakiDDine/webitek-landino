@@ -21,6 +21,7 @@ class CreateTicketsTable extends Migration
             $table->string('subject');
             $table->enum('priority', config('laravel-tickets.priorities'));
             $table->enum('state', [ 'OPEN', 'ANSWERED', 'CLOSED' ])->default('OPEN');
+            $table->softDeletes();
             $table->timestamps();
 
             if (! config('laravel-tickets.models.uuid')) {

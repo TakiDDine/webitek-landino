@@ -18,6 +18,7 @@ class CreateTicketReferencesTable extends Migration
             $table->unsignedBigInteger('ticket_id');
             $table->morphs('referenceable');
             $table->timestamps();
+            $table->softDeletes();
 
             if (! config('laravel-tickets.models.uuid')) {
                 $table->foreign('ticket_id')

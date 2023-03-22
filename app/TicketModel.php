@@ -2,14 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use RexlManu\LaravelTickets\Interfaces\TicketReference;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use RexlManu\LaravelTickets\Traits\HasTicketReference;
+use RexlManu\LaravelTickets\Interfaces\TicketReference;
 
-class TicketModel extends Model implements TicketReference {
+class TicketModel extends Model implements TicketReference 
+{
 
-  use HasTicketReference;
+  use HasTicketReference, SoftDeletes;
 
   // Check if user has access to this model
   function hasReferenceAccess() : bool {

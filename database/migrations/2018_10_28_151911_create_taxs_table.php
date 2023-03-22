@@ -19,6 +19,7 @@ class CreateTaxsTable extends Migration
             $table->decimal('rate',10,2);
             $table->string('type',10);
             $table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

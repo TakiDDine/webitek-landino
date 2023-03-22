@@ -20,6 +20,7 @@ class CreateActivityLogsTable extends Migration
 			$table->text('activity');
 			$table->bigInteger('user_id');
 			$table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

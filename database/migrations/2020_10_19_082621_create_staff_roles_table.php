@@ -18,6 +18,7 @@ class CreateStaffRolesTable extends Migration
 			$table->string('name',50);
 			$table->text('description')->nullable();
 			$table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
 	

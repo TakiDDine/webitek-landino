@@ -20,6 +20,7 @@ class CreateNotificationsTable extends Migration
             $table->text('data');
             $table->bigInteger('user_id');
             $table->timestamp('read_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

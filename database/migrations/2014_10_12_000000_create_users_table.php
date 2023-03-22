@@ -24,7 +24,12 @@ class CreateUsersTable extends Migration
             $table->integer('status');
             $table->string('language')->nullable();
             $table->integer('company_id')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('affiliate_id')->nullable()->unique();
+            $table->boolean('referal')->default(false);
+            $table->boolean('laraticket_admin')->default(false);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

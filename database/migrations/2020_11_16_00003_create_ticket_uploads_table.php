@@ -18,6 +18,7 @@ class CreateTicketUploadsTable extends Migration
             $table->unsignedBigInteger('ticket_message_id');
             $table->string('path');
             $table->timestamps();
+            $table->softDeletes();
 
             if (! config('laravel-tickets.models.uuid')) {
                 $table->foreign('ticket_message_id')

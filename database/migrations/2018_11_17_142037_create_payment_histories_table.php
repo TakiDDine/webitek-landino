@@ -23,6 +23,9 @@ class CreatePaymentHistoriesTable extends Migration
             $table->integer('package_id');
             $table->string('package_type',10);
             $table->string('status',10);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

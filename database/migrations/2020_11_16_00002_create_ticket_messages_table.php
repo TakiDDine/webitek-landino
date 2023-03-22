@@ -18,6 +18,7 @@ class CreateTicketMessagesTable extends Migration
             $table->unsignedBigInteger('ticket_id');
             $table->unsignedBigInteger('user_id');
             $table->text('message');
+            $table->softDeletes();
             $table->timestamps();
 
             if (! config('laravel-tickets.models.uuid')) {

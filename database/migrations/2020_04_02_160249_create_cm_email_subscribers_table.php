@@ -17,6 +17,7 @@ class CreateCmEmailSubscribersTable extends Migration
             $table->bigIncrements('id');
             $table->string('email');
             $table->string('ip_address');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

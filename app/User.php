@@ -6,15 +6,16 @@ use Laravel\Paddle\Billable;
 use App\Notifications\DBNotification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use RexlManu\LaravelTickets\Traits\HasTickets;
+use RexlManu\LaravelTickets\Traits\HasTicketReference;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use RexlManu\LaravelTickets\Interfaces\TicketReference;
-use RexlManu\LaravelTickets\Traits\HasTicketReference;
 
 class User extends Authenticatable implements MustVerifyEmail, TicketReference
 {
-    use Notifiable ,  Billable, HasTickets;
+    use Notifiable, SoftDeletes,  Billable, HasTickets;
 
     /**
      * The attributes that are mass assignable.
@@ -80,8 +81,8 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
 
     // Check if user has access to this model
   function hasReferenceAccess() : bool {
-    return request()->user()->user_id == $this->user_id;
-}
+        return request()->user()->user_id == $this->user_id;
+    }
 	/**
 	 * Show the name when on selection
 	 * @return string

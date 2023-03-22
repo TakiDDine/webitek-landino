@@ -32,6 +32,7 @@ class CreateTransactionsTable extends Migration
             $table->text('attachment')->nullable();
             $table->text('note')->nullable();
             $table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

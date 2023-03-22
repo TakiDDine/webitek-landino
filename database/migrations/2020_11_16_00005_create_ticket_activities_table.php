@@ -18,6 +18,7 @@ class CreateTicketActivitiesTable extends Migration
             $table->unsignedBigInteger('ticket_id');
             $table->morphs('targetable');
             $table->enum('type', [ 'CREATE', 'CLOSE', 'OPEN', 'ANSWER' ]);
+            $table->softDeletes();
             $table->timestamps();
 
             if (! config('laravel-tickets.models.uuid')) {

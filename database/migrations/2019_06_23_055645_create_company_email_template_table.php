@@ -19,6 +19,7 @@ class CreateCompanyEmailTemplateTable extends Migration
             $table->string('subject');
             $table->text('body');
             $table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

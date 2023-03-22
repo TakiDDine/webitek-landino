@@ -20,6 +20,7 @@ class CreateNotesTable extends Migration
 			$table->text('note');
 			$table->bigInteger('user_id');
 			$table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

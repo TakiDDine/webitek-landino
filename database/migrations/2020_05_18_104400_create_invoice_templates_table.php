@@ -20,6 +20,7 @@ class CreateInvoiceTemplatesTable extends Migration
             $table->longText('editor');
             $table->text('custom_css')->nullable();
             $table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

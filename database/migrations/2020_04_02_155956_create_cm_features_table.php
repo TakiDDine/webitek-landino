@@ -18,6 +18,7 @@ class CreateCmFeaturesTable extends Migration
             $table->text('icon');
             $table->text('title');
             $table->longText('content');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ class CreateCompanySettingsTable extends Migration
 			$table->string('name');
 			$table->longText('value');
 			$table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

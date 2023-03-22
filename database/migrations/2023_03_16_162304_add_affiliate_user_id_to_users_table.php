@@ -28,7 +28,6 @@ class AddAffiliateUserIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['affiliate_user_id']);
-            $table->dropColumn('affiliate_user_id');
         });
     }
 }

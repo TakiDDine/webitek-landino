@@ -26,6 +26,7 @@ class CreateCompaniesTable extends Migration
 			$table->string('inventory_module')->nullable();
             $table->string('recurring_transaction',3)->nullable();
 			$table->string('online_payment',3)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

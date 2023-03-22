@@ -24,6 +24,7 @@ class CreatePackagesTable extends Migration
 			$table->string('online_payment');
 			$table->tinyInteger('is_featured')->default(0);
 			$table->text('others')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateCmFaqsTable extends Migration
             $table->bigIncrements('id');
             $table->text('question');
             $table->longText('answer');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

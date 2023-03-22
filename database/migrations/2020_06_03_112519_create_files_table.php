@@ -20,6 +20,7 @@ class CreateFilesTable extends Migration
 			$table->text('file');
 			$table->bigInteger('user_id');
 			$table->bigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

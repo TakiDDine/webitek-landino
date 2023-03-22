@@ -19,7 +19,7 @@ class CreateAffiliatesTable extends Migration
             $table->integer('visitors')->default(0);
             $table->integer('registration')->default(0);
             $table->integer('referrals')->default(0);
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ class CreateSocialGoogleAccountsTable extends Migration
             $table->bigInteger('user_id');
 			$table->string('provider_user_id');
 			$table->string('provider');
+            $table->softDeletes();
 			$table->timestamps();
         });
     }

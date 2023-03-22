@@ -17,6 +17,7 @@ class CreateCurrencyRatesTable extends Migration
             $table->bigIncrements('id');
             $table->string('currency',3);
             $table->decimal('rate',10,6);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

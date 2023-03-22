@@ -22,6 +22,7 @@ class CreateFileManagerTable extends Migration
             $table->bigInteger('parent_id')->nullable();
             $table->bigInteger('company_id');
             $table->bigInteger('created_by');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
