@@ -21,6 +21,9 @@ Route::group(['middleware' => ['install']], function () {
 	Route::get('site/{page}', 'WebsiteController@site');
 	Route::post('contact/send_message', 'WebsiteController@send_message');
 
+	Route::get('/terms', 'WebsiteController@terms');
+	Route::get('/privacy-policy', 'WebsiteController@privacy_policy');
+
 	Route::get('/pricing', 'WebsiteController@pricing')->name('pricing');
 	Route::get('/features', 'WebsiteController@features');
 

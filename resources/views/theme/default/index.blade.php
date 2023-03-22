@@ -227,7 +227,7 @@
 
 @section('content')
     <div class="page page-home">
-        @include('theme.partials.header')
+        @include('website.partials.header')
         <section class="section section--nopadd intro">
             <div class="intro-center">
                 <div class="container">
@@ -1245,6 +1245,6 @@
                 </a>
             </div>
         </article>
-        @include('theme.partials.footer')
+        @include('website.partials.footer')
     </div>
 @endsection

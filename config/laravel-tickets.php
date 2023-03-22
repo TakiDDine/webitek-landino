@@ -60,7 +60,7 @@ return [
     /*
      * How many tickets the user can have open
      */
-    'maximal-open-tickets' => 3,
+    'maximal-open-tickets' => 10,
     /*
      * How many days after last message sent, the ticket gets as closed declared
      * Use 0 for disabling this feature

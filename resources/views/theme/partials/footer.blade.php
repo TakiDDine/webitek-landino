@@ -57,10 +57,10 @@
         </footer>
 
         <div class="image-bottom-container">
-            <img src="/public/images/mastercard-secure.png" alt="">
-            <img src="/public/images/payzone.png" alt="">
-            <img src="/public/images/rapid-ssl.png" alt="">
-            <img src="/public/images/verified-visa.png" alt="">
+            <img src="{{asset('images/mastercard-secure.png')}}" alt="">
+            <img src="{{asset('images/payzone.png')}}" alt="">
+            <img src="{{asset('images/rapid-ssl.png')}}" alt="">
+            <img src="{{asset('images/verified-visa.png')}}" alt="">
         </div>
     </div>
 </div>

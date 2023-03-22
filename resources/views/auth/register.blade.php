@@ -42,7 +42,9 @@
     <div class="login-wrapper">
         <div class="row">
             <div class="login-card">
-                <img src="/public/front/logo.svg">
+                <a href="/">
+                    <img src="{{asset('front/logo.svg')}}">
+                </a>
                 <h1>مرحباً بك </h1>
                 <p>يمكنك ادخال البيانات في الحقول التالية </p>
                 @if ($errors->count() > 0)

@@ -1,4 +1,4 @@
-@extends('theme.default.layouts.website')
+@extends('website.layout')
 
 @section('title')
     لاندينو | الأسعار

@@ -1,7 +1,7 @@
 <div class="header" id="header">
     <div class="container">
         <a class="header-logo" href="/">
-            <h1><img src="/public/front/logo.svg"></h1>
+            <h1><img src="{{asset('front/logo.svg')}}"></h1>
             <div class="header-logo__text">
                 <p> لندينو </p>
                 <span>عالم جديد لمحترفي التجارة الإلكترونية</span>

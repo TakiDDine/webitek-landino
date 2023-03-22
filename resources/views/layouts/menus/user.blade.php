@@ -79,14 +79,14 @@
 </li>
 
 
-<li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('domains')) kt-menu__item--open kt-menu__item--here @endif">
+{{-- <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('domains')) kt-menu__item--open kt-menu__item--here @endif">
     <a href="{{ url('domains') }}" class="kt-menu__link">
         <span class="kt-menu__link-icon">
             <img src="/public/icons/domaines.svg" alt="">
         </span>
         <span class="kt-menu__link-text">{{ _lang('Domains') }}</span>
     </a>
-</li>
+</li> --}}
 
 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('profile/edit')) kt-menu__item--open kt-menu__item--here @endif">
     <a href="{{ url('profile/edit') }}" class="kt-menu__link">
