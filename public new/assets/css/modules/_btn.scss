@@ -1,0 +1,125 @@
+.btn{
+	@extend %type-medium;
+	display: inline-block;
+	white-space: nowrap;
+	padding: 0 rem(20);
+	height: rem(50);
+	line-height: rem(51);
+	border-radius: rem(7);
+	border: 1px solid transparent;
+	font-size: rem(18);
+	text-align: center;
+	letter-spacing: 0;
+	box-shadow: 0px 5px 20px 0 rgba(color(blue_37),.2);
+	color: inherit;
+	transition: all .15s linear;
+
+	&:active{
+		transform: translateY(1px);
+	}
+
+	@include mq_max($xs){
+		height: rem(46);
+		line-height: rem(47);
+	}
+
+	/* colors */
+	&--blue{
+		background-color: color(blue_30);
+		color: #fff;
+		border-color: color(blue_30);
+
+		&:hover{
+			background-color: darken(color(blue_30), 5%);
+		}
+	}
+	&--white {
+		background-color: #fff;
+		color: color(blue_30);
+		border-color: #fff;
+	}
+	&--noshadow{
+		box-shadow: none;
+	}
+	/* sizes */
+	&--sm{
+		font-size: rem(14);
+		height: rem(40);
+		line-height: rem(41);
+	}
+	&--xlg{
+		font-size: rem(18);
+		height: rem(70);
+		line-height: rem(71);
+	}
+	&--wide{
+		min-width: rem(140);
+		padding: 0 rem(35);
+
+		@include mq_max($xs){
+			min-width: rem(120);
+			padding: 0 rem(15);
+		}
+	}
+
+	/* types */
+	&--circle{}
+	&--icon{
+		svg{
+			@extend %dibvam;
+			margin-left: rem(5);
+			transition: fill 0.15s linear;
+
+			@at-root .btn--gray-8 svg{
+				fill: color(gray_8);
+			}
+			@at-root .btn--gray-8:hover svg{
+				@include mq_min($sm) {
+					fill: #fff;
+				}
+			}
+			@at-root .btn--blue svg {
+				fill: #fff;
+			}
+			@at-root .btn--white svg {
+				fill: color(blue_30);
+			}
+		}
+	}
+	&--loading{
+		position: relative;
+
+		.loading{
+			@include centered(true,true);
+			opacity: 0;
+
+			@at-root .btn.load .loading{
+				opacity: 1;
+			}
+		}
+		span{
+			transition: opacity .15s linear;
+
+			@at-root .btn.load span{
+				opacity: 0;
+			}
+		}
+	}
+	&--bordered{
+		background-color: transparent;
+
+		&.btn--blue{
+			color: color(blue);
+			border-color: color(blue);
+
+			&:hover{
+				background-color: transparent;
+				color: darken(color(blue), 5%);
+				border-color: darken(color(blue), 5%);
+			}
+		}
+	}
+	&--curve{
+		border-radius: rem(30);
+	}
+}

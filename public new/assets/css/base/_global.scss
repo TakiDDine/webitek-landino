@@ -1,0 +1,48 @@
+html{
+	font-size: 16px;
+
+	@include mq_max($xs){font-size: 14px;}
+	@include mq_min($xxlg){font-size: 18px;}
+
+	&.rtl{
+		direction: rtl;
+		text-align: right;
+	}
+	&.ltr{
+		direction: ltr;
+		text-align: left;
+	}
+}
+
+body {
+	font-family: Vazir, tahoma, arial;
+	@extend %type-regular;
+	font-size: 1rem;
+	line-height: 1.7;
+
+	&.modal-open{
+		overflow: hidden;
+
+		@include mq_min($md){
+			padding-right: 17px;
+		}
+	}
+
+	&.menu-open{overflow: hidden;}
+	&.filter-open{overflow: hidden;}
+}
+
+.page{
+	overflow: hidden;
+	position: relative;
+	transition: margin-top 0.4s ease-out;
+}
+
+.porsline-overlay{
+	z-index: z('porsline');
+}
+
+#imber-top-parent .imber-toggle-logo {
+	background-image: url("https://upload.imber.live/preview/6064695edb87fa34660b33dd/chatting.png") !important;
+	background-size: 50% !important;
+}

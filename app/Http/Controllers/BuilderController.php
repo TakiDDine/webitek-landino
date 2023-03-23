@@ -164,7 +164,7 @@ class BuilderController extends Controller
 
     header('Access-Control-Allow-Origin: *');
     define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-    define('SUPRA_BASE_URL', asset('public/backend/assets/builder'));
+    define('SUPRA_BASE_URL', asset('backend/assets/builder'));
     define('SUPRA_TMP_PATH', base_path('public'));
     define('CURRENT_USER', Auth::getUser()->id);
     define('CURRENT_COMPANY', Auth::getUser()->company_id);
