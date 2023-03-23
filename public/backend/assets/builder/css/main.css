@@ -2029,11 +2029,15 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     border-bottom: 1px solid #e4eaee;
     padding: 5px 14px;
 }
+/** iframeHeader__right */
 
-/** Back to Dashboard Btn */
-
-.wrap-iframe .iframeHeader .iframeHeader__right #backToDashboard
-
+.wrap-iframe .iframeHeader .iframeHeader__right{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 /** preview button */
 /* Preview Button Top Menu */
@@ -2085,6 +2089,13 @@ ul:not(.page-mode-edit-sections) .wrap-control {
   .iframeHeader .iframeHeader__right #allExportsBtn .db span{
     margin: 0!important;
   }
+
+  /** Back to Dashboard Btn */
+  
+  .wrap-iframe .iframeHeader .iframeHeader__right #backToDashboard{
+
+  }
+
 
 
 /** viewPorts */

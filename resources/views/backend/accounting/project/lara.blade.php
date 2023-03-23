@@ -80,12 +80,9 @@
                     </ul>
                 </div>
                 <div class="iframeHeader__right">
+                    <div id="previewTemplate"></div>
+                    <div id="allExportsBtn"></div>
                     <div id="backToDashboard"></div>
-                    <div id="previewTemplate">
-                    </div>
-                    <div id="allExportsBtn">
-
-                    </div>
 
                 </div>
             </div>
@@ -222,11 +219,7 @@
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
         <div id="userId" class="userId" style="display: none">{{ Auth::user()->id }}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
-        <div id="makeSureAlert" title="Basic dialog">
-            <p>This is the default dialog which is useful for displaying information. The dialog window can be moved,
-                resized and closed with the 'x' icon.</p>
-            <button>ok</button>
-        </div>
+
     </div>
 
     <script>
@@ -270,7 +263,7 @@
     <script src="./../builder/js/builder.min.js"></script>
 
     <script type="text/javascript">
-        document.getElementById("main_body").style.display = "block!important";
+        document.getElementById("main_body").style.display = "block";
     </script>
     <noscript>
         <style>
@@ -311,7 +304,6 @@
 
             <img src="https://i.postimg.cc/W12vXvCT/Capture-d-e-cran-2023-03-22-a-11-35-20.png" alt="js_popUp" />
         </section>
-
     </noscript>
 </body>
 
