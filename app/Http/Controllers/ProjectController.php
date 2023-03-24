@@ -461,7 +461,6 @@ class ProjectController extends Controller
             $data['id']             =   $project->id;
 
             define('SUPRA', 1);
-            // dd($data);
             return view('backend.accounting.project.editlara', ['data'=> $data]);
             /*
                 if($project->status == 'lara'){
@@ -586,8 +585,10 @@ class ProjectController extends Controller
     if(! $request->ajax()){
            return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
         }else{
+        return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
        return response()->json(['result'=>'success','action'=>'update', 'message'=>_lang('Updated Sucessfully'), 'data'=>$project, 'table' => '#projects_table']);
     }
+
 
     }
 

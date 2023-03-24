@@ -195,7 +195,7 @@
 	<div class="kt-menu__submenu ">
 		<span class="kt-menu__arrow"></span>
 		<ul class="kt-menu__subnav">
-			<li class="kt-menu__item @if(Request::is('features')) kt-menu__item--open @endif"  aria-haspopup="true">
+			{{-- <li class="kt-menu__item @if(Request::is('features')) kt-menu__item--open @endif"  aria-haspopup="true">
 				<a  href="{{ url('features') }}" class="kt-menu__link ">
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
 					<span class="kt-menu__link-text">{{ _lang('Software Features') }}</span>
@@ -206,7 +206,7 @@
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
 					<span class="kt-menu__link-text">{{ _lang('Knowledge Base') }}</span>
 				</a>
-			</li>
+			</li> --}}
 			<li class="kt-menu__item @if(Request::is('administration/theme_option')) kt-menu__item--open @endif"  aria-haspopup="true">
 				<a  href="{{ url('administration/theme_option') }}" class="kt-menu__link ">
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
