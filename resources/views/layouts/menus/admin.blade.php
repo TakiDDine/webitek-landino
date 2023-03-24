@@ -265,7 +265,7 @@
 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('tickets')) kt-menu__item--open kt-menu__item--here @endif">
     <a href="{{ url('tickets') }}" class="kt-menu__link">
         <span class="kt-menu__link-icon">
-            <img src="/public/icons/support.svg" alt="">
+            <i class="flaticon2-calendar-3 kt-font-success"></i>
         </span>
         <span class="kt-menu__link-text">{{ _lang('Support') }}</span>
     </a>
@@ -274,7 +274,7 @@
 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('logout')) kt-menu__item--open kt-menu__item--here @endif">
     <a href="{{ url('logout') }}" class="kt-menu__link">
         <span class="kt-menu__link-icon">
-            <i class="flaticon2-calendar-3 kt-font-success"></i>
+            <i class="flaticon-logout  kt-font-danger"></i>
         </span>
         <span class="kt-menu__link-text">{{ _lang('Logout') }}</span>
     </a>

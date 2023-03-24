@@ -3,7 +3,7 @@
     @php $date_format = get_option('date_format','Y-m-d'); @endphp
 	
     <table class="table table-bordered">
-		<tr><td colspan="2" class="text-center"><img class="thumb-xl rounded" src="{{ $user->profile_picture != "" ? asset('public/uploads/profile/'.$user->profile_picture) : asset('public/images/avatar.png') }}"></td></tr>
+		<tr><td colspan="2" class="text-center"><img class="thumb-xl rounded" src="{{ $user->profile_picture != "" ? asset('/uploads/profile/'.$user->profile_picture) : asset('/images/avatar.png') }}"></td></tr>
 		<tr><td>{{ _lang('Business Name') }}</td><td>{{ $user->company->business_name }}</td></tr>
 		<tr><td>{{ _lang('Admin Name') }}</td><td>{{ $user->name }}</td></tr>
 		<tr><td>{{ _lang('Admin Email') }}</td><td>{{ $user->email }}</td></tr>

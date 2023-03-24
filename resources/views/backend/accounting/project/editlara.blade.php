@@ -921,7 +921,6 @@
                     <aside class="modal-body-sections">
                         <h3>اختار القسم للإنطلاق</h3>
                         <div class="main-section-modal add-sections-items">
-                           
                             @foreach ($data['groups'] as $key => $node)
                                 @foreach ($node['sections'] as $section)
                                     <li class="section__item__li" data-section-group="{{ $key }}">
@@ -1317,7 +1316,7 @@
             <i class="supra bookmark"></i>
         </div>
         <ul class="sections">
-            @foreach ($groups as $key => $node)
+            @foreach ($data['groups'] as $key => $node)
                 <li data-group="{{ $key }}">{{ $node['name'] }}</li>
             @endforeach
         </ul>
@@ -1334,7 +1333,7 @@
                 <i class="rotate icon-blr-lg-mobile"></i>
             </label>
 
-            <iframe id="main" src="{{ url('updateproject/builder') }}/{{ $id }}"></iframe>
+            <iframe id="main" src="{{ url('updateproject/builder') }}/{{ $data['id'] }}"></iframe>
 
         </div>
     </div>
@@ -1406,11 +1405,11 @@
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
         var googleKey = '{{ get_option('google_map_key') }}';
 
-        var project_id = '{{ $id }}';
-        var project_file = '{{ $projectfile }}';
+        var project_id = "{{ $data['id'] }}"";
+        var project_file = "{{ $data['projectfile'] }}";
         var project_file_name = '';
         var user_id = {{ auth()->user()->id }}
-        var subdomain = '{{ optional($project)->subdomain }}'
+        var subdomain = "{{ optional($data['project'] )->subdomain }}"
         var edit_mode = true
         var _save = false
     </script>

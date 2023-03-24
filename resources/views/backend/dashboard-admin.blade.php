@@ -86,7 +86,7 @@
 									<tr id="row_{{ $user->id }}">
 										<td class='name'>
 										<div class="media">
-											<img src="{{ $user->profile_picture != "" ? asset('public/uploads/profile/'.$user->profile_picture) : asset('public/images/avatar.png') }}" alt="avatar" class="thumb-sm rounded-circle mr-2">                                       
+											<img src="{{ $user->profile_picture != "" ? asset('/uploads/profile/'.$user->profile_picture) : asset('/images/avatar.png') }}" alt="avatar" class="thumb-sm rounded-circle mr-2">                                       
 											<div class="media-body align-self-center text-truncate">
 												<h6 class="mt-0 text-dark">{{ _lang('USER ID') }} - #{{ $user->id }}</h6>
 												<p class="text-muted mb-0">{{ $user->name }}</p>

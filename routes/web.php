@@ -135,7 +135,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('administration/backup_database', 'UtilityController@backup_database');
 
 			//Theme Option
-			Route::match(['get', 'post'],'administration/theme_option/{store?}', 'UtilityController@theme_option');
+			// Route::match(['get', 'post'],'administration/theme_option/{store?}', 'UtilityController@theme_option');
 
 			//Email Template
 			Route::resource('email_templates','EmailTemplateController')->only([
@@ -152,15 +152,16 @@ Route::group(['middleware' => ['install']], function () {
 
 
 			//Project Controller
-			// Route::post('projects/get_table_data','ProjectController@get_table_data');
-			// Route::get('/projects', 'ProjectController@index')->name('projects.index');
-			// Route::get('/projects/create', 'ProjectController@create');
-			// Route::post('/projects/store', 'ProjectController@store');
-			// Route::get('/projects/{id}/edit', 'ProjectController@edit');
-			// Route::post('/projects/{id}/update', 'ProjectController@update');
-			// Route::delete('projects/{id}/delete', 'ProjectController@destroy');
+			Route::post('projects/get_table_data','ProjectController@get_table_data');
+			Route::get('/projects', 'ProjectController@index')->name('projects.index');
+			Route::get('/projects/create', 'ProjectController@create');
+			Route::post('/projects/store', 'ProjectController@store');
+			Route::get('/projects/{id}/edit', 'ProjectController@edit');
+			Route::get('/projects/{id}/editSettings', 'ProjectController@editSettings');
+			Route::post('/projects/{id}/update', 'ProjectController@update');
+			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
-			Route::resource('projects','ProjectController');
+			// Route::resource('projects','ProjectController');
 
 			//Builder
 			Route::resource('project/builder','BuilderController');

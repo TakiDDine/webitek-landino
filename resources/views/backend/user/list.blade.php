@@ -27,7 +27,7 @@
 						<tr id="row_{{ $user->id }}">
 							<td class='id'>{{ $user->id }}</td>
 							<td class="text-center">
-								<img src="{{ asset('public/uploads/profile/'.$user->profile_picture) }}" class="thumb-sm rounded-circle mr-2">
+								<img src="{{ $user->profile_picture ? asset('/uploads/profile/'.$user->profile_picture)  : asset('/images/avatar.png')}}" class="thumb-sm rounded-circle mr-2">
 							</td>
 							<td class='name'>{{ $user->company->business_name }}</td>
 							<td class='email'>{{ $user->email }}</td>					

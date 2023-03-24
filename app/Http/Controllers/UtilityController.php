@@ -141,7 +141,7 @@ class UtilityController extends Controller
 	}
 	
 	
-	public function theme_option($store = '',Request $request)
+	public function theme_option(Request $request, $store = '')
     {
 	    if($store == ''){
 			$theme = get_option('active_theme','default');
