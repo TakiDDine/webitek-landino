@@ -1,16 +1,16 @@
 
-# .env
+.env
 
-# public/tmp/
-# vendor
+public/tmp/
+vendor
 
-# .env.*.php
-# .env.php
-# .htaccess
-# /.htaccess
-# *.log
+.env.*.php
+.env.php
+.htaccess
+/.htaccess
+*.log
 /node_modules
-# /vendor
+/vendor
 
 
 

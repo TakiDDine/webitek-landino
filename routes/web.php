@@ -152,15 +152,15 @@ Route::group(['middleware' => ['install']], function () {
 
 
 			//Project Controller
-			Route::post('projects/get_table_data','ProjectController@get_table_data');
-			Route::get('/projects', 'ProjectController@index')->name('projects.index');
-			Route::get('/projects/create', 'ProjectController@create');
-			Route::post('/projects/store', 'ProjectController@store');
-			Route::get('/projects/{id}/edit', 'ProjectController@edit');
-			Route::post('/projects/{id}/update', 'ProjectController@update');
-			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
+			// Route::post('projects/get_table_data','ProjectController@get_table_data');
+			// Route::get('/projects', 'ProjectController@index')->name('projects.index');
+			// Route::get('/projects/create', 'ProjectController@create');
+			// Route::post('/projects/store', 'ProjectController@store');
+			// Route::get('/projects/{id}/edit', 'ProjectController@edit');
+			// Route::post('/projects/{id}/update', 'ProjectController@update');
+			// Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
-			// Route::resource('projects','ProjectController');
+			Route::resource('projects','ProjectController');
 
 			//Builder
 			Route::resource('project/builder','BuilderController');
