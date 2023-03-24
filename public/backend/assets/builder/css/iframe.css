@@ -23,6 +23,8 @@
 /*width: 100vw;*/
 /*}*/
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
 .cursor-grab {
     cursor: grabbing!important;
     cursor: -webkit-grabbing!important;
@@ -680,7 +682,7 @@ i.icon-blr-data-settings {
     -webkit-transition: opacity 0.8s 0.8s;
     transition: opacity 0.8s 0.8s;
     overflow: hidden;
-    background-color: #333;
+    background-color:#fff!important;
     z-index: 1999;
 }
 
@@ -886,7 +888,7 @@ i.icon-blr-data-settings {
     padding: 1rem 3rem;
     width: 100%;
     height: 100%;
-    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
     font-weight: 600;
     font-size: 14px;
     text-align: center;

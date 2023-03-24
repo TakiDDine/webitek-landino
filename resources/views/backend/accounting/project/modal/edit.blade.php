@@ -24,7 +24,7 @@
 
 
     </style>
-    <div class="container col-md-6 shadow-md">
+    <div class="container col-md-8 shadow-md">
         
         <div class="card">
             <div class="card-header">

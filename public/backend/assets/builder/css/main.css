@@ -37,6 +37,7 @@
  } */
 
  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
  :root{
     --siteBg: #F4F5F7;
@@ -126,7 +127,7 @@
     border: none!important;
     position: relative;
     display: flex;
-    flex-direction: row-reverse!important;
+    flex-direction: row!important;
     overflow: hidden;
     border: none!important;
  }
@@ -195,12 +196,17 @@
     pointer-events: all;
 }
 
+#sidebar_contentHeader{
+    overflow: hidden;
+    padding-top: 3.7rem;
+}
+
  #sidebarContent__headerList{
     z-index: 2;
     padding: 0;
     flex: 1;
-    overflow-y: hidden;
-    max-height: 80vh;
+    /* overflow-y: hidden; */
+    max-height: 100%;
     padding: 1rem 1rem 0;
     
  }
@@ -211,8 +217,10 @@
     font-size: 14px;
  }
  #sidebarContent__headerList ul {
-    padding: 0;
+    padding: 0 ;
     margin: 0;
+    direction: rtl;
+    text-align: right;
  }
  
  #sidebarContent__headerList li{
@@ -260,8 +268,14 @@
     background-color: transparent;
     filter:brightness(0.6);
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 10px;
+    right: 10px;
+    transition: all .4s ease;
+}
+ #elementsSidebar .sidebar__elements-header .close:hover{
+    
+    background-color: #d5d5d5;
+    filter: brightness(1);
 }
 
  #sidebarContent__contentList{
@@ -377,7 +391,8 @@
 
 #sidebarRight__Content .sidebarRight__btns{
     padding: 0.5rem 1rem ;
-    background-color: var(--btnSecondaryClr);
+    /* background-color: var(--btnSecondaryClr); */
+    background-color: var(--primaryClr);
 }
 
 #sidebarRight__Content .btn-group {
@@ -396,10 +411,12 @@
 #sidebarRight__Content .btn-group button{
     flex: 1;
     background-color: transparent!important;
-    color:var(--textColor)!important;
+    /* color:var(--textColor)!important; */
+    color:#fff!important;
     border-radius: 15px;
     position: relative;
     z-index: 0;
+    transition: background-color .4s ease, color .4s ease;
 }
 #sidebarRight__Content .btn-group button:before{
     content: '';
@@ -417,12 +434,14 @@
 #sidebarRight__Content .btn-group button:hover
 {
     flex: 1;
-    background-color: #e6e6e6!important;
+    background-color: #fff!important;
     border-radius: 15px;
+    color: var(--primaryClr)!important;
 }
 
 #sidebarRight__Content .btn-group button.active{
     background-color: transparent!important;
+    color: var(--primaryClr)!important;
 }
 
 #sidebarRight__Content .btn-group button[data-id="light"].active:before{
@@ -465,6 +484,7 @@
     overflow-y: scroll;
     height: 85vh;
     height: 85svh;
+    direction: ltr;
     
 }
 
@@ -694,7 +714,7 @@
   color: var(--secondaryClr);
 }
 #iframePageControl .dropdown-menu .wrapper li:last-child i {
-  margin-right: .4em;
+  margin-left: .4em;
 }
 #iframePageControl .dropdown-menu .wrapper li:last-of-type span {
   text-transform: capitalize;
@@ -719,7 +739,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
     font-weight: 400;
     text-align: left;
     font-size: 14px;
@@ -1956,7 +1976,7 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 /*** iFrame */
 
 .wrap-iframe {
-    margin: 0 0;
+    margin: 0 auto 0 0;
     padding: 0px 40px 20px;
     width: calc(100% - 260px);
     height: 100%;
@@ -1971,13 +1991,11 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     display: flex;
     flex-direction: row;
     /* column-gap: 33.33%; */
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
-.wrap-iframe .iframeHeader div:first-child {
-    flex: 1;
-}
+
 .wrap-iframe .iframeHeader div:first-child ul{
     display: flex;
     flex-direction: row;
@@ -1988,7 +2006,7 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     margin:0!important;
     padding:0!important;
 }
-.wrap-iframe .iframeHeader div:first-child ul #sections-sidebar__Triggerer{
+.wrap-iframe .iframeHeader div:first-child ul li{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -2017,7 +2035,7 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     /* background: #0a50db; */
 }
 .wrap-iframe .iframeHeader .btn.btn-primary span {
-    margin-left: 0.65rem;
+    margin-right: 0.65rem;
 }
 
 .wrap-iframe .modes-wraper{
@@ -2030,61 +2048,127 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     padding: 5px 14px;
 }
 
-/** Back to Dashboard Btn */
+/** iframeHeader__mid */
 
-.wrap-iframe .iframeHeader .iframeHeader__right #backToDashboard
-
-
-/** preview button */
-/* Preview Button Top Menu */
-
-.wrap-iframe .iframeHeader .iframeHeader__right #previewTemplate li.preview {
-    list-style: none;
-  }
-  .wrap-iframe .iframeHeader .iframeHeader__right #previewTemplate .preview {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap:10px;
-      cursor: pointer;
-    }
-    .wrap-iframe .iframeHeader .iframeHeader__right #previewTemplate .preview span {
-        color: #3758f9;
-        font-weight: 400;
-        font-size: 14px;
-        padding-right: 10px;
-        
-    }
-    .wrap-iframe .iframeHeader .iframeHeader__right #previewTemplate .preview:hover span {
-        text-decoration: underline;
-    }
-
-    .wrap-iframe .iframeHeader .iframeHeader__right #previewTemplate li.preview i {
-        display: block;
-        font-size: 20px;
-        color: var(--primaryClr);
-      }
-  /* Project Actions (download, save, export ...ect) */
-
-  /** allExportsBtn **/
-
-  .iframeHeader .iframeHeader__right #allExportsBtn{
+.wrap-iframe .iframeHeader .iframeHeader__mid{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-content: center;
-    gap: 10px;
-  }
-  .iframeHeader .iframeHeader__right #allExportsBtn .db{
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save{
+    position: relative;
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save .db{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-  }
-  .iframeHeader .iframeHeader__right #allExportsBtn .db span{
+    color: #fff;
+    background-color: var(--primaryClr);
+    transition: background-color .4s ease, opacity .4s ease;
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save .db:not([disabled]):hover{
+    background-color: var(--secondaryClr)!important;
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save .db span{
     margin: 0!important;
-  }
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save .db i{
+    position: absolute;
+    right: -25px;
+    top: 13px;
+    animation: keepRotating .4s linear infinite;
+    
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save .db[disabled]{
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+@keyframes keepRotating {
+    0%{
+        
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg) ;
+        
+    }
+    100%{
+        transform: rotate(359deg) ;
+        
+    }
+    
+}
+
+/** iframeHeader__right */
+
+.wrap-iframe .iframeHeader .iframeHeader__right{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+/** Back to Dashboard Btn */
+
+
+
+/** preview button */
+/* Preview Button Top Menu */
+.wrap-iframe .iframeHeader .iframeHeader__mid #previewTemplate #preview {
+    gap:0;
+    cursor: pointer;
+    list-style: none;
+}
+.wrap-iframe .iframeHeader .iframeHeader__mid #previewTemplate .preview span {
+    color: #3758f9;
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 0.35rem;
+    
+}
+.wrap-iframe .iframeHeader .iframeHeader__mid #previewTemplate .preview:hover span {
+    text-decoration: underline;
+}
+
+.wrap-iframe .iframeHeader .iframeHeader__mid #previewTemplate li.preview i {
+    display: block;
+    color: var(--primaryClr);
+    transform: rotate(270deg);
+}
+/* Project Actions (download, save, export ...ect) */
+
+/** allExportsBtn **/
+
+.iframeHeader .iframeHeader__right #allExportsBtn{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-content: center;
+gap: 10px;
+}
+
+.iframeHeader .iframeHeader__right #allExportsBtn div{
+    background-color: var(--primaryClr);
+    color: #fff;
+}
+.iframeHeader .iframeHeader__right #allExportsBtn div:hover{
+    background-color: var(--secondaryClr);
+    color: #fff;
+}
+
+.iframeHeader .iframeHeader__right #allExportsBtn div i{
+    color: #fff;
+}
+
 
 
 /** viewPorts */
@@ -2269,7 +2353,10 @@ iframe#main {
  */
 
 .supra-preloader {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -2281,7 +2368,7 @@ iframe#main {
     -webkit-transition: opacity 0.8s 0.8s;
     transition: opacity 0.8s 0.8s;
     overflow: hidden;
-    background-color: #333;
+    background-color: var(--siteBg);
     z-index: 1999;
 }
 
@@ -2304,27 +2391,22 @@ iframe#main {
     padding: 0 30px 30px;
     height: 10px;
     width: 300px;
-    color: #444;
-    position: absolute;
-    bottom: 50%;
-    margin-bottom: -120px;
-    left: 50%;
-    margin-left: -150px;
+    color: #fff;
     -webkit-transition: all 2.5s ease-out;
     transition: all 2.5s ease-out;
 }
 
 .supra-preloader .progress-bar-s .progress {
-    height: 2px;
-    background-color: #444;
+    height: 5px;
+    background-color: #b1beff;
     -webkit-transition: all 2.5s ease-out;
     transition: all 2.5s ease-out;
 }
 
 .supra-preloader .progress-bar-s .progress .load {
-    height: 2px;
+    height: 5px;
     width: 0%;
-    background-color: #FFF;
+    background-color: var(--primaryClr);
     -webkit-transition: all 2.5s ease-out;
     -webkit-transition: all 1.4s ease-out;
     transition: all 1.4s ease-out;
