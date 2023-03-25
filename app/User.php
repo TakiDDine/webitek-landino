@@ -91,4 +91,8 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
     return request()->user()->user_id == $this->user_id;
 
 	}
+    public function getRole()
+    {
+        return $this->role == 'admin' ? 'tailwind' : 'bootstrap';
+    }
 }

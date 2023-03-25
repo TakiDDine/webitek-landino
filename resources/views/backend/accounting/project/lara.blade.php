@@ -30,7 +30,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="first-show">
+<body class="first-show"  data-css-type="{{auth()->user()->getRole()}}">
     <script src="{{ asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js') }}"></script>
     <style id="builder-style"></style>
     <div id="main_body" style="display: none;">

@@ -438,7 +438,7 @@ class ProjectController extends Controller
 
 
             define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-            define('SUPRA_BASE_URL', asset('public/backend/assets/builder'));
+            define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
 
 
             $Viewbuilder = new \App\Utilities\Builder\Html;
@@ -457,7 +457,7 @@ class ProjectController extends Controller
             $projectfile = \App\ProjectFile::where('related_to','projects')->where('related_id',$id)->first();;
 
             $data['project']        =   $project;
-            $data['projectfile']    =   str_replace(public_path()."/uploads/project_files/",asset('public/uploads/project_files').'/',$projectfile->file);
+            $data['projectfile']    =   str_replace(public_path()."/uploads/project_files/",asset('/uploads/project_files').'/',$projectfile->file);
             $data['id']             =   $project->id;
 
             define('SUPRA', 1);
@@ -492,7 +492,7 @@ class ProjectController extends Controller
                 }
             */
         }else{
-            dd($data);
+            // dd($data);
             return view('backend.accounting.project.modal.edit',$data);
         }
 

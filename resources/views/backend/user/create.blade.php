@@ -6,6 +6,19 @@
 		<div class="card">
 
 			<div class="card-body">
+				@if ($errors->count() > 0)
+                    <div class="alert alert-danger">
+
+                        <ul>
+
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+                @endif
 				<h4 class="d-none panel-title">{{ _lang('Create User') }}</h4>
 				<form method="post" class="validate" autocomplete="off" action="{{url('users')}}" enctype="multipart/form-data">
 				    <div class="row">
@@ -15,26 +28,41 @@
 							  <div class="form-group">
 								<label class="control-label">{{ _lang('Business Name') }}</label>						
 								<input type="text" class="form-control" name="business_name" value="{{ old('business_name') }}" required>
+								@error('business_name')
+									<p class="text-danger">{{$message}}</p>
+								@enderror
 							  </div>
 							  
 							  <div class="form-group">
 								<label class="control-label">{{ _lang('Name') }}</label>						
 								<input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+								@error('name')
+									<p class="text-danger">{{$message}}</p>
+								@enderror
 							  </div>
 
 							  <div class="form-group">
 								<label class="control-label">{{ _lang('Email') }}</label>						
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+								@error('email')
+									<p class="text-danger">{{$message}}</p>
+								@enderror
 							  </div>
 
 							  <div class="form-group">
 								<label class="control-label">{{ _lang('Password') }}</label>						
 								<input type="password" class="form-control" name="password" value="{{ old('password') }}" required>
+								@error('password')
+									<p class="text-danger">{{$message}}</p>
+								@enderror
 							  </div>
 							
 							  <div class="form-group">
 								<label class="control-label">{{ _lang('Confirm Password') }}</label>						
 								<input type="password" class="form-control" name="password_confirmation" required>
+								@error('password_confirmation')
+									<p class="text-danger">{{$message}}</p>
+								@enderror
 							  </div>				  
 							  
 							  <div class="form-group">
@@ -43,6 +71,9 @@
 									  <option value="1">{{ _lang('Active') }}</option>
 									  <option value="0">{{ _lang('Inactive') }}</option>
 									</select>
+									@error('status')
+										<p class="text-danger">{{$message}}</p>
+									@enderror
 							  </div>
 							  
 
@@ -66,6 +97,9 @@
                                         @endif
 										{{ create_option('packages','id','package_name',old('package_id')) }}
 									</select>
+									@error('package_id')
+										<p class="text-danger">{{$message}}</p>
+									@enderror
 								  </div>
 							  </div>
 							  
@@ -77,6 +111,9 @@
 										<option value="monthly">{{ _lang('Monthly') }}</option>
 										<option value="yearly">{{ _lang('Yearly') }}</option>
 									</select>
+									@error('package_type')
+										<p class="text-danger">{{$message}}</p>
+									@enderror
 								  </div>
 							  </div>
 							  
@@ -87,6 +124,9 @@
 										  <option value="trial">{{ _lang('Trial') }}</option>
 										  <option value="member">{{ _lang('Paid Member') }}</option>
 									  </select>
+									  @error('membership_type')
+										<p class="text-danger">{{$message}}</p>
+									  @enderror
 								  </div>
 							  </div>
 							  
@@ -96,6 +136,7 @@
 									<label class="control-label">{{ _lang('Profile Picture') }} ( 300 X 300 {{ _lang('for better view') }} )</label>						
 									<input type="file" class="dropify" name="profile_picture" data-allowed-file-extensions="png jpg jpeg PNG JPG JPEG" data-default-file="">
 								 </div>
+							
 							  </div>
 						</div>
 		            </div>			

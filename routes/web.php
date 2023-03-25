@@ -27,6 +27,7 @@ Route::group(['middleware' => ['install']], function () {
 	Route::get('/pricing', 'WebsiteController@pricing')->name('pricing');
 	Route::get('/features', 'WebsiteController@features');
 
+	Route::get('/reset/password', 'WebsiteController@reset');
 
 	Route::get('/email/verify', function () {
 		return view('auth.verify-email');

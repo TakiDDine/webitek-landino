@@ -113,6 +113,8 @@ class UserController extends Controller
 				'package_type' => 'required',
 				'profile_picture' => 'nullable|image|max:5120',
 			]);
+
+			// dd($validator, $validator->errors());
 			
 			if ($validator->fails()) {
 				if($request->ajax()){ 

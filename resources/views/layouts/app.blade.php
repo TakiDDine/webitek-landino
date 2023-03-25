@@ -558,6 +558,7 @@
                 border: 1px solid #3081e9;
                 color: #3081e9;
                 font-size: 17px;
+                position: fixed;
             }
 
             a.upgrade_link:hover {

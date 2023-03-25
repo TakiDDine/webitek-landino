@@ -187,6 +187,16 @@ class WebsiteController extends Controller
         }
 
     }
+
+     /**
+     * Show the website frontpage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function reset()
+    {
+        return view('website.reset');
+    }
 	
 	
 }

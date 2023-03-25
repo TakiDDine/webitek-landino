@@ -17,14 +17,14 @@
     <!-- App favicon -->
     <link rel="icon" href="{{ get_favicon() }}">
 
-    <link rel="stylesheet" href="./../builder/css/lib/bootstrap.min.css" />
-    <link rel="stylesheet" href="./../builder/css/lib/fx.css" />
-    <link rel="stylesheet" href="./../builder/css/lib/spectrum.css" />
-    <link rel="stylesheet" href="./../builder/css/lib/codemirror.css" />
-    <link rel="stylesheet" href="./../builder/css/fonts.css" />
-    <link rel="stylesheet" href="./../builder/css/main.css" />
-    <link rel="stylesheet" href="./../builder/css/preloader.css" />
-    <link rel="stylesheet" href="/public/assets/css/font.css">
+    <link rel="stylesheet" href="{{asset('/backend/assets/builder/css/lib/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/backend/assets/builder/css/lib/fx.css')}}" />
+    <link rel="stylesheet" href="{{asset('/backend/assets/builder/css/lib/spectrum.css')}}" />
+    <link rel="stylesheet" href="{{asset('/backend/assets/builder/css/lib/codemirror.css')}}" />
+    <link rel="stylesheet" href="{{asset('/backend/assets/builder/css/fonts.css')}}" />
+    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/main.css')}}" />
+    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/preloader.css')}}" />
+    <link rel="stylesheet" href="{{asset('/assets/css/font.css')}}">
 
     <style>
         .icon-blr-lg-mobile.landscape {
