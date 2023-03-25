@@ -1,0 +1,13 @@
+#testimonial-2col .bg {
+    background-image: url('../images/bg-27.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity:0.2;
+}#testimonial-2col--0 .bg {
+    background-image: url('../images/bg-27.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity:0.2;
+}

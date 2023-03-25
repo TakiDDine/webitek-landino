@@ -47,7 +47,6 @@ class BuilderController extends Controller
    */
   public function index()
   {
-
     return view('backend.accounting.project.builder');
   }
 
@@ -184,6 +183,7 @@ class BuilderController extends Controller
   }
 
   public function get_table_data(Request $request){
+
     $company_id = company_id();
     $user_type = Auth::user()->user_type;
 

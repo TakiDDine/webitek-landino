@@ -83,39 +83,40 @@ class ProjectController extends Controller
    */
   public function index()
   {
-    $company_id = company_id();
+    // dd('hello');
+    // $company_id = company_id();
 
-    $user_type = Auth::user()->user_type;
+    // $user_type = Auth::user()->user_type;
 
-    $projects = Project::select('projects.*')
-        ->with('members')
-        ->with('client')
-        ->where('company_id', $company_id)
-        ->when($user_type, function ($query, $user_type) {
-            if ($user_type == 'staff') {
-                return $query->join('project_members', 'projects.id', 'project_members.project_id')
-                    ->where('project_members.user_id', Auth::id());
-            }
-        })
-        ->orderBy("projects.id", "desc")->get();
-
-
-
+    // $projects = Project::select('projects.*')
+    //     ->with('members')
+    //     ->with('client')
+    //     ->where('company_id', $company_id)
+    //     ->when($user_type, function ($query, $user_type) {
+    //         if ($user_type == 'staff') {
+    //             return $query->join('project_members', 'projects.id', 'project_members.project_id')
+    //                 ->where('project_members.user_id', Auth::id());
+    //         }
+    //     })
+    //     ->orderBy("projects.id", "desc")->get();
 
 
-    $data['demo']   =   false;
-    if (Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')) {
-        $data['demo']   =   true;
-    }
-    return view('backend.accounting.project.list', compact('projects'));
+
+
 
     // $data['demo']   =   false;
-    // if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+    // if (Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')) {
     //     $data['demo']   =   true;
     // }
+    // return view('backend.accounting.project.list', compact('projects'));
+
+    $data['demo']   =   false;
+    if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+        $data['demo']   =   true;
+    }
     
 
-    // return view('backend.accounting.project.list');
+    return view('backend.accounting.project.list');
   }
 
   public function builder()
@@ -145,6 +146,8 @@ class ProjectController extends Controller
                 ->orderBy("projects.id","desc");
         }
 
+        // dd($projects);
+        // return $projects;
         return Datatables::eloquent($projects)
                         ->filter(function ($query) use ($request) {
                             if ($request->has('status')) {
@@ -154,7 +157,7 @@ class ProjectController extends Controller
                         })
                         ->addColumn('action', function ($project) {
                             return '<form action="'.action('ProjectController@destroy', $project['id']).'" class="text-center" method="post">'
-                            .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" class="btn btn-primary btn-xs ajax-modal"><i class="ti-notepad"> </i> '._lang('Settings').'</a>&nbsp;'
+                            .'<a href="'.action('ProjectController@editSettings', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" class="btn btn-primary btn-xs"><i class="ti-notepad"> </i> '._lang('Settings').'</a>&nbsp;'
                             .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Update Project') .'" class="btn btn-warning btn-xs"><i class="ti-pencil"></i> '._lang('Edit').'</a>&nbsp;'
                             .csrf_field()
                             .'<input name="_method" type="hidden" value="DELETE">'
@@ -370,6 +373,35 @@ class ProjectController extends Controller
 
     }
 
+    public function editSettings(Request $request,$id)
+    {
+        if(Auth()->user()->user_type == 'admin') {
+            $project = Project::where('id',$id)
+            ->first();
+        } else {
+            $project = Project::where('id',$id)
+            ->where('company_id',company_id())
+            ->first();
+        }
+       
+        
+        $projectfile = \App\ProjectFile::where('related_to','projects')->where('related_id',$id)->first();;
+
+        $data['project']        =   $project;
+        $data['id']             =   $project->id;
+        $data['company_id']             =   $project->company_id;
+
+
+        $data['demo']   =   false;
+        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+            $data['demo']   =   true;
+        }
+        // dd($request->ajax());
+        // dd($data);
+        return view('backend.accounting.project.modal.edit',$data);
+        
+
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -400,7 +432,7 @@ class ProjectController extends Controller
         if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
             $data['demo']   =   true;
         }
-
+        // dd($request->ajax());
         if( ! $request->ajax()){
 
 
@@ -429,8 +461,7 @@ class ProjectController extends Controller
             $data['id']             =   $project->id;
 
             define('SUPRA', 1);
-
-            return view('backend.accounting.project.editlara',$data);
+            return view('backend.accounting.project.editlara', ['data'=> $data]);
             /*
                 if($project->status == 'lara'){
 
@@ -461,6 +492,7 @@ class ProjectController extends Controller
                 }
             */
         }else{
+            dd($data);
             return view('backend.accounting.project.modal.edit',$data);
         }
 
@@ -553,8 +585,10 @@ class ProjectController extends Controller
     if(! $request->ajax()){
            return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
         }else{
+        return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
        return response()->json(['result'=>'success','action'=>'update', 'message'=>_lang('Updated Sucessfully'), 'data'=>$project, 'table' => '#projects_table']);
     }
+
 
     }
 

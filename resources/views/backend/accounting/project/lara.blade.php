@@ -18,25 +18,26 @@
     <!-- App favicon -->
     <link rel="icon" href="{{ get_favicon() }}">
 
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/fx.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/spectrum.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/codemirror.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/fonts.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/main.css')}}" />
-    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/preloader.css')}}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/lib/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/lib/fx.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/lib/spectrum.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/lib/codemirror.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/assets/builder/css/preloader.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="first-show">
-    <script src="{{asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js') }}"></script>
     <style id="builder-style"></style>
     <div id="main_body" style="display: none;">
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
+            <h3> Landino </h3>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -79,14 +80,14 @@
                         </li>
                     </ul>
                 </div>
+                <div class="iframeHeader__mid">
+                    <div id="saveBtn__save"></div>
+                    <div id="previewTemplate"></div>
+
+                </div>
                 <div class="iframeHeader__right">
                     <div id="backToDashboard"></div>
-                    <div id="previewTemplate">
-                    </div>
-                    <div id="allExportsBtn">
-
-                    </div>
-
+                    <div id="allExportsBtn"></div>
                 </div>
             </div>
             {{-- <div class="modes-wraper">
@@ -132,8 +133,7 @@
                     <div class="sidebarContainer">
                         <div id="sidebar_contentHeader" class="myDiv">
                             <div class="sidebar-header">
-                                {{-- <a class="sidebar-title">Landino</a> --}}
-                                <h6>UI LIBRARY</h6>
+
                             </div>
                             <div id="sidebarContent__headerList">
 
@@ -183,7 +183,7 @@
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="global-style__container">
                             <div class="sidebar-header">
-                                <h2 class="sidebar-title">Global Styles</h2>
+                                <h2 class="sidebar-title">Landino</h2>
                             </div>
                             <div id="sidebarRight__Content">
                                 <div class="sidebarRight__btns"></div>
@@ -227,18 +227,18 @@
     <script>
         localStorage.clear();
     </script>
-    <script src="{{asset('backend/assets/builder/js/lib/popper.min.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/jquery.nicescroll.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/popper.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/jquery.nicescroll.min.js') }}"></script>
 
-    <script src="{{asset('backend/assets/builder/js/lib/tether.min.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/bootstrap.min.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/spectrum.js')}}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/tether.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/spectrum.js') }}"></script>
 
-    <script src="{{asset('backend/assets/builder/js/lib/codemirror.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/javascript.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/css.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/htmlmixed.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/lib/xml.js')}}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/codemirror.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/javascript.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/css.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
 
     <script>
         @if (env('DEMO_MODE') == true)
@@ -262,9 +262,10 @@
         var project_file = '';
         var project_file_name = '';
     </script>
-    <script src="{{asset('backend/assets/builder/js/options.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/download.js')}}"></script>
-    <script src="{{asset('backend/assets/builder/js/builder.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>
+
 
     <script type="text/javascript">
         document.getElementById("main_body").style.display = "block";

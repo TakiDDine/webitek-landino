@@ -195,7 +195,7 @@
 	<div class="kt-menu__submenu ">
 		<span class="kt-menu__arrow"></span>
 		<ul class="kt-menu__subnav">
-			<li class="kt-menu__item @if(Request::is('features')) kt-menu__item--open @endif"  aria-haspopup="true">
+			{{-- <li class="kt-menu__item @if(Request::is('features')) kt-menu__item--open @endif"  aria-haspopup="true">
 				<a  href="{{ url('features') }}" class="kt-menu__link ">
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
 					<span class="kt-menu__link-text">{{ _lang('Software Features') }}</span>
@@ -206,7 +206,7 @@
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
 					<span class="kt-menu__link-text">{{ _lang('Knowledge Base') }}</span>
 				</a>
-			</li>
+			</li> --}}
 			<li class="kt-menu__item @if(Request::is('administration/theme_option')) kt-menu__item--open @endif"  aria-haspopup="true">
 				<a  href="{{ url('administration/theme_option') }}" class="kt-menu__link ">
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
@@ -265,17 +265,26 @@
 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('tickets')) kt-menu__item--open kt-menu__item--here @endif">
     <a href="{{ url('tickets') }}" class="kt-menu__link">
         <span class="kt-menu__link-icon">
-            <img src="/public/icons/support.svg" alt="">
+            <i class="flaticon2-calendar-3 kt-font-success"></i>
         </span>
         <span class="kt-menu__link-text">{{ _lang('Support') }}</span>
     </a>
 </li>
 
-<li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if(Request::is('administration/general_settings') || Request::is('email_templates') || Request::is('administration/currency_rates') || Request::is('administration/backup_database')) kt-menu__item--open @endif" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+<li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('logout')) kt-menu__item--open kt-menu__item--here @endif">
+    <a href="{{ url('logout') }}" class="kt-menu__link">
+        <span class="kt-menu__link-icon">
+            <i class="flaticon-logout  kt-font-danger"></i>
+        </span>
+        <span class="kt-menu__link-text">{{ _lang('Logout') }}</span>
+    </a>
+</li>
+
+{{-- <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if(Request::is('administration/general_settings') || Request::is('email_templates') || Request::is('administration/currency_rates') || Request::is('administration/backup_database')) kt-menu__item--open @endif" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
 	<a href="{{ url('system-update') }}" class="kt-menu__link kt-menu__toggle">
 		<span class="kt-menu__link-icon">
 			<i class="fa-brands fa-ubuntu fa-fw"></i>
 		</span>
 		<span class="kt-menu__link-text">{{ _lang('System Update') }}</span>
 	</a>
-</li>
+</li> --}}
