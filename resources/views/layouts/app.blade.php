@@ -43,7 +43,7 @@
         type="text/css">
 
 
-    <link href="/public/backend/assets/admin/css/demo1/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/backend/assets/admin/css/demo1/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
     {{-- <link href="{{ asset('backend/admin/vendors/custom/notifications/css/ns-default.rtl.css') }}"
         rel="stylesheet" type="text/css" /> --}}
     {{-- <link href="{{ asset('backend/admin/vendors/custom/notifications/css/ns-style-other.rtl.css') }}"
@@ -52,22 +52,22 @@
 
 
     <!--begin::Layout Skins(used by all pages) -->
-    <link href="./admin/css/demo1/skins/header/base/light.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="./admin/css/demo1/skins/header/menu/light.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="./admin/css/demo1/skins/brand/light.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="./admin/css/demo1/skins/aside/light.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/admin/css/demo1/skins/header/base/light.rtl.cs')}}s" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/admin/css/demo1/skins/header/menu/light.rtl.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/admin/css/demo1/skins/brand/light.rtl.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('backend/assets/admin/css/demo1/skins/aside/light.rtl.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Skins -->
     @if (_lang('SYSDIRECTIONDIR') == 'asdasd')
 
-        <link href="./admin/css/demo1/style.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="./admin/vendors/custom/notifications/css/ns-default.css" rel="stylesheet" type="text/css" />
-        <link href="./admin/vendors/custom/notifications/css/ns-style-other.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/css/demo1/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/vendors/custom/notifications/css/ns-default.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/vendors/custom/notifications/css/ns-style-other.css')}}" rel="stylesheet" type="text/css" />
 
         <!--begin::Layout Skins(used by all pages) -->
-        <link href="./admin/css/demo1/skins/header/base/light.css" rel="stylesheet" type="text/css" />
-        <link href="./admin/css/demo1/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
-        <link href="./admin/css/demo1/skins/brand/light.css" rel="stylesheet" type="text/css" />
-        <link href="./admin/css/demo1/skins/aside/light.css" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/css/demo1/skins/header/base/light.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/css/demo1/skins/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/css/demo1/skins/brand/light.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('backend/assets/admin/css/demo1/skins/aside/light.css')}}" rel="stylesheet" type="text/css" />
         <!--end::Layout Skins -->
     @endif
     <!--end::Global Theme Styles -->

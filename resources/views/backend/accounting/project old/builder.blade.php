@@ -2,7 +2,7 @@
 
     <!-- begin::Head -->
     <head><!--begin::Base Path (base relative path for assets of this page) -->
-        <base href="{{ asset('public/backend/assets/builder/builder')}}"><!--end::Base Path -->
+        <base href="{{ asset('/backend/assets/builder/builder')}}"><!--end::Base Path -->
         <meta charset="utf-8" />
         <title>{{ get_option('site_title', 'Spotlayer Framework') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

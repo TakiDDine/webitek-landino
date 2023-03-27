@@ -211,14 +211,15 @@
     <meta property="og:title" content="لاندينو | أنشئ صفحة هبوط في خمس دقائق">
     <meta property="og:description"
         content="أداة لاندينو ، هي الأداة الأفضل في العالم العربي في صناعة صفحات الهبوط ، بدون حاجة لمعرفة في البرمجة والتصميم">
-    <meta property="og:image" content="{{env('APP_URL').'public/front/social-preview.png'}}">
+    <meta property="og:image" content="{{asset('/front/social-preview.png')}}">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{env('APP_URL')}}">
-    <meta property="twitter:title" content="لاندينو | أنشئ صفحة هبوط في خمس دقائق">
+    <meta property="twitter:title" content="لاندينو | أنشئ صفحة هبوط في خمس دقائق"> 
     <meta property="twitter:description"
         content="أداة لاندينو ، هي الأداة الأفضل في العالم العربي في صناعة صفحات الهبوط ، بدون حاجة لمعرفة في البرمجة والتصميم">
-    <meta property="twitter:image" content="{{env('APP_URL').'public/front/social-preview.png'}}">
+    <meta property="twitter:image" content="{{asset('/front/social-preview.png')}}">
+    <link rel="shortcut icon" href="{{asset('/images/favicon.png')}}">
 @endsection
 
 @section('title')

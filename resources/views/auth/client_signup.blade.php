@@ -167,7 +167,7 @@
 @endsection
 
 @section('js-script')
-<script src="{{ asset('public/theme/default/assets/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('/theme/default/assets/js/jquery-3.1.1.min.js') }}"></script>
 <script>
 
 var package = "{{ isset($_GET['package']) ? $_GET['package'] : '' }}";

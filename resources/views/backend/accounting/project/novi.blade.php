@@ -3,7 +3,7 @@
 {{-- @if (_lang('SYSDIRECTIONDIR') == 'rtl')direction="rtl" dir="rtl" style="direction: rtl"@endif --}}
 
 <head>
-    <base href="{{ asset('public/backend/assets/novi/novi') }}">
+    <base href="{{ asset('/backend/assets/novi/novi') }}">
     <!--end::Base Path -->
     <title>{{ get_option('site_title', 'لندينو') }}</title>
 
