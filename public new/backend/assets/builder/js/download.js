@@ -3,6 +3,7 @@ function download(_this, $userId, $project_id) {
         _this._triggerDownload = true;
 
         var csrf_field = document.getElementById('csrf_field').querySelector('input').value; console.log(csrf_field);
+        console.log(baseurl);
         var data = prepareContentToDownload(_this);
 
         var form = new FormData();
