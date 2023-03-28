@@ -94,7 +94,7 @@
                     alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings');
                 @endif
             @endif
-            var ajaxbase    =   '{{url("api/ajax")}}';
+            var ajaxbase    =   '{{url("api/ajax",[], true)}}';
             var baseurl     =   '{{url("/")}}';
             var publicpath    =   "{{base_path('public')}}";
             var basepath    =   "{{base_path('public/backend/assets/builder')}}";

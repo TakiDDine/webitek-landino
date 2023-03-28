@@ -1400,7 +1400,7 @@
 
     <script>
         var demoMode = @if (isset($demo) && $demo == true) true @else 'no' @endif;
-        var ajaxbase = '{{ url('api/ajax') }}';
+        var ajaxbase = '{{ url('api/ajax',[], true) }}';
         var baseurl = '{{ url('/') }}';
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
         var googleKey = '{{ get_option('google_map_key') }}';
