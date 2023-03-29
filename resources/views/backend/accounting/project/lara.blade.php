@@ -5,19 +5,7 @@
 <!-- begin::Head -->
 
 <head>
-  
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD2MTZ40F2"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-XD2MTZ40F2');
-    </script>
-        
     <!--begin::Base Path (base relative path for assets of this page) -->
-    
     <base href="{{ asset('/backend/assets/builder/builder') }}">
     <!--end::Base Path -->
     <meta charset="utf-8" />
@@ -42,9 +30,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="first-show"  data-css-type="{{auth()->user()->getRole()}}">
+<body class="first-show">
     <script src="{{ asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js') }}"></script>
     <style id="builder-style"></style>
+
     <div id="main_body" style="display: none;">
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
@@ -81,15 +70,11 @@
             <div class="iframeHeader">
                 <div class="iframeHeader__left">
                     <ul id="sidebarTriggerers">
-                        <li id="sections-sidebar__Triggerer">
-                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
-                                data-toggle="modal" data-target="#elementsSidebar" data-collapsed="true"><i
-                                    class="fa fa-plus-circle"></i></button>
-                        </li>
                         <li id="edit-section__Triggerer">
                         </li>
                         <li id="global-styles__Triggerer">
                         </li>
+                        <li id="sidebarRight__btns"></li>
                     </ul>
                 </div>
                 <div class="iframeHeader__mid">
@@ -102,14 +87,7 @@
                     <div id="allExportsBtn"></div>
                 </div>
             </div>
-            {{-- <div class="modes-wraper">
-                <div id="iframeViewPort">
-                    <ul id="iframeViewPort__list-container"></ul>
-                </div>
-                <div id="iframeUndoRedo">
-                    <ul id="iframeUndoRedo__list-container"></ul>
-                </div>
-            </div> --}}
+
             <div class="wrap viewing-desctop">
                 <div class="modes-wraper">
                     <div id="iframeViewPort">
@@ -167,50 +145,26 @@
             </div>
         </div>
 
-        {{-- <div class="sidebar-dialog-left" id="elementsSidebar" data-collapsed="true" role="document">
-            <div class="sidebar-content">
-                <div class="sidebarContainer">
-                    <div id="sidebar_contentHeader" class="myDiv">
-                        <div class="sidebar-header">
-                            <a class="sidebar-title">Landino</a>
-                        </div>
-                        <div id="sidebarContent__headerList">
-                            <h6>UI LIBRARY</h6>
-                            <ul id="uiContainer"></ul>
-                        </div>
-                    </div>
-                    <div id="sidebar_contentList" class="sidebar-body myDiv">
-                        <div class="sidebar-body__content" id="sidebarContent__contentList">
-                            <h3 id="sidebarTitle__list-title"></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
-
         <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false" role="document">
             <div class="sidebar-content">
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
-                        <div class="global-style__container">
-                            <div class="sidebar-header">
-                                <h2 class="sidebar-title">Landino</h2>
-                            </div>
-                            <div id="sidebarRight__Content">
-                                <div class="sidebarRight__btns"></div>
-                                <ul id="gStyle__list-container"></ul>
-                            </div>
+                        <div class="sidebar-header">
+                            <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
+                            <img src="images/builder-svg/logo.svg" />
                         </div>
-                        <div class="project-page__container">
-                            <div class="sidebar-header">
-                                <a class="sidebar-title"></a>
-                            </div>
-                            <div id="sidebarRight__project-page__content">
-                                <div>
-                                    <ul id="project-page__list-container"></ul>
-                                </div>
-                                <div class="project-page__btns"></div>
+                        <div id="sections-sidebar__Triggerer">
+                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
+                                data-toggle="modal" data-target="#elementsSidebar" data-collapsed="true">
+                                <span>
+                                    <bdo dir="rtl">
+                                        إضافة عنصر جديد
+                                    </bdo>
+                                </span>
+                                <img src="images/builder-svg/plus.svg" width="30" height="30" />
+                        </div>
+                        <div class="global-style__container">
+                            <div id="sidebarRight__Content">
                             </div>
                         </div>
                     </div>
@@ -262,8 +216,8 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax',[], true) }}';
-        var baseurl = '{{ url('/',[], true) }}';
+        var ajaxbase = '{{ url('api/ajax') }}';
+        var baseurl = '{{ url('/') }}';
         console.log('baseurl', baseurl)
         console.log('ajaxbase', ajaxbase)
         var publicpath = "{{ base_path('public') }}";

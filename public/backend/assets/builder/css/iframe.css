@@ -25,6 +25,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
+:root{
+    --siteBg: #F4F5F7;
+    --primaryBg : #222;
+    --textColor : #212529;
+    --primaryClr:#3758f9;
+    --secondaryClr:#1239f8;
+    --lang: rtl;
+    --alignement: right;
+    --height: 100%;
+ }
+
 .cursor-grab {
     cursor: grabbing!important;
     cursor: -webkit-grabbing!important;
@@ -100,6 +111,7 @@ nav.navbar {
     justify-content: center;
     -webkit-justify-content: center;
     position: absolute;
+    /* gap: 5px; */
 }
 
 .btn-group.wrap-control {
@@ -143,7 +155,7 @@ nav.navbar {
     display: -webkit-flex;
     line-height: 22px !important;
     height: 38px;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--primaryClr);
     color: #ffffff;
     border-radius: 0;
     position: relative;
@@ -165,7 +177,7 @@ nav.navbar {
 .supra-btn.btn-control-3:hover,
 .supra-btn.btn-control-3:focus,
 .supra-btn.btn-control-3.active {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: var(--secondaryClr);
     color: #ffffff;
 }
 
@@ -178,7 +190,7 @@ nav.navbar {
 .supra-btn.btn-style-text:hover:after,
 .supra-btn.btn-style-text:focus:after,
 .supra-btn.btn-style-text.active:after {
-    color: #00C0FF;
+    color: var();
     height: 3px;
     content: '';
     display: block;
@@ -856,6 +868,7 @@ i.icon-blr-data-settings {
     min-height: 100vh;
     background-color: #333;
     opacity: 1;
+    direction: ltr;
 }
 
 .main > ul.loading {
@@ -898,12 +911,49 @@ i.icon-blr-data-settings {
 }
 
 .run .main .wrap-drag .point-to-drag img {
-    margin-bottom: -60px;
     opacity: 1;
     height: auto;
     width: 20%;
     max-width: 100%;
 }
+.run .main .wrap-drag .point-to-drag .showAnimation {
+    position: relative;
+    width: 500px;
+    height: 50%;
+    
+}
+.run .main .wrap-drag .point-to-drag svg {
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    max-height: 280px;
+}
+/**
+Svg Animation
+*/ 
+/** scene 1 */
+.run .main .wrap-drag .point-to-drag #scene-1{
+    display: block;
+}
+.run .main .wrap-drag .point-to-drag #scene-1 #arrow{
+    animation: blinking .7s linear infinite;
+}
+
+
+@keyframes blinking {
+    0%{
+        clip-path: polygon(0 93%, 100% 89%, 100% 100%, 0% 100%);
+    }
+    50%{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+}
+
+/**
+Svg Animation end
+*/ 
 .run .main .wrap-drag .point-to-drag p:nth-child(2) {
     font-size: 2.25rem;
     font-weight: 600;

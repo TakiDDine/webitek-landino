@@ -104,6 +104,13 @@
 }
 
 @font-face {
+	font-family: 'Althawra';
+	src: url('../fonts/Althawra_Fikra/Althawra-Fikra-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'Amaranth';
 	src: url('../fonts/Amaranth/Amaranth-Bold.ttf') format('truetype');
 	font-weight: 700;
@@ -328,8 +335,22 @@
 }
 
 @font-face {
+	font-family: 'Asmaa';
+	src: url('../fonts/Asmaa/Asmaa-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'Bahiana';
 	src: url('../fonts/Bahiana/Bahiana-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bein';
+	src: url('../fonts/Bein/Bein-Arabic.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal;
 }
@@ -575,6 +596,13 @@
 @font-face {
 	font-family: 'Cinzel';
 	src: url('../fonts/Cinzel/Cinzel-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cocon';
+	src: url('../fonts/Cocon_Next_Arabic/Cocon-Next-Arabic.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal;
 }
@@ -835,6 +863,20 @@
 	font-family: 'Dosis';
 	src: url('../fonts/Dosis/Dosis-SemiBold.ttf') format('truetype');
 	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Dubai';
+	src: url('../fonts/Dubai/Dubai-Arabic-Light.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Dubai';
+	src: url('../fonts/Dubai/Dubai-Arabic.ttf') format('truetype');
+	font-weight: 400;
 	font-style: normal;
 }
 
@@ -2911,6 +2953,13 @@
 }
 
 @font-face {
+	font-family: 'Rabar';
+	src: url('../fonts/Rabar/Rabar-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'RacingSansOne';
 	src: url('../fonts/Racing_Sans_One/RacingSansOne-Regular.ttf') format('truetype');
 	font-weight: 400;
@@ -3478,6 +3527,13 @@
 }
 
 @font-face {
+	font-family: 'Shorooq';
+	src: url('../fonts/Shorooq/Shorooq-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'Shrikhand';
 	src: url('../fonts/Shrikhand/Shrikhand-Regular.ttf') format('truetype');
 	font-weight: 400;
@@ -3509,6 +3565,13 @@
 	font-family: 'Signika';
 	src: url('../fonts/Signika/Signika-SemiBold.ttf') format('truetype');
 	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sky';
+	src: url('../fonts/Sky_Bold/Sky-Bold-Arabic.ttf') format('truetype');
+	font-weight: 700;
 	font-style: normal;
 }
 
@@ -3979,5 +4042,12 @@
 	src: url('../fonts/Zilla_Slab/ZillaSlab-SemiBoldItalic.ttf') format('truetype');
 	font-weight: 600;
 	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Hanimation';
+	src: url('../fonts/hanimation_Regular/Hanimation-Regular-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
 }
 
