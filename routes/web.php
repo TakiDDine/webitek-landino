@@ -46,7 +46,7 @@ Route::group(['middleware' => ['install']], function () {
 		Route::any('payment/cmi/success', 'PaymentController@successCmi')->name('cmi.success');
 		Route::get('payment/cmi/failed', 'PaymentController@successCmi')->name('cmi.failed');
 
-		Route::get('/dashboard', 'DashboardController@index');
+		Route::middleware(['google.analytics'])->get('/dashboard', 'DashboardController@index');
 
 		// Templtes
 		Route::get('/all_templates', 'TemplateController@index');

@@ -3,6 +3,20 @@
 
     <!-- begin::Head -->
     <head><!--begin::Base Path (base relative path for assets of this page) -->
+        <!-- Google tag (gtag.js) -->
+       
+<!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD2MTZ40F2"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XD2MTZ40F2');
+        </script>
+
+
+        
         <base href="{{ asset('public/backend/assets/builder/builder')}}"><!--end::Base Path -->
         <meta charset="utf-8" />
         <title>{{ get_option('site_title', 'Spotlayer Framework') }}</title>
@@ -95,7 +109,7 @@
                 @endif
             @endif
             var ajaxbase    =   '{{url("api/ajax",[], true)}}';
-            var baseurl     =   '{{url("/")}}';
+            var baseurl     =   '{{url("/",[], true)}}';
             var publicpath    =   "{{base_path('public')}}";
             var basepath    =   "{{base_path('public/backend/assets/builder')}}";
             var googleKey   =   '{{get_option("google_map_key")}}';

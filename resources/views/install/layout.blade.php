@@ -2,15 +2,20 @@
 <html lang="{{ app()->getLocale() }}">
 	<head>
 		  
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGLGX8F6NM"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+		
+	
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XD2MTZ40F2"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-    gtag('config', 'G-ZGLGX8F6NM');
-    </script>
+	gtag('config', 'G-XD2MTZ40F2');
+	</script>
+
+
+
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +56,15 @@
 		<script type="text/javascript" src="{{ asset('public/install_asset/js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('public/install_asset/js/select2.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('public/install_asset/js/scripts.js') }}"></script>
-
+		{{-- <script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		  
+			ga('create', 'G-XD2MTZ40F2', 'auto');
+			ga('send', 'pageview');
+		  
+		  </script> --}}
 	</body>
 </html>

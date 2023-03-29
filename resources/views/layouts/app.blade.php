@@ -3,6 +3,23 @@
 <!-- begin::Head -->
 
 <head>
+    
+    
+   
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD2MTZ40F2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XD2MTZ40F2');
+    </script>
+
+
+
+
     <!--begin::Base Path (base relative path for assets of this page) -->
     <base href="{{ asset('backend/assets/admin') }}">
     <!--end::Base Path -->
@@ -1154,6 +1171,7 @@
             }
         })
     </script>
+   
 
 </body>
 

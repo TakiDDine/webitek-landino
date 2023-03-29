@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
 		'admin' => \App\Http\Middleware\Admin::class,
 		'company' => \App\Http\Middleware\Company::class,
 		'client' => \App\Http\Middleware\Client::class,
+        'google.analytics' => \App\Http\Middleware\GoogleAnalyticsMiddleware::class,
 	];
 
     /**

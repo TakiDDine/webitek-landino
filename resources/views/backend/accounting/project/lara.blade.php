@@ -5,7 +5,19 @@
 <!-- begin::Head -->
 
 <head>
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD2MTZ40F2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XD2MTZ40F2');
+    </script>
+        
     <!--begin::Base Path (base relative path for assets of this page) -->
+    
     <base href="{{ asset('/backend/assets/builder/builder') }}">
     <!--end::Base Path -->
     <meta charset="utf-8" />
@@ -250,8 +262,8 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax') }}';
-        var baseurl = '{{ url('/') }}';
+        var ajaxbase = '{{ url('api/ajax',[], true) }}';
+        var baseurl = '{{ url('/',[], true) }}';
         console.log('baseurl', baseurl)
         console.log('ajaxbase', ajaxbase)
         var publicpath = "{{ base_path('public') }}";

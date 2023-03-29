@@ -3,6 +3,18 @@
 {{-- @if (_lang('SYSDIRECTIONDIR') == 'rtl')direction="rtl" dir="rtl" style="direction: rtl"@endif --}}
 
 <head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XD2MTZ40F2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XD2MTZ40F2');
+    </script>
+
+    
     <base href="{{ asset('/backend/assets/novi/novi') }}">
     <!--end::Base Path -->
     <title>{{ get_option('site_title', 'لندينو') }}</title>
