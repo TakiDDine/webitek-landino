@@ -408,7 +408,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit2(Request $request,$id)
     {
         
         if(Auth()->user()->user_type == 'admin') {
@@ -461,7 +461,7 @@ class ProjectController extends Controller
             $data['id']             =   $project->id;
 
             define('SUPRA', 1);
-            return view('backend.accounting.project.editlara', ['data'=> $data]);
+            return view('backend.accounting.project.lara', ['data'=> $data]);
             /*
                 if($project->status == 'lara'){
 
@@ -493,6 +493,101 @@ class ProjectController extends Controller
             */
         }else{
             // dd($data);
+            return view('backend.accounting.project.modal.edit',$data);
+        }
+
+    }
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request,$id)
+    {
+        
+        if(Auth()->user()->user_type == 'admin') {
+            $project = Project::where('id',$id)
+            ->first();
+        } else {
+            $project = Project::where('id',$id)
+            ->where('company_id',company_id())
+            ->first();
+        }
+       
+        
+        $projectfile = \App\ProjectFile::where('related_to','projects')->where('related_id',$id)->first();;
+
+        $data['project']        =   $project;
+        $data['id']             =   $project->id;
+        $data['company_id']             =   $project->company_id;
+
+
+        $data['demo']   =   false;
+        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+            $data['demo']   =   true;
+        }
+
+        if( ! $request->ajax()){
+
+
+
+            define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
+            define('SUPRA_BASE_URL', asset('public/backend/assets/builder'));
+
+
+            $Viewbuilder = new \App\Utilities\Builder\Html;
+
+            $data['groups'] =   $Viewbuilder->groups;
+
+            if(Auth()->user()->user_type == 'admin') {
+                $project = Project::where('id',$id)
+                ->first();
+            } else {
+                $project = Project::where('id',$id)
+                ->where('company_id',company_id())
+                ->first();
+            }           
+                        
+            $projectfile = \App\ProjectFile::where('related_to','projects')->where('related_id',$id)->first();;
+
+            $data['project']        =   $project;
+            $data['projectfile']    =   str_replace(public_path()."/uploads/project_files/",asset('public/uploads/project_files').'/',$projectfile->file);
+            $data['id']             =   $project->id;
+
+            define('SUPRA', 1);
+
+            return view('backend.accounting.project.editlara',$data);
+            /*
+                if($project->status == 'lara'){
+
+
+
+                    define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
+                    define('SUPRA_BASE_URL', asset('public/backend/assets/builder'));
+
+
+                    $Viewbuilder = new \App\Utilities\Builder\Html;
+
+                    $data['groups'] =   $Viewbuilder->groups;
+
+                    $project = Project::where('id',$id)
+                                    ->where('company_id',company_id())
+                                    ->first();
+                    $projectfile = \App\ProjectFile::where('related_to','projects')->where('related_id',$id)->first();;
+                    
+                    $data['project']        =   $project;
+                    $data['projectfile']    =   str_replace(public_path()."/uploads/project_files/",asset('public/uploads/project_files').'/',$projectfile->file);
+                    $data['id']             =   $project->id;
+
+                    define('SUPRA', 1);
+
+                    return view('backend.accounting.project.editlara',$data);
+                }else{
+                    return view('backend.accounting.project.edit',$data);
+                }
+            */
+        }else{
             return view('backend.accounting.project.modal.edit',$data);
         }
 
