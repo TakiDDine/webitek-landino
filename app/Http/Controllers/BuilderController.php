@@ -84,11 +84,14 @@ class BuilderController extends Controller
    */
   public function lara(Request $request)
   {
+    // dd($request->fullUrl());
 
+    if($request->is('projects/*')) {
       $data['demo']   =   false;
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;
       }
+    }
     //   dd($request->template);
 
 
@@ -97,9 +100,8 @@ class BuilderController extends Controller
 
 
       $Viewbuilder = new \App\Utilities\Builder\Html;
-
       $data['groups'] =   $Viewbuilder->groups;
-      if ($request->has('template')) {
+      if ($request->has('template') && $request->is('project/*')) {
         $template =  $request->template;
         if (!empty($template)) {
 
@@ -154,7 +156,9 @@ class BuilderController extends Controller
             return view('backend.accounting.project.editlara', ['data' => $data, 'id' => $data['id'], 'projectfile' => $data['projectfile'], 'groups' => $data['groups'] , 'project' => $data['project']]);
         }
     }
+    
 
+    // dd($data);
       return view('backend.accounting.project.lara', $data);
   }
 

@@ -36,7 +36,7 @@ class ProjectController extends Controller
             //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
             //         }
             //     }
-
+                
             //     //If request is create/store
             //     $route_name = \Request::route()->getName();
                 
@@ -83,7 +83,6 @@ class ProjectController extends Controller
    */
   public function index()
   {
-    // dd('hello');
     // $company_id = company_id();
 
     // $user_type = Auth::user()->user_type;
@@ -146,7 +145,6 @@ class ProjectController extends Controller
                 ->orderBy("projects.id","desc");
         }
 
-        // dd($projects);
         // return $projects;
         return Datatables::eloquent($projects)
                         ->filter(function ($query) use ($request) {
@@ -185,13 +183,19 @@ class ProjectController extends Controller
     public function create(Request $request)
     {
 
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
+        if($request->is('projects/*')) {
+            $data['demo']   =   false;
+            if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+                $data['demo']   =   true;
+            }
+
+            return \Redirect::to(url('/builder').'/lara');
+        }
+        if($request->is('demo/*')) {
+            return \Redirect::to(url('/demo').'/lara');
         }
 
 
-        return \Redirect::to(url('/builder').'/lara');
         /*
             if(get_option('default_builder') == '' || get_option('default_builder') == 'both'){
                 if( ! $request->ajax()){
@@ -396,8 +400,7 @@ class ProjectController extends Controller
         if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
             $data['demo']   =   true;
         }
-        // dd($request->ajax());
-        // dd($data);
+
         return view('backend.accounting.project.modal.edit',$data);
         
 
@@ -432,7 +435,6 @@ class ProjectController extends Controller
         if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
             $data['demo']   =   true;
         }
-        // dd($request->ajax());
         if( ! $request->ajax()){
 
 
@@ -492,7 +494,6 @@ class ProjectController extends Controller
                 }
             */
         }else{
-            // dd($data);
             return view('backend.accounting.project.modal.edit',$data);
         }
 
@@ -533,7 +534,7 @@ class ProjectController extends Controller
 
 
             define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-            define('SUPRA_BASE_URL', asset('public/backend/assets/builder'));
+            define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
 
 
             $Viewbuilder = new \App\Utilities\Builder\Html;
@@ -552,11 +553,10 @@ class ProjectController extends Controller
             $projectfile = \App\ProjectFile::where('related_to','projects')->where('related_id',$id)->first();;
 
             $data['project']        =   $project;
-            $data['projectfile']    =   str_replace(public_path()."/uploads/project_files/",asset('public/uploads/project_files').'/',$projectfile->file);
+            $data['projectfile']    =   str_replace(public_path()."/uploads/project_files/",asset('/uploads/project_files').'/',$projectfile->file);
             $data['id']             =   $project->id;
 
             define('SUPRA', 1);
-
             return view('backend.accounting.project.editlara',$data);
             /*
                 if($project->status == 'lara'){

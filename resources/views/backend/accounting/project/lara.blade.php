@@ -9,7 +9,7 @@
     <base href="{{ asset('/backend/assets/builder/builder') }}">
     <!--end::Base Path -->
     <meta charset="utf-8" />
-    <title>{{ get_option('site_title', 'Spotlayer Framework') }}</title>
+    <title>{{ get_option('site_title', 'لاندينو') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -112,7 +112,7 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{ url('project/larabuilder') }}"></iframe>
+                <iframe id="main" src="{{app('request')->is('builder/*') ? url('project/larabuilder') :  url('demo/larabuilder') }}"></iframe>
             </div>
         </div>
 
@@ -186,7 +186,7 @@
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-        <div id="userId" class="userId" style="display: none">{{ Auth::user()->id }}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0}}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
 
@@ -223,10 +223,12 @@
         var publicpath = "{{ base_path('public') }}";
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
         var googleKey = '{{ get_option('google_map_key') }}';
-        var userId = '{{ Auth::user()->id }}';
+        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         var project_id = 0;
         var project_file = '';
         var project_file_name = '';
+       
+       
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

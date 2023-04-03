@@ -33,6 +33,26 @@ Route::group(['middleware' => ['install']], function () {
 		return view('auth.verify-email');
 	})->middleware('auth')->name('verification.notice');
 
+	// Try Demo 
+	Route::prefix('demo')->group(function() {
+		Route::get('/create', 'ProjectController@create');
+		// Route::resource('/builder','BuilderController');
+		// Route::get('/lara','BuilderController@lara');
+		// Route::get('/editor', 'BuilderController@lara');
+		// Route::get('/larabuilder','BuilderController@larabuilder');
+		//Builder
+		Route::resource('/builder','BuilderController');
+		Route::get('updateproject/builder/{id}','BuilderController@index'); 
+		Route::get('/larabuilder','BuilderController@larabuilder');
+		Route::get('/novi','BuilderController@novi');
+		Route::get('/lara','BuilderController@lara');
+		Route::get('/editor', 'BuilderController@lara');
+		Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
+		Route::get('test/backend/assets/builder','BuilderController@empty');
+
+	});
+
+
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
@@ -162,7 +182,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('/projects/{id}/update', 'ProjectController@update');
 			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
-			// Route::resource('projects','ProjectController');
+			Route::resource('projects','ProjectController');
 
 			//Builder
 			Route::resource('project/builder','BuilderController');
