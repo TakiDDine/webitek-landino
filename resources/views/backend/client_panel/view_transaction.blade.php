@@ -10,7 +10,7 @@
 		<td>{{ _lang('Attachment') }}</td>
 			<td>
 				@if($transaction->attachment != "")
-				 <a href="{{ asset('public/uploads/transactions/'.$transaction->attachment) }}" target="_blank" class="btn btn-primary">{{ _lang('View Attachment') }}</a>
+				 <a href="{{ asset('uploads/transactions/'.$transaction->attachment) }}" target="_blank" class="btn btn-primary">{{ _lang('View Attachment') }}</a>
 				@else
 					<label class="badge badge-warning">
 					<strong>{{ _lang('No Atachment Availabel !') }}</strong>

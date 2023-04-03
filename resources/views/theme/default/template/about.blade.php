@@ -4,7 +4,7 @@
 <section class="text-center imagebg space--lg" data-overlay="3">
     @if (get_array_option('sub_banner_image'))
     <div class="background-image-holder">
-        <img alt="background" src="{{ asset('public/uploads/media/'.get_array_option('sub_banner_image')) }}" />
+        <img alt="background" src="{{ asset('uploads/media/'.get_array_option('sub_banner_image')) }}" />
     </div>
     @endif
     <div class="container">
@@ -55,7 +55,7 @@
                 <div class="slider border--round" data-arrows="true" data-paging="true">
                     <ul class="slides">
                         <li>
-                            <img alt="Image" src="{{ get_array_option('about_image') != '' ? asset('public/uploads/media/'.get_array_option('about_image')) : theme_asset('assets/img/cowork-5.jpg') }}" />
+                            <img alt="Image" src="{{ get_array_option('about_image') != '' ? asset('uploads/media/'.get_array_option('about_image')) : theme_asset('assets/img/cowork-5.jpg') }}" />
                         </li>
                     </ul>
                 </div>

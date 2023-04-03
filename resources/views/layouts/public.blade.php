@@ -11,10 +11,10 @@
         <link rel="shortcut icon" href="{{ get_favicon() }}">
 	   
         <!-- App css -->
-        <link href="{{ asset('public/backend/assets/css/bootstrap.min.css') }}" rel="stylesheet" media="all"  type="text/css" />
-		<link href="{{ asset('public/backend/assets/css/fontawesome.min.css') }}" rel="stylesheet">
-		<link href="{{ asset('public/backend/assets/css/themify-icons.css') }}" rel="stylesheet">
-		<link href="{{ asset('public/backend/assets/css/styles.css') }}" rel="stylesheet" media="all" type="text/css" />
+        <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet" media="all"  type="text/css" />
+		<link href="{{ asset('backend/assets/css/fontawesome.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('backend/assets/css/themify-icons.css') }}" rel="stylesheet">
+		<link href="{{ asset('backend/assets/css/styles.css') }}" rel="stylesheet" media="all" type="text/css" />
     </head>
 
 	<body class="{{ _lang('SYS_DIRECTION_DIR') }}">
@@ -45,12 +45,12 @@
 
 
         <!-- jQuery  -->
-        <script src="{{ asset('public/backend/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
-        <script src="{{ asset('public/backend/assets/js/popper.min.js') }}"></script>
-		<script src="{{ asset('public/backend/assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('public/backend/assets/js/print.js') }}"></script>
-		<script src="{{ asset('public/backend/plugins/toastr/toastr.js') }}"></script>
-		<script src="{{ asset('public/backend/assets/js/public.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/popper.min.js') }}"></script>
+		<script src="{{ asset('backend/assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/print.js') }}"></script>
+		<script src="{{ asset('backend/plugins/toastr/toastr.js') }}"></script>
+		<script src="{{ asset('backend/assets/js/public.js') }}"></script>
 		
 		<script type="text/javascript">		
 		(function($){

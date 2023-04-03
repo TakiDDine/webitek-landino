@@ -11,7 +11,7 @@
 				<table class="table table-bordered" width="100%">
 					<tbody>
 						<tr class="text-center">
-							<td colspan="2"><img class="thumb-xl rounded" src="{{ $profile->profile_picture != "" ? asset('public/uploads/profile/'.$profile->profile_picture) : asset('public/images/avatar.png') }}"></td>
+							<td colspan="2"><img class="thumb-xl rounded" src="{{ $profile->profile_picture != "" ? asset('uploads/profile/'.$profile->profile_picture) : asset('images/avatar.png') }}"></td>
 						</tr>
 						@if(Auth::user()->user_type == 'client')	
 							<tr><td>{{ _lang('Profile Type') }}</td><td>{{ $profile->client->profile_type }}</td></tr>

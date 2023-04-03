@@ -28,12 +28,12 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
 
 		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="{{ asset('public/install_asset/css/bootstrap.min.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ asset('install_asset/css/bootstrap.min.css') }}"/>
 		
-		<link type="text/css" rel="stylesheet" href="{{ asset('public/install_asset/css/select2.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ asset('install_asset/css/select2.css') }}"/>
 
 		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="{{ asset('public/install_asset/css/style.css') }}"/>
+		<link type="text/css" rel="stylesheet" href="{{ asset('install_asset/css/style.css') }}"/>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,10 +52,10 @@
 		</div>
 
 		<!-- jQuery Plugins -->
-		<script type="text/javascript" src="{{ asset('public/install_asset/js/jquery.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('public/install_asset/js/bootstrap.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('public/install_asset/js/select2.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('public/install_asset/js/scripts.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('install_asset/js/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('install_asset/js/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('install_asset/js/select2.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('install_asset/js/scripts.js') }}"></script>
 		{{-- <script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -106,7 +106,7 @@ body {
 										</div>
 									</td>
 									<td class="text-right">
-										<img src="{{ asset('public/images/modern-invoice-bg.jpg') }}" class="wp-300">
+										<img src="{{ asset('images/modern-invoice-bg.jpg') }}" class="wp-300">
 									</td>
 								 </tr>
 							</tbody>

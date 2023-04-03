@@ -98,7 +98,7 @@ body {
 										</td>
 										
 										<td class="text-right">
-											<img src="{{ asset('public/images/modern-quotation-bg.jpg') }}" class="wp-350">
+											<img src="{{ asset('images/modern-quotation-bg.jpg') }}" class="wp-350">
 										</td>
 							
 									 </tr>

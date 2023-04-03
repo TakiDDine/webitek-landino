@@ -78,7 +78,7 @@
 
         function getAppPath() {
             return /.html$/.test(location.pathname) ? "{{ base_path('public/backend/assets/novi') }}/" :
-                '{{ asset('public/backend/assets/novi') }}/';
+                '{{ asset('/backend/assets/novi') }}/';
         }
 
         scriptTag.setAttribute("src", "./../novi/js/builder.min.js" + id);

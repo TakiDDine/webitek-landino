@@ -1,7 +1,7 @@
 <table class="table table-striped">	
 	<tr>
 		<td>
-			<img class="notify-thumb-img float-left" src="{{ asset('public/uploads/profile/'.$notification->user->profile_picture) }}">
+			<img class="notify-thumb-img float-left" src="{{ asset('uploads/profile/'.$notification->user->profile_picture) }}">
 			<h4 class="pt-3 pl-2 float-left">{{ $notification->user->name }}</h4>
 		</td>
 	</tr>

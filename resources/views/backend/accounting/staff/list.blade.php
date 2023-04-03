@@ -25,7 +25,7 @@
 			  
 			  @foreach($users as $user)
 			    <tr id="row_{{ $user->id }}">
-					<td class="text-center"><img src="{{ asset('public/uploads/profile/'.$user->profile_picture) }}" class="thumb-sm rounded-circle mr-2"></td>
+					<td class="text-center"><img src="{{ asset('uploads/profile/'.$user->profile_picture) }}" class="thumb-sm rounded-circle mr-2"></td>
 					<td class='name'>{{ $user->name }}</td>
 					<td class='email'>{{ $user->email }}</td>				
 					<td class='status'>{{ $user->status == 1 ? _lang('Active') : _lang('In-Active') }}</td>					

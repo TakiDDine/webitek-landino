@@ -534,7 +534,7 @@ class ProjectController extends Controller
 
 
             define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-            define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
+            define('SUPRA_BASE_URL', asset('backend/assets/builder'));
 
 
             $Viewbuilder = new \App\Utilities\Builder\Html;
