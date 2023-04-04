@@ -1,0 +1,9 @@
+#nav-menu-full .bg-wrap{
+    background-color: #eeeeee;
+}#header-form .bg {
+    background-image: url('../images/bg-82.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    opacity:0.75;
+}
