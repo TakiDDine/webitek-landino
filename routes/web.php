@@ -182,7 +182,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('/projects/{id}/update', 'ProjectController@update');
 			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
-			Route::resource('projects','ProjectController');
+			// Route::resource('projects','ProjectController');
 
 			//Builder
 			Route::resource('project/builder','BuilderController');

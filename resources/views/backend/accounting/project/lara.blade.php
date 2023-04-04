@@ -227,7 +227,8 @@
         var project_id = 0;
         var project_file = '';
         var project_file_name = '';
-       
+        var custom_domain = '';
+        var sub_domain =  '';
        
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
