@@ -156,6 +156,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   margin-bottom: -30px; margin-right: -30px;
   padding-bottom: 30px;
   height: 100%;
+  direction: ltr;
+  text-align: left;
   outline: none; /* Prevent dragging from highlighting the element */
   position: relative;
 }
@@ -333,3 +335,82 @@ div.CodeMirror-dragcursors {
 
 /* Help users use markselection to safely style text background */
 span.CodeMirror-selectedtext { background: none; }
+
+
+/** code custom */
+
+#modal-container .modal-dialog.html-code-editor .modal-title h4 {
+  font-size: 18px !important;
+  text-shadow: none !important;
+  color: #212121 !important;
+  font-weight: bold !important;
+}
+
+#modal-container .modal-dialog.html-code-editor .modal-content {
+  background-color: #f6f6f6 !important;
+  border-radius: 7px !important;
+}
+#modal-container .modal-dialog.html-code-editor .modal-body {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+#modal-container .modal-dialog.html-code-editor .modal-footer button {
+  font-size: 16px !important;
+  font-weight: 600;
+}
+
+#modal-container
+  .modal-dialog.html-code-editor
+  .modal-footer
+  button.supra-btn.btn-primary {
+  color: #fff !important;
+  background-color: #8bc34a !important;
+  border-radius: 0 0 0 6px !important;
+}
+#modal-container
+  .modal-dialog.html-code-editor
+  .modal-footer
+  button.supra-btn.btn-primary:hover {
+  background-color: #75b52c !important;
+}
+.modal-title.d-flex.justify-content-start {
+  margin: 0 auto !important;
+}
+/* Code Color */
+.html-code-editor .CodeMirror {
+  border-radius: 6px;
+  outline: 2px solid transparent;
+}
+pre {
+  font-size: 15px !important;
+  font-weight: 600;
+}
+.cm-s-default .cm-tag {
+  color: #f92572;
+}
+.cm-s-default .cm-attribute {
+  color: #a6e22e;
+}
+.cm-s-default .cm-string {
+  color: #66d8ef;
+}
+.CodeMirror-linenumber {
+  color: #ffffff !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+}
+.CodeMirror-line::selection,
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection {
+  background-color: #47a3f3 !important;
+  color: #fefefe !important;
+}
+::selection {
+  background-color: #47a3f3 !important;
+  color: #fefefe !important;
+}
+
+.CodeMirror-hscrollbar{
+  background: white;
+}

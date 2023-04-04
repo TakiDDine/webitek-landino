@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-6">
                             <a href="{{ url('/editor?template=' . $template['name']) }}" target="_blank"
-                                class="rounded-lg btn w-100 ">{{ _lang('use template') }}</a>
+                                class="rounded-lg btn w-100 ">{{ _lang('use template') }}</a> 
                         </div>
                     </div>
                 </div>

@@ -1102,6 +1102,10 @@ Svg Animation end
     z-index: 1001100;
 }
 
+.btn-group.inside-top[data-obj-control]{
+    height: 100%!important;
+}
+
 @media all and (min-width: 768px) {
     nav .burger-menu {
         display: none;
