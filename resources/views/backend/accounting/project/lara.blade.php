@@ -151,7 +151,7 @@
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <a href class="brand">
+                            <a class="brand">
                                 <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
                                 <img src="images/builder-svg/logo.svg" />
                             </a>
@@ -230,6 +230,8 @@
         var project_id = 0;
         var project_file = '';
         var project_file_name = '';
+        var custom_domain = '';
+        var sub_domain = '';
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
