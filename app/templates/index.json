@@ -99,6 +99,11 @@
             "name": "tourism7",
             "cover": "/public/thumbnails/thumbnail-tourism7.png",
             "category": "tourism"
+        },
+        {
+            "name": "hamza",
+            "cover": "/public/thumbnails/thumbnail-tourism7.png",
+            "category": "tourism"
         }
     ]
 }

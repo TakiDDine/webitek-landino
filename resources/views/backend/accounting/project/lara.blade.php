@@ -224,11 +224,13 @@
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
         var googleKey = '{{ get_option('google_map_key') }}';
         var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        var project_id = 0;
-        var project_file = '';
-        var project_file_name = '';
+        var project_id = '{{$name}}';
+        var project_file = '{{$projectfile}}';
+        var project_file_name = '{{$name}}';
         var custom_domain = '';
         var sub_domain =  '';
+        var isTemplate = '{{$isTemplate}}' ? true: false;
+        console.log(isTemplate)
        
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>

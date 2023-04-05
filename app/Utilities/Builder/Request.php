@@ -118,9 +118,18 @@ class Request {
      * @param $arr {array}
      * @param $mode {string}
      */
-    protected function _upload_file($path, $arr, $mode,$userId,$project_id) {
+    protected function _upload_file($path, $arr, $mode,$userId,$project_id, $template) {
+        echo json_encode( array( 'error' => $template) );
+        exit();
         if ($mode === 'import') {
-            $file_name = $project_id.'_'.'project.supra';
+            if ($template) {
+
+                $file_name = $project_id.'.supra';
+            }
+            else {
+                $file_name = $project_id.'_project.supra';
+
+            }
         }else{
             $file_name = $_POST['name_file'];
         }

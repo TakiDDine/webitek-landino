@@ -69,7 +69,7 @@ Route::group(['middleware' => ['install']], function () {
 		Route::middleware(['google.analytics'])->get('/dashboard', 'DashboardController@index');
 
 		// Templtes
-		Route::get('/all_templates', 'TemplateController@index');
+		Route::get('/templates', 'TemplateController@index');
 
 		Route::get('/affiliate', 'AffiliateController@index')->name('affiliate.index');
 

@@ -101,7 +101,7 @@ class BuilderController extends Controller
 
       $data['groups'] =   $Viewbuilder->groups;
     //   dd($request);
-    //get supra name rom request 
+    //get supra name rom request
 
       if ($request->has('template')) {
         $template =  $request->template;
@@ -123,10 +123,10 @@ class BuilderController extends Controller
             //         $newTemplate->status         =   'lara';
             //         $newTemplate->name           =   'Project_'.date('Y-m-d_H:i:s');
             //         $newTemplate->save();
-                
+
             //         file_put_contents(public_path()."/uploads/project_files/".$newTemplate->id."_project.supra", $data);
             //         file_put_contents(public_path()."/tmp/".$newTemplate->id."_project.supra", $data);
-                    
+
             //         dd($newTemplate);
             //     $projectfile                = new \App\ProjectFile();
             //     $projectfile->related_to    = 'projects';
@@ -135,18 +135,18 @@ class BuilderController extends Controller
             //     $projectfile->user_id       = $userAuth->id;
             //     $projectfile->company_id    = $userAuth->company_id;
             //     $projectfile->save();
-                
+
             //     }
             //     dd($user);
             // get the project from database from demo user witht same tile of x
-    
-    
-            // dupliaacte row + 
-    
-    
-            // duplicate files 
-    
-    
+
+
+            // dupliaacte row +
+
+
+            // duplicate files
+
+
             // save
             //                dd($template);
 
@@ -193,8 +193,11 @@ class BuilderController extends Controller
             $data['project']        =   null;
             $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('uploads/project_files') . '/', public_path() . "/uploads/project_files/$template.supra");
             $data['id']             =   0;
+            $data['name'] = $template;
+            $data['isTemplate'] = true;
             define('SUPRA', 1);
-            return view('backend.accounting.project.editlara', $data);
+            // dd($data);
+            return view('backend.accounting.project.lara', $data);
         }
     }
 
