@@ -4630,16 +4630,22 @@ var builderOptions = {
     },
   },
   baseFilesForProject: {
-    css: ["bootstrap.weber.css", "fx.css"],
-    js: ["jquery-2.1.4.min.js", "bootstrap.min.js"],
-    plugins: [
-      "https://maps.googleapis.com/maps/api/js?key=" + googleKey,
-      "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+    css: [
+        'bootstrap.weber.css'
+        , 'fx.css'
     ],
-  },
-  fullVersionSource:
-    "https://codecanyon.net/item/larabuilder-dragdrop-site-builder-and-cms/25279120",
-  previewSettings: {
-    dir: "/tmp/preview", //Directory to upload like /preview or /../preview
-  },
+    js: [
+        'jquery-2.1.4.min.js'
+        , 'bootstrap.min.js'
+    ],
+    plugins: [
+        'https://maps.googleapis.com/maps/api/js?key=' + googleKey
+        , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
+    ]
+}
+, fullVersionSource: '../../../../membership/extend'
+, previewSettings: {
+    //Auth::user()->id
+    dir: publicpath + '/tmp/' + userId + '/' + project_id +'/preview' //Directory to upload like /preview or /../preview
+},
 };

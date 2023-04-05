@@ -174,7 +174,19 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 5px;
+    }
+    .myDiv .sidebar-header a.brand {
+        display: flex;
+        direction: ltr;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        gap: 10px;
+        color: var(--textColor);
+        transition: color .4s ease;
+    }
+    .myDiv .sidebar-header a.brand:hover {
+        color: var(--primaryClr);
     }
 .myDiv .sidebar-header h2{
     flex: 1;

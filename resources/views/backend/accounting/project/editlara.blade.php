@@ -112,7 +112,8 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{app('request')->is('builder/*') ? url('project/larabuilder') :  url('demo/larabuilder') }}"></iframe>
+                <iframe id="main"
+                    src="{{ app('request')->is('builder/*') ? url('project/larabuilder') : url('demo/larabuilder') }}"></iframe>
             </div>
         </div>
 
@@ -150,8 +151,10 @@
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
-                            <img src="images/builder-svg/logo.svg" />
+                            <a href class="brand">
+                                <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
+                                <img src="images/builder-svg/logo.svg" />
+                            </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
                             <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
@@ -186,7 +189,7 @@
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0}}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0 }}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
 
@@ -224,12 +227,11 @@
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
         var googleKey = '{{ get_option('google_map_key') }}';
         var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-            var project_id    			=   '{{$id}}';
-            var custom_domain    			=   '{{\App\Project::where('id', $id)->first()->custom_domain}}';
-            var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
-            var project_file    		=   '{{$projectfile}}';
-            var project_file_name    	=   '';
-        
+        var project_id = '{{ $id }}';
+        var custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
+        var sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
+        var project_file = '{{ $projectfile }}';
+        var project_file_name = '';
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
