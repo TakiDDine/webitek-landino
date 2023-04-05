@@ -8082,7 +8082,7 @@ input[type="radio"] + .lbl::after {
 }
 #modal-container .page-settings .modal-body .btn-page-control button.active {
   color: #ffffff !important;
-  background-color: #00bcd4 !important;
+  background-color: var(--primaryClr) !important;
   border: none !important;
   transition: all 0.15s ease-in;
 }
@@ -8100,7 +8100,7 @@ input[type="radio"] + .lbl::after {
 }
 #modal-container .page-settings .modal-footer button.supra-btn.btn-primary {
   color: #fff !important;
-  background-color: #00bcd4 !important;
+  background-color: var(--primaryClr) !important;
   border-radius: 0 0 0 6px !important;
 }
 #modal-container .page-settings .modal-content label {
@@ -8119,6 +8119,41 @@ input[type="radio"] + .lbl::after {
 }
 #modal-container .page-settings .modal-content input {
   height: 45px;
+}
+#modal-container
+  .page-settings
+  .modal-content
+  .modal-body
+  .general
+  .switch-group
+  button {
+  color: #212121;
+  font-weight: bold;
+  background-color: #f6f6f6;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+#modal-container
+  .page-settings
+  .modal-content
+  .modal-body
+  .general
+  .switch-group
+  .switch-skin.light-skin
+  button.light-skin {
+  border: 2px solid var(--primaryClr) !important;
+  color: var(--primaryClr) !important;
+}
+#modal-container
+  .page-settings
+  .modal-content
+  .modal-body
+  .general
+  .switch-group
+  .switch-skin.dark-skin
+  button.dark-skin {
+  border: 2px solid var(--primaryClr) !important;
+  color: var(--primaryClr) !important;
 }
 #modal-container .choice-images ~ i,
 #modal-container .choice-videos ~ i,
@@ -8156,8 +8191,8 @@ input[type="radio"] + .lbl::after {
   #prev-preload
   .choice-element
   > div::after {
-  border-color: #00bcd4 !important;
-  background-color: #00bcd4;
+  border-color: var(--primaryClr) !important;
+  background-color: var(--primaryClr);
 }
 #modal-container
   .modal-dialog.light-page
@@ -8165,11 +8200,11 @@ input[type="radio"] + .lbl::after {
   .choice-element
   > div
   > * {
-  border-color: #00bcd4 !important;
-  background-color: #00bcd4 !important;
+  border-color: var(--primaryClr) !important;
+  background-color: var(--primaryClr) !important;
 }
 #prev-preload div[data-value="img"] i.fa {
-  color: #00bcd4;
+  color: var(--primaryClr);
 }
 #modal-container .modal-content .modal-body .seo .item:first-of-type {
   padding-right: 0 !important;

@@ -1,6 +1,17 @@
 /*----------------------------------------------------------------------------------------
 										PRELOADER
 ----------------------------------------------------------------------------------------*/
+:root {
+  --siteBg: #f4f5f7;
+  --primaryBg: #222;
+  --textColor: #212529;
+  --primaryClr: #3758f9;
+  --secondaryClr: #1239f8;
+  --lang: rtl;
+  --alignement: right;
+  --height: 100%;
+}
+
 #preloader {
   background: #fff;
   top: 0;
@@ -27,8 +38,8 @@
 #preloader > div > *,
 #preloader > div:before,
 #preloader > div:after {
-  background-color: #3758f9;
-  border-color: #3758f9 !important;
+  background-color: #6259cc;
+  border-color: #6259cc;
 }
 
 /*----------------------------------------------------------------------------------------
@@ -428,4 +439,19 @@
     -webkit-transform: scale(0.9);
     transform: scale(0.9);
   }
+}
+
+.light-page #preloader > div,
+.light-page #preloader > div > *,
+.light-page #preloader > div::before,
+.light-page #preloader > div::after {
+  border-color: var(--primaryClr) !important;
+  background-color: var(--primaryClr);
+}
+#preloader > div,
+#preloader > div > *,
+#preloader > div:before,
+#preloader > div:after {
+  border-color: var(--primaryClr) !important;
+  background-color: var(--primaryClr);
 }
