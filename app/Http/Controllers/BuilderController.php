@@ -86,109 +86,29 @@ class BuilderController extends Controller
    */
   public function lara(Request $request)
   {
-
+      
       $data['demo']   =   false;
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;
-      }
-
-
-      define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-      define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
-
-
-      $Viewbuilder = new \App\Utilities\Builder\Html;
-
-      $data['groups'] =   $Viewbuilder->groups;
-    //   dd($request);
-    //get supra name rom request
+        }
+        
+        
+        define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
+        define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
+        
+        
+        $Viewbuilder = new \App\Utilities\Builder\Html;
+        
+        $data['groups'] =   $Viewbuilder->groups;
+        //get supra name rom request
+        $data['isTemplate'] = false;
+        $data['project']        =   null;
+        $data['projectfile']    = null;
+        $data['name'] = '';
 
       if ($request->has('template')) {
         $template =  $request->template;
         if (!empty($template)) {
-            // dd($template);
-            // $userAuth = Auth()->user();
-            // // get the template name  from url
-            // // x
-            // $project = Project::where('name',$template)->first();
-            //     $user = $project->user()->first();
-            //     if($user->name ==  'templates') {
-            //         $newTemplate = $project->replicate();
-            //         // $newTemplate->name = 'Project_'.Auth::user()->id.'_'.Carbon::now()->timestamp;
-            //         // $newTemplate->user_id = $userAuth->id;
-            //         // $newTemplate->company_id = $userAuth->company_id;
-            //         // $newTemplate->save();
-            //         $newTemplate->user_id        =   $userAuth->id;
-            //         $newTemplate->company_id     =   $userAuth->company_id;
-            //         $newTemplate->status         =   'lara';
-            //         $newTemplate->name           =   'Project_'.date('Y-m-d_H:i:s');
-            //         $newTemplate->save();
-
-            //         file_put_contents(public_path()."/uploads/project_files/".$newTemplate->id."_project.supra", $data);
-            //         file_put_contents(public_path()."/tmp/".$newTemplate->id."_project.supra", $data);
-
-            //         dd($newTemplate);
-            //     $projectfile                = new \App\ProjectFile();
-            //     $projectfile->related_to    = 'projects';
-            //     $projectfile->related_id    = $newTemplate->id;
-            //     $projectfile->file          = public_path()."/uploads/project_files/".$newTemplate->id."_project.supra";
-            //     $projectfile->user_id       = $userAuth->id;
-            //     $projectfile->company_id    = $userAuth->company_id;
-            //     $projectfile->save();
-
-            //     }
-            //     dd($user);
-            // get the project from database from demo user witht same tile of x
-
-
-            // dupliaacte row +
-
-
-            // duplicate files
-
-
-            // save
-            //                dd($template);
-
-            // $project = new Project();
-            // $project->name = "untiteld project";
-            // $project->client_id = "0";
-            // $project->status = 'lara';
-            // $project->user_id = Auth::id();
-            // $project->company_id = company_id();
-            // $project->save();
-
-            // create_log('projects', $project->id, _lang('Created Project'));
-
-
-            // //Store Project Members
-            // if (isset($request->members)) {
-            //     foreach ($request->members as $member) {
-            //         $project_member  = new ProjectMember();
-            //         $project_member->project_id = $project->id;
-            //         $project_member->user_id = $member;
-            //         $project_member->save();
-
-            //         create_log('projects', $project->id, _lang('Assign to') . ' ' . $project_member->user->name);
-            //     }
-            // }
-
-
-            // if ($project->client->user->id != null) {
-            //     Notification::send($project->client->user, new ProjectCreated($project));
-            // }
-            // Notification::send($project->members, new ProjectCreated($project));
-
-            // DB::commit();
-
-            // $projectfile = new \App\ProjectFile();
-            // $projectfile->file = "/var/www/landino.io/public/uploads/project_files/$template.supra";
-            // // dd($projectfile->file);
-            // $projectfile->user_id = Auth::id();
-            // $projectfile->company_id = company_id();
-            // $projectfile->related_to = 'projects';
-            // $projectfile->related_id = $project->id;
-            // $projectfile->save();
 
             $data['project']        =   null;
             $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('uploads/project_files') . '/', public_path() . "/uploads/project_files/$template.supra");
@@ -196,7 +116,6 @@ class BuilderController extends Controller
             $data['name'] = $template;
             $data['isTemplate'] = true;
             define('SUPRA', 1);
-            // dd($data);
             return view('backend.accounting.project.lara', $data);
         }
     }

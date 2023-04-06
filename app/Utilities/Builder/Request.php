@@ -118,12 +118,11 @@ class Request {
      * @param $arr {array}
      * @param $mode {string}
      */
-    protected function _upload_file($path, $arr, $mode,$userId,$project_id, $template) {
-        echo json_encode( array( 'error' => $template) );
-        exit();
+    protected function _upload_file($path, $arr, $mode,$userId,$project_id, $template = 'false') {
+        
         if ($mode === 'import') {
-            if ($template) {
-
+            if ($template == 'true') {
+                
                 $file_name = $project_id.'.supra';
             }
             else {
@@ -808,7 +807,7 @@ class Request {
      * Calling from ajax to upload a file that contains intermediate work of the project
      */
     public function Import() {
-        $this->_upload_file('public/tmp/', array( '.zip', '.supra' ), 'import',$_POST['userId'],$_POST['project_id']);
+        $this->_upload_file('public/tmp/', array( '.zip', '.supra' ), 'import',$_POST['userId'],$_POST['project_id'], $_POST['template']);
     }
     public function Update() {
 

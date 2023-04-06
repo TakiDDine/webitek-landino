@@ -4631,21 +4631,21 @@ var builderOptions = {
   },
   baseFilesForProject: {
     css: [
-        'bootstrap.weber.css'
-        , 'fx.css'
+      'bootstrap.weber.css'
+      , 'fx.css'
     ],
     js: [
-        'jquery-2.1.4.min.js'
-        , 'bootstrap.min.js'
+      'jquery-2.1.4.min.js'
+      , 'bootstrap.min.js'
     ],
     plugins: [
-        'https://maps.googleapis.com/maps/api/js?key=' + googleKey
-        , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
+      'https://maps.googleapis.com/maps/api/js?key=' + googleKey
+      , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
     ]
-}
-, fullVersionSource: '../../../../membership/extend'
-, previewSettings: {
+  }
+  , fullVersionSource: '../../../../membership/extend'
+  , previewSettings: {
     //Auth::user()->id
-    dir: publicpath+'/tmp/' + userId + '/' + project_id +'/preview' //Directory to upload like /preview or /../preview
-},
+    dir: publicpath + '/tmp/' + userId + '/' + project_id + '/preview' //Directory to upload like /preview or /../preview
+  },
 };

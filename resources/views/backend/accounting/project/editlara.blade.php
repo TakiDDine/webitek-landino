@@ -233,6 +233,7 @@
             var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
 			var project_file    		=   '{{$projectfile}}';
 			var project_file_name    	=   '';
+            var template = false;
        
         
     </script>
