@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,20 +36,20 @@ Route::group(['middleware' => ['install']], function () {
 
 	// Try Demo 
 	Route::prefix('demo')->group(function() {
-		Route::get('/create', 'ProjectController@create');
+		Route::get('/editor1', [ProjectController::class, 'demo'])->name('demo.editor');
 		// Route::resource('/builder','BuilderController');
 		// Route::get('/lara','BuilderController@lara');
 		// Route::get('/editor', 'BuilderController@lara');
 		// Route::get('/larabuilder','BuilderController@larabuilder');
 		//Builder
-		Route::resource('/builder','BuilderController');
-		Route::get('updateproject/builder/{id}','BuilderController@index'); 
-		Route::get('/larabuilder','BuilderController@larabuilder');
-		Route::get('/novi','BuilderController@novi');
-		Route::get('/lara','BuilderController@lara');
-		Route::get('/editor', 'BuilderController@lara');
-		Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
-		Route::get('test/backend/assets/builder','BuilderController@empty');
+		// Route::resource('/builder','BuilderController');
+		// Route::get('updateproject/builder/{id}','BuilderController@index'); 
+		// Route::get('/larabuilder','BuilderController@larabuilder');
+		// Route::get('/novi','BuilderController@novi');
+		// Route::get('/lara','BuilderController@lara');
+		// Route::get('/editor', 'BuilderController@lara');
+		// Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
+		// Route::get('test/backend/assets/builder','BuilderController@empty');
 
 	});
 
@@ -179,7 +180,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('/projects/store', 'ProjectController@store');
 			Route::get('/projects/{id}/edit', 'ProjectController@edit');
 			Route::get('/projects/{id}/editSettings', 'ProjectController@editSettings');
-			Route::post('/projects/{id}/update', 'ProjectController@update');
+			Route::post('/projects/{id}/update', 'ProjectController@update')->name('projects.update');
 			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
 			// Route::resource('projects','ProjectController');
