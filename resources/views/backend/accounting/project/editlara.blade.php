@@ -221,32 +221,20 @@
         @endif
         var ajaxbase = '{{ url('api/ajax') }}';
         var baseurl = '{{ url('/') }}';
-        console.log('baseurl', baseurl)
-        console.log('ajaxbase', ajaxbase)
         var publicpath = "{{ base_path('public') }}";
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
         var googleKey = '{{ get_option('google_map_key') }}';
         var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-<<<<<<< HEAD
+        // var project_id = 0;
+        // var project_file = '';
+        // var project_file_name = '';
+
         var project_id = '{{ $id }}';
         var custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
         var sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
         var project_file = '{{ $projectfile }}';
         var project_file_name = '';
-=======
-        // var project_id = 0;
-        // var project_file = '';
-        // var project_file_name = '';
-
-        var project_id    			=   '{{$id}}';
-            var custom_domain    			=   '{{\App\Project::where('id', $id)->first()->custom_domain}}';
-            var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
-			var project_file    		=   '{{$projectfile}}';
-			var project_file_name    	=   '';
-            var template = false;
-       
-        
->>>>>>> integration_part1
+        var template = false;
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

@@ -221,8 +221,6 @@
         @endif
         var ajaxbase = '{{ url('api/ajax') }}';
         var baseurl = '{{ url('/') }}';
-        console.log('baseurl', baseurl)
-        console.log('ajaxbase', ajaxbase)
         var template = '{{ $isTemplate }}' ? true : false;
         var publicpath = "{{ base_path('public') }}";
         var basepath = "{{ base_path('public/backend/assets/builder') }}";
@@ -233,7 +231,6 @@
         var project_file_name = template ? '{{ $name }}' : '';
         var custom_domain = '';
         var sub_domain = '';
-        console.log(template)
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
