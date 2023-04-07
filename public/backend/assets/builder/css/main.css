@@ -176,8 +176,11 @@ aside.control-panel.supra.active {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  color: var(--primaryBg);
 }
-
+.myDiv .sidebar-header a.brand:hover {
+  color: var(--primaryClr);
+}
 .myDiv .sidebar-header h2 {
   flex: 1;
   font-size: 1.95rem;
