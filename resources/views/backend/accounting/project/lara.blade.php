@@ -216,8 +216,8 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax') }}';
-        var baseurl = '{{ url('/') }}';
+        var ajaxbase = '{{ url('api/ajax', [], true) }}';
+        var baseurl = '{{ url('/', [], true) }}';
         console.log('baseurl', baseurl)
         console.log('ajaxbase', ajaxbase)
         var template = '{{$isTemplate}}' ? true: false;
