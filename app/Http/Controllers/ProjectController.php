@@ -683,9 +683,9 @@ class ProjectController extends Controller
 
 
     if(! $request->ajax()){
-           return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
+           return redirect()->back()->with('success', _lang('Updated Sucessfully'));
         }else{
-        return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
+        return redirect()->back()->with('success', _lang('Updated Sucessfully'));
        return response()->json(['result'=>'success','action'=>'update', 'message'=>_lang('Updated Sucessfully'), 'data'=>$project, 'table' => '#projects_table']);
     }
 

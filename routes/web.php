@@ -179,7 +179,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('/projects/store', 'ProjectController@store');
 			Route::get('/projects/{id}/edit', 'ProjectController@edit');
 			Route::get('/projects/{id}/editSettings', 'ProjectController@editSettings');
-			Route::post('/projects/{id}/update', 'ProjectController@update');
+			Route::post('/projects/{id}/update', 'ProjectController@update')->name('projects.update');
 			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
 			// Route::resource('projects','ProjectController');
