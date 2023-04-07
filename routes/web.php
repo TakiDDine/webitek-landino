@@ -35,20 +35,20 @@ Route::group(['middleware' => ['install']], function () {
 
 	// Try Demo 
 	Route::prefix('demo')->group(function() {
-		Route::get('/create', 'ProjectController@create');
+		Route::get('/editor', 'ProjectController@create');
 		// Route::resource('/builder','BuilderController');
 		// Route::get('/lara','BuilderController@lara');
 		// Route::get('/editor', 'BuilderController@lara');
 		// Route::get('/larabuilder','BuilderController@larabuilder');
 		//Builder
-		Route::resource('/builder','BuilderController');
-		Route::get('updateproject/builder/{id}','BuilderController@index'); 
-		Route::get('/larabuilder','BuilderController@larabuilder');
-		Route::get('/novi','BuilderController@novi');
-		Route::get('/lara','BuilderController@lara');
-		Route::get('/editor', 'BuilderController@lara');
-		Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
-		Route::get('test/backend/assets/builder','BuilderController@empty');
+		//Route::resource('/builder','BuilderController');
+		//Route::get('updateproject/builder/{id}','BuilderController@index'); 
+		//Route::get('/larabuilder','BuilderController@larabuilder');
+		//Route::get('/novi','BuilderController@novi');
+		//Route::get('/lara','BuilderController@lara');
+		//Route::get('/editor', 'BuilderController@lara');
+		//Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
+		//Route::get('test/backend/assets/builder','BuilderController@empty');
 
 	});
 
