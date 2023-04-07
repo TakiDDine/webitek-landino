@@ -1,0 +1,129 @@
+/**
+ * z-indexes
+ * check z() in _function.scss
+ */
+$z-layers: (
+	header: 20,
+	modal: 100,
+	blog-filter: 25,
+	notif: 30,
+	porsline: 120,
+);
+
+/**
+ * media query breakpoints
+ */
+$xxxs: 360px;
+$xxs :400px;
+$xs :500px;
+$xs2 :600px;
+$sm :800px;
+$sm2: 900px;
+$md :1050px;
+$lg :1400px;
+$xlg: 1900px;
+$xxlg: 2200px;
+
+
+/**
+ * some useful dimensions
+ * check width() in _function.scss
+ */
+$widths: (
+	lg: rem(1170),
+);
+
+/**
+ * some useful dimensions
+ * check height() in _function.scss
+ */
+ $heights: (
+	header: rem(135),
+	header_fixed: rem(85),
+	header_sm: rem(100),
+	header_xs: rem(70),
+);
+
+/**
+ * Transition timing functions
+ * check timings() in _function.scss
+ */
+ $timings: (
+	easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1),
+);
+
+
+/**
+ * colors
+ * check color() in _function.scss
+ */
+$colors: (
+	gray_3: #333333,
+	gray_b3: #B3B3B3,
+	gray_39: #393C40,
+	gray_4: #40464E,
+	gray_fa: #FAFBFD,
+	gray_f5: #F5F7FA,
+	gray_f9: #f9f9f9,
+	gray_e5: #E5E5E5,
+	gray_6: #666666,
+	gray_7: #787979,
+	gray_72: #727478,
+	gray_8: #808080,
+	gray_85: #858A90,
+	gray_d: #DDDDDD,
+	gray_9: #999999,
+	gray_b: #B2B2B2,
+	gray_b9: #B9BCC0,
+	gray_b0: #B0BFD1,
+	gray_dc: #DCDEE5,
+	gray_f: #F3F5F6,
+	gray_0: #0A1626,
+	gray_e: #EFF2F6,
+	gray_e3: #E3E5E9,
+	gray_94: #94A4B6,
+	gray_4d: #4D4D4D,
+	gray_5: #5C5C5C,
+	gray_97: #979797,
+	gray_a: #AAAAAA,
+	gray_45: #454545,
+	gray_44: #444444,
+	gray_f1: #F1F2F4,
+	gray_c5: #c5c5c5,
+	gray_60: #606060,
+	gray_d6: #D6DCE5,
+	gray_485: #485869,
+	gray_87: #8794a2,
+
+
+	blue: #3F98EE,
+	blue_30: #3081E9,
+	blue_37: #376599,
+	blue_1: #1658BB,
+	blue_2: #2968BA,
+	blue_8: #8A9BAF,
+	blue_1d:#1da1f2,
+	blue_00: #0088CC,
+	blue_0: #0077b5,
+	blue_f6 :#F6FAFE,
+	blue_ab: #abc1e4,
+	blue_44: #4475BF,
+	blue_1d5: #1d5bb9,
+	blue_15: #1553af,
+	blue_14: #144372,
+	blue_4b: #4b7cc7,
+	blue_a9: #a9caea,
+	blue_24: #2462BE,
+	blue_26: #26487B,
+	blue_20 : #2070D9,
+	blue_48 : #485869,
+	blue_5c : #5C748E,
+	blue_007: #0078EF,
+
+
+	red: #F44B19,
+
+	red_f4: #F4346F,
+
+	green: #17D58C,
+);

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30.499" height="29.976" viewBox="0 0 30.499 29.976">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="30.499" height="29.976" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group" transform="translate(-1 -1)">
+    <g id="icon_social_twitter_copy" data-name="icon / social / twitter copy" transform="translate(1 1)" clip-path="url(#clip-path)">
+      <g id="phone-actions-24-support" transform="translate(0)">
+        <path id="Path" d="M26.158,18.233a3.852,3.852,0,0,0-5.388,0l-.588.577a70.919,70.919,0,0,1-8.821-8.683l.588-.579a3.709,3.709,0,0,0,0-5.3L8.713,1.064a3.94,3.94,0,0,0-5.387,0L1.553,2.81a5.2,5.2,0,0,0-.672,6.6A70.987,70.987,0,0,0,20.905,29.128a5.473,5.473,0,0,0,6.7-.665l1.774-1.746a3.709,3.709,0,0,0,0-5.3Z" fill="#807064"/>
+      </g>
+    </g>
+  </g>
+</svg>

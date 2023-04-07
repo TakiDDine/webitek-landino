@@ -1,0 +1,47 @@
+/*! CSS Used from: https://getcoldturkey.com/assets/css/styles.css */
+*,*::before,*::after{box-sizing:border-box;}
+h1,h2,p{margin:0;}
+ul{list-style:none;margin:0;padding:0;}
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e4e4e7;}
+h1,h2{font-size:inherit;font-weight:inherit;}
+.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(244, 244, 245, var(--tw-bg-opacity));}
+.border-b{border-bottom-width:1px;}
+.font-extrabold{font-weight:800;}
+.font-black{font-weight:900;}
+.text-lg{font-size:1.125rem;line-height:1.75rem;}
+.text-2xl{font-size:1.5rem;line-height:2rem;}
+.text-5xl{font-size:3rem;line-height:1;}
+.leading-tight{line-height:1.25;}
+.list-disc{list-style-type:disc;}
+.my-8{margin-top:2rem;margin-bottom:2rem;}
+.mx-auto{margin-left:auto;margin-right:auto;}
+.mt-4{margin-top:1rem;}
+.ml-10{margin-left:2.5rem;}
+.mt-12{margin-top:3rem;}
+.mt-16{margin-top:4rem;}
+.max-w-xl{max-width:36rem;}
+.px-4{padding-left:1rem;padding-right:1rem;}
+.pt-8{padding-top:2rem;}
+.pb-24{padding-bottom:6rem;}
+.relative{position:relative;}
+*{--tw-shadow:0 0 #0000;}
+*{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;}
+.text-center{text-align:center;}
+.text-gray-500{--tw-text-opacity:1;color:rgba(113, 113, 122, var(--tw-text-opacity));}
+.text-gray-800{--tw-text-opacity:1;color:rgba(39, 39, 42, var(--tw-text-opacity));}
+.tracking-tight{letter-spacing:-0.025em;}
+.w-full{width:100%;}
+@media (min-width: 640px){
+.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem;}
+.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem;}
+}
+@media (min-width: 1024px){
+.lg\:items-center{align-items:center;}
+.lg\:mt-24{margin-top:6rem;}
+.lg\:max-w-7xl{max-width:80rem;}
+.lg\:px-8{padding-left:2rem;padding-right:2rem;}
+}
+
+.main-content {
+    padding-top: 150px !important;
+}
