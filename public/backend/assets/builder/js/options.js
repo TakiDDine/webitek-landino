@@ -170,7 +170,7 @@ const language = {
 
 
 
-
+  
 };
 var builderOptions = {
   sectionElementList: [
@@ -4438,123 +4438,177 @@ var builderOptions = {
       buttons: [
         {
           innerHTML:
-            '<button type="button" class="btn btn-primary">' + language.prm + '</button>',
+            '<button type="button" class="btn btn-primary">' +
+            language.prm +
+            "</button>",
           value: "btn-primary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-primary">' + language.prm + '</button>',
+            '<button type="button" class="btn btn-outline-primary">' +
+            language.prm +
+            "</button>",
           value: "btn-outline-primary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-secondary">' + language.sec + '</button>',
+            '<button type="button" class="btn btn-secondary">' +
+            language.sec +
+            "</button>",
           value: "btn-secondary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-secondary">' + language.sec + '</button>',
+            '<button type="button" class="btn btn-outline-secondary">' +
+            language.sec +
+            "</button>",
           value: "btn-outline-secondary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-success">' + language.sus + '</button>',
+            '<button type="button" class="btn btn-success">' +
+            language.sus +
+            "</button>",
           value: "btn-success",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-success">' + language.sus + '</button>',
+            '<button type="button" class="btn btn-outline-success">' +
+            language.sus +
+            "</button>",
           value: "btn-outline-success",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-danger">' + language.dng + '</button>',
+            '<button type="button" class="btn btn-danger">' +
+            language.dng +
+            "</button>",
           value: "btn-danger",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-danger">' + language.dng + '</button>',
+            '<button type="button" class="btn btn-outline-danger">' +
+            language.dng +
+            "</button>",
           value: "btn-outline-danger",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-warning">' + language.war + '</button>',
+            '<button type="button" class="btn btn-warning">' +
+            language.war +
+            "</button>",
           value: "btn-warning",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-warning">' + language.war + '</button>',
+            '<button type="button" class="btn btn-outline-warning">' +
+            language.war +
+            "</button>",
           value: "btn-outline-warning",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-info">' + language.inf + '</button>',
+          innerHTML:
+            '<button type="button" class="btn btn-info">' +
+            language.inf +
+            "</button>",
           value: "btn-info",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-info">' + language.inf + '</button>',
+            '<button type="button" class="btn btn-outline-info">' +
+            language.inf +
+            "</button>",
           value: "btn-outline-info",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-light">' + language.lgt + '</button>',
+            '<button type="button" class="btn btn-light">' +
+            language.lgt +
+            "</button>",
           value: "btn-light",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-light">' + language.lgt + '</button>',
+            '<button type="button" class="btn btn-outline-light">' +
+            language.lgt +
+            "</button>",
           value: "btn-outline-light",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-dark">' + language.drk + '</button>',
+          innerHTML:
+            '<button type="button" class="btn btn-dark">' +
+            language.drk +
+            "</button>",
           value: "btn-dark",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-dark">' + language.drk + '</button>',
+            '<button type="button" class="btn btn-outline-dark">' +
+            language.drk +
+            "</button>",
           value: "btn-outline-dark",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-fb">' + language.fab + '</button>',
+            '<button type="button" class="btn btn-fb">' +
+            language.fab +
+            "</button>",
           value: "btn-fb",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-fb">' + language.fab + '</button>',
+            '<button type="button" class="btn btn-outline-fb">' +
+            language.fab +
+            "</button>",
           value: "btn-outline-fb",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-gp">' + language.gog + '</button>',
+          innerHTML:
+            '<button type="button" class="btn btn-gp">' +
+            language.gog +
+            "</button>",
           value: "btn-gp",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-gp">' + language.gog + '</button>',
+            '<button type="button" class="btn btn-outline-gp">' +
+            language.gog +
+            "</button>",
           value: "btn-outline-gp",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-tw">' + language.twt + '</button>',
+            '<button type="button" class="btn btn-tw">' +
+            language.twt +
+            "</button>",
           value: "btn-tw",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-tw">' + language.twt + '</button>',
+            '<button type="button" class="btn btn-outline-tw">' +
+            language.twt +
+            "</button>",
           value: "btn-outline-tw",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-li">' + language.lked + '</button>',
+            '<button type="button" class="btn btn-li">' +
+            language.lked +
+            "</button>",
           value: "btn-li",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-li">' + language.lked + '</button>',
+            '<button type="button" class="btn btn-outline-li">' +
+            language.lked +
+            "</button>",
           value: "btn-outline-li",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-link">' + language.lnk + '</button>',
+          innerHTML:
+            '<button type="button" class="btn btn-link">' +
+            language.lnk +
+            "</button>",
           value: "btn-link",
         },
       ],
@@ -4567,61 +4621,81 @@ var builderOptions = {
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-3d">' + language.be_3D + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-3d">' +
+            language.be_3D +
+            "</button>",
           value: "fx-btn-3d",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-pill">' + language.be_Pill + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-pill">' +
+            language.be_Pill +
+            "</button>",
           value: "fx-btn-pill",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-zoom">' + language.be_Zoom + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-zoom">' +
+            language.be_Zoom +
+            "</button>",
           value: "fx-btn-zoom",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-up">' + language.be_Up + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-up">' +
+            language.be_Up +
+            "</button>",
           value: "fx-btn-up",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-shadow">' + language.be_Shadow + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-shadow">' +
+            language.be_Shadow +
+            "</button>",
           value: "fx-btn-shadow",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-hard-shadow">' + language.be_Shadow2 + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-hard-shadow">' +
+            language.be_Shadow2 +
+            "</button>",
           value: "fx-btn-hard-shadow",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-hidden-icon">' + language.be_Hiddenicon + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-hidden-icon">' +
+            language.be_Hiddenicon +
+            "</button>",
           value: "fx-btn-hidden-icon",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-blick">' + language.be_Blick + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-blick">' +
+            language.be_Blick +
+            "</button>",
           value: "fx-btn-blick",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-wave">' + language.be_Wave + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-wave">' +
+            language.be_Wave +
+            "</button>",
           value: "fx-btn-wave",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-glow">' + language.be_Glow + '</button>',
+            '<button type="button" class="btn btn-primary fx-btn-glow">' +
+            language.be_Glow +
+            "</button>",
           value: "fx-btn-glow",
         },
       ],
@@ -4630,42 +4704,16 @@ var builderOptions = {
     },
   },
   baseFilesForProject: {
-    css: [
-<<<<<<< HEAD
-        'bootstrap.weber.css'
-        , 'fx.css'
-    ],
-    js: [
-        'jquery-2.1.4.min.js'
-        , 'bootstrap.min.js'
-    ],
+    css: ["bootstrap.weber.css", "fx.css"],
+    js: ["jquery-2.1.4.min.js", "bootstrap.min.js"],
     plugins: [
-        'https://maps.googleapis.com/maps/api/js?key=' + googleKey
-        , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
-    ]
-}
-, fullVersionSource: '../../../../membership/extend'
-, previewSettings: {
-    //Auth::user()->id
-    dir: publicpath + '/tmp/' + userId + '/' + project_id +'/preview' //Directory to upload like /preview or /../preview
-},
-=======
-      'bootstrap.weber.css'
-      , 'fx.css'
+      "https://maps.googleapis.com/maps/api/js?key=" + googleKey,
+      "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
     ],
-    js: [
-      'jquery-2.1.4.min.js'
-      , 'bootstrap.min.js'
-    ],
-    plugins: [
-      'https://maps.googleapis.com/maps/api/js?key=' + googleKey
-      , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
-    ]
-  }
-  , fullVersionSource: '../../../../membership/extend'
-  , previewSettings: {
-    //Auth::user()->id
-    dir: publicpath + '/tmp/' + userId + '/' + project_id + '/preview' //Directory to upload like /preview or /../preview
   },
->>>>>>> integration_part1
+  fullVersionSource: "../../../../membership/extend",
+  previewSettings: {
+    //Auth::user()->id
+    dir: publicpath + "/tmp/" + userId + "/" + project_id + "/preview", //Directory to upload like /preview or /../preview
+  },
 };
