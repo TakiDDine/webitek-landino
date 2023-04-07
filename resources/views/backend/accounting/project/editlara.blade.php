@@ -38,7 +38,7 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <h3> Landino </h3>
+            <img src="images/builder-svg/logo.svg" />
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>

@@ -6,13 +6,9 @@ use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
 use App\Utilities\Builder\Ftpuploading;
 use Illuminate\Support\Facades\Cache;
-<<<<<<< HEAD
 
 class Request
 {
-=======
-class Request {
->>>>>>> integration_part1
     protected $_base_path = null;
     protected $_base_url = null;
     protected $_tmp_path = null;
@@ -130,32 +126,21 @@ class Request {
      * @param $arr {array}
      * @param $mode {string}
      */
-<<<<<<< HEAD
-    protected function _upload_file($path, $arr, $mode, $userId, $project_id)
+    protected function _upload_file($path, $arr, $mode, $userId, $project_id, $template = 'false')
     {
+
         if ($mode === 'import') {
-            $file_name = $project_id . '_' . 'project.supra';
+            if ($template == 'true') {
+
+                $file_name = $project_id . '.supra';
+            } else {
+                $file_name = $project_id . '_project.supra';
+
+            }
         } else {
             $file_name = $_POST['name_file'];
         }
         $sub_folder = $mode === 'import' ? '' : '/' . $userId . '/';
-=======
-    protected function _upload_file($path, $arr, $mode,$userId,$project_id, $template = 'false') {
-        
-        if ($mode === 'import') {
-            if ($template == 'true') {
-                
-                $file_name = $project_id.'.supra';
-            }
-            else {
-                $file_name = $project_id.'_project.supra';
-
-            }
-        }else{
-            $file_name = $_POST['name_file'];
-        }
-        $sub_folder = $mode === 'import' ? '' : '/'.$userId.'/';
->>>>>>> integration_part1
 
         if (!file_exists($path . $sub_folder)) {
             mkdir($path . $sub_folder, 0777, true);
@@ -261,15 +246,9 @@ class Request {
             chmod(base_path('public/sites') . '/' . $_POST['userId'] . '/' . $p_id, 0777);
         }
 
-<<<<<<< HEAD
         $output_dir = base_path('public/sites') . '/' . $_POST['userId'] . '/' . $p_id;
 
         $file_name = $this->saveSiteToTmp($dataPost, 'sites', $_POST['userId'], $p_id);
-=======
-        $output_dir = base_path('public/sites').'/'.$_POST['userId'].'/'.$p_id;
-
-        $file_name = $this->saveSiteToTmp($dataPost, 'sites', $_POST['userId'],$p_id );
->>>>>>> integration_part1
 
 
         if ($zip->open(base_path('public/sites') . '/' . $file_name)) {
@@ -777,13 +756,8 @@ class Request {
         }
 
 
-<<<<<<< HEAD
         if (isset($_POST['id'])) {
             $project = \App\Project::find($_POST['id']);
-=======
-        if(isset($_POST['id'])){
-            $project             =   \App\Project::find($_POST['id']);
->>>>>>> integration_part1
             $project->update();
 
             unlink(public_path() . "/uploads/project_files/" . $project->id . "_project.supra");
@@ -797,7 +771,6 @@ class Request {
             $projectfile->update();
 
 
-<<<<<<< HEAD
         } else {
 
             $project = new \App\Project;
@@ -818,28 +791,6 @@ class Request {
             $projectfile->file = public_path() . "/uploads/project_files/" . $project->id . "_project.supra";
             $projectfile->user_id = $this->_current_user;
             $projectfile->company_id = $this->_company_id;
-=======
-        }else{
-            
-            $project                 =   new \App\Project;
-            $project->user_id        =   $this->_current_user;
-            $project->company_id     =   $this->_company_id;
-            $project->status         =   'lara';
-            $project->name           =   'Project_'.date('Y-m-d_H:i:s');
-            $project->save();
-
-
-            file_put_contents(public_path()."/uploads/project_files/".$project->id."_project.supra", $data);
-            file_put_contents(public_path()."/tmp/".$project->id."_project.supra", $data);
-
-
-            $projectfile                = new \App\ProjectFile();
-            $projectfile->related_to    = 'projects';
-            $projectfile->related_id    = $project->id;
-            $projectfile->file          = public_path()."/uploads/project_files/".$project->id."_project.supra";
-            $projectfile->user_id       = $this->_current_user;
-            $projectfile->company_id    = $this->_company_id;
->>>>>>> integration_part1
             $projectfile->save();
 
 
@@ -883,19 +834,11 @@ class Request {
             mkdir($dir, 0777, true);
         }
 
-<<<<<<< HEAD
         $filename = $dir . '/' . uniqid() . "_project.zip";
         $zip = new ZipArchive();
         $zip->open($filename, ZipArchive::CREATE);
 
         $zip->addFromString('project.supra', $data);
-=======
-        $filename = $dir .'/' . uniqid() . "_project.zip";
-        $zip = new ZipArchive();
-        $zip->open($filename, ZipArchive::CREATE);
-
-        $zip->addFromString('project.supra',$data);
->>>>>>> integration_part1
 
         $zip->close();
 
@@ -908,14 +851,9 @@ class Request {
     /**
      * Calling from ajax to upload a file that contains intermediate work of the project
      */
-<<<<<<< HEAD
     public function Import()
     {
-        $this->_upload_file('public/tmp/', array('.zip', '.supra'), 'import', $_POST['userId'], $_POST['project_id']);
-=======
-    public function Import() {
-        $this->_upload_file('public/tmp/', array( '.zip', '.supra' ), 'import',$_POST['userId'],$_POST['project_id'], $_POST['template']);
->>>>>>> integration_part1
+        $this->_upload_file('public/tmp/', array('.zip', '.supra'), 'import', $_POST['userId'], $_POST['project_id'], $_POST['template']);
     }
     public function Update()
     {

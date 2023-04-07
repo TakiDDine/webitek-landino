@@ -49,6 +49,7 @@
   --lang: rtl;
   --alignement: right;
   --height: 100%;
+  --fontFamily: "Noto Kufi Arabic", sans-serif;
 }
 .run:after {
   display: none !important;
@@ -134,84 +135,8 @@ aside.control-panel.supra.active {
   border: none !important;
 }
 
-<<<<<<< HEAD
-.myDiv:not(.sidebar-body){
-     z-index: 2;
-     padding:0 0 40px;
-     width: 260px;
-     background: #fff;
-     -webkit-box-shadow: 0 1px 2px rgba(166,175,195,.25);
-    box-shadow: 0 1px 2px rgba(166,175,195,.25);
-
-    }
- .myDiv.sidebar-body{
-     width: 100%;
-    }
- 
-    
-.myDiv .sidebar-header{
-    width: 100%;
-    flex-direction: row-reverse;
-    border: 0px solid;
-    border-radius: none!important;
-    padding: 1rem;
-    color: var(--textColor);
-    border-bottom: 1px solid #f4f5f7;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    }
-    .myDiv .sidebar-header a.brand {
-        display: flex;
-        direction: ltr;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        gap: 10px;
-        color: var(--textColor);
-        transition: color .4s ease;
-    }
-    .myDiv .sidebar-header a.brand:hover {
-        color: var(--primaryClr);
-    }
-.myDiv .sidebar-header h2{
-    flex: 1;
-    font-size: 1.95rem;
-    cursor: pointer;
-    text-transform: capitalize;
-    margin: 0;
-    font-weight:600;
-    }
-.myDiv .sidebar-header img{
-    background: var(--primaryClr);
-    padding: 12px;
-    width: 20%;
-    border-radius: 35px;
-    }
-
- #sidebarContent__headerList::-webkit-scrollbar,
- #sidebarContent__contentList::-webkit-scrollbar{
-    width: 7px;
-    height: 20px;
-    padding:10px 0;
- }
- #sidebarContent__headerList::-webkit-scrollbar-thumb,
- #sidebarContent__contentList::-webkit-scrollbar-thumb{
-    background-color: #ADB5BD;
-    padding:10px 0;
- }
- #sidebarContent__headerList::-webkit-scrollbar-track,
- #sidebarContent__contentList::-webkit-scrollbar-track{
-    background-color: transparent;
-    padding:10px 0;
- }
-
-#sidebar_contentHeader, #sidebar_contentHeader *{
-    pointer-events: all;
-=======
 .hideSidebar {
   display: none;
->>>>>>> integration_part1
 }
 
 .myDiv {
@@ -252,6 +177,12 @@ aside.control-panel.supra.active {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  color:var(--primaryBg);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+.myDiv .sidebar-header a.brand:hover {
+  color:var(--primaryClr);
 }
 
 .myDiv .sidebar-header h2 {
@@ -274,11 +205,13 @@ aside.control-panel.supra.active {
   width: 7px;
   height: 20px;
   padding: 10px 0;
+  border-radius: 50%;
 }
 #sidebarContent__headerList::-webkit-scrollbar-thumb,
 #sidebarContent__contentList::-webkit-scrollbar-thumb {
   background-color: #adb5bd;
   padding: 10px 0;
+  border-radius: 5px;
 }
 #sidebarContent__headerList::-webkit-scrollbar-track,
 #sidebarContent__contentList::-webkit-scrollbar-track {
@@ -592,23 +525,27 @@ aside.control-panel.supra.active {
 }
 
 #containers-results .containers-results__header .close-btn {
-  border: none;
+  position: absolute;
   background-image: url(../images/builder-icons/cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
   margin: 0 0 0 auto;
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  cursor: pointer;
-  height: 25px;
   width: 25px;
+  height: 25px;
+  top: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 50%;
   filter: brightness(0.6);
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
-#containers-results .close-btn i {
-  font-size: 25px;
+#containers-results .containers-results__header .close-btn:hover {
+  background-color: #d5d5d5;
+  filter: brightness(1);
 }
+
 
 #containers-results .containers-results__header .containers-results__control {
   display: flex;
@@ -655,12 +592,14 @@ aside.control-panel.supra.active {
   width: 7px;
   height: 20px;
   padding: 10px 0;
+  border-radius: 50%;
 }
 #containers-results
   #containers-results__content
   .c-element::-webkit-scrollbar-thumb {
   background-color: #adb5bd;
   padding: 10px 0;
+  border-radius: 5px;
 }
 #containers-results
   #containers-results__content
@@ -1727,15 +1666,30 @@ label.label-section:before {
 
 .c-element .dropdown-menu {
   max-height: 500px;
+  font-weight: bold;
   font-size: inherit;
   border-radius: 1px 0 1px 1px;
   border: 0;
-  margin-top: -1px;
-  background-color: #3a3a3a !important;
+  margin-top: 5px;
   background-color: #f6f6f6 !important;
-  border: 2px solid #ddd !important;
+  border: 1px solid #ddd !important;
+  border-radius: 10px;
   overflow-y: auto;
-  font-weight: bold;
+}
+.c-element .dropdown-menu::-webkit-scrollbar{
+  width: 2px;
+  height: 20px;
+  padding: 10px 0;
+  border-radius: 50%;
+}
+.c-element .dropdown-menu::-webkit-scrollbar-thumb{
+  background-color: #adb5bd;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+.c-element .dropdown-menu::-webkit-scrollbar-track{
+  background-color: #f6f6f6;
+  padding: 10px 0;
 }
 
 .dropdown-menu > li > a,
@@ -4933,20 +4887,23 @@ aside.add-sections-items > ul li.wrap-hover {
 
 #modal-container .modal-body {
   padding-top: 0;
+  padding-bottom: 0;
+  height: auto !important;
 }
 
 #modal-container .modal-footer {
-  padding: 0;
   border: none;
+  padding: 20px 30px;
+  justify-content: flex-start;
+  gap: 7px;
 }
 
 #modal-container .modal-footer button {
   display: block;
-  width: 50%;
+  width: auto;
   margin: 0 !important;
-  border-radius: 0;
+  border-radius: 15px;
   border: none;
-  float: left;
   height: 50px;
   letter-spacing: 0.25px;
 }
@@ -4962,15 +4919,22 @@ aside.add-sections-items > ul li.wrap-hover {
 
 #modal-container .modal-content input {
   height: 38px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 1px;
-  padding: 6px 40px 6px 12px;
+  background-color: transparent;
+  color: #a9a9a9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 6px 12px 6px 50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   outline: none;
+  transition: all .3s ease;
+}
+#modal-container .modal-content input::placeholder{
+  color:#a9a9a9;
+}
+#modal-container .modal-content input:focus, #modal-container .modal-content input:hover{
+  border: 1px solid var(--primaryClr);
 }
 
 #modal-container .modal-content input[type="checkbox"] {
@@ -5543,8 +5507,18 @@ aside.add-sections-items > ul li.wrap-hover {
 
 #modal-container .modal-content .close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  opacity: 1 !important;
+  z-index: 555;
+  background-color: transparent;
+  filter: brightness(0.6);
+  transition: all 0.4s ease;
+}
+#modal-container .modal-content .close:hover {
+  background-color: #d5d5d5;
+  filter: brightness(1);
 }
 
 /* range style */
@@ -7152,14 +7126,16 @@ input[type="radio"]:focus {
 
 input[type="checkbox"] + .lbl,
 input[type="radio"] + .lbl {
-  position: relative;
-  z-index: 10;
   display: inline-block;
-  margin: 0;
-  padding-left: 24px;
-  line-height: 20px;
+  position: relative;
   min-height: 20px;
-  min-width: 24px;
+  min-width: 20px;
+  margin: 0;
+  padding: 10px;
+  border-radius: 6px;
+  line-height: 20px;
+  border:1px solid #ddd;
+  z-index: 10;
 }
 
 /* Basic Checkbox styles */
@@ -7169,9 +7145,9 @@ input[type="radio"] + .lbl::before {
   content: "";
   display: block;
   position: absolute;
-  background-color: #444;
+  background-color: transparent;
   border: none;
-  border-radius: 0;
+  border-radius: 6px;
   height: 18px;
   width: 18px;
   top: 1px;
@@ -7188,13 +7164,14 @@ input[type="radio"].error + .lbl::before {
   content: "";
   display: block;
   position: absolute;
-  background-color: #00c0ff;
+  background-color: var(--primaryClr);
   border: none;
-  border-radius: 0;
+  border-radius: 3px;
   height: 4px;
   width: 4px;
-  top: 8px;
-  left: 7px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
@@ -7210,9 +7187,10 @@ input[type="checkbox"]:checked + .lbl::after,
 input[type="radio"]:checked + .lbl::after {
   height: 14px;
   width: 14px;
-  top: 3px;
-  left: 2px;
+  top: 50%;
+  left: 50%;
   opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 /* Hover state styles */
@@ -7595,7 +7573,7 @@ nav.navbar {
 /* Sidebar Area & main window */
 
 #modal-container .construct-form-sidebar {
-  padding-right: 15px;
+  padding-right: 0px;
   padding-left: 0px;
 }
 
@@ -7610,24 +7588,26 @@ nav.navbar {
 #modal-container .sidebar-btn {
   width: 100%;
   border: none;
-  color: #ffffff;
-  background-color: #4a4a4a;
-  /*
-        color: #444;
-        background-color: transparent;
-        border: 1px solid #eee;
-    */
-  border-radius: 1px;
+  color: var(--textColor);
+  background-color: #ededed;
+  border-radius: 15px;
   margin-bottom: 5px;
-  font-family: "Open Sans", Helvetica, sans-serif;
+  font-family: var(--fontFamily);
   font-size: 14px;
-  text-align: left;
+  text-align: right;
   height: 50px;
   padding: 0px;
+  cursor: pointer;
+  -webkit-transition: background-color .3s ease, color .3s ease;
+  -moz-transition: background-color .3s ease, color .3s ease;
+  -ms-transition: background-color .3s ease, color .3s ease;
+  -o-transition: background-color .3s ease, color .3s ease;
+  transition: background-color .3s ease, color .3s ease;
 }
 
 #modal-container .sidebar-btn:hover {
-  background-color: #444;
+  color: white;
+  background-color: var(--primaryClr);
 }
 
 #modal-container .sidebar-btn:focus {
@@ -7646,20 +7626,38 @@ nav.navbar {
   padding-right: 0px;
   height: 490px;
   overflow: auto;
-  border: 1px dotted #444;
-  border-radius: 1px;
-  /*    background-color: #4f4f4f;*/
+  border-radius: 12px;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-right: 10px;
+  /* box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1) ; */
+  
 }
-
+#modal-container .construct-form-main::-webkit-scrollbar{
+  width: 7px;
+  height: 20px;
+  padding: 10px 0;
+  border-radius: 50%;
+}
+#modal-container .construct-form-main::-webkit-scrollbar-thumb{
+  background-color: #adb5bd;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+#modal-container .construct-form-main::-webkit-scrollbar-track{
+  background-color: transparent;
+  padding: 10px 0;
+}
 #modal-container .construct-form-main-inner {
-  padding: 10px;
+  padding: 0;
   min-height: 100px;
 }
 
 /* Constructor Form Object */
 
 #modal-container .object-area {
-  background-color: #4f4f4f;
+  background-color: transparent;
   /*    border:1px solid #444;*/
   margin-bottom: 10px;
 }
@@ -7671,6 +7669,9 @@ nav.navbar {
 #modal-container .toggle-area {
   padding-top: 15px;
   padding-bottom: 14px;
+  border: 1px solid #e3e3e3;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
 }
 
 #modal-container .toggle-area.hide {
@@ -7679,6 +7680,7 @@ nav.navbar {
 
 #modal-container .toggle-area .field-container {
   margin-bottom: 10px;
+  padding: 0 20px;
 }
 
 #modal-container .toggle-area .field-container:last-child {
@@ -7701,34 +7703,49 @@ nav.navbar {
 /* Constructor Form Object title bar customisation */
 
 #modal-container .object-title-bar {
-  background-color: #4a4a4a;
-  line-height: 40px;
-  padding-left: 14px;
-  font-family: "Open Sans", Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  color: #aaa;
+  direction: rtl;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  background-color: #ededed;
+  color: var(--textColor);
+  padding-left: 0px;
   padding-right: 0px;
+  font-family: var(--fontFamily);
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 40px;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  transition: background-color .3s ease;
 }
 
-#modal-container .object-title-bar:hover {
-  cursor: default;
+#modal-container .object-title-bar:hover,
+#modal-container .object-title-bar:focus,
+#modal-container .object-title-bar:focus-within,
+#modal-container .object-title-bar:focus-visible {
+  background-color: #e3e3e3;
+  outline: none;
 }
 
 #modal-container .object-title-bar button {
-  background-color: transparent;
-  color: #cdcdcd;
-  height: 40px;
-  width: 40px;
+  background-color: #f43c37;
+  color: #fff;
+  height: 30px;
+  width: 30px;
   float: right;
   font-size: 18px;
-  margin: 0px;
+  margin: 0px 5px 0 0;
+  padding: 0;
   border: none;
-  border-radius: 0;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 #modal-container .object-title-bar button:hover {
-  background-color: #f43c37;
+  background-color: #c51713;
   color: #ffffff;
 }
 
@@ -7747,10 +7764,13 @@ nav.navbar {
 /* Constructor Form Object field container customisation */
 
 #modal-container .field-label {
-  font-family: "Open Sans", Helvetica, sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: var(--fontFamily);
   font-size: 14px;
   text-align: left;
-  color: #c1c1c1;
+  color: var(--textColor);
   padding: 0;
   padding-left: 14px;
 }
@@ -7763,7 +7783,8 @@ nav.navbar {
 */
 
 #modal-container .input-width {
-  padding: 0 15px 0 0;
+  padding: 0 0 0 00px;
+  
 }
 
 #modal-container .input-group-border {
@@ -7916,22 +7937,7 @@ input[type="radio"] + .lbl::after {
 }
 
 /*=========Right=Panel==========*/
-/* #containers-results .containers-results__header .close-btn {
-    background-image: none;
-    padding: 0;
-    background-image: none;
-    color: #ffffff;
-    font-size: 16px;
-    filter: none;
-    background-color: #3f51b5;
-    top: 0;
-    right: 0;
-    width: 100%;
-    line-height: 12px;
-    border: none;
-    cursor: pointer;
-    height: 35px;
-  } */
+
 #containers-results .containers-results__header .containers-results__control {
   padding: 1.5rem 20px !important;
   margin-top: 1em !important;
@@ -7980,10 +7986,11 @@ input[type="radio"] + .lbl::after {
 #containers-results__content .c-element label {
   color: #212121 !important;
   font-weight: bold;
+  text-align: center;
 }
 #containers-results__content .c-element button:hover,
 #containers-results__content .c-element input:hover {
-  border: 2px solid var(--primaryClr) !important;
+  border: 1px solid var(--primaryClr) !important;
   background-color: #f6f6f6 !important;
 }
 /* fix a bugs  */
@@ -8030,8 +8037,8 @@ input[type="radio"] + .lbl::after {
   color: #212121;
   font-weight: bold;
   background-color: #f6f6f6;
-  border: 2px solid #ddd;
-  border-radius: 5px 5px 0 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
 #containers-results__content .cs-element.media-padding .dropdown:after {
   content: none !important;
@@ -8096,22 +8103,25 @@ input[type="radio"] + .lbl::after {
   color: #212121 !important;
   font-weight: bold;
 }
-#modal-container .modal-content .modal-header button[aria-label="Close"] {
-  border-radius: 0 6px 0 0;
+
+#modal-container .modal-content .modal-header{
+
 }
+
+
 #modal-container .modal-content .modal-footer button {
   transition: background-color 0.25s ease-in;
 }
 #modal-container .modal-content .modal-footer button.supra-btn.btn-default {
   background-color: #ddd !important;
   color: #212121 !important;
-  border-radius: 0 0 6px 0 !important;
+  padding: 0 30px;
   font-weight: bold;
 }
 #modal-container .modal-content .modal-footer button.supra-btn.btn-danger {
   background-color: #f44336 !important;
   color: #fff !important;
-  border-radius: 0 0 0 6px !important;
+  padding: 0 45px;
   font-weight: bold;
 }
 #modal-container
@@ -8128,15 +8138,9 @@ input[type="radio"] + .lbl::after {
 }
 /*======NEW CSS CODE======*/
 /* This is for the code editor modal close button */
-#modal-container .modal-content .modal-header button[aria-label="Close"] {
-  border-radius: 0 6px 0 0;
-}
-/* This is for the code editor modal close button */
+
 
 /*======Page Settings======*/
-#modal-container .page-settings .modal-header button[aria-label="Close"] {
-  border-radius: 0 6px 0 0;
-}
 #modal-container .page-settings .modal-header .modal-title h4 {
   margin: 0;
   float: none;
@@ -8162,12 +8166,7 @@ input[type="radio"] + .lbl::after {
   border: none !important;
   transition: all 0.15s ease-in;
 }
-#modal-container .page-settings .modal-footer button.supra-btn.btn-default {
-  background-color: #ddd !important;
-  color: #212121 !important;
-  border-radius: 0 0 6px 0 !important;
-  font-weight: bold;
-}
+
 #modal-container
   .page-settings
   .modal-footer
@@ -8434,7 +8433,7 @@ input[type="radio"] + .lbl::after {
 #modal-container .modal-content .modal-footer button.supra-btn.btn-primary {
   color: #fff !important;
   background-color: var(--primaryClr) !important;
-  border-radius: 0 0 0 6px !important;
+  padding: 0 60px;
   font-weight: bold;
 }
 #modal-container
