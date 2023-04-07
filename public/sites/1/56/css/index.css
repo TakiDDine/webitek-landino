@@ -1,0 +1,18 @@
+#gallery-3col-5 .bg-wrap {
+    background-color: #f4f5f6;
+}
+#sep-top-7 .bg-wrap {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#sep-top-7 .bg {
+    background-image: url('../images/bg-fog-top.png');
+    background-repeat: repeat-x;
+    background-position: center top;
+    background-size: auto 100px;
+}
+#sep-bottom-6 .bg-wrap {
+    background-color: rgba(255, 255, 255, 0);
+}     #desc-img-tabs .bg-wrap{
+	background: #F4F5F6;
+}
