@@ -69,7 +69,7 @@ Route::group(['middleware' => ['install']], function () {
 		Route::middleware(['google.analytics'])->get('/dashboard', 'DashboardController@index');
 
 		// Templtes
-		Route::get('/all_templates', 'TemplateController@index');
+		Route::get('/templates', 'TemplateController@index');
 
 		Route::get('/affiliate', 'AffiliateController@index')->name('affiliate.index');
 
@@ -182,7 +182,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('/projects/{id}/update', 'ProjectController@update');
 			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
-			Route::resource('projects','ProjectController');
+			// Route::resource('projects','ProjectController');
 
 			//Builder
 			Route::resource('project/builder','BuilderController');

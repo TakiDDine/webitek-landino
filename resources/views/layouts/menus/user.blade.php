@@ -12,7 +12,7 @@
 </li>
 
 <li class="kt-menu__item kt-menu__item--submenu kt-menu__item--rel @if (Request::is('templates')) kt-menu__item--open kt-menu__item--here @endif">
-    <a href="{{ url('all_templates') }}" class="kt-menu__link">
+    <a href="{{ url('templates') }}" class="kt-menu__link">
         <span class="kt-menu__link-icon">
             <img src="/public/icons/template-dark.svg" alt="">
         </span>
