@@ -507,6 +507,11 @@ class ProjectController extends Controller
     public function edit(Request $request,$id)
     {
         
+        
+      
+
+
+        // redirect user to edit page with project id
         if(Auth()->user()->user_type == 'admin') {
             $project = Project::where('id',$id)
             ->first();
