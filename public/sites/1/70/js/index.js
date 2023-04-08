@@ -9,7 +9,8 @@ $('#contact-form-3-form').validate({
     onfocusout: false,
     onkeyup: false,
     rules: {
-    },
+		EMAIL: "required",
+	},
     errorPlacement: function (error, element) {
 
         if ((element.attr("type") == "radio") || (element.attr("type") == "checkbox")) {

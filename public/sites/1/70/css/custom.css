@@ -244,15 +244,13 @@ section.dark, footer.dark, header.dark {
 	border-color: #555;
 }
 .dark .form-group.light, .light .form-group, .dark .light .form-group, .form-group.light {
-	margin: 5px 0px 0 0;
 }
 .light .form-group.dark, .dark .form-group, .light .dark .form-group, .form-group.dark {
 }
 .dark .form-control.light, .light .form-control, .dark .light .form-control, .form-control.light, .dark .form-inline>.btn-link.light, .light .form-inline>.btn-link, .dark .light .form-inline>.btn-link, .form-inline>.btn-link.light {
-	background-color: #eeeeee;
-	border-radius: 3px 3px 3px 2px;
-	border-width: 2px 2px 3px 2px;
-	border-color: #ff2c76;
+	border-radius: 0px 0px 0px 0px;
+	border-width: 0px 0px 1px 0px;
+	border-color: rgba(0,0,0,0.2);
 }
 .light .form-control.dark, .dark .form-control, .light .dark .form-control, .form-control.dark, .light .form-inline>.btn-link.dark, .dark .form-inline>.btn-link, .light .dark .form-inline>.btn-link, .form-inline>.btn-link.dark {
 	border-radius: 0px 0px 0px 0px;
@@ -260,13 +258,13 @@ section.dark, footer.dark, header.dark {
 	border-color: rgba(255,255,255,0.2);
 }
 .dark .form-control.light::placeholder, .light .form-control::placeholder, .dark .light .form-control::placeholder, .form-control.light::placeholder, .dark .form-control.light .placeholder, .light .form-control .placeholder, .dark .light .form-control .placeholder, .form-control.light .placeholder {
-	color: #444444;
+	color: #aaa;
 }
 .light .form-control.dark::placeholder, .dark .form-control::placeholder, .light .dark .form-control::placeholder, .form-control.dark::placeholder, .light .form-control.dark .placeholder, .dark .form-control .placeholder, .light .dark .form-control .placeholder, .form-control.dark .placeholder {
 	color: #aaa;
 }
 .dark input[type=checkbox]+.lbl.light::after, .light input[type=checkbox]+.lbl::after, .dark .light input[type=checkbox]+.lbl::after, input[type=checkbox]+.lbl.light::after, .dark input[type=radio]+.lbl.light::after, .light input[type=radio]+.lbl::after, .dark .light input[type=radio]+.lbl::after, input[type=radio]+.lbl.light::after {
-	background-color: #ff2c76;
+	background-color: #A48F77;
 }
 .light input[type=checkbox]+.lbl.dark::after, .dark input[type=checkbox]+.lbl::after, .light .dark input[type=checkbox]+.lbl::after, input[type=checkbox]+.lbl.dark::after, .light input[type=radio]+.lbl.dark::after, .dark input[type=radio]+.lbl::after, .light .dark input[type=radio]+.lbl::after, input[type=radio]+.lbl.dark::after {
 	background-color: #A48F77;

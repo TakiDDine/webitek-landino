@@ -5,11 +5,13 @@ window.addEventListener('load', function() {
 //------------------------------------------------------------------------------------
 //						CONTACT FORM VALIDATION'S SETTINGS
 //------------------------------------------------------------------------------------
-$('#contact-form-3-form').validate({
+$('#contact-form-2-form').validate({
     onfocusout: false,
     onkeyup: false,
     rules: {
-    },
+		EMAIL: "required",
+		textfield_3: "required",
+	},
     errorPlacement: function (error, element) {
 
         if ((element.attr("type") == "radio") || (element.attr("type") == "checkbox")) {
@@ -23,7 +25,6 @@ $('#contact-form-3-form').validate({
 //------------------------------------------------------------------------------------
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
-
 
 let form = document.getElementsByTagName('form')[0]
 let button = document.getElementsByTagName('button')[0]
@@ -56,6 +57,15 @@ button.addEventListener('click', function () {
         this.innerHTML = "Success ..."
     }, 500)
 })
+
+
+
+
+
+
+
+
+
 
 
 });
