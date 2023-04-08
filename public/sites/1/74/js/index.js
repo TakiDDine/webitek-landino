@@ -5,12 +5,10 @@ window.addEventListener('load', function() {
 //------------------------------------------------------------------------------------
 //						CONTACT FORM VALIDATION'S SETTINGS
 //------------------------------------------------------------------------------------
-$('#contact-form-3-form').validate({
+$('#contact-center-form-form').validate({
     onfocusout: false,
     onkeyup: false,
     rules: {
-		EMAIL: "required",
-		GOOGLE_SHEETS: "required",
 	},
     errorPlacement: function (error, element) {
 
