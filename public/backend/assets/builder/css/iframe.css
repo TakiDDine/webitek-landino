@@ -958,7 +958,7 @@ Svg Animation end
     font-size: 2.25rem;
     font-weight: 600;
     margin: 0;
-    color:black;
+    color:var(--primaryClr);
 }
 .run .main .wrap-drag .point-to-drag p:nth-child(3) {
     font-size: 1rem;

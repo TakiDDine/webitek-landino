@@ -38,7 +38,9 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <img src="images/builder-svg/logo.svg" />
+            <div class="logo-preloader">
+                <img src="images/logo-blue.svg" />
+            </div>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -152,8 +154,7 @@
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
                             <a href class="brand">
-                                <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
-                                <img src="images/builder-svg/logo.svg" />
+                                <img src="images/logo.svg" />
                             </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
