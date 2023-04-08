@@ -28,50 +28,50 @@ class ProjectController extends Controller
         date_default_timezone_set(get_company_option('timezone', get_option('timezone','Asia/Dhaka')));
         
         $this->middleware(function ($request, $next) {
-            // if( has_membership_system() == 'enabled' ){
-            //     if( ! has_feature( 'websites_limit' ) ){
-            //         if( ! $request->ajax()){
-            //             return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
-            //         }else{
-            //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
-            //         }
-            //     }
+            if( has_membership_system() == 'enabled' ){
+                if( ! has_feature( 'websites_limit' ) ){
+                    if( ! $request->ajax()){
+                        return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
+                    }else{
+                        return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
+                    }
+                }
                 
-            //     //If request is create/store
-            //     $route_name = \Request::route()->getName();
+                //If request is create/store
+                $route_name = \Request::route()->getName();
                 
-            //     if( $route_name == 'projects.create'){
-            //        if( has_feature_limit( 'websites_limit' ) ){
+                if( $route_name == 'projects.create'){
+                   if( has_feature_limit( 'websites_limit' ) ){
 
-            //         $company_id = company_id();
-            //         $user_type = Auth::user()->user_type;
+                    $company_id = company_id();
+                    $user_type = Auth::user()->user_type;
 
-            //         if($user_type == 'admin') {
-            //             $projects = Project::select('projects.*')->orderBy("projects.id","desc")->count();
-            //         } else {
-            //             $projects = Project::select('projects.*')
-            //                                 //->with('members')
-            //                                 ->where('company_id',$company_id)
-            //                                 ->when($user_type, function ($query, $user_type) {
-            //                                         if($user_type == 'staff'){
-            //                                         return $query->join('project_members','projects.id','project_members.project_id')
-            //                                                         ->where('project_members.user_id',Auth::id());
-            //                                         }
-            //                                     })
-            //                                     ->orderBy("projects.id","desc")->count();
-            //                 if($projects >= Auth::user()->company->websites_limit && Auth::user()->company->websites_limit != 'Unlimited'){
-            //                     if( ! $request->ajax()){
-            //                         return redirect('membership/extend')->with('message', _lang('Your have already reached your usages limit. You can upgrade your package !'));
-            //                     }else{
-            //                         return response()->json(['result'=>'error','message'=> _lang('Your have already reached your usages limit. You can upgrade your package !') ]);
-            //                     }
-            //                 }
-            //             }
-            //         }
+                    if($user_type == 'admin') {
+                        $projects = Project::select('projects.*')->orderBy("projects.id","desc")->count();
+                    } else {
+                        $projects = Project::select('projects.*')
+                                            //->with('members')
+                                            ->where('company_id',$company_id)
+                                            ->when($user_type, function ($query, $user_type) {
+                                                    if($user_type == 'staff'){
+                                                    return $query->join('project_members','projects.id','project_members.project_id')
+                                                                    ->where('project_members.user_id',Auth::id());
+                                                    }
+                                                })
+                                                ->orderBy("projects.id","desc")->count();
+                            if($projects >= Auth::user()->company->websites_limit && Auth::user()->company->websites_limit != 'Unlimited'){
+                                if( ! $request->ajax()){
+                                    return redirect('membership/extend')->with('message', _lang('Your have already reached your usages limit. You can upgrade your package !'));
+                                }else{
+                                    return response()->json(['result'=>'error','message'=> _lang('Your have already reached your usages limit. You can upgrade your package !') ]);
+                                }
+                            }
+                        }
+                    }
 
                     
-            //     }
-            // }
+                }
+            }
             return $next($request);
         });
     }

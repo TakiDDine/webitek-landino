@@ -101,11 +101,13 @@ class BuilderController extends Controller
         $Viewbuilder = new \App\Utilities\Builder\Html;
         
         $data['groups'] =   $Viewbuilder->groups;
-        //get supra name rom request
+
         $data['isTemplate'] = false;
         $data['project']        =   null;
         $data['projectfile']    = null;
         $data['name'] = '';
+        $data['try_demo'] = false;
+
 
       if ($request->has('template')) {
         $template =  $request->template;
@@ -120,7 +122,7 @@ class BuilderController extends Controller
             return view('backend.accounting.project.lara', $data);
         }
     }
-
+    share(['data' => $data]);
       return view('backend.accounting.project.lara', $data);
   }
 

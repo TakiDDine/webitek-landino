@@ -112,7 +112,7 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{url('project/larabuilder') }}"></iframe>
+                <iframe id="main" src="{{ Auth::check() ? url('project/larabuilder') : route('demo.builder') }}"></iframe>
             </div>
         </div>
 
@@ -205,8 +205,9 @@
     <script src="{{ asset('backend/assets/builder/js/lib/css.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
-
+    @shared
     <script>
+        
         @if (env('DEMO_MODE') == true)
             var demoMode = 'active';
         @else
@@ -230,6 +231,7 @@
         var project_file_name = template ? '{{$name}}' : '';
         var custom_domain = '';
         var sub_domain =  '';
+        var try_demo = '{{$try_demo}}'
         
         console.log(template)
        

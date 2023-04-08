@@ -1045,7 +1045,7 @@
 
 
                 </p>
-                <a href="{{url('/demo/editor')}}" target="_blank" title="ثبت‌نام در لندیک" class="btn btn--blue btn--wide">
+                <a href="{{route('demo.editor')}}" target="_blank" title="ثبت‌نام در لندیک" class="btn btn--blue btn--wide">
                     إبدأ مجاناً
                 </a>
             </div>
