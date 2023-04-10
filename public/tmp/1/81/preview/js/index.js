@@ -10,6 +10,7 @@ $('#contact-center-form-form').validate({
     onkeyup: false,
     rules: {
 		EMAIL: "required",
+		GOOGLE_SHEETS: "required",
 	},
     errorPlacement: function (error, element) {
 

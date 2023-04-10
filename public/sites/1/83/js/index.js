@@ -9,7 +9,7 @@ $('#contact-center-form-form').validate({
     onfocusout: false,
     onkeyup: false,
     rules: {
-		EMAIL: "required",
+		email_1: "required",
 	},
     errorPlacement: function (error, element) {
 
