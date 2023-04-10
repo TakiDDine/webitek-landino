@@ -2187,9 +2187,15 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 }
 .iframeHeader .iframeHeader__mid #saveBtn__save .db.onProcess svg {
   position: absolute;
-  right: -25px;
-  top: 9px;
+  right: -28px;
+  top: 7px;
+  transform-origin: 12px 12px;
+  overflow: visible;
   animation: keepRotating 0.7s linear infinite;
+}
+.iframeHeader .iframeHeader__mid #saveBtn__save .db.onProcess svg, .iframeHeader .iframeHeader__mid #saveBtn__save .db.onProcess svg path {
+  stroke:none;
+  fill: none;
 }
 .iframeHeader .iframeHeader__mid #saveBtn__save .db[disabled] {
   opacity: 0.3;
@@ -8021,7 +8027,7 @@ input[type="radio"] + .lbl::after {
 }
 #containers-results__content .c-element button:hover,
 #containers-results__content .c-element input:hover {
-  border: 1px solid var(--primaryClr) !important;
+  border: 2px solid var(--primaryClr) !important;
   background-color: #f6f6f6 !important;
 }
 /* fix a bugs  */
@@ -8057,8 +8063,9 @@ input[type="radio"] + .lbl::after {
 }
 #containers-results__content .cs-element .media-group button {
   margin: 0 2px;
+  border-radius: 5px!important;
 }
-#containers-results__content .cs-element .media-group button.active {
+#containers-results__content .cs-element .media-group button.active, #containers-results__content .cs-element .media-group button:hover {
   color: #3f51b5 !important;
   border: 2px solid #3f51b5 !important;
 }
