@@ -189,10 +189,10 @@ class ProjectController extends Controller
                 $data['demo']   =   true;
             }
 
-            return \Redirect::to(url('/builder').'/lara');
+            return \Redirect::to(url('/builder').'/editor');
         }
         if($request->is('demo/*')) {
-            return \Redirect::to(url('/demo').'/lara');
+            return \Redirect::to(url('/demo').'/builder');
         }
 
 

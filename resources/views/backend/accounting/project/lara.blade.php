@@ -193,6 +193,8 @@
     <script>
         localStorage.clear();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
     <script src="{{ asset('backend/assets/builder/js/lib/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/jquery.nicescroll.min.js') }}"></script>
 

@@ -179,7 +179,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('updateproject/builder/{id}','BuilderController@index'); 
 			Route::get('project/larabuilder','BuilderController@larabuilder');
 			Route::get('builder/novi','BuilderController@novi');
-			Route::get('builder/lara','BuilderController@lara');
+			Route::get('builder/editor','BuilderController@lara');
 			Route::get('/editor', 'BuilderController@lara');
 			Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
 			Route::get('test/backend/assets/builder','BuilderController@empty');
