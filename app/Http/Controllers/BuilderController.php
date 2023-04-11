@@ -27,15 +27,15 @@ class BuilderController extends Controller
         date_default_timezone_set(get_company_option('timezone', get_option('timezone','Asia/Dhaka')));
 
         $this->middleware(function ($request, $next) {
-            // if( has_membership_system() == 'enabled' ){
-            //     if( ! has_feature( 'websites_limit' ) ){
-            //         if( ! $request->ajax()){
-            //             return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
-            //         }else{
-            //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
-            //         }
-            //     }
-            // }
+            if( has_membership_system() == 'enabled' ){
+                if( ! has_feature( 'websites_limit' ) ){
+                    if( ! $request->ajax()){
+                        return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
+                    }else{
+                        return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
+                    }
+                }
+            }
 
             return $next($request);
         });

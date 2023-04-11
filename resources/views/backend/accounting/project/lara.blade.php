@@ -194,30 +194,30 @@
         localStorage.clear();
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-
+    
     <script src="{{ asset('backend/assets/builder/js/lib/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/jquery.nicescroll.min.js') }}"></script>
-
+    
     <script src="{{ asset('backend/assets/builder/js/lib/tether.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/spectrum.js') }}"></script>
-
+    
     <script src="{{ asset('backend/assets/builder/js/lib/codemirror.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/javascript.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/css.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
     @shared
-    <script>
+    <script  id="erasable" type="text/javascript">
         
         @if (env('DEMO_MODE') == true)
-            var demoMode = 'active';
+        var demoMode = 'active';
         @else
-            var demoMode = 'no';
-
-            @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
-                /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
-            @endif
+        var demoMode = 'no';
+        
+        @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
+        /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
+        @endif
         @endif
         var ajaxbase = '{{ url('api/ajax') }}';
         var baseurl = '{{ url('/') }}';
@@ -233,11 +233,12 @@
         var project_file_name = template ? '{{$name}}' : '';
         var custom_domain = '';
         var sub_domain =  '';
-        var try_demo = '{{$try_demo}}'
+        var try_demo = {{$try_demo}}
         
         console.log(template)
-       
-    </script>
+        document.getElementById('erasable').innerHTML = "";
+        </script>
+    <script src="{{ asset('js/env.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>

@@ -109,10 +109,7 @@ class ProjectController extends Controller
     // }
     // return view('backend.accounting.project.list', compact('projects'));
 
-    $data['demo']   =   false;
-    if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-        $data['demo']   =   true;
-    }
+   
     
 
     return view('backend.accounting.project.list');
@@ -184,11 +181,7 @@ class ProjectController extends Controller
     {
 
         if($request->is('projects/*')) {
-            $data['demo']   =   false;
-            if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-                $data['demo']   =   true;
-            }
-
+           
             return \Redirect::to(url('/builder').'/editor');
         }
         if($request->is('demo/*')) {
@@ -396,11 +389,6 @@ class ProjectController extends Controller
         $data['company_id']             =   $project->company_id;
 
 
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
-        }
-
         return view('backend.accounting.project.modal.edit',$data);
         
 
@@ -430,11 +418,6 @@ class ProjectController extends Controller
         $data['id']             =   $project->id;
         $data['company_id']             =   $project->company_id;
 
-
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
-        }
         if( ! $request->ajax()){
 
 
@@ -528,11 +511,8 @@ class ProjectController extends Controller
         $data['id']             =   $project->id;
         $data['company_id']             =   $project->company_id;
 
+        $data['try_demo'] = false;
 
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
-        }
 
         if( ! $request->ajax()){
 

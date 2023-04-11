@@ -206,7 +206,7 @@
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
 
-    <script>
+    <script id="erasable" type="text/javascript">
         @if (env('DEMO_MODE') == true)
             var demoMode = 'active';
         @else
@@ -229,13 +229,14 @@
         // var project_file_name = '';
 
         var project_id    			=   '{{$id}}';
-            var custom_domain    			=   '{{\App\Project::where('id', $id)->first()->custom_domain}}';
-            var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
-			var project_file    		=   '{{$projectfile}}';
-			var project_file_name    	=   '';
-            var template = false;
+        var custom_domain    			=   '{{\App\Project::where('id', $id)->first()->custom_domain}}';
+        var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
+		var project_file    		=   '{{$projectfile}}';
+		var project_file_name    	=   '';
+        var template = false;
+        var try_demo = false
        
-        
+        document.getElementById('erasable').innerHTML = "";
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

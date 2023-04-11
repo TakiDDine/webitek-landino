@@ -252,7 +252,13 @@ class Request {
      */
     public function FtpUpload() {
         $this->_clearTmp();
-
+        $_POST['dir'] = public_path().'/tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/preview';
+        // echo json_encode([
+        //     'status' => 500,
+        //     'message' => 'The site can\'t be show',
+        //     'dir' => $_POST['dir'],
+        //     'last dir' => $last
+        // ]);
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {

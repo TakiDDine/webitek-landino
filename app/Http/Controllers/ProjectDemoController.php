@@ -9,8 +9,6 @@ class ProjectDemoController extends Controller {
     public function demo (Request $request)
     {
 
-      $data['demo']   =   false;
-
         define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
         define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
         
@@ -24,9 +22,7 @@ class ProjectDemoController extends Controller {
         $data['projectfile']    = null;
         $data['name'] = '';
         $data['try_demo'] = true;
-    share(['data' => $data]);
-
-          // dd($data);
+        share(['data' => $data]);
       return view('backend.accounting.project.lara', $data);
     }
 
