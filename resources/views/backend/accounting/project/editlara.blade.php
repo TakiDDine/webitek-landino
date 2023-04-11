@@ -287,6 +287,10 @@
         </section>
 
     </noscript>
+    {{-- JavaScriptObfuscator --}}
+    {{--     <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+    <script src="./node_modules/javascript-obfuscator/dist/index.browser.js"></script>
+ --}}
 </body>
 
 </html>
