@@ -38,9 +38,7 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <div class="logo-preloader">
-                <img src="images/logo-blue.svg" />
-            </div>
+            <h3> Landino </h3>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -97,7 +95,7 @@
                     </div>
                     <div id="iframePageControl">
                         <a class="iframePageControl__pages-titles" data-toggle="dropdown">
-                            <span id="pages_name" class="iframePageControl__pagesName"></span>
+                            <span id="pages_name" class="iframePageControl__pagesName">index.html</span>
                             <i class="fa fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu" id="dropdown-menu-drop"></div>
@@ -152,9 +150,8 @@
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <a href class="brand">
-                                <img src="images/logo.svg" />
-                            </a>
+                            <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
+                            <img src="images/builder-svg/logo.svg" />
                         </div>
                         <div id="sections-sidebar__Triggerer">
                             <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
@@ -189,7 +186,7 @@
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0 }}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0}}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
 
@@ -219,25 +216,27 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        const ajaxbase = '{{ url('api/ajax') }}';
-        const baseurl = '{{ url('/') }}';
-        const publicpath = "{{ base_path('public') }}";
-        const basepath = "{{ base_path('public/backend/assets/builder') }}";
-        const googleKey = '{{ get_option('google_map_key') }}';
-        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        // const project_id = 0;
-        // const project_file = '';
-        // const project_file_name = '';
+        var ajaxbase = '{{ url('api/ajax') }}';
+        var baseurl = '{{ url('/') }}';
+        console.log('baseurl', baseurl)
+        console.log('ajaxbase', ajaxbase)
+        var publicpath = "{{ base_path('public') }}";
+        var basepath = "{{ base_path('public/backend/assets/builder') }}";
+        var googleKey = '{{ get_option('google_map_key') }}';
+        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        // var project_id = 0;
+        // var project_file = '';
+        // var project_file_name = '';
 
-        const project_id = '{{ $id }}';
-        const custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
-        const sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
-        const project_file = '{{ $projectfile }}';
-        const project_file_name = '';
-        const template = false;
-        const try_demo = false;
+        var project_id    			=   '{{$id}}';
+        var custom_domain    			=   '{{\App\Project::where('id', $id)->first()->custom_domain}}';
+        var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
+		var project_file    		=   '{{$projectfile}}';
+		var project_file_name    	=   '';
+        var template = false;
+        var try_demo = false
+       
         document.getElementById('erasable').innerHTML = "";
-
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

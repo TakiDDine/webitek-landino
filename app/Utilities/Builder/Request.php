@@ -414,7 +414,7 @@ class Request {
                 }
                 echo json_encode([
                     'status' => 200,
-                    'url' => $_POST['dir'] . '/'
+                    'template_url' => $_POST['project_id']
                 ]);
             } catch (Exception $e) {
                 echo json_encode([

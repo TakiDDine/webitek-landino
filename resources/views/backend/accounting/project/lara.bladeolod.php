@@ -38,9 +38,7 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <div class="logo-preloader">
-                <img src="images/logo-blue.svg" />
-            </div>
+            <h3> Landino </h3>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -152,9 +150,8 @@
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <a href class="brand">
-                                <img src="images/logo.svg" />
-                            </a>
+                            <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
+                            <img src="images/builder-svg/logo.svg" />
                         </div>
                         <div id="sections-sidebar__Triggerer">
                             <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
@@ -189,54 +186,59 @@
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0 }}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0}}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
 
     <script>
         localStorage.clear();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    
     <script src="{{ asset('backend/assets/builder/js/lib/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/jquery.nicescroll.min.js') }}"></script>
-
+    
     <script src="{{ asset('backend/assets/builder/js/lib/tether.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/spectrum.js') }}"></script>
-
+    
     <script src="{{ asset('backend/assets/builder/js/lib/codemirror.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/javascript.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/css.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
-
+    @shared
     <script  id="erasable" type="text/javascript">
+        
         @if (env('DEMO_MODE') == true)
-            var demoMode = 'active';
+        var demoMode = 'active';
         @else
-            var demoMode = 'no';
-
-            @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
-                /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
-            @endif
+        var demoMode = 'no';
+        
+        @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
+        /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
         @endif
-        const ajaxbase = '{{ url('api/ajax') }}';
-        const baseurl = '{{ url('/') }}';
-        const template = '{{ $isTemplate }}' ? true : false;
-        const publicpath = "{{ base_path('public') }}";
-        const basepath = "{{ base_path('public/backend/assets/builder') }}";
-        const googleKey = '{{ get_option('google_map_key') }}';
-        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        const project_id = template ? '{{ $name }}' : '';
-        const project_file = template ? '{{ $projectfile }}' : '';
-        const project_file_name = template ? '{{ $name }}' : '';
-        const custom_domain = '';
-        const sub_domain = '';
-        // const try_demo = '{{$try_demo}}';
-        const try_demo = true;
-        console.log('try_demo' ,try_demo)
+        @endif
+        var ajaxbase = '{{ url('api/ajax') }}';
+        var baseurl = '{{ url('/') }}';
+        console.log('baseurl', baseurl)
+        console.log('ajaxbase', ajaxbase)
+        var template = '{{$isTemplate}}' ? true: false;
+        var publicpath = "{{ base_path('public') }}";
+        var basepath = "{{ base_path('public/backend/assets/builder') }}";
+        var googleKey = '{{ get_option('google_map_key') }}';
+        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        var project_id = template ? '{{$name}}' : '';
+        var project_file = template ? '{{$projectfile}}' : '';
+        var project_file_name = template ? '{{$name}}' : '';
+        var custom_domain = '';
+        var sub_domain =  '';
+        var try_demo = {{$try_demo}}
+        
+        console.log(template)
         document.getElementById('erasable').innerHTML = "";
-
-    </script>
+        </script>
+    <script src="{{ asset('js/env.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>
