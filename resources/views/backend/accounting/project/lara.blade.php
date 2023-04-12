@@ -220,18 +220,19 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax') }}';
-        var baseurl = '{{ url('/') }}';
-        var template = '{{ $isTemplate }}' ? true : false;
-        var publicpath = "{{ base_path('public') }}";
-        var basepath = "{{ base_path('public/backend/assets/builder') }}";
-        var googleKey = '{{ get_option('google_map_key') }}';
-        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        var project_id = template ? '{{ $name }}' : '';
-        var project_file = template ? '{{ $projectfile }}' : '';
-        var project_file_name = template ? '{{ $name }}' : '';
-        var custom_domain = '';
-        var sub_domain = '';
+        const ajaxbase = '{{ url('api/ajax') }}';
+        const baseurl = '{{ url('/') }}';
+        const template = '{{ $isTemplate }}' ? true : false;
+        const publicpath = "{{ base_path('public') }}";
+        const basepath = "{{ base_path('public/backend/assets/builder') }}";
+        const googleKey = '{{ get_option('google_map_key') }}';
+        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        const project_id = template ? '{{ $name }}' : '';
+        const project_file = template ? '{{ $projectfile }}' : '';
+        const project_file_name = template ? '{{ $name }}' : '';
+        const custom_domain = '';
+        const sub_domain = '';
+        const try_demo = false;
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

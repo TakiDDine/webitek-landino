@@ -191,6 +191,7 @@ aside.control-panel.supra.active {
   
   padding: 12px;
   width: 100%;
+  max-width:250px;
 }
 
 #sidebarContent__headerList::-webkit-scrollbar,

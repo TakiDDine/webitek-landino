@@ -97,7 +97,7 @@
                     </div>
                     <div id="iframePageControl">
                         <a class="iframePageControl__pages-titles" data-toggle="dropdown">
-                            <span id="pages_name" class="iframePageControl__pagesName">index.html</span>
+                            <span id="pages_name" class="iframePageControl__pagesName"></span>
                             <i class="fa fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu" id="dropdown-menu-drop"></div>
@@ -220,22 +220,23 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax') }}';
-        var baseurl = '{{ url('/') }}';
-        var publicpath = "{{ base_path('public') }}";
-        var basepath = "{{ base_path('public/backend/assets/builder') }}";
-        var googleKey = '{{ get_option('google_map_key') }}';
-        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        // var project_id = 0;
-        // var project_file = '';
-        // var project_file_name = '';
+        const ajaxbase = '{{ url('api/ajax') }}';
+        const baseurl = '{{ url('/') }}';
+        const publicpath = "{{ base_path('public') }}";
+        const basepath = "{{ base_path('public/backend/assets/builder') }}";
+        const googleKey = '{{ get_option('google_map_key') }}';
+        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        // const project_id = 0;
+        // const project_file = '';
+        // const project_file_name = '';
 
-        var project_id = '{{ $id }}';
-        var custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
-        var sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
-        var project_file = '{{ $projectfile }}';
-        var project_file_name = '';
-        var template = false;
+        const project_id = '{{ $id }}';
+        const custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
+        const sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
+        const project_file = '{{ $projectfile }}';
+        const project_file_name = '';
+        const template = false;
+        const try_demo = false;
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
