@@ -182,7 +182,7 @@ class ProjectController extends Controller
 
         if($request->is('projects/*')) {
            
-            return \Redirect::to(url('/builder').'/editor');
+            return \Redirect::to(url('/editor'));
         }
         if($request->is('demo/*')) {
             return \Redirect::to(url('/demo').'/builder');

@@ -222,8 +222,8 @@
         const ajaxbase = '{{ url('api/ajax') }}';
         const baseurl = '{{ url('/') }}';
         const template = '{{ $isTemplate }}' ? true : false;
-        const publicpath = "{{ base_path('public') }}";
-        const basepath = "{{ base_path('public/backend/assets/builder') }}";
+        // const publicpath = "{{ base_path('public') }}";
+        // const basepath = "{{ base_path('public/backend/assets/builder') }}";
         const googleKey = '{{ get_option('google_map_key') }}';
         const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         const project_id = template ? '{{ $name }}' : '';
@@ -232,8 +232,8 @@
         const custom_domain = '';
         const sub_domain = '';
         // const try_demo = '{{$try_demo}}';
-        const try_demo = true;
-        console.log('try_demo' ,try_demo)
+        const try_demo = '{{ $try_demo }}' ? true : false;
+
         document.getElementById('erasable').innerHTML = "";
 
     </script>

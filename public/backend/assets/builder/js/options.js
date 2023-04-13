@@ -4646,6 +4646,6 @@ var builderOptions = {
   , fullVersionSource: '../../../../membership/extend'
   , previewSettings: {
     //Auth::user()->id
-    dir: publicpath + '/tmp/' + userId + '/' + myProjectID + '/preview' //Directory to upload like /preview or /../preview //Directory to upload like /preview or /../preview
+    dir:  userId + '/' + myProjectID //Directory to upload like /preview or /../preview
   },
 };

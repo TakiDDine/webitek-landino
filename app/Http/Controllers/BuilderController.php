@@ -85,9 +85,7 @@ class BuilderController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function lara(Request $request)
-  {
-      
-    
+  {    
       $data['demo']   =   false;
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;

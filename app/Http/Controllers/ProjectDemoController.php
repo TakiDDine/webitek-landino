@@ -23,6 +23,7 @@ class ProjectDemoController extends Controller {
         $data['name'] = '';
         $data['try_demo'] = true;
         share(['data' => $data]);
+        // dd($data);
       return view('backend.accounting.project.lara', $data);
     }
 

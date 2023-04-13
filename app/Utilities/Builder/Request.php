@@ -257,7 +257,6 @@ class Request {
         //     'status' => 500,
         //     'message' => 'The site can\'t be show',
         //     'dir' => $_POST['dir'],
-        //     'last dir' => $last
         // ]);
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
@@ -314,7 +313,6 @@ class Request {
 
             // make it local before upload
             $output_dir = base_path('public/ftp').'/'.$_POST['userId'].'/'.$_POST['project_id'];
-
             try {
                 if ($zip->open(base_path('public/tmp').'/' . $file_name)) {
                     $zip->extractTo($output_dir . '/');
@@ -1109,9 +1107,12 @@ class Request {
            <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,viewport-fit=cover\">$fonts".''."$default_css".''."$style_gallery".''."$style_magnific
            <link rel=\"stylesheet\" href=\"css/custom.css\" />".''."$includePajeStyle".''."$preloader_css
 
+          
+
        </head>
            <body class=\"".$page->style_options."\">$preloader";
 
+           
             $custom_js = '';
             if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
                 $custom_js = "\n\t\t<script src=\"js/custom.js\"></script>";
@@ -1183,7 +1184,6 @@ class Request {
      */
     public function Download() {
         $this->_clearTmp();
-
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {
@@ -1273,10 +1273,18 @@ class Request {
             $this->_add_aos($baseFiles);
         }
 
+        
+        if ($data->form_section) {
+            $baseFiles['js'][] = 'csfrhandler.js';    
+        }
+    
+
         foreach ($baseFiles as $key => $value) {
             if ($key !== 'plugins') {
                 if ( is_array( $value ) ) {
                     foreach ( $value as $fileN ) {
+
+                     //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
                         $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
                         if ($key === 'css') {
                             $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN\" />";
@@ -1351,6 +1359,12 @@ class Request {
                 , $overall_js
             );
         }
+        // if (preg_match('/\w/', $overall_js)) {
+        //     $zip->addFromString(
+        //         'js/googlesheet.js'
+        //         , $overall_js
+        //     );
+        // }
 
         $fonts_to_download->getIncludeFonts();
 
@@ -1358,6 +1372,7 @@ class Request {
 
         $file_name = basename($filename);
 
+      //  dd($file_name);
         return $file_name;
     }
 
