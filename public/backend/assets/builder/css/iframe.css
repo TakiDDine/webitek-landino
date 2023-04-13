@@ -35,6 +35,12 @@
     --alignement: right;
     --height: 100%;
  }
+ *{
+    direction: var(--lang);
+    text-align: var(--alignement);
+    font-family: 'Sky';
+    
+ }
 
 .cursor-grab {
     cursor: grabbing!important;
@@ -414,8 +420,8 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 
 .spr-outline-control,
 .spr-oc-show {
-    outline: 1px solid rgba(0, 0, 0, 0.9)!important;
-    outline-offset: -1px!important;
+    outline: 2.5px dashed var(--primaryClr)!important;
+    outline-offset: 10px!important;
     cursor: default!important;
 }
 
@@ -905,7 +911,7 @@ i.icon-blr-data-settings {
     font-weight: 600;
     font-size: 14px;
     text-align: center;
-    border: 2px dotted #4c4c4c52;
+    border: 2px dashed #3758f933;
     border-radius: 4px;
     color: #aaa;
 }
@@ -964,6 +970,7 @@ Svg Animation end
     font-size: 1rem;
     font-weight: 500;
     color:rgb(32, 32, 32);
+    text-align: center;
 }
 .run .main .wrap-drag .point-to-drag p:nth-child(4) {
     font-size: 0.80rem;
