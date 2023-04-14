@@ -177,12 +177,12 @@ aside.control-panel.supra.active {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color:var(--primaryBg);
+  color: var(--primaryBg);
   text-decoration: none;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 .myDiv .sidebar-header a.brand:hover {
-  color:var(--primaryClr);
+  color: var(--primaryClr);
 }
 
 .myDiv .sidebar-header h2 {
@@ -545,7 +545,6 @@ aside.control-panel.supra.active {
   background-color: #d5d5d5;
   filter: brightness(1);
 }
-
 
 #containers-results .containers-results__header .containers-results__control {
   display: flex;
@@ -1676,18 +1675,18 @@ label.label-section:before {
   border-radius: 10px;
   overflow-y: auto;
 }
-.c-element .dropdown-menu::-webkit-scrollbar{
+.c-element .dropdown-menu::-webkit-scrollbar {
   width: 2px;
   height: 20px;
   padding: 10px 0;
   border-radius: 50%;
 }
-.c-element .dropdown-menu::-webkit-scrollbar-thumb{
+.c-element .dropdown-menu::-webkit-scrollbar-thumb {
   background-color: #adb5bd;
   padding: 10px 0;
   border-radius: 5px;
 }
-.c-element .dropdown-menu::-webkit-scrollbar-track{
+.c-element .dropdown-menu::-webkit-scrollbar-track {
   background-color: #f6f6f6;
   padding: 10px 0;
 }
@@ -2491,7 +2490,7 @@ iframe#main {
 .run .supra-preloader {
   opacity: 0;
 }
-.supra-preloader .logo-preloader{
+.supra-preloader .logo-preloader {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -2515,7 +2514,6 @@ iframe#main {
   -webkit-transition: all 1.4s ease-out;
   transition: all 1.4s ease-out;
 }
-
 
 .supra-preloader .progress-bar-s {
   display: flex;
@@ -4952,15 +4950,16 @@ aside.add-sections-items > ul li.wrap-hover {
   -moz-appearance: none;
   appearance: none;
   outline: none;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 #modal-container .modal-content .modal-body .item input {
   padding: 6px 40px 6px 50px;
 }
-#modal-container .modal-content input::placeholder{
-  color:#a9a9a9;
+#modal-container .modal-content input::placeholder {
+  color: #a9a9a9;
 }
-#modal-container .modal-content input:focus, #modal-container .modal-content input:hover{
+#modal-container .modal-content input:focus,
+#modal-container .modal-content input:hover {
   border: 1px solid var(--primaryClr);
 }
 
@@ -7161,7 +7160,7 @@ input[type="radio"] + .lbl {
   padding: 10px;
   border-radius: 6px;
   line-height: 20px;
-  border:1px solid #ddd;
+  border: 1px solid #ddd;
   z-index: 10;
 }
 
@@ -7625,11 +7624,11 @@ nav.navbar {
   height: 50px;
   padding: 0px;
   cursor: pointer;
-  -webkit-transition: background-color .3s ease, color .3s ease;
-  -moz-transition: background-color .3s ease, color .3s ease;
-  -ms-transition: background-color .3s ease, color .3s ease;
-  -o-transition: background-color .3s ease, color .3s ease;
-  transition: background-color .3s ease, color .3s ease;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+  -moz-transition: background-color 0.3s ease, color 0.3s ease;
+  -ms-transition: background-color 0.3s ease, color 0.3s ease;
+  -o-transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #modal-container .sidebar-btn:hover {
@@ -7654,25 +7653,24 @@ nav.navbar {
   height: 490px;
   overflow: auto;
   border-radius: 12px;
-  border-left: 1px solid rgba(0,0,0,0.1);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-right: 10px;
   /* box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1) ; */
-  
 }
-#modal-container .construct-form-main::-webkit-scrollbar{
+#modal-container .construct-form-main::-webkit-scrollbar {
   width: 7px;
   height: 20px;
   padding: 10px 0;
   border-radius: 50%;
 }
-#modal-container .construct-form-main::-webkit-scrollbar-thumb{
+#modal-container .construct-form-main::-webkit-scrollbar-thumb {
   background-color: #adb5bd;
   padding: 10px 0;
   border-radius: 5px;
 }
-#modal-container .construct-form-main::-webkit-scrollbar-track{
+#modal-container .construct-form-main::-webkit-scrollbar-track {
   background-color: transparent;
   padding: 10px 0;
 }
@@ -7746,7 +7744,7 @@ nav.navbar {
   line-height: 40px;
   border-radius: 6px 6px 0 0;
   cursor: pointer;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 #modal-container .object-title-bar:hover,
@@ -7811,7 +7809,6 @@ nav.navbar {
 
 #modal-container .input-width {
   padding: 0 0 0 00px;
-  
 }
 
 #modal-container .input-group-border {
@@ -8131,10 +8128,8 @@ input[type="radio"] + .lbl::after {
   font-weight: bold;
 }
 
-#modal-container .modal-content .modal-header{
-
+#modal-container .modal-content .modal-header {
 }
-
 
 #modal-container .modal-content .modal-footer button {
   transition: background-color 0.25s ease-in;
@@ -8165,7 +8160,6 @@ input[type="radio"] + .lbl::after {
 }
 /*======NEW CSS CODE======*/
 /* This is for the code editor modal close button */
-
 
 /*======Page Settings======*/
 #modal-container .page-settings .modal-header .modal-title h4 {
@@ -8203,7 +8197,7 @@ input[type="radio"] + .lbl::after {
 #modal-container .page-settings .modal-footer button.supra-btn.btn-primary {
   color: #fff !important;
   background-color: var(--primaryClr) !important;
-/*   border-radius: 0 0 0 6px; */
+  /*   border-radius: 0 0 0 6px; */
   font-weight: bold;
 }
 #modal-container
@@ -8472,3 +8466,38 @@ input[type="radio"] + .lbl::after {
 #modal-container .modal-content figure figcaption {
   display: none;
 }
+/*==================================*/
+li.need-create-account:after {
+  background-color: #212529;
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  opacity: 0.3;
+  left: 0;
+  top: 0;
+}
+li.need-create-account:hover {
+  outline: none !important;
+  border: 2px solid transparent !important;
+}
+a.create-account {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 99;
+  background-color: #be2130;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.375rem 1rem;
+}
+a.create-account:hover {
+  background-color: #b51724;
+  text-decoration: none;
+}
+/* li.wrap-hover.d-flex.justify-content-center.align-items-center:not([data-action]) a {
+  display: none;
+} */
