@@ -8573,6 +8573,46 @@ button.supra-btn.btn-default:hover {
   border-radius: 50%;
 }
 
+
+li.need-create-account:after {
+  background-color: #212529;
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  opacity: 0.3;
+  left: 0;
+  top: 0;
+}
+li.need-create-account:hover {
+  outline: none !important;
+  border: 2px solid transparent !important;
+}
+a.create-account {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 99;
+  background-color: #be2130;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0.375rem 1rem;
+}
+a.create-account:hover {
+  background-color: #b51724;
+  text-decoration: none;
+}
+/* li.wrap-hover.d-flex.justify-content-center.align-items-center:not([data-action]) a {
+  display: none;
+} */
+.run .main {
+  background-color: #fff ;
+}
+
+
 @media screen and (max-width:1250px){
   .wrap-iframe{
     padding: 0px 10px 20px;
