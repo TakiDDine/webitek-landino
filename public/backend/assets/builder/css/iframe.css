@@ -533,6 +533,12 @@ i.icon-blr-section-bg {
 i.icon-landino-settings {
     background-image: url(../images/builder-new-icons/elmSettings.svg);
 }
+i.icon-landino-settings-black {
+    background-image: url(../images/builder-new-icons/elmSettings-black.svg);
+}
+i.settings-icon.icon-landino-settings-black:hover {
+    background-image: url(../images/builder-new-icons/elmSettings-blue.svg);
+}
 
 i.icon-landino-code {
     background-image: url(../images/builder-new-icons/code.svg);
@@ -545,9 +551,21 @@ i.icon-landino-animation {
 i.icon-landino-duplicate {
     background-image: url(../images/builder-new-icons/duplicateElm.svg);
 }
+i.icon-landino-duplicate-black {
+    background-image: url(../images/builder-new-icons/duplicateElm-black.svg);
+}
+i.duplicate-icon.icon-landino-duplicate-black:hover {
+    background-image: url(../images/builder-new-icons/duplicateElm-blue.svg);
+}
 
 i.icon-landino-trash {
     background-image: url(../images/builder-new-icons/trash.svg);
+}
+i.icon-landino-trash-black {
+    background-image: url(../images/builder-new-icons/trash-black.svg);
+}
+i.trash-icon.icon-landino-trash-black {
+    background-image: url(../images/builder-new-icons/trash-black.svg);
 }
 
 i.icon-landino-drag {
@@ -592,6 +610,9 @@ i.icon-landino-picture {
 
 i.icon-landino-rtl {
     background-image: url(../images/builder-new-icons/rtl.svg);
+}
+i.icon-landino-ltr {
+    background-image: url(../images/builder-new-icons/ltr.svg);
 }
 
 i.icon-landino-highlight {
