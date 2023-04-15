@@ -1028,6 +1028,9 @@ class Request {
             }
 
             $includePajeStyle = '';
+            $str=rand();
+            $result = sha1($str);
+            $version = '?v='.$result; 
             if ($page->style !== '') {
                 $page_style = preg_replace('#\?t=[0-9]*#im', '', $page->style);
 
@@ -1054,12 +1057,13 @@ class Request {
                 }
 
                 $page_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $page_style);
-
+                
                 $zip->addFromString(
                     'css/' . $page->page_name . '.css'
                     , $page_style
                 );
-                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css\" />";
+                
+                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css".$version ."\" />";
             }
 
             $includePajeJs = '';
