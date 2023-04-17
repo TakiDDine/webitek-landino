@@ -25,7 +25,9 @@
 		}),
 		"columns": [
 			{ data: 'name', name: 'name' },
-			{ data: "action", name: "action" },
+			{ data: "settings", name: "settings" },
+			{ data: "edit", name: "edit" },
+			{ data: "delete", name: "delete" },
 		],
 		responsive: true,
 		"bStateSave": true,

@@ -150,19 +150,27 @@ class ProjectController extends Controller
                             }
 
                         })
-                        ->addColumn('action', function ($project) {
+                        ->addColumn('settings', function ($project) {
                             return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post">'
-                            .'<a href="'.action('ProjectController@editSettings', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" class="btn btn-primary btn-xs"><i class="ti-notepad"> </i> '._lang('Settings').'</a>&nbsp;'
-                            .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Update Project') .'" class="btn btn-warning btn-xs"><i class="ti-pencil"></i> '._lang('Edit').'</a>&nbsp;'
+                            .'<a href="'.action('ProjectController@editSettings', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" ><img src="'.asset("/icons/settings.svg").'" alt=""> </a>&nbsp;'
+                            .'</form>';
+                        })
+                        ->addColumn('edit', function ($project) {
+                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post">'
+                            .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Update Project') .'"><img src="'.asset("/icons/edit-dark.svg").'" alt=""> </a>&nbsp;'
+                            .'</form>';
+                        })
+                        ->addColumn('delete', function ($project) {
+                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post" onsubmit="confirmDelete()">'
                             .csrf_field()
                             .'<input name="_method" type="hidden" value="DELETE">'
-                            .'<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> '._lang('Delete').'</button>'
+                            .'<button id="delete type="submit"><img src="'.asset("/icons/delete-dark.svg").'" alt=""> </button>'
                             .'</form>';
                         })
                         ->setRowId(function ($project) {
                           return "row_".$project->id;
                         })
-                        ->rawColumns(['action','members.name','status','name'])
+                        ->rawColumns(['settings', 'edit', 'delete',  'members.name','status','name'])
                         ->make(true);
     }
 
