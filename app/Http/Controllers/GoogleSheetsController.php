@@ -23,8 +23,8 @@ class GoogleSheetsController extends Controller
     $client->setApplicationName("My App");
     $client->setScopes([Google_Service_Sheets::SPREADSHEETS]);
     $client->setAccessType('offline');
-    return response()->json(Storage::disk('local')->get('credentials.json'));
-    $client->setAuthConfig(Storage::disk('local')->get('credentials.json'));
+    // return response()->json(Storage::get('credentials.json'));
+    $client->setAuthConfig(Storage::disk('local')->get('/public/credentials.json'));
 
     // Authenticate with the Google Sheets API
     $service = new Google_Service_Sheets($client);
