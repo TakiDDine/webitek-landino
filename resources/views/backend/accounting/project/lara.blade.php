@@ -38,7 +38,9 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <h3> Landino </h3>
+            <div class="logo-preloader">
+                <img src="images/logo-blue.svg" />
+            </div>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -151,9 +153,8 @@
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <a class="brand">
-                                <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
-                                <img src="images/builder-svg/logo.svg" />
+                            <a href class="brand">
+                                <img src="images/logo.svg" />
                             </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
@@ -196,7 +197,6 @@
     <script>
         localStorage.clear();
     </script>
-
     <script src="{{ asset('backend/assets/builder/js/lib/popper.min.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/jquery.nicescroll.min.js') }}"></script>
 
@@ -220,27 +220,25 @@
                 /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax') }}';
-        var baseurl = '{{ url('/') }}';
-        console.log('baseurl', baseurl)
-        console.log('ajaxbase', ajaxbase)
-        var template = '{{ $isTemplate }}' ? true : false;
-        var publicpath = "{{ base_path('public') }}";
-        var basepath = "{{ base_path('public/backend/assets/builder') }}";
-        var googleKey = '{{ get_option('google_map_key') }}';
-        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        var project_id = template ? '{{ $name }}' : '';
-        var project_file = template ? '{{ $projectfile }}' : '';
-        var project_file_name = template ? '{{ $name }}' : '';
-        var custom_domain = '';
-        var sub_domain = '';
-
-        console.log(template)
+        const ajaxbase = '{{ url('api/ajax') }}';
+        const baseurl = '{{ url('/') }}';
+        const template = '{{ $isTemplate }}' ? true : false;
+        const publicpath = "{{ base_path('public') }}";
+        const basepath = "{{ base_path('public/backend/assets/builder') }}";
+        const googleKey = '{{ get_option('google_map_key') }}';
+        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        const project_id = template ? '{{ $name }}' : '';
+        const project_file = template ? '{{ $projectfile }}' : '';
+        const project_file_name = template ? '{{ $name }}' : '';
+        const custom_domain = '';
+        const sub_domain = '';
+        const try_demo = false;
     </script>
-
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>
+
+
     <script type="text/javascript">
         document.getElementById("main_body").style.display = "block";
     </script>
@@ -285,10 +283,6 @@
         </section>
 
     </noscript>
-    {{-- JavaScriptObfuscator --}}
-    {{--     <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
-    <script src="./node_modules/javascript-obfuscator/dist/index.browser.js"></script>
- --}}
 </body>
 
 </html>
