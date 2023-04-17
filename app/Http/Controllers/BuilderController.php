@@ -116,7 +116,6 @@ class BuilderController extends Controller
             $data['name'] = $template;
             $data['isTemplate'] = true;
             define('SUPRA', 1);
-            /* dd($data); */
             return view('backend.accounting.project.lara', $data);
         }
     }
