@@ -20,9 +20,7 @@ $('.contact_form').validate({
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
 
-if(!form){
-
-    let form = document.getElementsByTagName('form')[0]
+    var form = document.getElementsByTagName('form')[0]
     let button = document.getElementsByTagName('button')[0]
     
     form.addEventListener('submit', function (e) {
@@ -53,5 +51,5 @@ if(!form){
             this.innerHTML = "Success ..."
         }, 500)
     })
-}
+
 

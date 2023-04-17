@@ -4439,6 +4439,12 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
   width: 60px;
   overflow: hidden;
   border-radius: 1px;
+  border-radius: 10px;
+  direction: ltr;
+  border: 2px solid #ddd;
+  transition: background-color .2s linear .2s;
+  -webkit-transition: background-color .2s linear .2s,
+  
 }
 
 .cs-element.cs-switch-group .switch:hover,
@@ -4451,31 +4457,45 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
 }
 
 .cs-element.cs-switch-group .switch .wrap {
-  width: 95px;
+  width: 100%;
+  height: 100%;
   position: relative;
   left: 0;
-  transition: 0.5s background-color linear, 0.5s left;
-  -webkit-transition: 0.5s background-color linear, 0.5s left;
+  transition: 0.2s background-color linear .2s, 0.2s left;
+  -webkit-transition: 0.2s background-color linear .2s, 0.2s left;
 }
 
 .cs-element.cs-switch-group .switch .switch-label {
   display: inline-block;
-  margin: 5px 30px 5px 30px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   width: 25px;
   height: 25px;
-  background-color: #666666;
+  border-radius: 50%;
+  background-color: var(--primaryClr);
+  transition: 0.2s background-color linear .2s, 0.2s right;
+  -webkit-transition: 0.2s background-color linear .2s, 0.2s right;
 }
 
-.cs-element.cs-switch-group .switch.switch-on .wrap {
-  background-color: #00c0ff;
+.cs-element.cs-switch-group .switch.switch-on {
+  background-color: var(--secondaryClr);
 }
 
 .cs-element.cs-switch-group .switch.switch-on .wrap .switch-label {
+  right: 5px;
   background-color: #ffffff;
+  transition: 0.2s background-color linear .2s, 0.2s right;
+  -webkit-transition: 0.2s background-color linear .2s, 0.2s right;
 }
 
+.cs-element.cs-switch-group .switch.switch-off{
+  background-color: #f6f6f6; 
+  left: -25px;
+}
 .cs-element.cs-switch-group .switch.switch-off .wrap {
-  background-color: #464646;
+  
   left: -25px;
 }
 
@@ -8064,7 +8084,7 @@ input[type="radio"] + .lbl::after {
 #containers-results__content .c-element label {
   color: #212121 !important;
   font-weight: bold;
-  text-align: center;
+  text-align: right;
 }
 #containers-results__content .c-element button:hover,
 #containers-results__content .c-element input:hover {
@@ -8151,6 +8171,12 @@ input[type="radio"] + .lbl::after {
   .preview-container {
   border-radius: 5px;
   margin: 0 !important;
+}
+#containers-results__content
+  .cs-element.buttons-switch.custom-buttons
+  div[data-value]
+ label{
+  text-align: center!important;
 }
 #containers-results__content .cs-element.buttons-switch .wrapper {
   gap: 5px 0;

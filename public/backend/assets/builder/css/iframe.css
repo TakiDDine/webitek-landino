@@ -36,8 +36,8 @@
     --height: 100%;
  }
  *{
-    direction: var(--lang);
-    text-align: var(--alignement);
+    /* direction: var(--lang);
+    text-align: var(--alignement); */
     font-family: 'Sky';
     
  }
@@ -418,15 +418,18 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 
 /* ---------- */
 
-.spr-outline-control,
-.spr-oc-show {
+.blr-active-page.page-mode-edit-style .spr-outline-control,.blr-active-page.page-mode-edit-style .spr-oc-show 
+{
     outline: 2.5px dashed var(--primaryClr)!important;
-    outline-offset: 10px!important;
+    outline-offset: -2px;
     cursor: default!important;
+    position: relative;
 }
 
-.spr-wout {
-    outline: none!important;
+.page-mode-edit-sections .spr-wout.spr-outline-control.spr-oc-show  {
+    outline: 2.5px dashed var(--primaryClr)!important;
+    outline-offset: -10px;
+    cursor: default!important;
 }
 
 .spr-oc-show {
@@ -1131,7 +1134,7 @@ Svg Animation end
     z-index: 1001100;
 }
 
-.btn-group.inside-top[data-obj-control]{
+.page-mode-edit-sections .btn-group.inside-top[data-obj-control]{
     height: 100%!important;
 }
 
