@@ -120,7 +120,6 @@ class BuilderController extends Controller
             return view('backend.accounting.project.lara', $data);
         }
     }
-    share(['data' => $data]);
       return view('backend.accounting.project.lara', $data);
   }
 

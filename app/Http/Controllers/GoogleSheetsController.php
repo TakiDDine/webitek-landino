@@ -6,51 +6,56 @@ use Google_Client;
 use Google_Service_Sheets;
 use Illuminate\Http\Request;
 use Google_Service_Sheets_ValueRange;
+use PulkitJalan\Google\Facades\Google;
 use Illuminate\Support\Facades\Storage;
-use Google\Client;
-use Google\Service\Drive;
-use Google\Service\Sheets\ValueRange;
+use Revolution\Google\Sheets\Facades\Sheets;
 
 class GoogleSheetsController extends Controller
 {
 
-
-    function updateValues()
+  
+    function index(Request $request)
     {
+            // Set up the Google Sheets API client
+        $client = new Google_Client();
+        $client->setAuthConfig(storage_path('credentials.json'));
+        // return public_path('credentials.json');
+        $client->addScope(Google_Service_Sheets::SPREADSHEETS);
+        $service = new Google_Service_Sheets($client);
+        
+        // Define the spreadsheet ID and range to update
+        $spreadsheetId = '16TH2V1EvYCNgVH63YgPao7yyTxjUnL1sNU6aTnXMztg';
+       // Define the spreadsheet ID and worksheet range
+        $range = 'A2:A4';
 
-        // Set up the Google API client
-    $client = new Google_Client();
-    $client->setApplicationName("My App");
-    $client->setScopes([Google_Service_Sheets::SPREADSHEETS]);
-    $client->setAccessType('offline');
-    // return response()->json(Storage::get('credentials.json'));
-    $client->setAuthConfig(Storage::disk('local')->get('/public/credentials.json'));
+        // Define the data to insert
+        $values = [
+            ['John Doe', 'ghhfg@example.com'],
+            ['message', 'wa shriif ra baydiih l7maaar'],
+        ];
 
-    // Authenticate with the Google Sheets API
-    $service = new Google_Service_Sheets($client);
+        // Insert the data
+        $body = new Google_Service_Sheets_ValueRange([
+            'values' => $values
+        ]);
+        $params = [
+            'valueInputOption' => 'RAW'
+        ];
+        
+        // Update the spreadsheet with the order data
+        $result = $service->spreadsheets_values->append($spreadsheetId, $range, $body, $params);
+        
+        return response()->json($result) ;
+        
+        // Return a response indicating whether the update was successful
+        if ($result->getUpdates()->getUpdatedCells() > 0) {
+            return response()->json(['message' => 'Order added to Google Sheet']);
+        } else {
+            return response()->json(['error' => 'Failed to add order to Google Sheet']);
+        }
+    }
 
-    // Define the spreadsheet ID and worksheet range
-    $spreadsheetId = 'your-spreadsheet-id';
-    $range = 'Sheet1!A1:B2';
-
-    // Define the data to insert
-    $values = [
-        ['John Doe', 'john@example.com'],
-        ['Jane Doe', 'jane@example.com'],
-    ];
-
-    // Insert the data
-    $body = new Google_Service_Sheets_ValueRange([
-        'values' => $values
-    ]);
-    $params = [
-        'valueInputOption' => 'RAW'
-    ];
-    $result = $service->spreadsheets_values->append($spreadsheetId, $range, $body, $params);
-
-    // Print the result
-    printf("%d cells updated.", $result->getUpdates()->getUpdatedCells());
-
+    
 }
 
-}
+

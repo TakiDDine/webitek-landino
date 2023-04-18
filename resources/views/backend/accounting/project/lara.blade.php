@@ -115,6 +115,7 @@
                     </div>
                 </label>
                 <iframe id="main" src="{{ Auth::check() ? url('project/larabuilder') : route('demo.builder') }}"></iframe>
+
             </div>
         </div>
 
@@ -229,8 +230,7 @@
         const project_file_name = template ? '{{ $name }}' : '';
         const custom_domain = '';
         const sub_domain = '';
-        // const try_demo = '{{$try_demo}}';
-        const try_demo = '{{ $try_demo }}' ? true : false;
+        const try_demo = false;
 
         document.getElementById('erasable').innerHTML = "";
 

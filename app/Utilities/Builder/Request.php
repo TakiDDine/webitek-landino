@@ -840,6 +840,7 @@ class Request {
      * @param $style_gallery {string}
      */
     protected function _add_gallery(&$baseFiles) {
+       
         array_push($baseFiles['css'], 'owl.carousel.css');
         array_push($baseFiles['js'], 'owl.carousel.js');
     }
@@ -1284,6 +1285,7 @@ class Request {
     
 
         foreach ($baseFiles as $key => $value) {
+            
             if ($key !== 'plugins') {
                 if ( is_array( $value ) ) {
                     foreach ( $value as $fileN ) {
@@ -1291,7 +1293,10 @@ class Request {
                      //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
                         $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
                         if ($key === 'css') {
-                            $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN\" />";
+                            $str=rand();
+                            $result = sha1($str);
+                            $version = '?v='.$result; 
+                            $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN$version\" />";
                         } elseif ($key === 'js') {
                             $cookie_accepted = '';
                             if (
@@ -1300,7 +1305,10 @@ class Request {
                             ) {
                                 $cookie_accepted = ' type="text/plain" data-cookiescript="accepted"';
                             }
-                            $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN\"></script>";
+                            $str=rand();
+                            $result = sha1($str);
+                            $version = '?v='.$result; 
+                            $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN$version\"></script>";
                         }
                     }
                 }
