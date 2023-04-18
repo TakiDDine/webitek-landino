@@ -50,7 +50,7 @@
   --alignement: right;
   --height: 100%;
   --fontFamily: "Noto Kufi Arabic", sans-serif;
-  --duration:0;
+  --duration:8;
 }
 .run:after {
   display: none !important;
@@ -2526,6 +2526,7 @@ iframe#main {
   opacity: 0;
 }
 .supra-preloader .logo-preloader{
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -2536,28 +2537,65 @@ iframe#main {
 }
 
 .supra-preloader .logo-preloader img {
-  
+  position:relative;
   padding: 12px;
   border-radius: 50px;
   width: 100%;
   max-width: 150px;
-
-  opacity: 0;
-  transform: translateY(150%) scale(0);
-  animation:showUpLogo 1s ease-in-out forwards;
+  max-height: 250px;
+  flex: 1;
+  filter: brightness(100%) saturate(0) opacity(0.1);
+  -webkit-filter: brightness(100%) saturate(0) opacity(0.1);
+  -moz-filter: brightness(100%) saturate(0) opacity(0.1);
+  
+  
+  /* animation:showUpLogo 1s ease-in-out forwards; */
 }
-/* .supra-preloader .logo-preloader img.onLoad {
-  transform: rotate(360deg);
-} */
+.supra-preloader .logo-preloader:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #f4f5f7;
+  background-image: url("https://larabuilder.takiddine.art/public/backend/assets/builder/images/logo-blue.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 130px;
+  z-index: 2;
+  opacity: 0.9;
+  clip-path: polygon(0 100%, 0 0, 0 0, 0 100%); 
+  animation:showUpLogo 4s cubic-bezier(0.57, 0.54, 0.42, 0.65) infinite;
+}
 
 @keyframes showUpLogo{
-  from{
-    opacity: 0;
-    transform: translateY(150%) scale(0);
+  0%{
+    clip-path: polygon(0 100%, 0 0, 0 0, 0 100%);
   }
-  to{
-    opacity: 1;
-    transform: translateY(0%) scale(1);
+  25%{
+    clip-path: polygon(100% 100%, 100% 0, 0 0, 0 100%);
+  }
+  50%{
+    clip-path: polygon(100% 100%, 100% 100%, 0 100%, 0 100%);
+  }
+  50.1%{
+    clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
+  }
+  50.2%{
+    clip-path: polygon(100% 100%, 100% 0, 100% 0, 100% 100%);
+  }
+  75%{
+    clip-path: polygon(100% 100%, 100% 0, 0 0, 0 100%);
+  }
+  99.98%{
+    clip-path: polygon(100% 0, 100% 0, 0 0, 0 0);
+  }
+  99.99%{
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  100%{
+    clip-path: polygon(0 100%, 0 0, 0 0, 0 100%);
   }
 }
 
