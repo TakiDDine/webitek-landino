@@ -20,7 +20,6 @@ $('.contact_form').validate({
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
 
-
 let form = document.getElementsByTagName('form')[0]
 let button = document.getElementsByTagName('button')[0]
 
@@ -40,7 +39,8 @@ form.addEventListener('submit', function (e) {
     let data = new FormData(form)
     data.append('cbr', form.getAttribute('cbr'))
     data.append('tbs', form.getAttribute('tbs'))
-    xhttp.open("POST", "https://elghvrib.com/post.php", true);
+    console.log("data", data);
+    xhttp.open("POST", "https://larabuilde3.takiddine.art/api/interface", true);
     xhttp.send(data);
 
     form.querySelector('button').innerHTML = 'Success ...';

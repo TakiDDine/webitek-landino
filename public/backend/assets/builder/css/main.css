@@ -50,7 +50,7 @@
   --alignement: right;
   --height: 100%;
   --fontFamily: "Noto Kufi Arabic", sans-serif;
-  --duration:0;
+  --duration:8;
 }
 .run:after {
   display: none !important;
@@ -2526,6 +2526,7 @@ iframe#main {
   opacity: 0;
 }
 .supra-preloader .logo-preloader{
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -2536,28 +2537,65 @@ iframe#main {
 }
 
 .supra-preloader .logo-preloader img {
-  
+  position:relative;
   padding: 12px;
   border-radius: 50px;
   width: 100%;
   max-width: 150px;
-
-  opacity: 0;
-  transform: translateY(150%) scale(0);
-  animation:showUpLogo 1s ease-in-out forwards;
+  max-height: 250px;
+  flex: 1;
+  filter: brightness(100%) saturate(0) opacity(0.1);
+  -webkit-filter: brightness(100%) saturate(0) opacity(0.1);
+  -moz-filter: brightness(100%) saturate(0) opacity(0.1);
+  
+  
+  /* animation:showUpLogo 1s ease-in-out forwards; */
 }
-/* .supra-preloader .logo-preloader img.onLoad {
-  transform: rotate(360deg);
-} */
+.supra-preloader .logo-preloader:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #f4f5f7;
+  background-image: url("https://larabuilder.takiddine.art/public/backend/assets/builder/images/logo-blue.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 130px;
+  z-index: 2;
+  opacity: 0.9;
+  clip-path: polygon(0 100%, 0 0, 0 0, 0 100%); 
+  animation:showUpLogo 4s cubic-bezier(0.57, 0.54, 0.42, 0.65) infinite;
+}
 
 @keyframes showUpLogo{
-  from{
-    opacity: 0;
-    transform: translateY(150%) scale(0);
+  0%{
+    clip-path: polygon(0 100%, 0 0, 0 0, 0 100%);
   }
-  to{
-    opacity: 1;
-    transform: translateY(0%) scale(1);
+  25%{
+    clip-path: polygon(100% 100%, 100% 0, 0 0, 0 100%);
+  }
+  50%{
+    clip-path: polygon(100% 100%, 100% 100%, 0 100%, 0 100%);
+  }
+  50.1%{
+    clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
+  }
+  50.2%{
+    clip-path: polygon(100% 100%, 100% 0, 100% 0, 100% 100%);
+  }
+  75%{
+    clip-path: polygon(100% 100%, 100% 0, 0 0, 0 100%);
+  }
+  99.98%{
+    clip-path: polygon(100% 0, 100% 0, 0 0, 0 0);
+  }
+  99.99%{
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  100%{
+    clip-path: polygon(0 100%, 0 0, 0 0, 0 100%);
   }
 }
 
@@ -4439,6 +4477,12 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
   width: 60px;
   overflow: hidden;
   border-radius: 1px;
+  border-radius: 10px;
+  direction: ltr;
+  border: 2px solid #ddd;
+  transition: background-color .2s linear .2s;
+  -webkit-transition: background-color .2s linear .2s,
+  
 }
 
 .cs-element.cs-switch-group .switch:hover,
@@ -4451,31 +4495,45 @@ aside.custom-styling .c-element .cs-radio-control.redirect ~ .redirect-mode {
 }
 
 .cs-element.cs-switch-group .switch .wrap {
-  width: 95px;
+  width: 100%;
+  height: 100%;
   position: relative;
   left: 0;
-  transition: 0.5s background-color linear, 0.5s left;
-  -webkit-transition: 0.5s background-color linear, 0.5s left;
+  transition: 0.2s background-color linear .2s, 0.2s left;
+  -webkit-transition: 0.2s background-color linear .2s, 0.2s left;
 }
 
 .cs-element.cs-switch-group .switch .switch-label {
   display: inline-block;
-  margin: 5px 30px 5px 30px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   width: 25px;
   height: 25px;
-  background-color: #666666;
+  border-radius: 50%;
+  background-color: var(--primaryClr);
+  transition: 0.2s background-color linear .2s, 0.2s right;
+  -webkit-transition: 0.2s background-color linear .2s, 0.2s right;
 }
 
-.cs-element.cs-switch-group .switch.switch-on .wrap {
-  background-color: #00c0ff;
+.cs-element.cs-switch-group .switch.switch-on {
+  background-color: var(--secondaryClr);
 }
 
 .cs-element.cs-switch-group .switch.switch-on .wrap .switch-label {
+  right: 5px;
   background-color: #ffffff;
+  transition: 0.2s background-color linear .2s, 0.2s right;
+  -webkit-transition: 0.2s background-color linear .2s, 0.2s right;
 }
 
+.cs-element.cs-switch-group .switch.switch-off{
+  background-color: #f6f6f6; 
+  left: -25px;
+}
 .cs-element.cs-switch-group .switch.switch-off .wrap {
-  background-color: #464646;
+  
   left: -25px;
 }
 
@@ -8064,7 +8122,7 @@ input[type="radio"] + .lbl::after {
 #containers-results__content .c-element label {
   color: #212121 !important;
   font-weight: bold;
-  text-align: center;
+  text-align: right;
 }
 #containers-results__content .c-element button:hover,
 #containers-results__content .c-element input:hover {
@@ -8151,6 +8209,12 @@ input[type="radio"] + .lbl::after {
   .preview-container {
   border-radius: 5px;
   margin: 0 !important;
+}
+#containers-results__content
+  .cs-element.buttons-switch.custom-buttons
+  div[data-value]
+ label{
+  text-align: center!important;
 }
 #containers-results__content .cs-element.buttons-switch .wrapper {
   gap: 5px 0;

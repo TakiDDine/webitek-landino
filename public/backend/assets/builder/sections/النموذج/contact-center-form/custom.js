@@ -1,18 +1,25 @@
 /* 
-
+    Fetch Script For Forms POST Req.
+    We Have 2 Paths :
+    ---1--- Has GOOGLE SHEETS FIELD: 'yes'
+    ---2--- Has GOOGLE SHEETS FIELD: 'no'
 */
+// Select All Forms In Page
 const forms = document.querySelectorAll("form");
-forms.forEach((form, i) => {
-    /* 
-      IF WE HAVE A GOOGLE SHEETS FIELD ON PAGE
-    */
-    if (form.querySelector(".form-group.interface-field-group input[data-csrf][name=INTERFACE]")) {
-        console.log("HE HAS GOOGLE SHEETS INPUT")
+// Loop Into Forms Array
+forms.forEach((form) => {
+    // Declare The GOOGLE SHEETS Input
+    let gsInput = form.querySelector(".form-group.interface-field-group input[data-csrf][name=INTERFACE]");
+    // GOOGLE SHEETS ID
 
-        let googleSheetsURL = `https://docs.google.com/spreadsheets/d/${window.atob(form.querySelector('input[data-csrf][name=INTERFACE]').getAttribute("data-csrf"))}/`;
+    if (gsInput) {
+        console.log("===HAS GOOGLE SHEETS===")
+
+        let gsUrl = `${window.atob(gsInput.getAttribute("data-csrf"))}`;
 
         // GET SUBMIT BUTTON
-        let send = form.querySelector("button[type=submit]");
+        let submit = form.querySelector("button[type=submit]");
+
         // ONSUBMIT FORM EVENT
         form.addEventListener("submit", (e) => {
             // PREVENT FROM SUBMIT
@@ -20,36 +27,33 @@ forms.forEach((form, i) => {
 
             // GET FORM DATA
             let data = new FormData(form);
-            data.append('INTERFACE', googleSheetsURL)
+            // Send Google Sheets Form
+            data.append('INTERFACE', gsUrl)
 
-            // INIT FETCH POST
+            // Fetch "POST" Request
             fetch("https://larabuilde3.takiddine.art/api/interface", {
                 method: "POST",
                 body: data
             }).then(response => {
-                if (response.status !== 200) {
-                    throw new Error("bad Response");
+                if (!response.ok) {
+                    throw new Error(response.statusText);
                 }
-                return response.json();
+                return response.text();
             }).then(response => {
-                const res = JSON.parse(response)
+                const res = response;
                 console.log(res)
-
-            }).catch(err => {
-                console.error(err)
+                submit.innerHTML = 'Success Request 🍎';
+            }).catch(error => {
+                console.error(error)
             })
-
-            // SENDING SUCCESS ...
-            send.innerHTML = 'Success ...';
         })
     }
-    /* 
-      IF WE DON'T HAVE A GOOGLE SHEETS FIELD ON THE  PAGE
-    */
+
     else {
-        console.log("NO GOOGLE SHEETS INPUT FOUND")
+        form.addEventListener("submit", (e) => {
+            console.log("===HASN'T GOOGLE SHEETS===")
+        })
         // OTHER CODE REQUEST NEDDED
     }
 
 })
-    /* ==== */
