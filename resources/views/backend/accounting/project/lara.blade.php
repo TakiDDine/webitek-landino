@@ -114,7 +114,7 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{ Auth::check() ? url('project/larabuilder') : route('demo.builder') }}"></iframe>
+                <iframe id="main" src="{{ Auth::check() ? url('project/landino') : route('demo.builder') }}"></iframe>
 
             </div>
         </div>

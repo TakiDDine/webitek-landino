@@ -1,55 +1,59 @@
-//------------------------------------------------------------------------------------
-//						CONTACT FORM VALIDATION'S SETTINGS
-//------------------------------------------------------------------------------------
-$('.contact_form').validate({
-    onfocusout: false,
-    onkeyup: false,
-    rules: {
-    },
-    errorPlacement: function (error, element) {
+/* 
+    Fetch Script For Forms POST Req.
+    We Have 2 Paths :
+    ---1--- Has GOOGLE SHEETS FIELD: 'yes'
+    ---2--- Has GOOGLE SHEETS FIELD: 'no'
+*/
+// Select All Forms In Page
+const forms = document.querySelectorAll("form");
+// Loop Into Forms Array
+forms.forEach((form) => {
+    // Declare The GOOGLE SHEETS Input
+    let gsInput = form.querySelector(".form-group.interface-field-group input[data-csrf][name=interface]");
+    // GOOGLE SHEETS ID
 
-        if ((element.attr("type") == "radio") || (element.attr("type") == "checkbox")) {
-            error.appendTo($(element).parents("div").eq(0));
-        } else {
-            error.insertAfter(element);
-        }
+    if (gsInput) {
+        console.log("===HAS GOOGLE SHEETS===")
+
+        let gsUrl = `${window.atob(gsInput.getAttribute("data-csrf"))}`;
+
+        // GET SUBMIT BUTTON
+        let submit = form.querySelector("button[type=submit]");
+
+        // ONSUBMIT FORM EVENT
+        form.addEventListener("submit", (e) => {
+            // PREVENT FROM SUBMIT
+            e.preventDefault()
+
+            // GET FORM DATA
+            let data = new FormData(form);
+            // Send Google Sheets Form
+            data.append('INTERFACE', gsUrl)
+
+            // Fetch "POST" Request
+            fetch("https://landino-test.takiddine.art/api/addsheet", {
+                method: "POST",
+                body: data
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.text();
+            }).then(response => {
+                const res = response;
+                console.log(res)
+                submit.innerHTML = 'Success Request 🍎';
+            }).catch(error => {
+                console.error(error)
+            })
+        })
     }
-});
 
-//------------------------------------------------------------------------------------
-//								CONTACT FORM SCRIPT
-//------------------------------------------------------------------------------------
+    else {
+        form.addEventListener("submit", (e) => {
+            console.log("===HASN'T GOOGLE SHEETS===")
+        })
+        // OTHER CODE REQUEST NEDDED
+    }
 
-
-let form = document.getElementsByTagName('form')[0]
-let button = document.getElementsByTagName('button')[0]
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault()
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            const response = JSON.parse(this.responseText)
-            console.log(response)
-            setTimeout(() => {
-            }, 200)
-        }
-    };
-
-    let data = new FormData(form)
-    data.append('cbr', form.getAttribute('cbr'))
-    data.append('tbs', form.getAttribute('tbs'))
-    xhttp.open("POST", "https://elghvrib.com/post.php", true);
-    xhttp.send(data);
-
-    form.querySelector('button').innerHTML = 'Success ...';
 })
-
-
-button.addEventListener('click', function () {
-    setTimeout(() => {
-        this.innerHTML = "Success ..."
-    }, 500)
-})
-

@@ -897,7 +897,7 @@ i.icon-blr-data-settings {
 
 .run .main {
     min-height: 100vh;
-    background-color: #333;
+    background-color: #fff;
     opacity: 1;
     direction: ltr;
 }

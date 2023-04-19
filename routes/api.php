@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::get('/addsheet', [GoogleSheetsController::class, 'index']);
+Route::post('/addsheet', [GoogleSheetsController::class, 'index']);

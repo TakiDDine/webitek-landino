@@ -40,7 +40,7 @@ class UtilitySeeder extends Seeder
 			],
 			[
 			  'name' => 'hero_title',
-			  'value' => 'Start Your Business With LaraBuilder'
+			  'value' => 'Start Your Business With landino'
 			],	
 			[
 			  'name' => 'hero_sub_title',
@@ -63,8 +63,8 @@ class UtilitySeeder extends Seeder
 		//Default users
 		DB::table('users')->insert([
 			[
-			  'name' => 'larabuilder',
-			  'email' => 'admin@larabuilder.com',
+			  'name' => 'landino',
+			  'email' => 'admin@landino.com',
                 'password' => '$2a$12$JLxS.LrPKvZ8gGzHK8DAeOLfWyV3eDqW4scMxLZxFkQa5GYWYahvm',
 			  'email_verified_at' => '2022-05-26 15:07:52',
 			  'user_type' => 'admin',
@@ -95,14 +95,14 @@ class UtilitySeeder extends Seeder
 			  'subject' => 'Registration Sucessfully',
 			  'body' => '<div style="padding: 15px 30px;">
 						 <h2 style="color: #555555;">Registration Successful</h2>
-						 <p style="color: #555555;">Hi {name},<br /><span style="color: #555555;">Welcome to LaraBuilder and thank you for joining with us. You can now sign in to your account using your email and password.<br /><br />Regards<br />Tricky Code<br /></span></p>
+						 <p style="color: #555555;">Hi {name},<br /><span style="color: #555555;">Welcome to Landino and thank you for joining with us. You can now sign in to your account using your email and password.<br /><br />Regards<br />Tricky Code<br /></span></p>
 						 </div>',
 			],
 			[
 			  'name' => 'premium_membership',
 			  'subject' => 'Premium Membership',
 			  'body' => '<div style="padding: 15px 30px;">
-						<h2 style="color: #555555; font-family: "PT Sans", sans-serif;">LaraBuilder Premium Subscription</h2>
+						<h2 style="color: #555555; font-family: "PT Sans", sans-serif;">Landino Premium Subscription</h2>
 						<p style="color: #555555; font-family: "PT Sans", sans-serif;">Hi {name},<br>
 						<span style="color: #555555; font-family: "PT Sans", sans-serif;"><strong>Congratulations</strong> your paymnet was made sucessfully. Your current membership is valid <strong>until</strong> <strong>{valid_to}</strong></span><span style="color: #555555; font-family: "PT Sans", sans-serif;"><strong>.</strong>&nbsp;</span></p>
 						<p><br style="color: #555555; font-family: "PT Sans", sans-serif;" /><span style="color: #555555; font-family: "PT Sans", sans-serif;">Thank You</span><br style="color: #555555; font-family: "PT Sans", sans-serif;" /><span style="color: #555555; font-family: "PT Sans", sans-serif;">Tricky Code</span></p>
@@ -110,7 +110,7 @@ class UtilitySeeder extends Seeder
 			],
 			[
 			  'name' => 'alert_notification',
-			  'subject' => 'LaraBuilder Renewals',
+			  'subject' => 'Landino Renewals',
 			  'body' => '<div style="padding: 15px 30px;">
 							<h2 style="color: #555555; font-family: "PT Sans", sans-serif;">Account Renew Notification</h2>
 							<p style="color: #555555; font-family: "PT Sans", sans-serif;">Hi {name},<br>

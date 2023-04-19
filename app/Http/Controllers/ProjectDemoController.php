@@ -22,7 +22,6 @@ class ProjectDemoController extends Controller {
         $data['projectfile']    = null;
         $data['name'] = '';
         $data['try_demo'] = true;
-        share(['data' => $data]);
         // dd($data);
       return view('backend.accounting.project.lara', $data);
     }
@@ -35,6 +34,6 @@ class ProjectDemoController extends Controller {
   public function larabuilder()
   {
 
-    return view('backend.accounting.project.larabuilder');
+    return view('backend.accounting.project.createlandino');
   }
 }

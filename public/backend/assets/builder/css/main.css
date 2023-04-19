@@ -5025,11 +5025,15 @@ aside.add-sections-items > ul li.wrap-hover {
   justify-content: flex-end;
   gap: 7px;
 }
-#modal-container .modal-footer.mode__demo, #modal-container .modal-footer.mode__delete-elements, #modal-container .modal-footer.mode__delete {
+#modal-container .modal-footer.mode__demo, #modal-container .modal-footer.mode__delete-elements, #modal-container .modal-footer.mode__delete, #modal-container .modal-footer.mode__AddItemToTheDom
+{
   border: none;
   padding: 0px 30px 20px;
   justify-content: center;
   gap: 7px;
+}
+#modal-container .modal-footer.mode__AddItemToTheDom button{
+  padding:0 30px;
 }
 
 #modal-container .modal-footer button {
@@ -8637,6 +8641,20 @@ button.supra-btn.btn-default:hover {
   border-radius: 50%;
 }
 
+li.liSection{
+  opacity: 0;
+}
+li.liSection.showIt{
+  animation: showIT .4s ease forwards;
+}
+@keyframes showIT {
+  to{
+    opacity: 1;
+  }
+}
+li.need-create-account .create-account{
+ 
+}
 
 li.need-create-account:after {
   background-color: #212529;
@@ -8652,20 +8670,25 @@ li.need-create-account:hover {
   outline: none !important;
   border: 2px solid transparent !important;
 }
-a.create-account {
+span.create-account {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 6px;
+  right: 6px;
   z-index: 99;
   background-color: #be2130;
   color: #fff;
   font-weight: bold;
-  border-radius: 12px;
+  border-radius: 6px;
   font-size: 0.875rem;
   line-height: 1.5;
   padding: 0.375rem 1rem;
+  opacity: 0;
+  transition: opacity .4s ease;
 }
-a.create-account:hover {
+li.need-create-account .create-account.showIt{
+  opacity: 1;
+}
+span.create-account:hover {
   background-color: #b51724;
   text-decoration: none;
 }
@@ -8676,6 +8699,9 @@ a.create-account:hover {
   background-color: #fff ;
 }
 
+.btn.disabled, .btn:disabled{
+  opacity: 1!important;
+}
 
 @media screen and (max-width:1250px){
   .wrap-iframe{

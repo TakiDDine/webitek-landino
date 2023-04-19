@@ -114,7 +114,7 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{ url('project/larabuilder') }}"></iframe>
+                <iframe id="main" src="{{ url('project/landino') }}"></iframe>
             </div>
         </div>
 

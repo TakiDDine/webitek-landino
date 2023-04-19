@@ -177,7 +177,7 @@ Route::group(['middleware' => ['install']], function () {
 			//Builder
 			Route::resource('project/builder','BuilderController');
 			Route::get('updateproject/builder/{id}','BuilderController@index'); 
-			Route::get('project/larabuilder','BuilderController@larabuilder');
+			Route::get('project/landino','BuilderController@larabuilder');
 			Route::get('builder/novi','BuilderController@novi');
 			Route::get('/editor','BuilderController@lara');
 			Route::get('/editor', 'BuilderController@lara');
