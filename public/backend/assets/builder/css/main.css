@@ -5025,14 +5025,15 @@ aside.add-sections-items > ul li.wrap-hover {
   justify-content: flex-end;
   gap: 7px;
 }
-#modal-container .modal-footer.mode__demo, #modal-container .modal-footer.mode__delete-elements, #modal-container .modal-footer.mode__delete, #modal-container .modal-footer.mode__AddItemToTheDom
+#modal-container .modal-footer.mode__demo, #modal-container .modal-footer.mode__delete-elements, #modal-container .modal-footer.mode__delete, #modal-container .modal-footer.mode__AddItemToTheDom,
+#modal-container .modal-footer.mode__ElmExist
 {
   border: none;
   padding: 0px 30px 20px;
   justify-content: center;
   gap: 7px;
 }
-#modal-container .modal-footer.mode__AddItemToTheDom button{
+#modal-container .modal-footer.mode__AddItemToTheDom button, #modal-container .modal-footer.mode__ElmExist button{
   padding:0 30px;
 }
 
@@ -8665,6 +8666,7 @@ li.need-create-account:after {
   opacity: 0.3;
   left: 0;
   top: 0;
+  cursor:pointer;
 }
 li.need-create-account:hover {
   outline: none !important;
@@ -8695,9 +8697,7 @@ span.create-account:hover {
 /* li.wrap-hover.d-flex.justify-content-center.align-items-center:not([data-action]) a {
   display: none;
 } */
-.run .main {
-  background-color: #fff ;
-}
+
 
 .btn.disabled, .btn:disabled{
   opacity: 1!important;
