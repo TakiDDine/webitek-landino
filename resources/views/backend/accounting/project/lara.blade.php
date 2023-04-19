@@ -232,7 +232,7 @@
         const project_file_name = template ? '{{ $name }}' : '';
         const custom_domain = '';
         const sub_domain = '';
-        const try_demo = false;
+        const try_demo = true;
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
