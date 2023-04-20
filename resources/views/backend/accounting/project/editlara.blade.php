@@ -39,7 +39,11 @@
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
             <div class="logo-preloader">
+<<<<<<< HEAD
                 <img src="images/logo-blue.svg" />
+=======
+                <img src="{{asset('backend/assets/builder/images/logo-blue.svg')}}" />
+>>>>>>> integration_part1
             </div>
             <div class="progress-bar-s">
                 <div class="progress">
@@ -114,8 +118,12 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
+<<<<<<< HEAD
                 <iframe id="main"
                     src="{{ app('request')->is('builder/*') ? url('project/larabuilder') : url('demo/larabuilder') }}"></iframe>
+=======
+                <iframe id="main" src="{{ url('project/landino') }}"></iframe>
+>>>>>>> integration_part1
             </div>
         </div>
 
@@ -154,7 +162,11 @@
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
                             <a href class="brand">
+<<<<<<< HEAD
                                 <img src="images/logo.svg" />
+=======
+                                <img src="{{asset('backend/assets/builder/images/logo.svg')}}" />
+>>>>>>> integration_part1
                             </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
@@ -165,7 +177,7 @@
                                         إضافة عنصر جديد
                                     </bdo>
                                 </span>
-                                <img src="images/builder-svg/plus.svg" width="30" height="30" />
+                                <img src="{{asset('backend/assets/builder/images/builder-svg/plus.svg')}}" width="30" height="30" />
                         </div>
                         <div class="global-style__container">
                             <div id="sidebarRight__Content">
@@ -210,25 +222,28 @@
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
 
-    <script>
+    <script id="erasable" type="text/javascript">
         @if (env('DEMO_MODE') == true)
             var demoMode = 'active';
         @else
             var demoMode = 'no';
 
             @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
-                /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
         const ajaxbase = '{{ url('api/ajax') }}';
         const baseurl = '{{ url('/') }}';
+<<<<<<< HEAD
         const publicpath = "{{ base_path('public') }}";
         const basepath = "{{ base_path('public/backend/assets/builder') }}";
+=======
+>>>>>>> integration_part1
         const googleKey = '{{ get_option('google_map_key') }}';
         const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         // const project_id = 0;
         // const project_file = '';
         // const project_file_name = '';
+<<<<<<< HEAD
 
         const project_id = '{{ $id }}';
         const custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
@@ -237,6 +252,18 @@
         const project_file_name = '';
         const template = false;
         const try_demo = false;
+=======
+
+        const project_id = '{{ $id }}';
+        const custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
+        const sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
+        const project_file = '{{ $projectfile }}';
+        const project_file_name = '';
+        const template = false;
+        const try_demo = false;
+        document.getElementById('erasable').innerHTML = "";
+
+>>>>>>> integration_part1
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

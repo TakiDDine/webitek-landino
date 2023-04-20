@@ -31,13 +31,14 @@
                 <h3 class="py-4">{{_lang('Settings')}}</h3>
             </div>
             <div class="card-body">
-                <form method="post" class="ajax-submit p-4" autocomplete="off" action="{{ action('ProjectController@update', $id) }}" enctype="multipart/form-data">
-                    {{ csrf_field()}}
+                <form method="post" class=" p-4" autocomplete="off" action="{{ route('projects.update', ['id'=> $id]) }}" enctype="multipart/form-data">
+                    
+                    @csrf
                     {{-- <input name="_method" type="hidden" value="PATCH">	 --}}
                     <input value="{{$company_id}}" type="hidden" name="company_id">			
                     
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8"> 
                             <div class="form-group">
                                <label class="control-label"><span class="display-5 head-title">{{ _lang('Project Name') }}</span></label>						
                                <input type="text" class="form-control" name="name" value="{{ $project->name }}" required>

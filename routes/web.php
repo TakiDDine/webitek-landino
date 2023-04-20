@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectDemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,25 +35,12 @@ Route::group(['middleware' => ['install']], function () {
 		return view('auth.verify-email');
 	})->middleware('auth')->name('verification.notice');
 
+	
 	// Try Demo 
 	Route::prefix('demo')->group(function() {
-		Route::get('/create', 'ProjectController@create');
-		// Route::resource('/builder','BuilderController');
-		// Route::get('/lara','BuilderController@lara');
-		// Route::get('/editor', 'BuilderController@lara');
-		// Route::get('/larabuilder','BuilderController@larabuilder');
-		//Builder
-		Route::resource('/builder','BuilderController');
-		Route::get('updateproject/builder/{id}','BuilderController@index'); 
-		Route::get('/larabuilder','BuilderController@larabuilder');
-		Route::get('/novi','BuilderController@novi');
-		Route::get('/lara','BuilderController@lara');
-		Route::get('/editor', 'BuilderController@lara');
-		Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
-		Route::get('test/backend/assets/builder','BuilderController@empty');
-
+		Route::get('/', [ProjectDemoController::class, 'demo'])->name('demo.editor');
+		Route::get('/builder','ProjectDemoController@larabuilder')->name('demo.builder');
 	});
-
 
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
@@ -123,6 +112,7 @@ Route::group(['middleware' => ['install']], function () {
 		//Paddle Payment Gateway
 		Route::post('membership/Paddle_payment/{payment_id}','MembershipController@Paddle_payment');
 		Route::get('membership/Paddle_success/{payment_id}','MembershipController@Paddle_success');
+		
  
 		/** Admin Only Route **/
 		Route::group(['middleware' => ['admin']], function () {
@@ -179,7 +169,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::post('/projects/store', 'ProjectController@store');
 			Route::get('/projects/{id}/edit', 'ProjectController@edit');
 			Route::get('/projects/{id}/editSettings', 'ProjectController@editSettings');
-			Route::post('/projects/{id}/update', 'ProjectController@update');
+			Route::post('/projects/{id}/update', 'ProjectController@update')->name('projects.update');
 			Route::delete('projects/{id}/delete', 'ProjectController@destroy');
 
 			// Route::resource('projects','ProjectController');
@@ -187,9 +177,9 @@ Route::group(['middleware' => ['install']], function () {
 			//Builder
 			Route::resource('project/builder','BuilderController');
 			Route::get('updateproject/builder/{id}','BuilderController@index'); 
-			Route::get('project/larabuilder','BuilderController@larabuilder');
+			Route::get('project/landino','BuilderController@larabuilder');
 			Route::get('builder/novi','BuilderController@novi');
-			Route::get('builder/lara','BuilderController@lara');
+			Route::get('/editor','BuilderController@lara');
 			Route::get('/editor', 'BuilderController@lara');
 			Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
 			Route::get('test/backend/assets/builder','BuilderController@empty');
@@ -229,7 +219,6 @@ Route::group(['middleware' => ['install']], function () {
 			//Permission Controller
 			Route::get('permission/control/{user_id?}', 'PermissionController@index')->name('permission.manage');
 			Route::post('permission/store', 'PermissionController@store')->name('permission.manage');
-
 
 		});
 
@@ -314,4 +303,3 @@ Route::get('console/run','CronJobsController@run');
 // Affiliate
 Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
 Route::post('/s/{affiliate_id}', 'Auth\RegisterController@register');
-

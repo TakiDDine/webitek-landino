@@ -17,11 +17,11 @@ class ProfileController extends Controller
 	public function __construct()
     {	
 		$this->middleware(function ($request, $next) {
-			// if(has_membership_system() == 'enabled' && Auth::user()->user_type == "user"){
-			// 	if( membership_validity() < date('Y-m-d')){
-			// 		return redirect('membership/extend')->with('message',_lang('Your membership has expired. Please renew your membership !'));
-			// 	}
-			// }
+			if(has_membership_system() == 'enabled' && Auth::user()->user_type == "user"){
+				if( membership_validity() < date('Y-m-d')){
+					return redirect('membership/extend')->with('message',_lang('Your membership has expired. Please renew your membership !'));
+				}
+			}
 
 			return $next($request);
 		});

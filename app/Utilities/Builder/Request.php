@@ -266,14 +266,21 @@ class Request
     public function FtpUpload()
     {
         $this->_clearTmp();
-
+        $user_id = $_POST['project_id'] ? $_POST['userId'].'/' : $_POST['userId'];
+        $_POST['dir'] = public_path().'/tmp/'.$user_id.$_POST['project_id'].'/preview';
+        // echo json_encode([
+        //     'status' => 200,
+        //     'message' => 'The site can\'t be show',
+        //     'dir' => $_POST['dir'],
+        // ]);
+        // exit();
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {
             $dataPost = stripslashes($dataPost);
         }
-
         $file_name = $this->saveSiteToTmp($dataPost, 'tmp');
+       
 
         $zip = new ZipArchive();
 
@@ -321,8 +328,12 @@ class Request
             }
 
             // make it local before upload
+<<<<<<< HEAD
             $output_dir = base_path('public/ftp') . '/' . $_POST['userId'] . '/' . $_POST['project_id'];
 
+=======
+            $output_dir = base_path('public/ftp').'/'.$_POST['userId'].'/'.$_POST['project_id'];
+>>>>>>> integration_part1
             try {
                 if ($zip->open(base_path('public/tmp') . '/' . $file_name)) {
                     $zip->extractTo($output_dir . '/');
@@ -343,7 +354,6 @@ class Request
                     ]
                 );
                 $ftp->doIt();
-
                 if (!file_exists($output_dir)) {
                     mkdir($output_dir, 0777, true);
                     chmod($output_dir, 0777);
@@ -415,15 +425,19 @@ class Request
                         }
                     }
                 }
+<<<<<<< HEAD
 
                 if ($zip->open(base_path('public/tmp') . '/' . $file_name)) {
+=======
+                if ($zip->open(base_path('public/tmp').'/' . $file_name)) {
+>>>>>>> integration_part1
                     $zip->extractTo($output_dir . '/');
                     $zip->close();
                     unlink(base_path('public/tmp') . '/' . $file_name);
                 }
                 echo json_encode([
                     'status' => 200,
-                    'url' => $_POST['dir'] . '/'
+                    'template_url' => $_POST['project_id']
                 ]);
             } catch (Exception $e) {
                 echo json_encode([
@@ -883,8 +897,13 @@ class Request
      * @param $js_plugins {string}
      * @param $style_gallery {string}
      */
+<<<<<<< HEAD
     protected function _add_gallery(&$baseFiles)
     {
+=======
+    protected function _add_gallery(&$baseFiles) {
+       
+>>>>>>> integration_part1
         array_push($baseFiles['css'], 'owl.carousel.css');
         array_push($baseFiles['js'], 'owl.carousel.js');
     }
@@ -1100,6 +1119,9 @@ class Request
             }
 
             $includePajeStyle = '';
+            $str=rand();
+            $result = sha1($str);
+            $version = '?v='.$result; 
             if ($page->style !== '') {
                 $page_style = preg_replace('#\?t=[0-9]*#im', '', $page->style);
 
@@ -1126,13 +1148,18 @@ class Request
                 }
 
                 $page_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $page_style);
-
+                
                 $zip->addFromString(
                     'css/' . $page->page_name . '.css'
                     ,
                     $page_style
                 );
+<<<<<<< HEAD
                 $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/" . $page->page_name . ".css\" />";
+=======
+                
+                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css".$version ."\" />";
+>>>>>>> integration_part1
             }
 
             $includePajeJs = '';
@@ -1180,9 +1207,12 @@ class Request
            <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,viewport-fit=cover\">$fonts" . '' . "$default_css" . '' . "$style_gallery" . '' . "$style_magnific
            <link rel=\"stylesheet\" href=\"css/custom.css\" />" . '' . "$includePajeStyle" . '' . "$preloader_css
 
+          
+
        </head>
            <body class=\"" . $page->style_options . "\">$preloader";
 
+           
             $custom_js = '';
             if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
                 $custom_js = "\n\t\t<script src=\"js/custom.js\"></script>";
@@ -1255,7 +1285,6 @@ class Request
     public function Download()
     {
         $this->_clearTmp();
-
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {
@@ -1346,13 +1375,31 @@ class Request
             $this->_add_aos($baseFiles);
         }
 
+        
+        if ($data->form_section) {
+            $baseFiles['js'][] = 'csfrhandler.js';    
+        }
+    
+
         foreach ($baseFiles as $key => $value) {
+            
             if ($key !== 'plugins') {
+<<<<<<< HEAD
                 if (is_array($value)) {
                     foreach ($value as $fileN) {
                         $zip->addFile($this->_base_path . '/' . $key . '/lib/' . $fileN, $key . '/' . $fileN);
+=======
+                if ( is_array( $value ) ) {
+                    foreach ( $value as $fileN ) {
+
+                     //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
+                        $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
+>>>>>>> integration_part1
                         if ($key === 'css') {
-                            $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN\" />";
+                            $str=rand();
+                            $result = sha1($str);
+                            $version = '?v='.$result; 
+                            $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN$version\" />";
                         } elseif ($key === 'js') {
                             $cookie_accepted = '';
                             if (
@@ -1361,7 +1408,10 @@ class Request
                             ) {
                                 $cookie_accepted = ' type="text/plain" data-cookiescript="accepted"';
                             }
-                            $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN\"></script>";
+                            $str=rand();
+                            $result = sha1($str);
+                            $version = '?v='.$result; 
+                            $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN$version\"></script>";
                         }
                     }
                 }
@@ -1435,6 +1485,12 @@ class Request
                 $overall_js
             );
         }
+        // if (preg_match('/\w/', $overall_js)) {
+        //     $zip->addFromString(
+        //         'js/googlesheet.js'
+        //         , $overall_js
+        //     );
+        // }
 
         $fonts_to_download->getIncludeFonts();
 
@@ -1442,6 +1498,7 @@ class Request
 
         $file_name = basename($filename);
 
+      //  dd($file_name);
         return $file_name;
     }
 
