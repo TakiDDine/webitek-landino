@@ -328,12 +328,7 @@ class Request
             }
 
             // make it local before upload
-<<<<<<< HEAD
             $output_dir = base_path('public/ftp') . '/' . $_POST['userId'] . '/' . $_POST['project_id'];
-
-=======
-            $output_dir = base_path('public/ftp').'/'.$_POST['userId'].'/'.$_POST['project_id'];
->>>>>>> integration_part1
             try {
                 if ($zip->open(base_path('public/tmp') . '/' . $file_name)) {
                     $zip->extractTo($output_dir . '/');
@@ -425,12 +420,9 @@ class Request
                         }
                     }
                 }
-<<<<<<< HEAD
 
                 if ($zip->open(base_path('public/tmp') . '/' . $file_name)) {
-=======
-                if ($zip->open(base_path('public/tmp').'/' . $file_name)) {
->>>>>>> integration_part1
+
                     $zip->extractTo($output_dir . '/');
                     $zip->close();
                     unlink(base_path('public/tmp') . '/' . $file_name);
@@ -897,13 +889,9 @@ class Request
      * @param $js_plugins {string}
      * @param $style_gallery {string}
      */
-<<<<<<< HEAD
+
     protected function _add_gallery(&$baseFiles)
     {
-=======
-    protected function _add_gallery(&$baseFiles) {
-       
->>>>>>> integration_part1
         array_push($baseFiles['css'], 'owl.carousel.css');
         array_push($baseFiles['js'], 'owl.carousel.js');
     }
@@ -1154,12 +1142,8 @@ class Request
                     ,
                     $page_style
                 );
-<<<<<<< HEAD
                 $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/" . $page->page_name . ".css\" />";
-=======
-                
-                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css".$version ."\" />";
->>>>>>> integration_part1
+
             }
 
             $includePajeJs = '';
@@ -1384,17 +1368,10 @@ class Request
         foreach ($baseFiles as $key => $value) {
             
             if ($key !== 'plugins') {
-<<<<<<< HEAD
                 if (is_array($value)) {
                     foreach ($value as $fileN) {
                         $zip->addFile($this->_base_path . '/' . $key . '/lib/' . $fileN, $key . '/' . $fileN);
-=======
-                if ( is_array( $value ) ) {
-                    foreach ( $value as $fileN ) {
 
-                     //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
-                        $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
->>>>>>> integration_part1
                         if ($key === 'css') {
                             $str=rand();
                             $result = sha1($str);
