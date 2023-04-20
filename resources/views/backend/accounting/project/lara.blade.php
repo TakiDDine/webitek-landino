@@ -30,7 +30,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="first-show" {!! $try_demo ? "themeModel='botstrap'" :  '' !!} >
+<body class="first-show" {!! $try_demo ? "data-model='bootstrap'" :  '' !!} >
     <script src="{{ asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js') }}"></script>
     <style id="builder-style"></style>
 
@@ -230,7 +230,7 @@
         const project_file_name = template ? '{{ $name }}' : '';
         const custom_domain = '';
         const sub_domain = '';
-        const try_demo = false;
+        const try_demo = true;
 
         document.getElementById('erasable').innerHTML = "";
 

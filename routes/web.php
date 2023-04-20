@@ -38,7 +38,7 @@ Route::group(['middleware' => ['install']], function () {
 	
 	// Try Demo 
 	Route::prefix('demo')->group(function() {
-		Route::get('/editor', [ProjectDemoController::class, 'demo'])->name('demo.editor');
+		Route::get('/', [ProjectDemoController::class, 'demo'])->name('demo.editor');
 		Route::get('/builder','ProjectDemoController@larabuilder')->name('demo.builder');
 	});
 

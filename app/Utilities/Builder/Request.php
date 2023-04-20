@@ -252,19 +252,21 @@ class Request {
      */
     public function FtpUpload() {
         $this->_clearTmp();
-        $_POST['dir'] = public_path().'/tmp/'.$_POST['userId'].'/'.$_POST['project_id'].'/preview';
+        $user_id = $_POST['project_id'] ? $_POST['userId'].'/' : $_POST['userId'];
+        $_POST['dir'] = public_path().'/tmp/'.$user_id.$_POST['project_id'].'/preview';
         // echo json_encode([
-        //     'status' => 500,
+        //     'status' => 200,
         //     'message' => 'The site can\'t be show',
         //     'dir' => $_POST['dir'],
         // ]);
+        // exit();
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {
             $dataPost = stripslashes($dataPost);
         }
-
         $file_name = $this->saveSiteToTmp($dataPost, 'tmp');
+       
 
         $zip = new ZipArchive();
 
@@ -332,7 +334,6 @@ class Request {
                     ]
                 );
                 $ftp->doIt();
-
                 if (!file_exists($output_dir)) {
                     mkdir($output_dir, 0777, true);
                     chmod($output_dir, 0777);
@@ -404,7 +405,6 @@ class Request {
                         }
                     }
                 }
-
                 if ($zip->open(base_path('public/tmp').'/' . $file_name)) {
                     $zip->extractTo($output_dir . '/');
                     $zip->close();
