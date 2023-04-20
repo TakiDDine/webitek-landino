@@ -39,11 +39,7 @@
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
             <div class="logo-preloader">
-<<<<<<< HEAD
-                <img src="images/logo-blue.svg" />
-=======
                 <img src="{{asset('backend/assets/builder/images/logo-blue.svg')}}" />
->>>>>>> integration_part1
             </div>
             <div class="progress-bar-s">
                 <div class="progress">
@@ -118,13 +114,8 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-<<<<<<< HEAD
-                <iframe id="main"
-                    src="{{ app('request')->is('builder/*') ? url('project/larabuilder') : url('demo/larabuilder') }}"></iframe>
-=======
                 <iframe id="main" src="{{ Auth::check() ? url('project/landino') : route('demo.builder') }}"></iframe>
 
->>>>>>> integration_part1
             </div>
         </div>
 
@@ -163,11 +154,7 @@
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
                             <a href class="brand">
-<<<<<<< HEAD
-                                <img src="images/logo.svg" />
-=======
                                 <img src="{{asset('backend/assets/builder/images/logo.svg')}}" />
->>>>>>> integration_part1
                             </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
@@ -235,12 +222,7 @@
         const ajaxbase = '{{ url('api/ajax') }}';
         const baseurl = '{{ url('/') }}';
         const template = '{{ $isTemplate }}' ? true : false;
-<<<<<<< HEAD
-        const publicpath = "{{ base_path('public') }}";
-        const basepath = "{{ base_path('public/backend/assets/builder') }}";
-=======
       
->>>>>>> integration_part1
         const googleKey = '{{ get_option('google_map_key') }}';
         const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         const project_id = template ? '{{ $name }}' : '';
@@ -248,14 +230,10 @@
         const project_file_name = template ? '{{ $name }}' : '';
         const custom_domain = '';
         const sub_domain = '';
-<<<<<<< HEAD
         const try_demo = false;
-=======
-        const try_demo = true;
 
         document.getElementById('erasable').innerHTML = "";
 
->>>>>>> integration_part1
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

@@ -1,11 +1,7 @@
 const lang = window.document.querySelector("html").attributes.lang.value;
-<<<<<<< HEAD
 console.log("options Template", template)
 const myProjectID = template ? '' : project_id
 console.log("options myProjectID", myProjectID)
-=======
-const myProjectID = template ? '' : project_id
->>>>>>> integration_part1
 const language = {
   /*------Body------*/
   body: lang == "ar" ? "جسم الصفحة" : "Body",
@@ -4675,10 +4671,6 @@ var builderOptions = {
   , previewSettings: {
     
     //Auth::user()->id
-<<<<<<< HEAD
-    dir: publicpath + '/tmp/' + userId + '/' + myProjectID + '/preview' //Directory to upload like /preview or /../preview
-=======
     dir:  userId + '/' + myProjectID //Directory to upload like /preview or /../preview
->>>>>>> integration_part1
   },
 };

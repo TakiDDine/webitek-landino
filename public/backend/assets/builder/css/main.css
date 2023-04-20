@@ -8705,11 +8705,7 @@ span.create-account:hover {
   padding: 20px 0;
   border-top: 1px solid #f4f5f7;
 }
-<<<<<<< HEAD
-#sidebar-signin button{
-=======
 #sidebar-signin a{
->>>>>>> integration_part1
   background-color: #dc3545;
   color: #fff;
   padding: 10px 30px;
@@ -8718,11 +8714,7 @@ span.create-account:hover {
   cursor: pointer;
   width: 85%;
 }
-<<<<<<< HEAD
-#sidebar-signin button:hover{
-=======
 #sidebar-signin a:hover{
->>>>>>> integration_part1
   background-color: #dc3545;
   background-color: #c71d2e;
   color: #fff;
