@@ -1,3 +1,7 @@
+"use strict";
+
+window.addEventListener('load', function() {
+
 // Select Form In Page
 const form = document.querySelector("form");
 /* 
@@ -103,3 +107,4 @@ if (gsInput) {
 		console.log("===HASN'T GOOGLE SHEETS===")
 	})
 }
+});

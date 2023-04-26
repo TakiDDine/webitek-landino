@@ -1,3 +1,7 @@
+"use strict";
+
+window.addEventListener('load', function() {
+
 // Select Form In Page
 const form = document.querySelector("form");
 /* 
@@ -31,7 +35,6 @@ if (gsInput) {
 		const formValidation = () => {
 			let isValid = true;
 
-			let name = form.querySelector(".text-field-group input[type='text']")
 			let email = form.querySelector(".email-field-group input[type='email']")
 			let textarea = form.querySelector(".textarea-group textarea")
 
@@ -45,17 +48,9 @@ if (gsInput) {
 			}
 			if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
 				let span = document.createElement("span")
-				span.innerHTML = "please describe your message in more than 50 character";
+				span.innerHTML = "please describe your message in more than 50";
 				if (!form.querySelector(".textarea-group span")) {
 					form.querySelector(".textarea-group").appendChild(span)
-				}
-				isValid = false;
-			}
-			if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
-				let span = document.createElement("span")
-				span.innerHTML = "please enter a valid name less that 30 characters";
-				if (!form.querySelector(".text-field-group span")) {
-					form.querySelector(".text-field-group").appendChild(span)
 				}
 				isValid = false;
 			}
@@ -103,3 +98,4 @@ if (gsInput) {
 		console.log("===HASN'T GOOGLE SHEETS===")
 	})
 }
+});
