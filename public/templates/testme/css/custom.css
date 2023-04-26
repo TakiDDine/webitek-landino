@@ -34,56 +34,55 @@ section.dark, footer.dark, header.dark {
 	background-color: #232122;
 }
 .dark h1.light, .light h1, .dark .light h1, h1.light {
-	font-family: 'Montserrat';
+	
 	font-size: 100px;
 	font-weight: 200;
 	font-style: normal;
 	color: #222;
 }
 .light h1.dark, .dark h1, .light .dark h1, h1.dark {
-	font-family: 'Montserrat';
+	
 	font-size: 100px;
 	font-weight: 200;
 	font-style: normal;
 	color: #fff;
 }
 .dark h2.light, .light h2, .dark .light h2, h2.light {
-	font-family: 'Montserrat';
+	
 	font-size: 50px;
 	font-weight: 300;
 	font-style: normal;
 	color: #222;
 }
 .light h2.dark, .dark h2, .light .dark h2, h2.dark {
-	font-family: 'Montserrat';
+	
 	font-size: 50px;
 	font-weight: 300;
 	font-style: normal;
 	color: #fff;
 }
 .dark h3.light, .light h3, .dark .light h3, h3.light {
-	font-family: 'Montserrat';
+	
 	font-size: 35px;
 	font-weight: 300;
 	font-style: normal;
 	color: #444;
 }
 .light h3.dark, .dark h3, .light .dark h3, h3.dark {
-	font-family: 'Montserrat';
 	font-size: 35px;
 	font-weight: 300;
 	font-style: normal;
 	color: #fff;
 }
 .dark h4.light, .light h4, .dark .light h4, h4.light {
-	font-family: 'Montserrat';
+	
 	font-size: 18px;
 	font-weight: 400;
 	font-style: normal;
 	color: #555;
 }
 .light h4.dark, .dark h4, .light .dark h4, h4.dark {
-	font-family: 'Montserrat';
+	
 	font-size: 18px;
 	font-weight: 400;
 	font-style: normal;

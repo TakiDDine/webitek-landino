@@ -35,12 +35,7 @@
     --alignement: right;
     --height: 100%;
  }
- *{
-    /* direction: var(--lang);
-    text-align: var(--alignement); */
-    font-family: 'Sky';
-    
- }
+ 
 
 .cursor-grab {
     cursor: grabbing!important;
@@ -219,7 +214,7 @@ nav.navbar {
 }
 
 label.label-section {
-    font-family: 'Open Sans', sans-serif!important;
+    
     margin: 0;
     height: 36px;
     font-size: 13px;
@@ -661,7 +656,9 @@ i.icon-blr-timer {
 i.icon-blr-data-settings {
     background-image: url(../images/builder-icons/nut-icon.svg);
 }
-
+i.icon-landino-datefield {
+    background-image: url(../images/builder-new-icons/calendar.svg);
+  }
 /**
  * Drag sections
  */

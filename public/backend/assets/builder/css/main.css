@@ -1072,12 +1072,18 @@ i.icon-blr-radiobtn {
   background-image: url(../images/builder-icons/radiobtn.svg);
 }
 
-i.icon-blr-checkbox {
-  background-image: url(../images/builder-icons/checkbox.svg);
+i.icon-landino-checkbox {
+  background-image: url(../images/builder-new-icons/checklist.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-checkbox{
+  background-image: url(../images/builder-new-icons/checklist-white.svg);
 }
 
-i.icon-blr-datefield {
-  background-image: url(../images/builder-icons/datefield.svg);
+i.icon-landino-datefield {
+  background-image: url(../images/builder-new-icons/calendar.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-datefield{
+  background-image: url(../images/builder-new-icons/calendar-white.svg);
 }
 
 i.icon-blr-simpletext {
