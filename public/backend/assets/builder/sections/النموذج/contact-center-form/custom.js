@@ -68,7 +68,7 @@ if (gsInput) {
 		if (valide) {
 			// GET FORM DATA
 			let data = new FormData(form);
-			// Send Google Sheets Form
+			// Send Google Sheets Form to data form
 			data.append('INTERFACE', gsUrl)
 			// Security
 			data.append('cbr', form.getAttribute('cbr'))
