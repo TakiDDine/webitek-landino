@@ -235,9 +235,10 @@
         document.getElementById('erasable').innerHTML = "";
 
     </script>
+    
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
-    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" ></script>
 
 
     <script type="text/javascript">

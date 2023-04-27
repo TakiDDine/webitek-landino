@@ -208,6 +208,7 @@ var builderOptions = {
         "header:not(.section-carousel)",
       ],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -232,6 +233,7 @@ var builderOptions = {
     {
       domIdentif: ["div.modal-alert"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -256,6 +258,7 @@ var builderOptions = {
     {
       domIdentif: ["div.modal-panel"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -279,6 +282,7 @@ var builderOptions = {
     {
       domIdentif: ["section.section-carousel", "header.section-carousel"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -305,6 +309,7 @@ var builderOptions = {
     {
       domIdentif: ["nav.navbar"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -328,6 +333,7 @@ var builderOptions = {
     {
       domIdentif: [".modal .modal-dialog"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
