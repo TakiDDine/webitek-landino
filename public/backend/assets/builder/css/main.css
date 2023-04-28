@@ -8724,6 +8724,10 @@ select.phone-format {
   direction: ltr;
 }
 
+.viewing-mobile label i.rotate {
+  transform: rotate(-90deg);
+}
+
 /* 
 
 ADITIONAL STYLES
