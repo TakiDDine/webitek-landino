@@ -52,9 +52,6 @@ if (gsInput) {
 				// ===> /^\+\d{1,3}[-](\d{3,16})$/gm                       ===> +000-xxxxxxxx
 				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
 
-
-
-
 			}
 			if (email) {
 				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
