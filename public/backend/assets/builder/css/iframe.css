@@ -1135,6 +1135,32 @@ Svg Animation end
     height: 100%!important;
 }
 
+
+
+/** insert-section button */
+
+div[data-controls ='["AddElementDom","ID","UpSection","DownSection","BgSection","SettingsSection","CodeEditor","Copy","Del"]'] .wrapper{
+    position: static!important;
+}
+
+.insert-section{
+    
+    position:absolute!important;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 55555;
+    transition: all .4s ease;
+}
+.insert-section.up{
+    top: 0;
+    opacity: 1;
+}
+.insert-section.down{
+    bottom: 0;
+    opacity: 1;
+}
+
 @media all and (min-width: 768px) {
     nav .burger-menu {
         display: none;
