@@ -1,3 +1,7 @@
+"use strict";
+
+window.addEventListener('load', function() {
+
 // Select Form In Page
 const form = document.querySelector("form");
 /* 
@@ -33,7 +37,7 @@ if (gsInput) {
 			let email = form.querySelector(".email-field-group input[type='email']")
 			let textarea = form.querySelector(".textarea-group textarea")
 			let phone = form.querySelector(".phone-field-group input[type='tel']")
-			let phoneFormat = phone.getAttribute('data-format')
+			let phoneFormat = form.querySelector(".phone-field-group input[type='tel']").getAttribute('data-format')
 
 			if (name) {
 				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
@@ -46,15 +50,14 @@ if (gsInput) {
 				}
 			}
 			if (phone) {
-				// ===> /^\((\+\s?\d{1,3})\)[- ]?(\d{3,8})[-](\d{4,8})$/gm ===> 
-				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
-				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
-				// ===> /^\+\d{1,3}[-](\d{3,16})$/gm                       ===> +000-xxxxxxxx
-				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
-
-
-
-
+				if (!/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/.test(phone.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = `please your phone format need to match: ${phoneFormat}`;
+					if (!form.querySelector(".phone-field-group span")) {
+						form.querySelector(".phone-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
 			}
 			if (email) {
 				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
@@ -120,3 +123,4 @@ if (gsInput) {
 		console.log("===HASN'T GOOGLE SHEETS===")
 	})
 }
+});
