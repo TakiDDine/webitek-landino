@@ -857,12 +857,20 @@ i.icon-blr-sm-desktop {
   background-image: url(../images/builder-icons/sm-desktop.svg);
 }
 
-i.icon-blr-lg-redo {
-  background-image: url(../images/builder-icons/lg-redo.svg);
+i.icon-landino-redo {
+  background-image: url(../images/builder-new-icons/redo.svg);
+  
+}
+i.icon-landino-redo:hover {
+  background-image: url(../images/builder-new-icons/redo-blue.svg);
 }
 
-i.icon-blr-lg-undo {
-  background-image: url(../images/builder-icons/lg-undo.svg);
+i.icon-landino-undo {
+  background-image: url(../images/builder-new-icons/undo-back.svg);
+  
+}
+i.icon-landino-undo:hover {
+  background-image: url(../images/builder-new-icons/undo-back-blue.svg);
 }
 
 i.icon-blr-plus {
@@ -961,20 +969,20 @@ i.trash-icon.icon-landino-trash-black:hover {
   background-image: url(../images/builder-new-icons/trash-blue.svg);
 }
 
-i.icon-blr-h1 {
-  background-image: url(../images/builder-icons/h1.svg);
+i.icon-landino-h1 {
+  background-image: url(../images/builder-new-icons/h1.svg);
 }
 
-i.icon-blr-h2 {
-  background-image: url(../images/builder-icons/h2.svg);
+i.icon-landino-h2 {
+  background-image: url(../images/builder-new-icons/h2.svg);
 }
 
-i.icon-blr-h3 {
-  background-image: url(../images/builder-icons/h3.svg);
+i.icon-landino-h3 {
+  background-image: url(../images/builder-new-icons/h3.svg);
 }
 
-i.icon-blr-h4 {
-  background-image: url(../images/builder-icons/h4.svg);
+i.icon-landino-h4 {
+  background-image: url(../images/builder-new-icons/h4.svg);
 }
 
 i.icon-blr-drop {
@@ -1052,36 +1060,71 @@ i.icon-blr-timer {
   background-image: url(../images/builder-icons/timer.svg);
 }
 
-i.icon-blr-textfield {
-  background-image: url(../images/builder-icons/textfield.svg);
+i.icon-landino-textfield {
+  background-image: url(../images/builder-new-icons/textfield.svg);
 }
 
-i.icon-blr-emailfield {
-  background-image: url(../images/builder-icons/emailfield.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-textfield{
+  background-image: url(../images/builder-new-icons/textfield-white.svg);
+}
+i.icon-landino-emailfield {
+  background-image: url(../images/builder-new-icons/email.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-emailfield{
+  background-image: url(../images/builder-new-icons/email-white.svg);
 }
 
-i.icon-blr-selectfield {
-  background-image: url(../images/builder-icons/selectfield.svg);
+i.icon-landino-selectfield {
+  background-image: url(../images/builder-new-icons/dropdown.svg);
 }
 
-i.icon-blr-textarea {
-  background-image: url(../images/builder-icons/textarea.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-selectfield{
+  background-image: url(../images/builder-new-icons/dropdown-white.svg);
+}
+i.icon-landino-textarea {
+  background-image: url(../images/builder-new-icons/textarea.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-textarea{
+  background-image: url(../images/builder-new-icons/textarea-white.svg);
 }
 
-i.icon-blr-radiobtn {
-  background-image: url(../images/builder-icons/radiobtn.svg);
+i.icon-landino-radiobtn {
+  background-image: url(../images/builder-new-icons/radioSelect.svg);
 }
 
-i.icon-blr-checkbox {
-  background-image: url(../images/builder-icons/checkbox.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-radiobtn{
+  background-image: url(../images/builder-new-icons/radioSelect-white.svg);
 }
 
-i.icon-blr-datefield {
-  background-image: url(../images/builder-icons/datefield.svg);
+i.icon-landino-checkbox {
+  background-image: url(../images/builder-new-icons/checklist.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-checkbox{
+  background-image: url(../images/builder-new-icons/checklist-white.svg);
 }
 
-i.icon-blr-simpletext {
-  background-image: url(../images/builder-icons/simpletext.svg);
+i.icon-landino-datefield {
+  background-image: url(../images/builder-new-icons/calendar.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-datefield{
+  background-image: url(../images/builder-new-icons/calendar-white.svg);
+}
+
+i.icon-landino-simpletext {
+  background-image: url(../images/builder-new-icons/comment.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-simpletext{
+  background-image: url(../images/builder-new-icons/comment-white.svg);
+}
+i.icon-landino-spreadsheetfield {
+  background-image: url(../images/builder-new-icons/spreadsheet.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-spreadsheetfield{
+  background-image: url(../images/builder-new-icons/spreadsheet-white.svg);
+}
+
+i.icon-landino-dashboard{
+  background-image: url(../images/builder-new-icons/back-dashboard.svg);
 }
 
 i.icon-blr-attachfield {
@@ -7911,7 +7954,7 @@ nav.navbar {
   align-items: center;
   font-family: var(--fontFamily);
   font-size: 14px;
-  text-align: left;
+  text-align: var(--alignement);
   color: var(--textColor);
   padding: 0;
   padding-left: 14px;

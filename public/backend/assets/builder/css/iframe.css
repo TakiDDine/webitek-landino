@@ -35,12 +35,7 @@
     --alignement: right;
     --height: 100%;
  }
- *{
-    /* direction: var(--lang);
-    text-align: var(--alignement); */
-    font-family: 'Sky';
-    
- }
+ 
 
 .cursor-grab {
     cursor: grabbing!important;
@@ -219,7 +214,7 @@ nav.navbar {
 }
 
 label.label-section {
-    font-family: 'Open Sans', sans-serif!important;
+    
     margin: 0;
     height: 36px;
     font-size: 13px;
@@ -575,20 +570,20 @@ i.icon-landino-drag {
     background-image: url(../images/builder-new-icons/dragElm.svg);
 }
 
-i.icon-blr-h1 {
-    background-image: url(../images/builder-icons/h1.svg);
+i.icon-landino-h1 {
+    background-image: url(../images/builder-new-icons/h1.svg);
 }
 
-i.icon-blr-h2 {
-    background-image: url(../images/builder-icons/h2.svg);
+i.icon-landino-h2 {
+    background-image: url(../images/builder-new-icons/h2.svg);
 }
 
-i.icon-blr-h3 {
-    background-image: url(../images/builder-icons/h3.svg);
+i.icon-landino-h3 {
+    background-image: url(../images/builder-new-icons/h3.svg);
 }
 
-i.icon-blr-h4 {
-    background-image: url(../images/builder-icons/h4.svg);
+i.icon-landino-h4 {
+    background-image: url(../images/builder-new-icons/h4.svg);
 }
 
 i.icon-blr-drop {
@@ -661,7 +656,9 @@ i.icon-blr-timer {
 i.icon-blr-data-settings {
     background-image: url(../images/builder-icons/nut-icon.svg);
 }
-
+i.icon-landino-datefield {
+    background-image: url(../images/builder-new-icons/calendar.svg);
+  }
 /**
  * Drag sections
  */
@@ -1136,6 +1133,32 @@ Svg Animation end
 
 .page-mode-edit-sections .btn-group.inside-top[data-obj-control]{
     height: 100%!important;
+}
+
+
+
+/** insert-section button */
+
+div[data-controls ='["AddElementDom","ID","UpSection","DownSection","BgSection","SettingsSection","CodeEditor","Copy","Del"]'] .wrapper{
+    position: static!important;
+}
+
+.insert-section{
+    
+    position:absolute!important;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 55555;
+    transition: all .4s ease;
+}
+.insert-section.up{
+    top: 0;
+    opacity: 1;
+}
+.insert-section.down{
+    bottom: 0;
+    opacity: 1;
 }
 
 @media all and (min-width: 768px) {

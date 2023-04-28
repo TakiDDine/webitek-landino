@@ -13,7 +13,7 @@
 
 if(config('app.app_install') == true) {
 
-Route::get('/', 'WebsiteController@getLandingPage')->name('home');
+// Route::get('/', 'WebsiteController@getLandingPage')->name('home');
 
 Auth::routes(['verify' => true]);
 

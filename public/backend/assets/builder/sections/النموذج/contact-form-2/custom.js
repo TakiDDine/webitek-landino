@@ -19,6 +19,7 @@ $('.contact_form').validate({
 //------------------------------------------------------------------------------------
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
+if(!form){
 
 let form = document.getElementsByTagName('form')[0]
 let button = document.getElementsByTagName('button')[0]
@@ -46,12 +47,13 @@ form.addEventListener('submit', function (e) {
 })
 
 
-button.addEventListener('click', function () {
-    setTimeout(() => {
-        this.innerHTML = "Success ..."
-    }, 500)
-})
+    button.addEventListener('click', function () {
+        setTimeout(() => {
+            this.innerHTML = "Success ..."
+        }, 500)
+    })
 
+}
 
 
 
