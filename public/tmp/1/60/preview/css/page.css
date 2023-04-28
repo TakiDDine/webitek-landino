@@ -1,0 +1,10 @@
+#text-1col .bg {
+    background-image: url('../images/bg-sign-primary.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    opacity: 0.2;
+}
+
+#team-4col-2 .bg-wrap {
+    background-color: #333;
+}

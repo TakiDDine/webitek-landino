@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Project;
-use App\ProjectMember;
+use DB;
+use Auth;
 use Validator;
 use DataTables;
-use Auth;
-use DB;
+use App\Project;
 use Notification;
+use Carbon\Carbon;
+use App\ProjectMember;
+use Illuminate\Http\Request;
 use App\Notifications\ProjectCreated;
 use App\Notifications\ProjectUpdated;
 
@@ -85,22 +86,39 @@ class BuilderController extends Controller
    */
   public function lara(Request $request)
   {
-
+      
       $data['demo']   =   false;
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;
-      }
+        }
+        
+        
+        define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
+        define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
+        
+        
+        $Viewbuilder = new \App\Utilities\Builder\Html;
+        
+        $data['groups'] =   $Viewbuilder->groups;
+        //get supra name rom request
+        $data['isTemplate'] = false;
+        $data['project']        =   null;
+        $data['projectfile']    = null;
+        $data['name'] = '';
 
+      if ($request->has('template')) {
+        $template =  $request->template;
+        if (!empty($template)) {
 
-      define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-      define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
-
-
-      $Viewbuilder = new \App\Utilities\Builder\Html;
-
-      $data['groups'] =   $Viewbuilder->groups;
-
-
+            $data['project']        =   null;
+            $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('uploads/project_files') . '/', public_path() . "/uploads/project_files/$template.supra");
+            $data['id']             =   0;
+            $data['name'] = $template;
+            $data['isTemplate'] = true;
+            define('SUPRA', 1);
+            return view('backend.accounting.project.lara', $data);
+        }
+    }
 
       return view('backend.accounting.project.lara', $data);
   }

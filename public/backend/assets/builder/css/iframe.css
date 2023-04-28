@@ -35,6 +35,12 @@
     --alignement: right;
     --height: 100%;
  }
+ *{
+    /* direction: var(--lang);
+    text-align: var(--alignement); */
+    font-family: 'Sky';
+    
+ }
 
 .cursor-grab {
     cursor: grabbing!important;
@@ -412,15 +418,18 @@ ul:not(.page-mode-edit-sections) .wrap-control {
 
 /* ---------- */
 
-.spr-outline-control,
-.spr-oc-show {
-    outline: 1px solid rgba(0, 0, 0, 0.9)!important;
-    outline-offset: -1px!important;
+.blr-active-page.page-mode-edit-style .spr-outline-control,.blr-active-page.page-mode-edit-style .spr-oc-show 
+{
+    outline: 2.5px dashed var(--primaryClr)!important;
+    outline-offset: -2px;
     cursor: default!important;
+    position: relative;
 }
 
-.spr-wout {
-    outline: none!important;
+.page-mode-edit-sections .spr-wout.spr-outline-control.spr-oc-show  {
+    outline: 2.5px dashed var(--primaryClr)!important;
+    outline-offset: -10px;
+    cursor: default!important;
 }
 
 .spr-oc-show {
@@ -460,12 +469,13 @@ ul:not(.page-mode-edit-sections) .wrap-control {
  * Icons
  */
 
-i[class*=icon-blr] {
+i[class*=icon-landino], i[class*=icon-blr] {
     display: inline-block;
     background-repeat: no-repeat;
     background-position: center;
     height: 16px;
     width: 16px;
+    background-size: contain;
 }
 
 i[class*=icon-blr-sm] {
@@ -495,56 +505,74 @@ i.icon-blr-gallery {
     background-image: url(../images/builder-icons/gallery.svg);
 }
 
-i.icon-blr-align-left {
-    background-image: url(../images/builder-icons/align-left.svg);
+i.icon-landino-align-left {
+    background-image: url(../images/builder-new-icons/align-left.svg);
 }
 
-i.icon-blr-align-right {
-    background-image: url(../images/builder-icons/align-right.svg);
+i.icon-landino-align-right {
+    background-image: url(../images/builder-new-icons/align-right.svg);
 }
 
-i.icon-blr-align-center {
-    background-image: url(../images/builder-icons/align-center.svg);
+i.icon-landino-align-center {
+    background-image: url(../images/builder-new-icons/align-center.svg);
 }
 
 i.icon-blr-align-justify {
     background-image: url(../images/builder-icons/align-justify.svg);
 }
 
-i.icon-blr-arrow-down {
-    background-image: url(../images/builder-icons/arrow-down.svg);
+i.icon-landino-arrow-down {
+    background-image: url(../images/builder-new-icons/arrow-down.svg);
 }
 
-i.icon-blr-arrow-up {
-    background-image: url(../images/builder-icons/arrow-up.svg);
+i.icon-landino-arrow-up {
+    background-image: url(../images/builder-new-icons/arrow-up.svg);
 }
 
 i.icon-blr-section-bg {
-    background-image: url(../images/builder-icons/section-bg.svg);
+    background-image: url(../images/builder-new-icons/section-bg.svg);
 }
 
-i.icon-blr-settings {
-    background-image: url(../images/builder-icons/settings.svg);
+i.icon-landino-settings {
+    background-image: url(../images/builder-new-icons/elmSettings.svg);
+}
+i.icon-landino-settings-black {
+    background-image: url(../images/builder-new-icons/elmSettings-black.svg);
+}
+i.settings-icon.icon-landino-settings-black:hover {
+    background-image: url(../images/builder-new-icons/elmSettings-blue.svg);
 }
 
-i.icon-blr-code {
-    background-image: url(../images/builder-icons/code.svg);
+i.icon-landino-code {
+    background-image: url(../images/builder-new-icons/code.svg);
 }
 
-i.icon-blr-clapboard {
-    background-image: url(../images/builder-icons/clapboard.svg);
+i.icon-landino-animation {
+    background-image: url(../images/builder-new-icons/animateElms.svg);
 }
 
-i.icon-blr-copy {
-    background-image: url(../images/builder-icons/copy.svg);
+i.icon-landino-duplicate {
+    background-image: url(../images/builder-new-icons/duplicateElm.svg);
+}
+i.icon-landino-duplicate-black {
+    background-image: url(../images/builder-new-icons/duplicateElm-black.svg);
+}
+i.duplicate-icon.icon-landino-duplicate-black:hover {
+    background-image: url(../images/builder-new-icons/duplicateElm-blue.svg);
 }
 
-i.icon-blr-trash {
-    background-image: url(../images/builder-icons/trash.svg);
+i.icon-landino-trash {
+    background-image: url(../images/builder-new-icons/trash.svg);
+}
+i.icon-landino-trash-black {
+    background-image: url(../images/builder-new-icons/trash-black.svg);
+}
+i.trash-icon.icon-landino-trash-black {
+    background-image: url(../images/builder-new-icons/trash-black.svg);
 }
 
-i.icon-blr-move {
-    background-image: url(../images/builder-icons/move.svg);
+i.icon-landino-drag {
+    background-image: url(../images/builder-new-icons/dragElm.svg);
 }
 
 i.icon-blr-h1 {
@@ -564,11 +592,11 @@ i.icon-blr-h4 {
 }
 
 i.icon-blr-drop {
-    background-image: url(../images/builder-icons/drop.svg);
+    background-image: url(../images/builder-new-icons/styleElements.svg);
 }
 
-i.icon-blr-link {
-    background-image: url(../images/builder-icons/link.svg);
+i.icon-landino-link {
+    background-image: url(../images/builder-new-icons/link.svg);
 }
 
 i.icon-blr-grid {
@@ -579,44 +607,47 @@ i.icon-blr-section-settings-bg {
     background-image: url(../images/builder-icons/pic.svg);
 }
 
-i.icon-blr-picture {
-    background-image: url(../images/builder-icons/pic.svg);
+i.icon-landino-picture {
+    background-image: url(../images/builder-new-icons/pic.svg);
 }
 
-i.icon-blr-rtl {
-    background-image: url(../images/builder-icons/rtl.svg);
+i.icon-landino-rtl {
+    background-image: url(../images/builder-new-icons/rtl.svg);
+}
+i.icon-landino-ltr {
+    background-image: url(../images/builder-new-icons/ltr.svg);
 }
 
-i.icon-blr-highlight {
-    background-image: url(../images/builder-icons/highlight.svg);
+i.icon-landino-highlight {
+    background-image: url(../images/builder-new-icons/highlight.svg);
 }
 
-i.icon-blr-strikethrough {
-    background-image: url(../images/builder-icons/strikethrough.svg);
+i.icon-landino-strikethrough {
+    background-image: url(../images/builder-new-icons/strikethrough.svg);
 }
 
-i.icon-blr-underline {
-    background-image: url(../images/builder-icons/underline.svg);
+i.icon-landino-underline {
+    background-image: url(../images/builder-new-icons/underline.svg);
 }
 
-i.icon-blr-uppercase {
-    background-image: url(../images/builder-icons/uppercase.svg);
+i.icon-landino-uppercase {
+    background-image: url(../images/builder-new-icons/uppercase.svg);
 }
 
-i.icon-blr-italic {
-    background-image: url(../images/builder-icons/italic.svg);
+i.icon-landino-italic {
+    background-image: url(../images/builder-new-icons/italic.svg);
 }
 
-i.icon-blr-bold {
-    background-image: url(../images/builder-icons/bold.svg);
+i.icon-landino-bold {
+    background-image: url(../images/builder-new-icons/bold.svg);
 }
 
 i.icon-blr-map-marker {
     background-image: url(../images/builder-icons/map-marker.svg);
 }
 
-i.icon-blr-form {
-    background-image: url(../images/builder-icons/form.svg);
+i.icon-landino-form {
+    background-image: url(../images/builder-new-icons/form.svg);
 }
 
 i.icon-blr-envelope-open {
@@ -866,7 +897,7 @@ i.icon-blr-data-settings {
 
 .run .main {
     min-height: 100vh;
-    background-color: #333;
+    background-color: #fff;
     opacity: 1;
     direction: ltr;
 }
@@ -905,7 +936,7 @@ i.icon-blr-data-settings {
     font-weight: 600;
     font-size: 14px;
     text-align: center;
-    border: 2px dotted #4c4c4c52;
+    border: 2px dashed #3758f933;
     border-radius: 4px;
     color: #aaa;
 }
@@ -958,12 +989,13 @@ Svg Animation end
     font-size: 2.25rem;
     font-weight: 600;
     margin: 0;
-    color:black;
+    color:var(--primaryClr);
 }
 .run .main .wrap-drag .point-to-drag p:nth-child(3) {
     font-size: 1rem;
     font-weight: 500;
     color:rgb(32, 32, 32);
+    text-align: center;
 }
 .run .main .wrap-drag .point-to-drag p:nth-child(4) {
     font-size: 0.80rem;
@@ -1102,12 +1134,34 @@ Svg Animation end
     z-index: 1001100;
 }
 
-.btn-group.inside-top[data-obj-control]{
+.page-mode-edit-sections .btn-group.inside-top[data-obj-control]{
     height: 100%!important;
 }
 
 @media all and (min-width: 768px) {
     nav .burger-menu {
         display: none;
+    }
+}
+
+@media screen and (max-width:768px){
+    .run .main .wrap-drag{
+        padding:30px;
+    }
+    .run .main .wrap-drag .point-to-drag{
+        padding: 1rem 1rem;
+    }
+    .run .main .wrap-drag .point-to-drag .showAnimation{
+        width: 230px;
+    }
+    .run .main .wrap-drag .point-to-drag p:nth-child(2) {
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+        margin: 0;
+        color:var(--primaryClr);
+    }
+    .run .main .wrap-drag .point-to-drag p:nth-child(3){
+        font-size: 0.8rem;
     }
 }
