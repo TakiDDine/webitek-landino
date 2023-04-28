@@ -5051,7 +5051,8 @@ aside.add-sections-items > ul li.wrap-hover {
   background-color: #555;
 }
 
-#modal-container .modal-content input {
+#modal-container .modal-content input,
+#modal-container .modal-content select {
   height: 38px;
   background-color: transparent;
   color: #a9a9a9;
@@ -8718,3 +8719,22 @@ span.create-account:hover {
     max-width: 260px;
   }
 }
+select.phone-format {
+  text-align: right;
+  direction: ltr;
+}
+
+/* 
+
+ADITIONAL STYLES
+
+#modal-container .modal-content input,
+#modal-container .modal-content select { ===> add this line to this css code}
+
+select.phone-format {
+  text-align: right;
+  direction: ltr;
+}
+
+
+*/
