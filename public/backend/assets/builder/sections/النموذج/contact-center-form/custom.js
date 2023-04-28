@@ -3,8 +3,6 @@ const form = document.querySelector("form");
 /* 
 		Form Validation.
 */
-
-
 /* 
 		Fetch Script For Forms POST Req.
 		We Have 2 Paths :
@@ -34,30 +32,49 @@ if (gsInput) {
 			let name = form.querySelector(".text-field-group input[type='text']")
 			let email = form.querySelector(".email-field-group input[type='email']")
 			let textarea = form.querySelector(".textarea-group textarea")
+			let phone = form.querySelector(".phone-field-group input[type='tel']")
+			let phoneFormat = phone.getAttribute('data-format')
 
-			if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
-				let span = document.createElement("span")
-				span.innerHTML = "please enter a valid email address";
-				if (!form.querySelector(".email-field-group span")) {
-					form.querySelector(".email-field-group").appendChild(span)
+			if (name) {
+				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please enter a valid name less that 30 characters";
+					if (!form.querySelector(".text-field-group span")) {
+						form.querySelector(".text-field-group").appendChild(span)
+					}
+					isValid = false;
 				}
-				isValid = false;
 			}
-			if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
-				let span = document.createElement("span")
-				span.innerHTML = "please describe your message in more than 50 character";
-				if (!form.querySelector(".textarea-group span")) {
-					form.querySelector(".textarea-group").appendChild(span)
-				}
-				isValid = false;
+			if (phone) {
+				// ===> /^\((\+\s?\d{1,3})\)[- ]?(\d{3,8})[-](\d{4,8})$/gm ===> 
+				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
+				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
+				// ===> /^\+\d{1,3}[-](\d{3,16})$/gm                       ===> +000-xxxxxxxx
+				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
+
+
+
+
 			}
-			if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
-				let span = document.createElement("span")
-				span.innerHTML = "please enter a valid name less that 30 characters";
-				if (!form.querySelector(".text-field-group span")) {
-					form.querySelector(".text-field-group").appendChild(span)
+			if (email) {
+				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please enter a valid email address";
+					if (!form.querySelector(".email-field-group span")) {
+						form.querySelector(".email-field-group").appendChild(span)
+					}
+					isValid = false;
 				}
-				isValid = false;
+			}
+			if (textarea) {
+				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please describe your message in more than 50 character";
+					if (!form.querySelector(".textarea-group span")) {
+						form.querySelector(".textarea-group").appendChild(span)
+					}
+					isValid = false;
+				}
 			}
 
 			return isValid;
