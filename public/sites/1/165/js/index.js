@@ -1,3 +1,7 @@
+"use strict";
+
+window.addEventListener('load', function() {
+
 // Select Form In Page
 const form = document.querySelector("form");
 /* 
@@ -66,7 +70,7 @@ if (gsInput) {
 					regex = /^\d{1,3}\s(\d{3,16})$/gm;
 				}
 
-				if (!regex.test(phone.value)) {
+				if (!regex.test(email.value)) {
 					let span = document.createElement("span")
 					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
 					if (!form.querySelector(".phone-field-group span")) {
@@ -140,3 +144,4 @@ if (gsInput) {
 		console.log("===HASN'T GOOGLE SHEETS===")
 	})
 }
+});
