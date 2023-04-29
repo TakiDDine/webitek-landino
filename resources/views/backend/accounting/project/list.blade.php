@@ -170,13 +170,29 @@ th {
 			}
 		})
 	})
-	$('#delete').on('onsubmit', function(e) {
-		e.preventDefault;
-		alert('hello delete')
-	})
-	function confirmDelete() {
-		alert('hello')
-	}
+
+    // delete project confirmation 
+    function confirmDelete(event) {
+        event.preventDefault();
+        Swal.fire({
+			title: $lang_alert_title,
+			text: $lang_alert_message,
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: $lang_confirm_button_text,
+			cancelButtonText: $lang_cancel_button_text
+		}).then((result) => {
+            if (result.value) {
+                // User clicked the "Delete" button in the SweetAlert dialog
+                event.target.submit();
+            } else {
+                // User clicked the "Cancel" button in the SweetAlert dialog
+                Swal.fire($lang_alert_message_cancel);
+            }
+        });
+    }
 </script>
 <script src="{{ asset('/backend/assets/js/ajax-datatable/projects.js') }}"></script>
 @endsection

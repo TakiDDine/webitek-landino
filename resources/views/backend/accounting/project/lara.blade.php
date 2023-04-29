@@ -230,7 +230,7 @@
         const project_file_name = template ? '{{ $name }}' : '';
         const custom_domain = '';
         const sub_domain = '';
-        const try_demo = true;
+        const try_demo = false;
 
         document.getElementById('erasable').innerHTML = "";
 
