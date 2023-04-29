@@ -130,7 +130,7 @@
                             </div>
                             <div id="sidebarContent__headerList">
 
-                                <ul id="uiContainer"></ul>
+                                {{-- <ul id="uiContainer"></ul> --}}
                             </div>
                         </div>
                         <div id="sidebar_contentList" class="sidebar-body myDiv">

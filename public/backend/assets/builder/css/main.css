@@ -74,7 +74,7 @@ aside.control-panel.supra.active {
   margin: 0 auto;
 }
 
-#elementsSidebar.modal .modal-content {
+#elementsSidebar.modal:not([tabindex = "-1"]) .modal-content {
   position: absolute !important;
   width: 100%;
   -webkit-transform: translateY(-50%);
@@ -8533,7 +8533,7 @@ button.supra-btn.btn-default:hover {
 /*------------------
 === Choose image ===
 ------------------*/
-#modal-container .modal-content .modal-header .modal-title .search input {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search input {
   color: #212121 !important;
   background-color: #f6f6f6 !important;
   border: 2px solid #ddd !important;
@@ -8541,12 +8541,12 @@ button.supra-btn.btn-default:hover {
   height: 45px;
   width: 100%;
 }
-#modal-container .modal-content .modal-header .modal-title {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title {
   margin: 0;
   display: grid !important;
   grid-template-columns: repeat(12, 1fr);
 }
-#modal-container .modal-content .modal-header .modal-title h4 {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title h4 {
   grid-column: span 12;
   text-align: center;
   line-height: 1.2;
@@ -8556,13 +8556,13 @@ button.supra-btn.btn-default:hover {
   font-weight: bold !important;
   margin-bottom: 1em;
 }
-#modal-container .modal-content .modal-header .modal-title .upload {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .upload {
   grid-column: 1/4;
 }
-#modal-container .modal-content .modal-header .modal-title .search {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search {
   grid-column: 4 / 13;
 }
-#modal-container .modal-content .modal-header .modal-title .upload button {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .upload button {
   background-color: var(--primaryClr) !important;
   height: 45px !important;
   padding: 0 15px !important;
@@ -8570,9 +8570,9 @@ button.supra-btn.btn-default:hover {
   width: 100%;
   font-weight: bold;
 }
-#modal-container .modal-content .modal-header .modal-title .search input:hover,
-#modal-container .modal-content .modal-header .modal-title .search input:focus,
-#modal-container
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search input:hover,
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search input:focus,
+#modal-container #supra-modal-gallery
   .modal-content
   .modal-header
   .modal-title
@@ -8580,17 +8580,17 @@ button.supra-btn.btn-default:hover {
   input:active {
   border: 2px solid var(--primaryClr) !important;
 }
-#modal-container .modal-content .modal-header .modal-title .upload button i {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .upload button i {
   margin-left: 10px;
 }
-#modal-container .modal-content .modal-header .modal-title .search i {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search i {
   left: 16px !important;
   top: calc(45px / 3) !important;
 }
-#modal-container .modal-content .modal-body #nav-tabContent div {
+#modal-container #supra-modal-gallery .modal-content .modal-body #nav-tabContent div {
   width: 100% !important;
 }
-/* #modal-container .modal-content .modal-body #nav-tabContent div::-webkit-scrollbar {
+/* #modal-container #supra-modal-gallery .modal-content .modal-body #nav-tabContent div::-webkit-scrollbar {
   width: 7px;
     height: 20px;
     padding: 10px 0;
@@ -8605,60 +8605,60 @@ button.supra-btn.btn-default:hover {
   background-color: transparent;
   padding: 10px 0;
 } */
-#modal-container .modal-content .modal-body .nav-tabs:after {
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs:after {
   border-bottom: 2px solid #dddddd !important;
 }
-#modal-container .modal-content .modal-body .nav-tabs a {
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs a {
   font-size: 16px !important;
   color: #212121 !important;
   font-weight: bold !important;
 }
-#modal-container .modal-content .modal-body.g-items {
+#modal-container #supra-modal-gallery .modal-content .modal-body.g-items {
   min-width: 1200px !important;
 }
-#modal-container .modal-content .modal-body .nav-tabs a.active,
-#modal-container .modal-content .modal-body .nav-tabs a:hover {
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs a.active,
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs a:hover {
   color: var(--primaryClr);
   border-bottom: 2px solid var(--primaryClr);
 }
-#modal-container .gallery figure .wrap-hover,
-#modal-container .gallery-video .video-item .wrap-hover {
+#modal-container #supra-modal-gallery .gallery figure .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item .wrap-hover {
   background-image: none !important;
   background-color: #fff !important;
   border: 2px solid #ddd !important;
   border-radius: 3px !important;
   height: 115px !important;
 }
-#modal-container .gallery figure:hover .wrap-hover,
-#modal-container .gallery figure:focus .wrap-hover,
-#modal-container .gallery figure.active .wrap-hover,
-#modal-container .gallery-video .video-item:hover .wrap-hover,
-#modal-container .gallery-video .video-item:focus .wrap-hover,
-#modal-container .gallery-video .video-item.active .wrap-hover {
+#modal-container #supra-modal-gallery .gallery figure:hover .wrap-hover,
+#modal-container #supra-modal-gallery .gallery figure:focus .wrap-hover,
+#modal-container #supra-modal-gallery .gallery figure.active .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item:hover .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item:focus .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item.active .wrap-hover {
   border: 2px solid var(--primaryClr) !important;
 }
 
-#modal-container .gallery figure,
-#modal-container .gallery-video .video-item {
+#modal-container #supra-modal-gallery .gallery figure,
+#modal-container #supra-modal-gallery .gallery-video .video-item {
   width: 20% !important;
 }
-#modal-container .modal-content figure img {
+#modal-container #supra-modal-gallery .modal-content figure img {
   max-width: 100% !important;
   max-height: 100% !important;
 }
-#modal-container .modal-content .modal-footer button.supra-btn.btn-primary {
+#modal-container #supra-modal-gallery .modal-content .modal-footer button.supra-btn.btn-primary {
   color: #fff !important;
   background-color: var(--primaryClr) !important;
   padding: 0 60px;
   font-weight: bold;
 }
-#modal-container
+#modal-container #supra-modal-gallery
   .modal-content
   .modal-footer
   button.supra-btn.btn-primary:hover {
   background-color: var(--secondaryClr) !important;
 }
-#modal-container .modal-content figure figcaption {
+#modal-container #supra-modal-gallery .modal-content figure figcaption {
   display: none;
 }
 
