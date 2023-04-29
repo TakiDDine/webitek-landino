@@ -1,3 +1,7 @@
+"use strict";
+
+window.addEventListener('load', function() {
+
 // Select Form In Page
 const form = document.querySelector("form");
 /* 
@@ -45,14 +49,31 @@ if (gsInput) {
 					isValid = false;
 				}
 			}
-
 			if (phone) {
-				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+				// ===> /^\((\+\s?\d{1,3})\)\s(\d{3,8})[-](\d{4,8})$/gm    ===> (+000) xxxx-xxxx
+				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
+				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
+				// ===> /^\+\d{1,3}[-](\d{3,16})$/gm                       ===> +000-xxxxxxxx
+				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
+
+				let regex;
+
+				if (phoneFormat == "(+000) xxxx-xxxx") {
+					regex = /^\((\+\s?\d{1,3})\)\s(\d{3,8})[-](\d{4,8})$/gm;
+				} else if (phoneFormat == "(+000)-xxxxxxxx") {
+					regex = /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm;
+				} else if (phoneFormat == "000-xxxxxxxx") {
+					regex = /^\d{1,3}[-](\d{3,16})$/gm;
+				} else if (phoneFormat == "+000-xxxxxxxx") {
+					regex = /^\+\d{1,3}[-](\d{3,16})$/gm;
+				} else if (phoneFormat == "000 xxxxxxxxx") {
+					regex = /^\d{1,3}\s(\d{3,16})$/gm;
+				}
 
 				if (!regex.test(phone.value)) {
 					let span = document.createElement("span")
-					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
 					span.style.color = "red";
+					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
 					if (!form.querySelector(".phone-field-group span")) {
 						form.querySelector(".phone-field-group").appendChild(span)
 					}
@@ -60,7 +81,6 @@ if (gsInput) {
 				}
 
 			}
-
 			if (email) {
 				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
 					let span = document.createElement("span")
@@ -71,7 +91,6 @@ if (gsInput) {
 					isValid = false;
 				}
 			}
-
 			if (textarea) {
 				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
 					let span = document.createElement("span")
@@ -126,3 +145,4 @@ if (gsInput) {
 		console.log("===HASN'T GOOGLE SHEETS===")
 	})
 }
+});
