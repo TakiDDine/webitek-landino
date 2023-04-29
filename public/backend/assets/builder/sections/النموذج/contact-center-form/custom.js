@@ -45,7 +45,20 @@ if (gsInput) {
 					isValid = false;
 				}
 			}
+
 			if (phone) {
+				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+
+				if (!regex.test(phone.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
+					span.style.color = "red";
+					if (!form.querySelector(".phone-field-group span")) {
+						form.querySelector(".phone-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+		if (phone) {
 				// ===> /^\((\+\s?\d{1,3})\)[- ]?(\d{3,8})[-](\d{4,8})$/gm ===> 
 				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
 				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
@@ -53,6 +66,7 @@ if (gsInput) {
 				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
 
 			}
+
 			if (email) {
 				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
 					let span = document.createElement("span")
@@ -63,6 +77,7 @@ if (gsInput) {
 					isValid = false;
 				}
 			}
+
 			if (textarea) {
 				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
 					let span = document.createElement("span")
