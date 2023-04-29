@@ -7966,9 +7966,9 @@ nav.navbar {
   float: none;
   font-size: 12px;
   color: #fff;
-  /*    border: 1px solid #ccc;*/
-  border-radius: 0;
-  background-color: #4a4a4a;
+  border-radius: 6px;
+  background-color: #009688;
+  cursor: pointer;
 }
 
 /*
@@ -7982,12 +7982,12 @@ nav.navbar {
   width: 19px;
   height: 19px;
   padding: 4px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 0;
   margin: 0;
   display: block;
+  background-color: transparent;
+  color: #a9a9a9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 #modal-container .field-container .del-field-btn i,
@@ -8727,17 +8727,123 @@ select.phone-format {
 .viewing-mobile label i.rotate {
   transform: rotate(-90deg);
 }
+span.input-group-btn.align-up {
+  margin-right: 10px;
+}
+span.input-group-btn.align-up button {
+  cursor: pointer;
+}
+span.input-group-btn.align-up button[title="Delete"]:hover {
+  background-color: red;
+}
+span.input-group-btn.align-up button[title="Delete"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Delete"] i {
+  color: red;
+}
+
+span.input-group-btn.align-up button[title="Check"]:hover {
+  background-color: var(--primaryClr) !important;
+}
+span.input-group-btn.align-up button[title="Check"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Check"] i {
+  color: var(--primaryClr);
+}
 
 /* 
 
 ADITIONAL STYLES
 
-#modal-container .modal-content input,
+#modal-container .modal-content input ==>
 #modal-container .modal-content select { ===> add this line to this css code}
 
 select.phone-format {
   text-align: right;
   direction: ltr;
 }
+
+span.input-group-btn.align-up {
+  margin-right: 10px;
+}
+
+span.input-group-btn.align-up button {
+  cursor: pointer;
+}
+
+span.input-group-btn.align-up button[title="Delete"]:hover {
+  background-color: red;
+}
+span.input-group-btn.align-up button[title="Delete"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Delete"] i {
+  color: red;
+}
+
+span.input-group-btn.align-up button[title="Check"]:hover {
+  background-color: var(--primaryClr);
+}
+span.input-group-btn.align-up button[title="Check"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Check"] i {
+  color: var(--primaryClr);
+}
+
+====SEARCH TO THIS  {  #modal-container .field-container .del-field-btn  } AND ADD TGHIS STYLE====
+
+#modal-container .field-container .del-field-btn,
+#modal-container .field-container .check-field-btn {
+  width: 19px;
+  height: 19px;
+  padding: 4px;
+  margin: 0;
+  display: block;
+  background-color: transparent;
+  color: #a9a9a9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+=========================================
+
+=======SEARCH TO: #modal-container .construct-form-main .adding-btn -========
+
+#modal-container .construct-form-main .adding-btn {
+  height: 30px;
+  width: auto;
+  float: none;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 6px;
+  background-color: #009688;
+    cursor: pointer;
+}
+
+======================================================
+
+=======in Javascript=======
+change:  icon-blr-sm-cross   ====> fa fa-times
+change:  icon-blr-sm-check   ====> fa fa-check
+
+===# Search to this: item[i].className.match("object-select-item") != null
+and search for: ===>  var icon = item[i].id
+And Change the <img> tag To This::after
+'<img class="icon fa fa fa-chevron-down">'
+
+======================================================
+====## Search to: _htmlTextValueWithChecked: function (objectName, options) { =====
+and replace this::after
+
+'_input" value="' +
+options.label +
+'">'
+
+TO THIS ::after
+`${options.label ? options.label : valueText}`
+
+======================================================
 
 */
