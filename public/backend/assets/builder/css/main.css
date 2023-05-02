@@ -70,7 +70,7 @@ aside.control-panel.supra.active {
 /*** my left sideBar */
 
 #elementsSidebar .modal-dialog {
-  height: 100%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -157,6 +157,26 @@ aside.control-panel.supra.active {
 .myDiv.sidebar-body {
   width: 100%;
 }
+.myDiv.sidebar-body.sidebar-body_elements {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.myDiv.sidebar-body.sidebar-body_elements::-webkit-scrollbar {
+  width: 7px;
+  height: 20px;
+  padding: 10px 0;
+  border-radius: 50%;
+}
+.myDiv.sidebar-body.sidebar-body_elements::-webkit-scrollbar-thumb {
+  background-color: #adb5bd;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+.myDiv.sidebar-body.sidebar-body_elements::-webkit-scrollbar-track {
+  background-color: transparent;
+  padding: 10px 0;
+}
 
 .myDiv .sidebar-header {
   width: 100%;
@@ -227,8 +247,7 @@ aside.control-panel.supra.active {
 #sidebarContent__headerList {
   z-index: 2;
   padding: 0;
-  flex: 1;
-  /* overflow-y: hidden; */
+  flex-grow: 1;
   max-height: 100%;
   padding: 1rem 1rem 0;
 }
@@ -317,26 +336,19 @@ aside.control-panel.supra.active {
   flex: 1;
   flex-grow: 4;
   display: block;
-  transform: translate(0%);
-  transition: transform 0.7s ease;
   padding: 0.8rem 1.5rem 1.5rem;
-}
-#sidebarContent__contentList.active {
-  display: block;
-}
-#sidebarContent__contentList.active.animate {
-  transform: translate(0%);
 }
 
 #sidebarContent__contentList .add-sections-items ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
   grid-auto-flow: row dense;
   padding: 0 !important;
   margin-bottom: 2rem !important;
+  
 }
+
+
 
 #sidebarContent__contentList .add-sections-items li {
   flex: 1;

@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
+        {{-- <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -145,7 +145,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false" role="document">
             <div class="sidebar-content">
