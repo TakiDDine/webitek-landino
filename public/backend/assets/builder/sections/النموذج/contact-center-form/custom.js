@@ -33,7 +33,9 @@ if (gsInput) {
 			let email = form.querySelector(".email-field-group input[type='email']")
 			let textarea = form.querySelector(".textarea-group textarea")
 			let phone = form.querySelector(".phone-field-group input[type='tel']")
-			let phoneFormat = phone.getAttribute('data-format')
+			let select = form.querySelector(".select-group select")
+			let radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']")
+			let date = form.querySelector(".datepicker-group .datepicker-input")
 
 			if (name) {
 				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
@@ -47,6 +49,7 @@ if (gsInput) {
 			}
 
 			if (phone) {
+				let phoneFormat = phone.getAttribute('data-format')
 				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
 
 				if (!regex.test(phone.value)) {
@@ -78,6 +81,47 @@ if (gsInput) {
 					span.innerHTML = "please describe your message in more than 50 character";
 					if (!form.querySelector(".textarea-group span")) {
 						form.querySelector(".textarea-group").appendChild(span)
+					}
+					isValid = false;
+				}
+			}
+
+			if (select) {
+				if (!select.selectedIndex) {
+					let span = document.createElement("span")
+					span.innerHTML = "please choose a value from the select menu";
+					if (!form.querySelector(".select-group span")) {
+						form.querySelector(".select-group").appendChild(span)
+					}
+					isValid = false;
+				}
+			}
+
+			if (radios.length > 0) {
+				let radioValid = false;
+				let i = 0
+				while (!radioValid && i < radios.length) {
+					if (radios[i].checked) radioValid = true;
+					i++;
+				}
+				if (!radioValid) {
+					let span = document.createElement("span")
+					span.innerHTML = "please choose a value from the select menu";
+					if (!form.querySelector(".radio-group > span")) {
+						form.querySelector(".radio-group").appendChild(span)
+					}
+					isValid = false;
+				}
+				return radioValid;
+			}
+
+			if (date) {
+				/* !/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value) &&  */
+				if (!/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "Please insert a valide Date";
+					if (!form.querySelector(".datepicker-group span")) {
+						form.querySelector(".datepicker-group").appendChild(span)
 					}
 					isValid = false;
 				}

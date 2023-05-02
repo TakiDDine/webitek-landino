@@ -8831,19 +8831,26 @@ change:  icon-blr-sm-check   ====> fa fa-check
 ===# Search to this: item[i].className.match("object-select-item") != null
 and search for: ===>  var icon = item[i].id
 And Change the <img> tag To This::after
-'<img class="icon fa fa fa-chevron-down">'
+'<i class="icon fa fa fa-chevron-down">'
 
 ======================================================
 ====## Search to: _htmlTextValueWithChecked: function (objectName, options) { =====
-and replace this::after
+and replace this:
 
 '_input" value="' +
 options.label +
 '">'
 
-TO THIS ::after
+TO THIS :
 `${options.label ? options.label : valueText}`
 
 ======================================================
+
+search to: if (item[i].className.match("object-date-item") != null) {
+and search for: ===>  var icon = item[i].id
+And Change the <img> tag To This::after
+
+'<i class="icon fa fa-calendar">';
+
 
 */
