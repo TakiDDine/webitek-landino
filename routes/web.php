@@ -300,4 +300,4 @@ Route::get('console/run','CronJobsController@run');
 
 // Affiliate
 Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
-Route::post('/s/{affiliate_id}', 'Auth\RegisterController@register');
+Route::middleware('throttle:2,1')->post('/s/{affiliate_id}', 'Auth\RegisterController@register');

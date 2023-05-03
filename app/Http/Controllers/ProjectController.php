@@ -973,10 +973,6 @@ class ProjectController extends Controller
 
         // delete folders and files from tmp folder with user id
         $this->deleteFolder(public_path('tmp/').Auth::user()->id);
-        // delete site folder with user id and project id
-        $this->rrmdir(public_path('sites/'.Auth::user()->id.'/'.$id));
-        // delete project supra file from uploads/project_files with project id
-        unlink(public_path('uploads/project_files/'.$id.'_project.supra'));
 
         create_log('projects', $id, _lang('File Removed'));
 
