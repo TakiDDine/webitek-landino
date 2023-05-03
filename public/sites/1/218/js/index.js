@@ -1,3 +1,7 @@
+"use strict";
+
+window.addEventListener('load', function() {
+
 // Select Form In Page
 const form = document.querySelector("form");
 /* 
@@ -38,17 +42,21 @@ if (gsInput) {
 			let date = form.querySelector(".datepicker-group .datepicker-input")
 
 			if (name) {
-				let span = document.createElement("span")
-				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
-					span.innerHTML = "please enter a valid name less that 30 characters";
-					if (!form.querySelector(".text-field-group span")) {
-						form.querySelector(".text-field-group").appendChild(span)
+				name.addEventListener("input", (e) => {
+					if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(e.target.value)) {
+						let span = document.createElement("span")
+						span.innerHTML = "please enter a valid name less that 30 characters";
+						if (!form.querySelector(".text-field-group span")) {
+							form.querySelector(".text-field-group").appendChild(span)
+						}
+						isValid = false;
 					}
-					isValid = false;
-				}
-				else {
-					span.innerHTML = null
-				}
+					else {
+						if (/^([a-zA-Z ]){5,30}(\s)*$/.test(e.target.value)) {
+							form.querySelector(".text-field-group span") ? form.querySelector(".text-field-group span").style.display = "none": null
+						}
+					}
+				})
 			}
 
 			if (phone) {
@@ -173,3 +181,4 @@ if (gsInput) {
 		console.log("===HASN'T GOOGLE SHEETS===")
 	})
 }
+});
