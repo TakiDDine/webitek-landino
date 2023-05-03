@@ -1,7 +1,7 @@
 const lang = window.document.querySelector("html").attributes.lang.value;
-console.log("options Template", template)
+
 const myProjectID = template ? '' : project_id
-console.log("options myProjectID", myProjectID)
+
 const language = {
   /*------Body------*/
   body: lang == "ar" ? "جسم الصفحة" : "Body",

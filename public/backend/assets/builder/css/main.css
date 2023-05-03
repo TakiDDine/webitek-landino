@@ -5081,8 +5081,9 @@ aside.add-sections-items > ul li.wrap-hover {
   justify-content: flex-end;
   gap: 7px;
 }
+
 #modal-container .modal-footer.mode__demo, #modal-container .modal-footer.mode__delete-elements, #modal-container .modal-footer.mode__delete, #modal-container .modal-footer.mode__AddItemToTheDom,
-#modal-container .modal-footer.mode__ElmExist
+#modal-container .modal-footer.mode__ElmExist, #modoal-container .modal-footer.mode__elementsSections
 {
   border: none;
   padding: 0px 30px 20px;
@@ -8755,12 +8756,29 @@ span.create-account:hover {
   opacity: 1!important;
 }
 
-#sidebar-signin{
+.sidebar-right__signin{
   width: 100%;
   padding: 20px 0;
   border-top: 1px solid #f4f5f7;
 }
-#sidebar-signin a{
+
+.mode__elementsSections a{
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 30px!important;
+  border-radius: 15px;
+  gap: 10px;
+  cursor: pointer;
+}
+.mode__elementsSections a:hover{
+  background-color: #c71d2e;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 15px;
+  gap: 10px;
+  cursor: pointer;
+}
+.sidebar-right__signin a{
   background-color: #dc3545;
   color: #fff;
   padding: 10px 30px;
@@ -8769,8 +8787,16 @@ span.create-account:hover {
   cursor: pointer;
   width: 85%;
 }
-#sidebar-signin a:hover{
+.sidebar-right__signin.popup a{
   background-color: #dc3545;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 15px;
+  gap: 10px;
+  cursor: pointer;
+  width: 85%;
+}
+.sidebar-right__signin a:hover{
   background-color: #c71d2e;
   color: #fff;
   padding: 10px 30px;
