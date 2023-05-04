@@ -16,8 +16,6 @@ use App\Http\Controllers\ProjectDemoController;
 */
 
 Route::group(['middleware' => ['install']], function () {
-
-	
 	Route::get('sign_up', 'WebsiteController@sign_up');
 	Route::get('site/contactus', 'WebsiteController@contactus');
 	Route::get('site/{page}', 'WebsiteController@site');
@@ -107,7 +105,7 @@ Route::group(['middleware' => ['install']], function () {
 		Route::get('membership/billplz_success/{payment_id}','MembershipController@billplz_success');
 
 
-		Route::get('/get_templates/{template_name}/preview', 'TemplateController@preview')->name('template.preview');
+		Route::get('/template/{template_name}/preview', 'TemplateController@preview')->name('template.preview');
 
 		//Paddle Payment Gateway
 		Route::post('membership/Paddle_payment/{payment_id}','MembershipController@Paddle_payment');
@@ -120,7 +118,7 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('users/type/{user_type}','UserController@index');
 			Route::resource('users','UserController');
 
-
+	
             //Payment Controller
 			Route::get('offline_payment/create','PaymentController@create_offline_payment');
 			Route::post('offline_payment/store','PaymentController@store_offline_payment');
@@ -302,4 +300,4 @@ Route::get('console/run','CronJobsController@run');
 
 // Affiliate
 Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
-Route::post('/s/{affiliate_id}', 'Auth\RegisterController@register');
+Route::middleware('throttle:2,1')->post('/s/{affiliate_id}', 'Auth\RegisterController@register');

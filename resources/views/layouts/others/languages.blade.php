@@ -11,6 +11,7 @@
 
 	var $lang_alert_title = "{{ _lang('Are you sure?') }}";
 	var $lang_alert_message = "{{ _lang('Once deleted, you will not be able to recover this information !') }}";
+	var $lang_alert_message_cancel = "{{ _lang('Your project is safe!') }}";
 	var $lang_confirm_button_text = "{{ _lang('Yes, delete it!') }}";
 	var $lang_cancel_button_text = "{{ _lang('Cancel') }}";
 	var $lang_no_data_found = "{{ _lang('No Data Found') }}";

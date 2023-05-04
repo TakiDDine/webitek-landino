@@ -151,20 +151,20 @@ class ProjectController extends Controller
 
                         })
                         ->addColumn('settings', function ($project) {
-                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post">'
+                            return '<form class="text-center" method="post">'
                             .'<a href="'.action('ProjectController@editSettings', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" ><img src="'.asset("/icons/settings.svg").'" alt=""> </a>&nbsp;'
                             .'</form>';
                         })
                         ->addColumn('edit', function ($project) {
-                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post">'
+                            return '<form class="text-center" method="post">'
                             .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Update Project') .'"><img src="'.asset("/icons/edit-dark.svg").'" alt=""> </a>&nbsp;'
                             .'</form>';
                         })
                         ->addColumn('delete', function ($project) {
-                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post" onsubmit="confirmDelete()">'
+                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="POST" onsubmit="return confirmDelete(event)" >'
                             .csrf_field()
                             .'<input name="_method" type="hidden" value="DELETE">'
-                            .'<button id="delete type="submit"><img src="'.asset("/icons/delete-dark.svg").'" alt=""> </button>'
+                            .'<button id="delete"  type="submit" ><img src="'.asset("/icons/delete-dark.svg").'" alt=""> </button>'
                             .'</form>';
                         })
                         ->setRowId(function ($project) {
@@ -971,7 +971,8 @@ class ProjectController extends Controller
         }
         $project->delete();
 
-        $this->rrmdir(public_path('tmp/'.Auth::user()->id.'/'.$id));
+        // delete folders and files from tmp folder with user id
+        $this->deleteFolder(public_path('tmp/').Auth::user()->id);
 
         create_log('projects', $id, _lang('File Removed'));
 
@@ -981,6 +982,23 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')->with('success',_lang('Deleted Sucessfully'));
     }
 
+
+    /**
+     * delete folders and files
+     *
+     * @param [string] $folder
+     * @return void
+     */
+    // remove folder and files 
+    public function deleteFolder($folder) {
+        if (is_dir($folder)) {
+            $files = glob($folder . '/*');
+            foreach ($files as $file) {
+                is_dir($file) ? $this->deleteFolder($file) : unlink($file);
+            }
+            rmdir($folder);
+        }
+    }
     public function imgRemove(Request $request){
         $path = $request->path;
         $name = $request->name;

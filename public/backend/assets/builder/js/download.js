@@ -7,14 +7,16 @@ if (demoMode === "no") {
         .getElementById("csrf_field")
         .querySelector("input").value;
       console.log(csrf_field);
+      console.log("user_id", userId)
       var data = prepareContentToDownload(_this);
 
       var form = new FormData();
       form.append("data", JSON.stringify(data));
       form.append("_token", csrf_field);
+      form.append('user_id', userId)
       _this.ajax(form, "download", function (data) {
         var data = JSON.parse(data);
-        window.downloadFile(baseurl + "/public/tmp/" + data.file, data.file);
+        window.downloadFile(baseurl + "/public/tmp/"+userId+'/' + data.file, data.file);
         setTimeout(function () {
           _this._triggerDownload = false;
         }, 2000);
