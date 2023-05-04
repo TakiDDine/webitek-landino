@@ -1,0 +1,15 @@
+#testimonial-3col-2 .bg {
+    background-image: url('../images/bg-66.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity:0.75;
+}#testimonial-4col .bg-wrap {
+    background-color: #333;
+}#testimonial-2col .bg {
+    background-image: url('../images/bg-27.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity:0.2;
+}

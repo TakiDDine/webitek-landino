@@ -11,7 +11,7 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        $templates = getTemplates();
+        $templates = getTemplates(); 
         return view('backend.templates.index', compact('templates'));
     } 
 
