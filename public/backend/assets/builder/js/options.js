@@ -15,7 +15,9 @@ const language = {
   bgRep: lang == "ar" ? "تكرار الخلفية" : "Background Repeat",
   bgSiz: lang == "ar" ? "حجم الخلفية" : "Background Size",
   bgCol: lang == "ar" ? "لون الخلفية" : "Background Color",
+
   /*------Sections------*/
+  
   sections: lang == "ar" ? "أقسام" : "Sections",
   Secmargin: lang == "ar" ? "هوامش خارجية" : "Margin",
   SecColorSeperator: lang == "ar" ? "لون الفاصل" : "Separator color",

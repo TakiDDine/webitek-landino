@@ -2289,6 +2289,7 @@ ul:not(.page-mode-edit-sections) .wrap-control {
   stroke:none;
   fill: none;
 }
+.iframeHeader .iframeHeader__mid #saveBtn__save[disabled] .db,
 .iframeHeader .iframeHeader__mid #saveBtn__save .db[disabled] {
   opacity: 0.3;
   cursor: not-allowed;
@@ -5069,6 +5070,9 @@ aside.add-sections-items > ul li.wrap-hover {
 #modal-container .modal-body {
   padding: 30px;
   border: none;
+}
+#modal-container .modal-header.sidebarTitle__list{
+  padding: 20px 30px 10px;
 }
 
 #modal-container .modal-body {
