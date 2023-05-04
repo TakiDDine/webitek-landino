@@ -488,6 +488,11 @@ i[class*=icon-blr-mode] {
     width: 28px;
 }
 
+i.icon-landino-selectfield {
+    background-image: url(../images/builder-new-icons/dropdown.svg);
+    pointer-events: none!important;
+  }
+
 i.icon-blr-mode-drop {
     background-image: url(../images/builder-icons/mode-drop.svg);
 }
@@ -658,6 +663,7 @@ i.icon-blr-data-settings {
 }
 i.icon-landino-datefield {
     background-image: url(../images/builder-new-icons/calendar.svg);
+    pointer-events: none!important;
   }
 /**
  * Drag sections

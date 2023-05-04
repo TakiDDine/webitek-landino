@@ -1084,14 +1084,16 @@ i.icon-landino-emailfield {
 }
 .construct-form-sidebar button.draggable:hover i.icon-landino-emailfield{
   background-image: url(../images/builder-new-icons/email-white.svg);
+  
 }
 
 i.icon-landino-selectfield {
   background-image: url(../images/builder-new-icons/dropdown.svg);
+  pointer-events: none!important;
 }
 
-.construct-form-sidebar button.draggable:hover i.icon-landino-selectfield{
-  background-image: url(../images/builder-new-icons/dropdown-white.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-selectfield{  background-image: url(../images/builder-new-icons/dropdown-white.svg);
+  pointer-events: none!important;
 }
 i.icon-landino-textarea {
   background-image: url(../images/builder-new-icons/textarea.svg);
@@ -8028,9 +8030,9 @@ nav.navbar {
   float: none;
   font-size: 12px;
   color: #fff;
-  /*    border: 1px solid #ccc;*/
-  border-radius: 0;
-  background-color: #4a4a4a;
+  border-radius: 6px;
+  background-color: #009688;
+    cursor: pointer;
 }
 
 /*
@@ -8044,12 +8046,14 @@ nav.navbar {
   width: 19px;
   height: 19px;
   padding: 4px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 0;
   margin: 0;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #a9a9a9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 #modal-container .field-container .del-field-btn i,
@@ -8804,7 +8808,33 @@ span.create-account:hover {
   gap: 10px;
   cursor: pointer;
 }
+span.input-group-btn.align-up {
+  margin-right: 10px;
+}
 
+span.input-group-btn.align-up button {
+  cursor: pointer;
+}
+
+span.input-group-btn.align-up button[title="Delete"]:hover {
+  background-color: red;
+}
+span.input-group-btn.align-up button[title="Delete"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Delete"] i {
+  color: red;
+}
+
+span.input-group-btn.align-up button[title="Check"]:hover {
+  background-color: var(--primaryClr);
+}
+span.input-group-btn.align-up button[title="Check"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Check"] i {
+  color: var(--primaryClr);
+}
 @media screen and (max-width:1250px){
   .wrap-iframe{
     padding: 0px 10px 20px;
