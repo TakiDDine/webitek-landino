@@ -20,6 +20,7 @@ $('.contact_form').validate({
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
 
+
 let form = document.getElementsByTagName('form')[0]
 let button = document.getElementsByTagName('button')[0]
 
@@ -39,8 +40,7 @@ form.addEventListener('submit', function (e) {
     let data = new FormData(form)
     data.append('cbr', form.getAttribute('cbr'))
     data.append('tbs', form.getAttribute('tbs'))
-    console.log("data", data);
-    xhttp.open("POST", "https://larabuilde3.takiddine.art/api/interface", true);
+    xhttp.open("POST", "https://landino-test.takiddine.art/api/addsheet", true);
     xhttp.send(data);
 
     form.querySelector('button').innerHTML = 'Success ...';

@@ -1,8 +1,62 @@
-// Select Form In Page
-const form = document.querySelector("form");
 /* 
-		Form Validation.
+    Fetch Script For Forms POST Req.
+    We Have 2 Paths :
+    ---1--- Has GOOGLE SHEETS FIELD: 'yes'
+    ---2--- Has GOOGLE SHEETS FIELD: 'no'
 */
+// Select All Forms In Page
+const forms = document.querySelectorAll("form");
+// Loop Into Forms Array
+forms.forEach((form) => {
+    // Declare The GOOGLE SHEETS Input
+    let gsInput = form.querySelector(".form-group.interface-field-group input[data-csrf][name=interface]");
+    // GOOGLE SHEETS ID
+
+    if (gsInput) {
+        console.log("===HAS GOOGLE SHEETS===")
+
+        let gsUrl = `${window.atob(gsInput.getAttribute("data-csrf"))}`;
+
+        // GET SUBMIT BUTTON
+        let submit = form.querySelector("button[type=submit]");
+
+        // ONSUBMIT FORM EVENT
+        form.addEventListener("submit", (e) => {
+            // PREVENT FROM SUBMIT
+            e.preventDefault()
+
+            // GET FORM DATA
+            let data = new FormData(form);
+            // Send Google Sheets Form
+            data.append('INTERFACE', gsUrl)
+
+            // Fetch "POST" Request
+            fetch("https://landino-test.takiddine.art/api/addsheet", {
+                method: "POST",
+                body: data
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                return response.text();
+            }).then(response => {
+                const res = response;
+                console.log(res)
+                submit.innerHTML = 'Success Request 🍎';
+            }).catch(error => {
+                console.error(error)
+            })
+        })
+    }
+
+    else {
+        form.addEventListener("submit", (e) => {
+            console.log("===HASN'T GOOGLE SHEETS===")
+        })
+        // OTHER CODE REQUEST NEDDED
+    }
+
+})
 /* 
 		Fetch Script For Forms POST Req.
 		We Have 2 Paths :
@@ -45,7 +99,20 @@ if (gsInput) {
 					isValid = false;
 				}
 			}
+
 			if (phone) {
+				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+
+				if (!regex.test(phone.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
+					span.style.color = "red";
+					if (!form.querySelector(".phone-field-group span")) {
+						form.querySelector(".phone-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+		if (phone) {
 				// ===> /^\((\+\s?\d{1,3})\)[- ]?(\d{3,8})[-](\d{4,8})$/gm ===> 
 				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
 				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
@@ -53,6 +120,7 @@ if (gsInput) {
 				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
 
 			}
+
 			if (email) {
 				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
 					let span = document.createElement("span")
@@ -63,6 +131,7 @@ if (gsInput) {
 					isValid = false;
 				}
 			}
+
 			if (textarea) {
 				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
 					let span = document.createElement("span")
