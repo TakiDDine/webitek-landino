@@ -119,35 +119,6 @@
             </div>
         </div>
 
-        <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="sidebarContainer">
-                        <div id="sidebar_contentHeader" class="myDiv">
-                            <div class="sidebar-header">
-
-                            </div>
-                            <div id="sidebarContent__headerList">
-
-                                <ul id="uiContainer"></ul>
-                            </div>
-                        </div>
-                        <div id="sidebar_contentList" class="sidebar-body myDiv">
-                            <div class="sidebar__elements-header">
-                                <h3 id="sidebarTitle__list-title"></h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                </button>
-                            </div>
-                            <div class="sidebar-body__content" id="sidebarContent__contentList">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false" role="document">
             <div class="sidebar-content">
                 <div class="sidebarContainer">
@@ -158,8 +129,8 @@
                             </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
-                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
-                                data-toggle="modal" data-target="#elementsSidebar" data-collapsed="true">
+                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button" 
+                                data-collapsed="true">
                                 <span>
                                     <bdo dir="rtl">
                                         إضافة عنصر جديد
@@ -235,9 +206,10 @@
         document.getElementById('erasable').innerHTML = "";
 
     </script>
+    
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
-    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" ></script>
 
 
     <script type="text/javascript">

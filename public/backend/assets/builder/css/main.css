@@ -70,11 +70,11 @@ aside.control-panel.supra.active {
 /*** my left sideBar */
 
 #elementsSidebar .modal-dialog {
-  height: 100%;
+  width: 100%;
   margin: 0 auto;
 }
 
-#elementsSidebar.modal .modal-content {
+#elementsSidebar.modal:not([tabindex = "-1"]) .modal-content {
   position: absolute !important;
   width: 100%;
   -webkit-transform: translateY(-50%);
@@ -157,6 +157,26 @@ aside.control-panel.supra.active {
 .myDiv.sidebar-body {
   width: 100%;
 }
+.myDiv.sidebar-body.sidebar-body_elements {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.myDiv.sidebar-body.sidebar-body_elements::-webkit-scrollbar {
+  width: 7px;
+  height: 20px;
+  padding: 10px 0;
+  border-radius: 50%;
+}
+.myDiv.sidebar-body.sidebar-body_elements::-webkit-scrollbar-thumb {
+  background-color: #adb5bd;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+.myDiv.sidebar-body.sidebar-body_elements::-webkit-scrollbar-track {
+  background-color: transparent;
+  padding: 10px 0;
+}
 
 .myDiv .sidebar-header {
   width: 100%;
@@ -227,8 +247,7 @@ aside.control-panel.supra.active {
 #sidebarContent__headerList {
   z-index: 2;
   padding: 0;
-  flex: 1;
-  /* overflow-y: hidden; */
+  flex-grow: 1;
   max-height: 100%;
   padding: 1rem 1rem 0;
 }
@@ -317,26 +336,19 @@ aside.control-panel.supra.active {
   flex: 1;
   flex-grow: 4;
   display: block;
-  transform: translate(0%);
-  transition: transform 0.7s ease;
   padding: 0.8rem 1.5rem 1.5rem;
-}
-#sidebarContent__contentList.active {
-  display: block;
-}
-#sidebarContent__contentList.active.animate {
-  transform: translate(0%);
 }
 
 #sidebarContent__contentList .add-sections-items ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
   grid-auto-flow: row dense;
   padding: 0 !important;
   margin-bottom: 2rem !important;
+  
 }
+
+
 
 #sidebarContent__contentList .add-sections-items li {
   flex: 1;
@@ -857,12 +869,20 @@ i.icon-blr-sm-desktop {
   background-image: url(../images/builder-icons/sm-desktop.svg);
 }
 
-i.icon-blr-lg-redo {
-  background-image: url(../images/builder-icons/lg-redo.svg);
+i.icon-landino-redo {
+  background-image: url(../images/builder-new-icons/redo.svg);
+  
+}
+i.icon-landino-redo:hover {
+  background-image: url(../images/builder-new-icons/redo-blue.svg);
 }
 
-i.icon-blr-lg-undo {
-  background-image: url(../images/builder-icons/lg-undo.svg);
+i.icon-landino-undo {
+  background-image: url(../images/builder-new-icons/undo-back.svg);
+  
+}
+i.icon-landino-undo:hover {
+  background-image: url(../images/builder-new-icons/undo-back-blue.svg);
 }
 
 i.icon-blr-plus {
@@ -961,20 +981,20 @@ i.trash-icon.icon-landino-trash-black:hover {
   background-image: url(../images/builder-new-icons/trash-blue.svg);
 }
 
-i.icon-blr-h1 {
-  background-image: url(../images/builder-icons/h1.svg);
+i.icon-landino-h1 {
+  background-image: url(../images/builder-new-icons/h1.svg);
 }
 
-i.icon-blr-h2 {
-  background-image: url(../images/builder-icons/h2.svg);
+i.icon-landino-h2 {
+  background-image: url(../images/builder-new-icons/h2.svg);
 }
 
-i.icon-blr-h3 {
-  background-image: url(../images/builder-icons/h3.svg);
+i.icon-landino-h3 {
+  background-image: url(../images/builder-new-icons/h3.svg);
 }
 
-i.icon-blr-h4 {
-  background-image: url(../images/builder-icons/h4.svg);
+i.icon-landino-h4 {
+  background-image: url(../images/builder-new-icons/h4.svg);
 }
 
 i.icon-blr-drop {
@@ -1052,36 +1072,73 @@ i.icon-blr-timer {
   background-image: url(../images/builder-icons/timer.svg);
 }
 
-i.icon-blr-textfield {
-  background-image: url(../images/builder-icons/textfield.svg);
+i.icon-landino-textfield {
+  background-image: url(../images/builder-new-icons/textfield.svg);
 }
 
-i.icon-blr-emailfield {
-  background-image: url(../images/builder-icons/emailfield.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-textfield{
+  background-image: url(../images/builder-new-icons/textfield-white.svg);
+}
+i.icon-landino-emailfield {
+  background-image: url(../images/builder-new-icons/email.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-emailfield{
+  background-image: url(../images/builder-new-icons/email-white.svg);
+  
 }
 
-i.icon-blr-selectfield {
-  background-image: url(../images/builder-icons/selectfield.svg);
+i.icon-landino-selectfield {
+  background-image: url(../images/builder-new-icons/dropdown.svg);
+  pointer-events: none!important;
 }
 
-i.icon-blr-textarea {
-  background-image: url(../images/builder-icons/textarea.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-selectfield{  background-image: url(../images/builder-new-icons/dropdown-white.svg);
+  pointer-events: none!important;
+}
+i.icon-landino-textarea {
+  background-image: url(../images/builder-new-icons/textarea.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-textarea{
+  background-image: url(../images/builder-new-icons/textarea-white.svg);
 }
 
-i.icon-blr-radiobtn {
-  background-image: url(../images/builder-icons/radiobtn.svg);
+i.icon-landino-radiobtn {
+  background-image: url(../images/builder-new-icons/radioSelect.svg);
 }
 
-i.icon-blr-checkbox {
-  background-image: url(../images/builder-icons/checkbox.svg);
+.construct-form-sidebar button.draggable:hover i.icon-landino-radiobtn{
+  background-image: url(../images/builder-new-icons/radioSelect-white.svg);
 }
 
-i.icon-blr-datefield {
-  background-image: url(../images/builder-icons/datefield.svg);
+i.icon-landino-checkbox {
+  background-image: url(../images/builder-new-icons/checklist.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-checkbox{
+  background-image: url(../images/builder-new-icons/checklist-white.svg);
 }
 
-i.icon-blr-simpletext {
-  background-image: url(../images/builder-icons/simpletext.svg);
+i.icon-landino-datefield {
+  background-image: url(../images/builder-new-icons/calendar.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-datefield{
+  background-image: url(../images/builder-new-icons/calendar-white.svg);
+}
+
+i.icon-landino-simpletext {
+  background-image: url(../images/builder-new-icons/comment.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-simpletext{
+  background-image: url(../images/builder-new-icons/comment-white.svg);
+}
+i.icon-landino-spreadsheetfield {
+  background-image: url(../images/builder-new-icons/spreadsheet.svg);
+}
+.construct-form-sidebar button.draggable:hover i.icon-landino-spreadsheetfield{
+  background-image: url(../images/builder-new-icons/spreadsheet-white.svg);
+}
+
+i.icon-landino-dashboard{
+  background-image: url(../images/builder-new-icons/back-dashboard.svg);
 }
 
 i.icon-blr-attachfield {
@@ -5026,8 +5083,9 @@ aside.add-sections-items > ul li.wrap-hover {
   justify-content: flex-end;
   gap: 7px;
 }
+
 #modal-container .modal-footer.mode__demo, #modal-container .modal-footer.mode__delete-elements, #modal-container .modal-footer.mode__delete, #modal-container .modal-footer.mode__AddItemToTheDom,
-#modal-container .modal-footer.mode__ElmExist
+#modal-container .modal-footer.mode__ElmExist, #modoal-container .modal-footer.mode__elementsSections
 {
   border: none;
   padding: 0px 30px 20px;
@@ -7911,7 +7969,7 @@ nav.navbar {
   align-items: center;
   font-family: var(--fontFamily);
   font-size: 14px;
-  text-align: left;
+  text-align: var(--alignement);
   color: var(--textColor);
   padding: 0;
   padding-left: 14px;
@@ -7972,9 +8030,9 @@ nav.navbar {
   float: none;
   font-size: 12px;
   color: #fff;
-  /*    border: 1px solid #ccc;*/
-  border-radius: 0;
-  background-color: #4a4a4a;
+  border-radius: 6px;
+  background-color: #009688;
+    cursor: pointer;
 }
 
 /*
@@ -7988,12 +8046,14 @@ nav.navbar {
   width: 19px;
   height: 19px;
   padding: 4px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 0;
   margin: 0;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #a9a9a9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 #modal-container .field-container .del-field-btn i,
@@ -8490,7 +8550,7 @@ button.supra-btn.btn-default:hover {
 /*------------------
 === Choose image ===
 ------------------*/
-#modal-container .modal-content .modal-header .modal-title .search input {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search input {
   color: #212121 !important;
   background-color: #f6f6f6 !important;
   border: 2px solid #ddd !important;
@@ -8498,12 +8558,12 @@ button.supra-btn.btn-default:hover {
   height: 45px;
   width: 100%;
 }
-#modal-container .modal-content .modal-header .modal-title {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title {
   margin: 0;
   display: grid !important;
   grid-template-columns: repeat(12, 1fr);
 }
-#modal-container .modal-content .modal-header .modal-title h4 {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title h4 {
   grid-column: span 12;
   text-align: center;
   line-height: 1.2;
@@ -8513,13 +8573,13 @@ button.supra-btn.btn-default:hover {
   font-weight: bold !important;
   margin-bottom: 1em;
 }
-#modal-container .modal-content .modal-header .modal-title .upload {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .upload {
   grid-column: 1/4;
 }
-#modal-container .modal-content .modal-header .modal-title .search {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search {
   grid-column: 4 / 13;
 }
-#modal-container .modal-content .modal-header .modal-title .upload button {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .upload button {
   background-color: var(--primaryClr) !important;
   height: 45px !important;
   padding: 0 15px !important;
@@ -8527,9 +8587,9 @@ button.supra-btn.btn-default:hover {
   width: 100%;
   font-weight: bold;
 }
-#modal-container .modal-content .modal-header .modal-title .search input:hover,
-#modal-container .modal-content .modal-header .modal-title .search input:focus,
-#modal-container
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search input:hover,
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search input:focus,
+#modal-container #supra-modal-gallery
   .modal-content
   .modal-header
   .modal-title
@@ -8537,17 +8597,17 @@ button.supra-btn.btn-default:hover {
   input:active {
   border: 2px solid var(--primaryClr) !important;
 }
-#modal-container .modal-content .modal-header .modal-title .upload button i {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .upload button i {
   margin-left: 10px;
 }
-#modal-container .modal-content .modal-header .modal-title .search i {
+#modal-container #supra-modal-gallery .modal-content .modal-header .modal-title .search i {
   left: 16px !important;
   top: calc(45px / 3) !important;
 }
-#modal-container .modal-content .modal-body #nav-tabContent div {
+#modal-container #supra-modal-gallery .modal-content .modal-body #nav-tabContent div {
   width: 100% !important;
 }
-/* #modal-container .modal-content .modal-body #nav-tabContent div::-webkit-scrollbar {
+/* #modal-container #supra-modal-gallery .modal-content .modal-body #nav-tabContent div::-webkit-scrollbar {
   width: 7px;
     height: 20px;
     padding: 10px 0;
@@ -8562,60 +8622,60 @@ button.supra-btn.btn-default:hover {
   background-color: transparent;
   padding: 10px 0;
 } */
-#modal-container .modal-content .modal-body .nav-tabs:after {
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs:after {
   border-bottom: 2px solid #dddddd !important;
 }
-#modal-container .modal-content .modal-body .nav-tabs a {
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs a {
   font-size: 16px !important;
   color: #212121 !important;
   font-weight: bold !important;
 }
-#modal-container .modal-content .modal-body.g-items {
+#modal-container #supra-modal-gallery .modal-content .modal-body.g-items {
   min-width: 1200px !important;
 }
-#modal-container .modal-content .modal-body .nav-tabs a.active,
-#modal-container .modal-content .modal-body .nav-tabs a:hover {
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs a.active,
+#modal-container #supra-modal-gallery .modal-content .modal-body .nav-tabs a:hover {
   color: var(--primaryClr);
   border-bottom: 2px solid var(--primaryClr);
 }
-#modal-container .gallery figure .wrap-hover,
-#modal-container .gallery-video .video-item .wrap-hover {
+#modal-container #supra-modal-gallery .gallery figure .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item .wrap-hover {
   background-image: none !important;
   background-color: #fff !important;
   border: 2px solid #ddd !important;
   border-radius: 3px !important;
   height: 115px !important;
 }
-#modal-container .gallery figure:hover .wrap-hover,
-#modal-container .gallery figure:focus .wrap-hover,
-#modal-container .gallery figure.active .wrap-hover,
-#modal-container .gallery-video .video-item:hover .wrap-hover,
-#modal-container .gallery-video .video-item:focus .wrap-hover,
-#modal-container .gallery-video .video-item.active .wrap-hover {
+#modal-container #supra-modal-gallery .gallery figure:hover .wrap-hover,
+#modal-container #supra-modal-gallery .gallery figure:focus .wrap-hover,
+#modal-container #supra-modal-gallery .gallery figure.active .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item:hover .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item:focus .wrap-hover,
+#modal-container #supra-modal-gallery .gallery-video .video-item.active .wrap-hover {
   border: 2px solid var(--primaryClr) !important;
 }
 
-#modal-container .gallery figure,
-#modal-container .gallery-video .video-item {
+#modal-container #supra-modal-gallery .gallery figure,
+#modal-container #supra-modal-gallery .gallery-video .video-item {
   width: 20% !important;
 }
-#modal-container .modal-content figure img {
+#modal-container #supra-modal-gallery .modal-content figure img {
   max-width: 100% !important;
   max-height: 100% !important;
 }
-#modal-container .modal-content .modal-footer button.supra-btn.btn-primary {
+#modal-container #supra-modal-gallery .modal-content .modal-footer button.supra-btn.btn-primary {
   color: #fff !important;
   background-color: var(--primaryClr) !important;
   padding: 0 60px;
   font-weight: bold;
 }
-#modal-container
+#modal-container #supra-modal-gallery
   .modal-content
   .modal-footer
   button.supra-btn.btn-primary:hover {
   background-color: var(--secondaryClr) !important;
 }
-#modal-container .modal-content figure figcaption {
+#modal-container #supra-modal-gallery .modal-content figure figcaption {
   display: none;
 }
 
@@ -8700,12 +8760,29 @@ span.create-account:hover {
   opacity: 1!important;
 }
 
-#sidebar-signin{
+.sidebar-right__signin{
   width: 100%;
   padding: 20px 0;
   border-top: 1px solid #f4f5f7;
 }
-#sidebar-signin a{
+
+.mode__elementsSections a{
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 30px!important;
+  border-radius: 15px;
+  gap: 10px;
+  cursor: pointer;
+}
+.mode__elementsSections a:hover{
+  background-color: #c71d2e;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 15px;
+  gap: 10px;
+  cursor: pointer;
+}
+.sidebar-right__signin a{
   background-color: #dc3545;
   color: #fff;
   padding: 10px 30px;
@@ -8714,8 +8791,16 @@ span.create-account:hover {
   cursor: pointer;
   width: 85%;
 }
-#sidebar-signin a:hover{
+.sidebar-right__signin.popup a{
   background-color: #dc3545;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 15px;
+  gap: 10px;
+  cursor: pointer;
+  width: 85%;
+}
+.sidebar-right__signin a:hover{
   background-color: #c71d2e;
   color: #fff;
   padding: 10px 30px;
@@ -8723,7 +8808,33 @@ span.create-account:hover {
   gap: 10px;
   cursor: pointer;
 }
+span.input-group-btn.align-up {
+  margin-right: 10px;
+}
 
+span.input-group-btn.align-up button {
+  cursor: pointer;
+}
+
+span.input-group-btn.align-up button[title="Delete"]:hover {
+  background-color: red;
+}
+span.input-group-btn.align-up button[title="Delete"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Delete"] i {
+  color: red;
+}
+
+span.input-group-btn.align-up button[title="Check"]:hover {
+  background-color: var(--primaryClr);
+}
+span.input-group-btn.align-up button[title="Check"]:hover i {
+  color: #fff;
+}
+span.input-group-btn.align-up button[title="Check"] i {
+  color: var(--primaryClr);
+}
 @media screen and (max-width:1250px){
   .wrap-iframe{
     padding: 0px 10px 20px;
