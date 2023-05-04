@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Throwable;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 
 class Handler extends ExceptionHandler
 {
@@ -47,6 +48,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // if($exception instanceof ThrottleRequestsException) {
+        //     return redirect()->back()->withInput();
+        // }
         return parent::render($request, $exception);
     }
 }

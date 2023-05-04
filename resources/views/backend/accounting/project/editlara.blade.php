@@ -39,7 +39,7 @@
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
             <div class="logo-preloader">
-                <img src="images/logo-blue.svg" />
+                <img src="{{asset('backend/assets/builder/images/logo-blue.svg')}}" />
             </div>
             <div class="progress-bar-s">
                 <div class="progress">
@@ -114,37 +114,7 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main"
-                    src="{{ app('request')->is('builder/*') ? url('project/larabuilder') : url('demo/larabuilder') }}"></iframe>
-            </div>
-        </div>
-
-        <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="sidebarContainer">
-                        <div id="sidebar_contentHeader" class="myDiv">
-                            <div class="sidebar-header">
-
-                            </div>
-                            <div id="sidebarContent__headerList">
-
-                                <ul id="uiContainer"></ul>
-                            </div>
-                        </div>
-                        <div id="sidebar_contentList" class="sidebar-body myDiv">
-                            <div class="sidebar__elements-header">
-                                <h3 id="sidebarTitle__list-title"></h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                </button>
-                            </div>
-                            <div class="sidebar-body__content" id="sidebarContent__contentList">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <iframe id="main" src="{{ url('project/landino') }}"></iframe>
             </div>
         </div>
 
@@ -154,7 +124,7 @@
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
                             <a href class="brand">
-                                <img src="images/logo.svg" />
+                                <img src="{{asset('backend/assets/builder/images/logo.svg')}}" />
                             </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
@@ -165,7 +135,7 @@
                                         إضافة عنصر جديد
                                     </bdo>
                                 </span>
-                                <img src="images/builder-svg/plus.svg" width="30" height="30" />
+                                <img src="{{asset('backend/assets/builder/images/builder-svg/plus.svg')}}" width="30" height="30" />
                         </div>
                         <div class="global-style__container">
                             <div id="sidebarRight__Content">
@@ -210,20 +180,17 @@
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
 
-    <script>
+    <script id="erasable" type="text/javascript">
         @if (env('DEMO_MODE') == true)
             var demoMode = 'active';
         @else
             var demoMode = 'no';
 
             @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
-                /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
         const ajaxbase = '{{ url('api/ajax') }}';
         const baseurl = '{{ url('/') }}';
-        const publicpath = "{{ base_path('public') }}";
-        const basepath = "{{ base_path('public/backend/assets/builder') }}";
         const googleKey = '{{ get_option('google_map_key') }}';
         const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         // const project_id = 0;
@@ -237,6 +204,8 @@
         const project_file_name = '';
         const template = false;
         const try_demo = false;
+        document.getElementById('erasable').innerHTML = "";
+
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\GoogleSheetsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("/interface", function () {
-	return response()-> json([
-        "data"=> "data"
-    ]);
-});
+
+
+Route::middleware('throttle:20,1')->post('/addsheet', [GoogleSheetsController::class, 'index']);
