@@ -463,15 +463,15 @@ CREATE TABLE `email_templates` (
 
 INSERT INTO email_templates VALUES('1','registration','Registration Sucessfully','<div style=\"padding: 15px 30px;\">
 						 <h2 style=\"color: #555555;\">Registration Successful</h2>
-						 <p style=\"color: #555555;\">Hi {name},<br /><span style=\"color: #555555;\">Welcome to LaraBuilder and thank you for joining with us. You can now sign in to your account using your email and password.<br /><br />Regards<br />Tricky Code<br /></span></p>
+						 <p style=\"color: #555555;\">Hi {name},<br /><span style=\"color: #555555;\">Welcome to landino and thank you for joining with us. You can now sign in to your account using your email and password.<br /><br />Regards<br />Tricky Code<br /></span></p>
 						 </div>','','');
 INSERT INTO email_templates VALUES('2','premium_membership','Premium Membership','<div style=\"padding: 15px 30px;\">
-						<h2 style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">LaraBuilder Premium Subscription</h2>
+						<h2 style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">landino Premium Subscription</h2>
 						<p style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">Hi {name},<br>
 						<span style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\"><strong>Congratulations</strong> your paymnet was made sucessfully. Your current membership is valid <strong>until</strong> <strong>{valid_to}</strong></span><span style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\"><strong>.</strong>&nbsp;</span></p>
 						<p><br style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\" /><span style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">Thank You</span><br style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\" /><span style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">Tricky Code</span></p>
 						</div>','','');
-INSERT INTO email_templates VALUES('3','alert_notification','LaraBuilder Renewals','<div style=\"padding: 15px 30px;\">
+INSERT INTO email_templates VALUES('3','alert_notification','landino Renewals','<div style=\"padding: 15px 30px;\">
 							<h2 style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">Account Renew Notification</h2>
 							<p style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">Hi {name},<br>
 							<span style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">Your package is due to <strong>expire on {valid_to}</strong> s</span><span style=\"color: #555555; font-family: \"PT Sans\", sans-serif;\">o you will need to renew by then to keep your account active.</span></p>
@@ -1225,13 +1225,13 @@ INSERT INTO settings VALUES('3','membership_system','enabled','','');
 INSERT INTO settings VALUES('4','trial_period','7','','');
 INSERT INTO settings VALUES('5','allow_singup','yes','','');
 INSERT INTO settings VALUES('6','email_verification','disabled','','');
-INSERT INTO settings VALUES('7','hero_title','Start Your Business With LaraBuilder','','');
+INSERT INTO settings VALUES('7','hero_title','Start Your Business With landino','','');
 INSERT INTO settings VALUES('8','hero_sub_title','A simple, easy to customize, and powerful business platform for managing and tracking Projects, Tasks, Invoices, Quotations, Leads, Customers, Transactions and many more!','','');
 INSERT INTO settings VALUES('9','meta_keywords','invoice, projects, tasks, accounting, quotation, crm, business, erp, accounting software, live chat','','');
 INSERT INTO settings VALUES('10','meta_description','A simple, easy to customize, and powerful business platform for managing and tracking Projects, Tasks, Invoices, Quotations, Leads, Customers, Transactions and many more!','','');
 INSERT INTO settings VALUES('11','language','English','','2020-12-02 08:26:33');
 INSERT INTO settings VALUES('12','company_name','Spotlayer','2020-12-02 08:23:16','2020-12-02 08:26:33');
-INSERT INTO settings VALUES('13','site_title','Larabuilder','2020-12-02 08:23:16','2020-12-02 08:26:33');
+INSERT INTO settings VALUES('13','site_title','landino','2020-12-02 08:23:16','2020-12-02 08:26:33');
 INSERT INTO settings VALUES('14','phone','01008112686','2020-12-02 08:23:16','2020-12-02 08:26:33');
 INSERT INTO settings VALUES('15','email','aldmohy@spotlayer.com','2020-12-02 08:23:16','2020-12-02 08:26:33');
 INSERT INTO settings VALUES('16','timezone','Africa/Abidjan','2020-12-02 08:23:16','2020-12-02 08:26:33');
@@ -1418,7 +1418,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO users VALUES('1','Mohamed Aldmohy','admin@larabuilder.com','2020-12-02 08:23:06','$2y$10$IS/RkIATPYJobECIUXkJDusg46YuIraXhJS.pjYTjfvGaSsscBJhi','admin','','default.png','1','','','','2020-12-02 08:23:06','2020-12-02 08:23:06');
+INSERT INTO users VALUES('1','Mohamed Aldmohy','admin@landino.com','2020-12-02 08:23:06','$2y$10$IS/RkIATPYJobECIUXkJDusg46YuIraXhJS.pjYTjfvGaSsscBJhi','admin','','default.png','1','','','','2020-12-02 08:23:06','2020-12-02 08:23:06');
 
 
 

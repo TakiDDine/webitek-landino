@@ -17,11 +17,11 @@ class ProfileController extends Controller
 	public function __construct()
     {	
 		$this->middleware(function ($request, $next) {
-			// if(has_membership_system() == 'enabled' && Auth::user()->user_type == "user"){
-			// 	if( membership_validity() < date('Y-m-d')){
-			// 		return redirect('membership/extend')->with('message',_lang('Your membership has expired. Please renew your membership !'));
-			// 	}
-			// }
+			if(has_membership_system() == 'enabled' && Auth::user()->user_type == "user"){
+				if( membership_validity() < date('Y-m-d')){
+					return redirect('membership/extend')->with('message',_lang('Your membership has expired. Please renew your membership !'));
+				}
+			}
 
 			return $next($request);
 		});
@@ -37,13 +37,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
-        if(env('DEMO_MODE') == true){
-            if($request->ajax()) {
-                return response()->json(['result' => 'error', 'action' => 'update', 'message' => _lang('DEMO MODE NOT ALLOWED')]);
-            }else{
-                return redirect()->back()->with('error', _lang('DEMO MODE NOT ALLOWED'));
-            }
-        }
+       
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -111,13 +105,7 @@ class ProfileController extends Controller
     public function update_password(Request $request)
     {
 
-        if(env('DEMO_MODE') == true){
-            if($request->ajax()) {
-                return response()->json(['result' => 'error', 'action' => 'update', 'message' => _lang('DEMO MODE NOT ALLOWED')]);
-            }else{
-                return redirect()->back()->with('error', _lang('DEMO MODE NOT ALLOWED'));
-            }
-        }
+
 
         // Validation 
         $validator = Validator::make($request->all(), [

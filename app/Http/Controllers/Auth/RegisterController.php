@@ -50,6 +50,7 @@ class RegisterController extends Controller
     {
 		Overrider::load("Settings");
         $this->middleware('guest');
+        $this->middleware('throttle:5,1')->only('register');
     }
 	
 	public function redirectTo(){
