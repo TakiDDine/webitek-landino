@@ -22,7 +22,7 @@
         "laravel/cashier-paddle": "^1.8",
         "laravel/framework": "^8.54",
         "laravel/socialite": "^5.5",
-        "laravel/telescope": "^4.14",
+        "laravel/telescope": "^4.10",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
         "maatwebsite/excel": "^3.1",

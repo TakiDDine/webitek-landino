@@ -191,7 +191,7 @@
             @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
             @endif
         @endif
-        const ajaxbase = '{{ url('api/ajax') }}';
+        var ajaxbase = '{{ url('api/ajax',[], true) }}';
         const baseurl = '{{ url('/') }}';
         const template = '{{ $isTemplate }}' ? true : false;
       
