@@ -1,0 +1,10 @@
+#testimonial-1-testing .bg {
+    background-image: url('images/gallery/scout-1-test.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity:0.4;
+}
+#testimonial-1-testing {
+    text-align: right;
+}

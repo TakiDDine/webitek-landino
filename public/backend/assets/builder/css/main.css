@@ -8847,19 +8847,3 @@ span.input-group-btn.align-up button[title="Check"] i {
     max-width: 260px;
   }
 }
-
-/* click_null classlist to avoid clicking on undo redo btn */
-
-.click_null {
-  pointer-events: none;
-}
-aside.left.supra.black,
-aside.control-panel.supra.active {
-  display: block !important;
-}
-i.icon-blr-lg-undo {
-  background-image: url(../images/builder-icons/lg-undo.svg);
-}
-i.icon-blr-lg-redo {
-  background-image: url(../images/builder-icons/lg-redo.svg);
-}
