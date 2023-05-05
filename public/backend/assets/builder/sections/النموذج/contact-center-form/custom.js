@@ -1,5 +1,6 @@
 // Select Form In Page
 const form = document.querySelector("form");
+
 /* 
 		Form Validation.
 */
@@ -29,7 +30,7 @@ if (gsInput) {
 		const formValidation = () => {
 			let isValid = true;
 
-			let name = form.querySelector(".text-field-group input[type='text']")
+			let name = form.querySelector(".text-field-group input[type='text']:not('.datepicker-input')")
 			let email = form.querySelector(".email-field-group input[type='email']")
 			let textarea = form.querySelector(".textarea-group textarea")
 			let phone = form.querySelector(".phone-field-group input[type='tel']")
@@ -52,12 +53,12 @@ if (gsInput) {
 			}
 
 			if (phone) {
-				let phoneFormat = phone.getAttribute('data-format')
+				// let phoneFormat = phone.getAttribute('data-format')
 				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
 
 				if (!regex.test(phone.value)) {
 					let span = document.createElement("span")
-					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
+					span.innerHTML = `please enter a valid phone format`;
 					span.style.color = "red";
 					if (!form.querySelector(".phone-field-group span")) {
 						form.querySelector(".phone-field-group").appendChild(span)

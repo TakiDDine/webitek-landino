@@ -250,6 +250,8 @@ aside.control-panel.supra.active {
   flex-grow: 1;
   max-height: 100%;
   padding: 1rem 1rem 0;
+  overflow: overlay;
+  border-radius: 0 15px 15px 0;
 }
 
 #sidebarContent__headerList h6 {
@@ -1598,7 +1600,12 @@ button.close:hover {
 }
 
 .supra-btn.btn-primary {
-  background-color: #00c0ff;
+  background-color: var(--primaryClr);
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+.supra-btn.btn-primary:hover {
+  background-color: var(--secondaryClr);
   color: #ffffff;
   border: 1px solid transparent;
 }
