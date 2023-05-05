@@ -3576,6 +3576,13 @@
 }
 
 @font-face {
+	font-family: 'Sky';
+	src: url('../fonts/Sky_Bold/Sky-Reg-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'Slabo27px';
 	src: url('../fonts/Slabo_27px/Slabo27px-Regular.ttf') format('truetype');
 	font-weight: 400;

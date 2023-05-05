@@ -132,7 +132,8 @@ class Request {
         }else{
             $file_name = $_POST['name_file'];
         }
-        $sub_folder = $mode === 'import' ? '' : '/'.$userId.'/';
+        // $sub_folder = $mode === 'import' ? '' : '/'.$userId.'/';
+        $sub_folder = '/'.$userId.'/';
 
         if (!file_exists($path . $sub_folder)) {
             mkdir($path . $sub_folder, 0777, true);
@@ -155,7 +156,7 @@ class Request {
                             if (preg_match('/.*\.zip/i', $file_name)) {
                                 
                                 if ( $zip->open( $file_name ) ) {
-                                    $zip->extractTo( 'public/tmp/' );
+                                    $zip->extractTo( 'public/tmp/'.$userId.'/' );
                                     $zip->close();
                                     unlink( $file_name );
                                     $this->_readFileProject('public/tmp/project.supra');
@@ -251,15 +252,17 @@ class Request {
      * Calling from ajax to add the gallery new an image
      */
     public function FtpUpload() {
-        $this->_clearTmp();
-
+        $this->_clearTmp($_POST['userId'], $_POST['project_id']);
+        $user_id = $_POST['project_id'] ? $_POST['userId'].'/' : $_POST['userId'];
+        $_POST['dir'] = public_path().'/tmp/'.$user_id.$_POST['project_id'].'/preview';
+      
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {
             $dataPost = stripslashes($dataPost);
         }
-
         $file_name = $this->saveSiteToTmp($dataPost, 'tmp');
+       
 
         $zip = new ZipArchive();
 
@@ -308,7 +311,6 @@ class Request {
 
             // make it local before upload
             $output_dir = base_path('public/ftp').'/'.$_POST['userId'].'/'.$_POST['project_id'];
-
             try {
                 if ($zip->open(base_path('public/tmp').'/' . $file_name)) {
                     $zip->extractTo($output_dir . '/');
@@ -328,7 +330,6 @@ class Request {
                     ]
                 );
                 $ftp->doIt();
-
                 if (!file_exists($output_dir)) {
                     mkdir($output_dir, 0777, true);
                     chmod($output_dir, 0777);
@@ -400,7 +401,6 @@ class Request {
                         }
                     }
                 }
-
                 if ($zip->open(base_path('public/tmp').'/' . $file_name)) {
                     $zip->extractTo($output_dir . '/');
                     $zip->close();
@@ -408,7 +408,7 @@ class Request {
                 }
                 echo json_encode([
                     'status' => 200,
-                    'url' => $_POST['dir'] . '/'
+                    'template_url' => $_POST['project_id']
                 ]);
             } catch (Exception $e) {
                 echo json_encode([
@@ -703,13 +703,20 @@ class Request {
      */
     public function DB() {
         
-        $this->_clearTmp();
+        $this->_clearTmp($_POST['userId']);
         $mode = ini_get('magic_quotes_gpc');
         $data = $_POST['data'];
         if ($mode) {
             $data = stripslashes($data);
         }
-
+        if (!file_exists(base_path('public/tmp'))) {
+            mkdir(base_path('public/tmp'), 0777, true);
+            chmod(base_path('public/tmp'), 0777);
+        }
+        if (!file_exists(base_path('public/tmp').'/'.$this->_current_user)) {
+            mkdir(base_path('public/tmp').'/'.$this->_current_user, 0777, true);
+            chmod(base_path('public/tmp').'/'.$this->_current_user, 0777);
+        }
 
         if(isset($_POST['id'])){
             $project             =   \App\Project::find($_POST['id']);
@@ -737,7 +744,7 @@ class Request {
 
 
             file_put_contents(public_path()."/uploads/project_files/".$project->id."_project.supra", $data);
-            file_put_contents(public_path()."/tmp/".$project->id."_project.supra", $data);
+            file_put_contents(public_path()."/tmp/".$_POST['userId'].'/'.$project->id."_project.supra", $data);
 
 
             $projectfile                = new \App\ProjectFile();
@@ -763,7 +770,9 @@ class Request {
 
         echo json_encode([
             'status' => 200,
-            'message' => 'Saved successfully'
+            'message' => 'Saved successfully',
+            'project_id' => $project->id 
+            
         ]);
         exit();
     }
@@ -772,7 +781,7 @@ class Request {
      * Calling from ajax to get a file that contains intermediate work of the project
      */
     public function Export() {
-        $this->_clearTmp();
+        $this->_clearTmp($_POST['userId'], $_POST['project_id']);
         $mode = ini_get('magic_quotes_gpc');
         $data = $_POST['data'];
         if ($mode) {
@@ -807,6 +816,7 @@ class Request {
      * Calling from ajax to upload a file that contains intermediate work of the project
      */
     public function Import() {
+        $this->_clearTmp($_POST['userId'], $_POST['project_id']);
         $this->_upload_file('public/tmp/', array( '.zip', '.supra' ), 'import',$_POST['userId'],$_POST['project_id'], $_POST['template']);
     }
     public function Update() {
@@ -836,6 +846,7 @@ class Request {
      * @param $style_gallery {string}
      */
     protected function _add_gallery(&$baseFiles) {
+       
         array_push($baseFiles['css'], 'owl.carousel.css');
         array_push($baseFiles['js'], 'owl.carousel.js');
     }
@@ -1024,6 +1035,9 @@ class Request {
             }
 
             $includePajeStyle = '';
+            $str=rand();
+            $result = sha1($str);
+            $version = '?v='.$result; 
             if ($page->style !== '') {
                 $page_style = preg_replace('#\?t=[0-9]*#im', '', $page->style);
 
@@ -1050,12 +1064,13 @@ class Request {
                 }
 
                 $page_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $page_style);
-
+                
                 $zip->addFromString(
                     'css/' . $page->page_name . '.css'
                     , $page_style
                 );
-                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css\" />";
+                
+                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css".$version ."\" />";
             }
 
             $includePajeJs = '';
@@ -1092,23 +1107,31 @@ class Request {
             }else{
                 $base_url = '';
             }
-
+            $str=rand();
+            $result = sha1($str);
+            $version = '?v='.$result;
             $head = "\t<head>
            <meta charset=\"UTF-8\">
            <title>$page->title</title>
            $link_favicon
-           <base href=\"$base_url\" target=\"_blank\">
+           <base href=\"\" target=\"_blank\">
            <meta name=\"keywords\" content=\"$page->meta_keywords\" />
            <meta name=\"description\" content=\"$page->meta_description\" />
            <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,viewport-fit=cover\">$fonts".''."$default_css".''."$style_gallery".''."$style_magnific
-           <link rel=\"stylesheet\" href=\"css/custom.css\" />".''."$includePajeStyle".''."$preloader_css
+           <link rel=\"stylesheet\" href=\"css/custom.css$version\" />".''."$includePajeStyle".''."$preloader_css
+
+          
 
        </head>
            <body class=\"".$page->style_options."\">$preloader";
 
+           
             $custom_js = '';
             if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
-                $custom_js = "\n\t\t<script src=\"js/custom.js\"></script>";
+                $str=rand();
+                $result = sha1($str);
+                $version = '?v='.$result;
+                $custom_js = "\n\t\t<script src=\"js/custom.js$version\"></script>";
             }
             $end = "$js_plugins".''."$default_js".''.$custom_js.''."$includePajeJs";
 
@@ -1176,15 +1199,22 @@ class Request {
      * Calling from ajax to get a file that contains website
      */
     public function Download() {
-        $this->_clearTmp();
-
+        $this->_clearTmp($_POST['user_id']);
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
         if ($mode) {
             $dataPost = stripslashes($dataPost);
         }
+        if (!file_exists(base_path('public/tmp'))) {
+            mkdir(base_path('public/tmp'), 0777, true);
+            chmod(base_path('public/tmp'), 0777);
+        }
+        if (!file_exists(base_path('public/tmp').'/'.$_POST['user_id'])) {
+            mkdir(base_path('public/tmp').'/'.$_POST['user_id'], 0777, true);
+            chmod(base_path('public/tmp').'/'.$_POST['user_id'], 0777);
+        }
 
-        $file_name = $this->saveSiteToTmp($dataPost, 'tmp');
+        $file_name = $this->saveSiteToTmp($dataPost, 'tmp', $_POST['user_id']);
 
         echo json_encode(array('file' => $file_name));
         exit();
@@ -1203,8 +1233,10 @@ class Request {
 
         $js_plugins = '';
 
-
-        $filename = "public/" . $folder . '/' . uniqid() . "_website.zip";
+        // save zip file in user folder 
+        $userFolder = $folder == 'tmp' ? $user_id . '/' : '';
+        // dd($userFolder, $folder, $user_id);
+        $filename = "public/" . $folder. '/'  .$userFolder . uniqid() . "_website.zip";
 
         $zip = new ZipArchive;
         $zip->open($filename, ZipArchive::CREATE);
@@ -1267,13 +1299,25 @@ class Request {
             $this->_add_aos($baseFiles);
         }
 
+        
+        if ($data->form_section) {
+            $baseFiles['js'][] = 'csfrhandler.js';    
+        }
+    
+
         foreach ($baseFiles as $key => $value) {
+            
             if ($key !== 'plugins') {
                 if ( is_array( $value ) ) {
                     foreach ( $value as $fileN ) {
+
+                     //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
                         $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
                         if ($key === 'css') {
-                            $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN\" />";
+                            $str=rand();
+                            $result = sha1($str);
+                            $version = '?v='.$result; 
+                            $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN$version\" />";
                         } elseif ($key === 'js') {
                             $cookie_accepted = '';
                             if (
@@ -1282,7 +1326,10 @@ class Request {
                             ) {
                                 $cookie_accepted = ' type="text/plain" data-cookiescript="accepted"';
                             }
-                            $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN\"></script>";
+                            $str=rand();
+                            $result = sha1($str);
+                            $version = '?v='.$result; 
+                            $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN$version\"></script>";
                         }
                     }
                 }
@@ -1313,6 +1360,9 @@ class Request {
 
         $custom_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $data->style);
         $custom_style = preg_replace('#.font-style-supra (?:\/\*)?(\w*)(?:\*\/)?#im', '$1', $custom_style);
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result;
         $zip->addFromString( 'css/custom.css', $custom_style);
 
         $overall_js = "";
@@ -1345,6 +1395,12 @@ class Request {
                 , $overall_js
             );
         }
+        // if (preg_match('/\w/', $overall_js)) {
+        //     $zip->addFromString(
+        //         'js/googlesheet.js'
+        //         , $overall_js
+        //     );
+        // }
 
         $fonts_to_download->getIncludeFonts();
 
@@ -1352,6 +1408,7 @@ class Request {
 
         $file_name = basename($filename);
 
+      //  dd($file_name);
         return $file_name;
     }
 
@@ -1369,12 +1426,33 @@ class Request {
     /**
      * Clearing folder of tmp
      */
-    protected function _clearTmp() {
+    protected function _clearTmp($user_id = null, $project_id = null) {
+        clearstatcache();
         $tmp = scandir(public_path('tmp/'));
+        if($user_id && file_exists(public_path('tmp/').$user_id) && is_dir(public_path('tmp/').$user_id)) {
+            // rmdir(public_path('tmp/').$user_id);
+            $this->deleteFolder(public_path('tmp/').$user_id);
+        }
         for ( $j = 2; $j < count( $tmp ); $j ++ ) {
+            // dd($project_id , preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ]));
+            if ($project_id && preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ])) {
+                // dd('hello');
+                unlink(public_path('tmp/').$tmp[ $j ]);
+            }
             if (preg_match('/[a-z0-9]*_(project|website)\.zip/i', $tmp[ $j ])) {
                 unlink(public_path('tmp/').$tmp[ $j ]);
             }
         }
     }
+
+    public function deleteFolder($folder) {
+        if (is_dir($folder)) {
+            $files = glob($folder . '/*');
+            foreach ($files as $file) {
+                is_dir($file) ? $this->deleteFolder($file) : unlink($file);
+            }
+            rmdir($folder);
+        }
+    }
+
 }

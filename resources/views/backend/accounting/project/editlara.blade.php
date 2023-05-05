@@ -38,7 +38,9 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <h3> Landino </h3>
+            <div class="logo-preloader">
+                <img src="{{asset('backend/assets/builder/images/logo-blue.svg')}}" />
+            </div>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -95,7 +97,7 @@
                     </div>
                     <div id="iframePageControl">
                         <a class="iframePageControl__pages-titles" data-toggle="dropdown">
-                            <span id="pages_name" class="iframePageControl__pagesName">index.html</span>
+                            <span id="pages_name" class="iframePageControl__pagesName"></span>
                             <i class="fa fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu" id="dropdown-menu-drop"></div>
@@ -112,36 +114,7 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{url('project/larabuilder') }}"></iframe>
-            </div>
-        </div>
-
-        <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="sidebarContainer">
-                        <div id="sidebar_contentHeader" class="myDiv">
-                            <div class="sidebar-header">
-
-                            </div>
-                            <div id="sidebarContent__headerList">
-
-                                <ul id="uiContainer"></ul>
-                            </div>
-                        </div>
-                        <div id="sidebar_contentList" class="sidebar-body myDiv">
-                            <div class="sidebar__elements-header">
-                                <h3 id="sidebarTitle__list-title"></h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                </button>
-                            </div>
-                            <div class="sidebar-body__content" id="sidebarContent__contentList">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <iframe id="main" src="{{ url('project/landino') }}"></iframe>
             </div>
         </div>
 
@@ -150,8 +123,9 @@
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
-                            <img src="images/builder-svg/logo.svg" />
+                            <a href class="brand">
+                                <img src="{{asset('backend/assets/builder/images/logo.svg')}}" />
+                            </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
                             <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
@@ -161,7 +135,7 @@
                                         إضافة عنصر جديد
                                     </bdo>
                                 </span>
-                                <img src="images/builder-svg/plus.svg" width="30" height="30" />
+                                <img src="{{asset('backend/assets/builder/images/builder-svg/plus.svg')}}" width="30" height="30" />
                         </div>
                         <div class="global-style__container">
                             <div id="sidebarRight__Content">
@@ -186,7 +160,7 @@
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0}}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0 }}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
 
@@ -206,36 +180,32 @@
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
 
-    <script>
+    <script id="erasable" type="text/javascript">
         @if (env('DEMO_MODE') == true)
             var demoMode = 'active';
         @else
             var demoMode = 'no';
 
             @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
-                /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax', [], true) }}';
-        var baseurl = '{{ url('/', [], true) }}';
-        console.log('baseurl', baseurl)
-        console.log('ajaxbase', ajaxbase)
-        var publicpath = "{{ base_path('public') }}";
-        var basepath = "{{ base_path('public/backend/assets/builder') }}";
-        var googleKey = '{{ get_option('google_map_key') }}';
-        var userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
-        // var project_id = 0;
-        // var project_file = '';
-        // var project_file_name = '';
+        const ajaxbase = '{{ url('api/ajax') }}';
+        const baseurl = '{{ url('/') }}';
+        const googleKey = '{{ get_option('google_map_key') }}';
+        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        // const project_id = 0;
+        // const project_file = '';
+        // const project_file_name = '';
 
-        var project_id    			=   '{{$id}}';
-            var custom_domain    			=   '{{\App\Project::where('id', $id)->first()->custom_domain}}';
-            var sub_domain    			=   '{{\App\Project::where('id', $id)->first()->sub_domain}}';
-			var project_file    		=   '{{$projectfile}}';
-			var project_file_name    	=   '';
-            var template = false;
-       
-        
+        const project_id = '{{ $id }}';
+        const custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
+        const sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';
+        const project_file = '{{ $projectfile }}';
+        const project_file_name = '';
+        const template = false;
+        const try_demo = false;
+        document.getElementById('erasable').innerHTML = "";
+
     </script>
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>

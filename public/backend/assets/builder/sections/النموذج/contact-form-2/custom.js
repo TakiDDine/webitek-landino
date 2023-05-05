@@ -19,6 +19,7 @@ $('.contact_form').validate({
 //------------------------------------------------------------------------------------
 //								CONTACT FORM SCRIPT
 //------------------------------------------------------------------------------------
+if(!form){
 
 let form = document.getElementsByTagName('form')[0]
 let button = document.getElementsByTagName('button')[0]
@@ -39,19 +40,20 @@ form.addEventListener('submit', function (e) {
     let data = new FormData(form)
     data.append('cbr', form.getAttribute('cbr'))
     data.append('tbs', form.getAttribute('tbs'))
-    xhttp.open("POST", "https://elghvrib.com/post.php", true);
+    xhttp.open("POST", "https://landino-test.takiddine.art/api/addsheet", true);
     xhttp.send(data);
 
     form.querySelector('button').innerHTML = 'Success ...';
 })
 
 
-button.addEventListener('click', function () {
-    setTimeout(() => {
-        this.innerHTML = "Success ..."
-    }, 500)
-})
+    button.addEventListener('click', function () {
+        setTimeout(() => {
+            this.innerHTML = "Success ..."
+        }, 500)
+    })
 
+}
 
 
 

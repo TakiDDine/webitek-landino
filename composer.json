@@ -16,6 +16,7 @@
         "breadhead/paddle": "^1.2",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "*",
         "guzzlehttp/guzzle": "^7.5",
         "intervention/image": "^2.6",
         "laravel/cashier-paddle": "^1.8",
