@@ -63,7 +63,12 @@ if (gsInput) {
 						form.querySelector(".phone-field-group").appendChild(span)
 					}
 					isValid = false;
-				}
+			if (phone) {
+				// ===> /^\((\+\s?\d{1,3})\)[- ]?(\d{3,8})[-](\d{4,8})$/gm ===> 
+				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
+				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
+				// ===> /^\+\d{1,3}[-](\d{3,16})$/gm                       ===> +000-xxxxxxxx
+				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
 
 			}
 

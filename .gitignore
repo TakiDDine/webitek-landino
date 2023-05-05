@@ -5,7 +5,6 @@ public/tmp/
 public/sites/
 public/uploads/project_files/*
 
-
 .env.*.php
 .env.php
 .htaccess
@@ -16,9 +15,7 @@ public/uploads/project_files/*
 
 
 
-
-
 node_modules
 /node_modules
 /node_modules
-node_modules
+
