@@ -116,6 +116,12 @@
                                                                 <td>{{ get_option('server_ip') }}</td>
                                                                 <td>Automatic</td>
                                                             </tr>
+                                                            <tr>
+                                                                <td>cname</td>
+                                                                <td>www</td>
+                                                                <td>{{ get_option('server_ip') }}</td>
+                                                                <td>Automatic</td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
