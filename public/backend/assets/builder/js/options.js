@@ -1,5 +1,7 @@
 const lang = window.document.querySelector("html").attributes.lang.value;
 
+const myProjectID = template ? '' : project_id
+
 const language = {
   /*------Body------*/
   body: lang == "ar" ? "جسم الصفحة" : "Body",
@@ -13,7 +15,9 @@ const language = {
   bgRep: lang == "ar" ? "تكرار الخلفية" : "Background Repeat",
   bgSiz: lang == "ar" ? "حجم الخلفية" : "Background Size",
   bgCol: lang == "ar" ? "لون الخلفية" : "Background Color",
+
   /*------Sections------*/
+  
   sections: lang == "ar" ? "أقسام" : "Sections",
   Secmargin: lang == "ar" ? "هوامش خارجية" : "Margin",
   SecColorSeperator: lang == "ar" ? "لون الفاصل" : "Separator color",
@@ -96,6 +100,104 @@ const language = {
     lang == "ar" ? "<bdo dir='rtl'>لون الحدود x2</bdo>" : "Border-x2 color",
   /*------Preloader------*/
   preloader: lang == "ar" ? "زر تحميل الصفحة" : "Preloader",
+  /*----------Text Size-----------*/
+  textSizeBox: lang == "ar" ? "حجم الخط" : "Text size",
+  textSizeBoxSmall: lang == "ar" ? "صغير" : "Small",
+  textSizeBoxLead: lang == "ar" ? "كبير" : "Lead",
+  /*----------Text color-----------*/
+  textColorBox: lang == "ar" ? "حجم الخط" : "Text size",
+  textColorBoxPrimary: lang == "ar" ? "اولي" : "Text size",
+  textColorBoxSecondary: lang == "ar" ? "تانوي" : "Text size",
+  /*----------Text Effect-----------*/
+  textEffect: lang == "ar" ? "تأتيرات النص" : "Text Effect",
+  tEshadow: "<bdo dir='rtl'>ضل</bdo>",
+  tEThinShadow: "<bdo dir='rtl'>ظل خفيف</bdo>",
+  tEHardShadow: "<bdo dir='rtl'>ظل ضاهر</bdo>",
+  tEPushedShadow: "<bdo dir='rtl'>ظل ملتصق</bdo>",
+  tEFlatShadow: "<bdo dir='rtl'>ظل مسطح</bdo>",
+  tEGlowShadow: "<bdo dir='rtl'>مشع</bdo>",
+  tE3DShadow: "<bdo dir='rtl'>تلاتي الأبعاد</bdo>",
+  tEIsometricShadow: "<bdo dir='rtl'>متساوي القياس</bdo>",
+  tEAnaglyphicShadow: "<bdo dir='rtl'>شتت للإنتباه</bdo>",
+  /*----------Section options-----------*/
+  sectionOptions: "<bdo dir='rtl'>خيارات الاقسام</bdo>",
+  fullHeight: "<bdo dir='rtl'>ارتفاع كامل</bdo>",
+  boxed: "<bdo dir='rtl'>وضع في صندوق</bdo>",
+  margin: "<bdo dir='rtl'>هامِش</bdo>",
+  marginX2: "<bdo dir='rtl'>الهامش x2</bdo>",
+  marginX3: "<bdo dir='rtl'>الهامش x3</bdo>",
+  overall: "<bdo dir='rtl'>إجمالي  </bdo>",
+  separatorScreen: "<bdo dir='rtl'>فاصل الشاشة  </bdo>",
+  separatorContent: "<bdo dir='rtl'>فاصل المحتوى</bdo>",
+  /*----------Button effect-----------*/
+  btnEffect: "<bdo dir='rtl'>تاتيرات الأزرار</bdo>",
+  be_3D: "<bdo dir='rtl'>تلاتي ابعاد</bdo>",
+  be_Pill: "<bdo dir='rtl'>حبة</bdo>",
+  be_Zoom: "<bdo dir='rtl'>تكبير</bdo>",
+  be_Up: "<bdo dir='rtl'>اعلى</bdo>",
+  be_Shadow: "<bdo dir='rtl'>ضل</bdo>",
+  be_Shadow2: "<bdo dir='rtl'>ضل 2</bdo>",
+  be_Hiddenicon: "<bdo dir='rtl'>ايقونة مخفية</bdo>",
+  be_Blick: "<bdo dir='rtl'>بليك</bdo>",
+  be_Wave: "<bdo dir='rtl'>متموج</bdo>",
+  be_Glow: "<bdo dir='rtl'>مشع</bdo>",
+  /*----------Button type-----------*/
+  btnType: "<bdo dir='rtl'>نوع الزر</bdo>",
+  prm: "<bdo dir='rtl'>اولي</bdo>",
+  sec: "<bdo dir='rtl'>تانوي</bdo>",
+  sus: "<bdo dir='rtl'>نجاح</bdo>",
+  dng: "<bdo dir='rtl'>خطر</bdo>",
+  war: "<bdo dir='rtl'>تحدير</bdo>",
+  inf: "<bdo dir='rtl'>معلومة</bdo>",
+  lgt: "<bdo dir='rtl'>ابيض</bdo>",
+  drk: "<bdo dir='rtl'>اسود</bdo>",
+  fab: "<bdo dir='rtl'>فيسبوك</bdo>",
+  gog: "<bdo dir='rtl'>جوجل</bdo>",
+  twt: "<bdo dir='rtl'>تويتر</bdo>",
+  lked: "<bdo dir='rtl'>لانكدين</bdo>",
+  lnk: "<bdo dir='rtl'>رابط</bdo>",
+  /*----------Form type-----------*/
+  formType: "<bdo dir='rtl'>نوع الحقل</bdo>",
+  verticale: "<bdo dir='rtl'>عمودي</bdo>",
+  horizontal: "<bdo dir='rtl'>أفقي</bdo>",
+  /*----------Box options-----------*/
+  boxOption: "<bdo dir='rtl'>خيارات الصندوق</bdo>",
+  border: "<bdo dir='rtl'>الحواف</bdo>",
+  borderx2: "<bdo dir='rtl'>x2 الحواف</bdo>",
+  paddingx2: "<bdo dir='rtl'>x2 هوامش داخلية</bdo>",
+  paddingx3: "<bdo dir='rtl'>x3 هوامش داخلية</bdo>",
+  paddingx4: "<bdo dir='rtl'>x4 هوامش داخلية</bdo>",
+  marginX4: "<bdo dir='rtl'>x4 هوامش خارجية</bdo>",
+  rounded: "<bdo dir='rtl'>مدور</bdo>",
+  circle: "<bdo dir='rtl'>دائري</bdo>",
+  /*---------- Color scheme -----------*/
+  colorScheme: "<bdo dir='rtl'>نظام الألوان</bdo>",
+  light: "<bdo dir='rtl'>مضيئ</bdo>",
+  dark: "<bdo dir='rtl'>داكن</bdo>",
+  dream: "<bdo dir='rtl'>حلم</bdo>",
+  apple: "<bdo dir='rtl'>ابل</bdo>",
+  mono: "<bdo dir='rtl'>موحد</bdo>",
+  clean: "<bdo dir='rtl'>نظيف</bdo>",
+  night: "<bdo dir='rtl'>ليلي</bdo>",
+  /*---------- Navbar position -----------*/
+  navbarPosition: "<bdo dir='rtl'>تموضع القائمة</bdo>",
+  absoluteTop: "<bdo dir='rtl'>الوضع الإعتيادي</bdo>",
+  stickyTop: "<bdo dir='rtl'>وضع متبث فوق الصفحة</bdo>",
+  fixedTop: "<bdo dir='rtl'>تتبيث اعلى</bdo>",
+  fixedButtom: "<bdo dir='rtl'>تتبيث أسفل</bdo>",
+  showOnScroll: "<bdo dir='rtl'>إضهار اتناء التحريك</bdo>",
+  hideOnScroll: "<bdo dir='rtl'>إخفاء اتناء التحريك</bdo>",
+  /*---------- Navbar options -----------*/
+  navbarOptions: "<bdo dir='rtl'>خيارات القائمة</bdo>",
+  SeparatorScreen: "<bdo dir='rtl'>فاصل الشاشة</bdo>",
+  SeparatorContent: "<bdo dir='rtl'>فاصل المحتوى</bdo>",
+  /*---------- SVG options -----------*/
+  svgOptions: "<bdo dir='rtl'>خيارات</bdo> SVG",
+  /*---------- Sub Navigation options -----------*/
+  subNavOptions: "<bdo dir='rtl'>إعدادات القائمة الفرعية</bdo>",
+  /*---------- galleryItemOptions -----------*/
+  galleryItemOptionsTitle: "<bdo dir='rtl'>خيارات معرض الصور</bdo>",
+  styleNumber: "<bdo dir='rtl'>شكل رقم </bdo>"
 
 
 };
@@ -108,6 +210,7 @@ var builderOptions = {
         "header:not(.section-carousel)",
       ],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -132,6 +235,7 @@ var builderOptions = {
     {
       domIdentif: ["div.modal-alert"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -156,6 +260,7 @@ var builderOptions = {
     {
       domIdentif: ["div.modal-panel"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -179,6 +284,7 @@ var builderOptions = {
     {
       domIdentif: ["section.section-carousel", "header.section-carousel"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -205,6 +311,7 @@ var builderOptions = {
     {
       domIdentif: ["nav.navbar"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -228,6 +335,7 @@ var builderOptions = {
     {
       domIdentif: [".modal .modal-dialog"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -2637,16 +2745,6 @@ var builderOptions = {
         "ElementCBS(buttonOptions)",
       ],
       elementStyle: [
-        "BackgroundImageES",
-        "BackgroundPositionES",
-        "BackgroundColorES",
-        "BackgroundRepeatES",
-        "BackgroundSizeES",
-        "BorderRadiusES",
-        "BorderWidthES",
-        "BorderColorES",
-        "BorderStyleES",
-        "BoxShadowES",
         "FontFamilyES",
         "FontColorES",
         "FontSizeES",
@@ -2657,6 +2755,16 @@ var builderOptions = {
         "TextDecorationES",
         "TextTransformES",
         "TextShadowES",
+        "BackgroundColorES",
+        "BackgroundImageES",
+        "BackgroundPositionES",
+        "BackgroundRepeatES",
+        "BackgroundSizeES",
+        "BorderWidthES",
+        "BorderColorES",
+        "BorderStyleES",
+        "BorderRadiusES",
+        "BoxShadowES",
         "MarginES",
         "PaddingES",
       ],
@@ -2688,16 +2796,6 @@ var builderOptions = {
         "ElementCBS(buttonOptions)",
       ],
       elementStyle: [
-        "BackgroundImageES",
-        "BackgroundPositionES",
-        "BackgroundColorES",
-        "BackgroundRepeatES",
-        "BackgroundSizeES",
-        "BorderRadiusES",
-        "BorderWidthES",
-        "BorderColorES",
-        "BorderStyleES",
-        "BoxShadowES",
         "FontFamilyES",
         "FontColorES",
         "FontSizeES",
@@ -2708,6 +2806,16 @@ var builderOptions = {
         "TextDecorationES",
         "TextTransformES",
         "TextShadowES",
+        "BackgroundColorES",
+        "BackgroundImageES",
+        "BackgroundPositionES",
+        "BackgroundRepeatES",
+        "BackgroundSizeES",
+        "BorderWidthES",
+        "BorderColorES",
+        "BorderStyleES",
+        "BorderRadiusES",
+        "BoxShadowES",
         "MarginES",
         "PaddingES",
       ],
@@ -2736,13 +2844,13 @@ var builderOptions = {
         "ElementMediaTextAlign",
         "MarginSettings",
         "ElementParallax",
-        "ElementCBS(styleBoxOptions)",
+        // "ElementCBS(styleBoxOptions)",
       ],
       elementStyle: [
-        "BorderRadiusES",
         "BorderWidthES",
         "BorderStyleES",
         "BorderColorES",
+        "BorderRadiusES",
         "BoxShadowES",
         "PositionES",
         "ZIndexES",
@@ -2773,13 +2881,13 @@ var builderOptions = {
         "ElementMediaTextAlign",
         "MarginSettings",
         "ElementParallax",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
       elementStyle: [
-        "BorderRadiusES",
         "BorderWidthES",
         "BorderStyleES",
         "BorderColorES",
+        "BorderRadiusES",
         "BoxShadowES",
         "PositionES",
         "ZIndexES",
@@ -2844,19 +2952,19 @@ var builderOptions = {
         "ElementMediaTextAlign",
         "MarginSettings",
         "ElementCBS(colorSvgOptions)",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
       elementStyle: [
         "FillColorES",
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
-        "BorderRadiusES",
         "BorderWidthES",
         "BorderColorES",
         "BorderStyleES",
+        "BorderRadiusES",
         "BoxShadowES",
         "MarginES",
         "PaddingES",
@@ -2901,7 +3009,7 @@ var builderOptions = {
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -2921,7 +3029,7 @@ var builderOptions = {
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -2943,7 +3051,7 @@ var builderOptions = {
         "ElementMediaTextAlign",
         "MarginSettings",
         "ElementCBS(FormOptions)",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -2976,19 +3084,6 @@ var builderOptions = {
         "TextAlignRight",
       ],
       elementStyle: [
-        "BackgroundPositionES",
-        "BackgroundColorES",
-        "BackgroundImageES",
-        "BackgroundRepeatES",
-        "BackgroundSizeES",
-        "BorderRadiusES",
-        "BorderWidthES",
-        "BorderColorES",
-        "BorderStyleES",
-        "BoxShadowES",
-        "PositionES",
-        "ZIndexES",
-        "CoordinatesES",
         "FontFamilyES",
         "FontColorES",
         "FontSizeES",
@@ -2999,6 +3094,20 @@ var builderOptions = {
         "TextDecorationES",
         "TextTransformES",
         "TextShadowES",
+        "ElementCBS(styleTextOptions)",
+        "BackgroundColorES",
+        "BackgroundImageES",
+        "BackgroundPositionES",
+        "BackgroundRepeatES",
+        "BackgroundSizeES",
+        "BorderWidthES",
+        "BorderStyleES",
+        "BorderColorES",
+        "BorderRadiusES",
+        "BoxShadowES",
+        "PositionES",
+        "ZIndexES",
+        "CoordinatesES",
         "MarginES",
         "PaddingES",
         "SizeES",
@@ -3008,9 +3117,6 @@ var builderOptions = {
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(colorTextOptions)",
-        "ElementCBS(sizeTextOptions)",
-        "ElementCBS(styleTextOptions)",
       ],
     },
     {
@@ -3037,20 +3143,19 @@ var builderOptions = {
         "FontWeightES",
         "LetterSpacingES",
         "LineHeightES",
-        "MarginES",
-        "PaddingES",
         "TextDecorationES",
         "TextShadowES",
         "TextTransformES",
+        "ElementCBS(styleTextOptions)",
+        "MarginES",
+        "PaddingES",
       ],
       elementSettings: [
         "ElementSkin",
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(colorTextOptions)",
-        "ElementCBS(sizeTextOptions)",
-        "ElementCBS(styleTextOptions)",
+        
       ],
     },
     {
@@ -3131,13 +3236,8 @@ var builderOptions = {
         "TextRtl",
       ],
       elementStyle: [
-        "BackgroundImageES",
-        "BackgroundPositionES",
-        "BackgroundColorES",
-        "BackgroundRepeatES",
-        "BackgroundSizeES",
-        "FontColorES",
         "FontFamilyES",
+        "FontColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3146,6 +3246,11 @@ var builderOptions = {
         "TextDecorationES",
         "TextTransformES",
         "TextShadowES",
+        "BackgroundColorES",
+        "BackgroundImageES",
+        "BackgroundPositionES",
+        "BackgroundRepeatES",
+        "BackgroundSizeES",
       ],
       elementSettings: [
         "ElementSkin",
@@ -3187,16 +3292,6 @@ var builderOptions = {
         "ElementCBS(buttonOptions)",
       ],
       elementStyle: [
-        "BackgroundImageES",
-        "BackgroundPositionES",
-        "BackgroundColorES",
-        "BackgroundRepeatES",
-        "BackgroundSizeES",
-        "BorderRadiusES",
-        "BorderWidthES",
-        "BorderColorES",
-        "BorderStyleES",
-        "BoxShadowES",
         "FontFamilyES",
         "FontColorES",
         "FontSizeES",
@@ -3207,6 +3302,16 @@ var builderOptions = {
         "TextDecorationES",
         "TextTransformES",
         "TextShadowES",
+        "BackgroundColorES",
+        "BackgroundImageES",
+        "BackgroundPositionES",
+        "BackgroundRepeatES",
+        "BackgroundSizeES",
+        "BorderWidthES",
+        "BorderStyleES",
+        "BorderColorES",
+        "BorderRadiusES",
+        "BoxShadowES",
         "MarginES",
         "PaddingES",
       ],
@@ -3242,10 +3347,8 @@ var builderOptions = {
         "TextAlignRight",
       ],
       elementStyle: [
-        "MarginES",
-        "PaddingES",
-        "FontColorES",
         "FontFamilyES",
+        "FontColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3254,14 +3357,16 @@ var builderOptions = {
         "TextDecorationES",
         "TextTransformES",
         "TextShadowES",
+        "ElementCBS(styleTextOptions)",
+        "MarginES",
+        "PaddingES",
       ],
       elementSettings: [
         "ElementSkin",
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(colorTextOptions)",
-        "ElementCBS(styleTextOptions)",
+        
       ],
     },
     {
@@ -3281,15 +3386,15 @@ var builderOptions = {
         "DelElement",
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
-        "BorderRadiusES",
         "BorderWidthES",
         "BorderStyleES",
         "BorderColorES",
+        "BorderRadiusES",
         "BoxShadowES",
         "PositionES",
         "CoordinatesES",
@@ -3302,7 +3407,7 @@ var builderOptions = {
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -3321,19 +3426,19 @@ var builderOptions = {
         "DelElement",
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
-        "BorderRadiusES",
         "BorderWidthES",
         "BorderStyleES",
         "BorderColorES",
+        "BorderRadiusES",
+        "BoxShadowES",
         "MarginES",
         "PaddingES",
         "SizeES",
-        "BoxShadowES",
       ],
       elementSettings: [
         "ElementSkin",
@@ -3341,7 +3446,7 @@ var builderOptions = {
         "ElementMediaTextAlign",
         "MarginSettings",
         "ElementCBS(galleryItemOptions)",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -3365,14 +3470,14 @@ var builderOptions = {
         "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
-        "BorderRadiusES",
         "BorderWidthES",
         "BorderStyleES",
         "BorderColorES",
+        "BorderRadiusES",
+        "BoxShadowES",
         "MarginES",
         "PaddingES",
         "SizeES",
-        "BoxShadowES",
       ],
       elementSettings: [
         "ElementSkin",
@@ -3380,7 +3485,7 @@ var builderOptions = {
         "ElementMediaTextAlign",
         "MarginSettings",
         "ElementCBS(galleryItemOptions)",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -3402,9 +3507,9 @@ var builderOptions = {
         "PaddingSettings",
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
       ],
@@ -3422,9 +3527,9 @@ var builderOptions = {
         "DelElement",
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
       ],
@@ -3433,7 +3538,7 @@ var builderOptions = {
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
     },
     {
@@ -3450,9 +3555,9 @@ var builderOptions = {
         "ElementCBS(styleSubNavOptions)",
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
       ],
@@ -3476,9 +3581,9 @@ var builderOptions = {
         "PaddingSettings",
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
       ],
@@ -3495,12 +3600,12 @@ var builderOptions = {
         "Visibility",
         "ElementMediaTextAlign",
         "MarginSettings",
-        "ElementCBS(styleBoxOptions)",
+        // ElementCBS(styleBoxOptions),
       ],
       elementStyle: [
+        "BackgroundColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
         "MarginES",
@@ -3549,40 +3654,40 @@ var builderOptions = {
   ],
   customControlElements: {
     navBarPosition: {
-      title: "Navbar position",
+      title: language.navbarPosition,
       buttons: [
         {
-          title: "Sticky top",
+          title: language.stickyTop,
           innerHTML:
             '<img alt="Sticky top" src="images/builder-thumbs/sticky.png"/>',
           value: "sticky-top",
         },
         {
-          title: "Absolute top",
+          title: language.absoluteTop,
           innerHTML:
             '<img alt="Absolute top" src="images/builder-thumbs/absolute-top.png"/>',
           value: "absolute-top",
         },
         {
-          title: "Fixed top",
+          title: language.fixedTop,
           innerHTML:
             '<img alt="Fixed top" src="images/builder-thumbs/fixed-top.png"/>',
           value: "fixed-top",
         },
         {
-          title: "Fixed bottom",
+          title: language.fixedButtom,
           innerHTML:
             '<img alt="Fixed bottom" src="images/builder-thumbs/fixed-bottom.png"/>',
           value: "fixed-bottom",
         },
         {
-          title: "Show on scroll",
+          title: language.showOnScroll,
           innerHTML:
             '<img alt="show-on-scroll" src="images/builder-thumbs/hide-on-scroll.png"/>',
           value: "show-on-scroll",
         },
         {
-          title: "Hide on scroll",
+          title: language.hideOnScroll,
           innerHTML:
             '<img alt="show-on-scroll" src="images/builder-thumbs/hide-on-scroll.png"/>',
           value: "hide-on-scroll",
@@ -3592,51 +3697,51 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     navBarOptions: {
-      title: "Navbar options",
+      title: language.navbarOptions,
       buttons: [
         {
-          title: "Boxed",
+          title: language.boxed,
           innerHTML: '<img alt="Boxed" src="images/builder-thumbs/boxed.png"/>',
           value: "boxed",
         },
         {
-          title: "Shadow",
+          title: language.be_Shadow,
           innerHTML:
             '<img alt="Shadow" src="images/builder-thumbs/shadow.png"/>',
           value: "shadow",
         },
         {
-          title: "Margin",
+          title: language.margin,
           innerHTML:
             '<img alt="Margin" src="images/builder-thumbs/margin.png"/>',
           value: "margin",
         },
         {
-          title: "Margin x2",
+          title: language.marginX2,
           innerHTML:
             '<img alt="Margin x2" src="images/builder-thumbs/margin.png"/>',
           value: "margin-x2",
         },
         {
-          title: "Padding",
+          title: language.padding,
           innerHTML:
             '<img alt="Padding" src="images/builder-thumbs/padding.png"/>',
           value: "padding",
         },
         {
-          title: "Padding x2",
+          title: language.paddingx2,
           innerHTML:
             '<img alt="Padding x2" src="images/builder-thumbs/padding.png"/>',
           value: "padding-x2",
         },
         {
-          title: "Separator screen",
+          title: language.separatorScreen,
           innerHTML:
             '<img alt="Border bottom" src="images/builder-thumbs/border-bottom.png"/>',
           value: "border-bottom",
         },
         {
-          title: "Separator content",
+          title: language.separatorContent,
           innerHTML:
             '<img alt="Border bottom" src="images/builder-thumbs/border-bottom-container.png"/>',
           value: "border-bottom-container",
@@ -3646,51 +3751,51 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     sectionOptions: {
-      title: "Section options",
+      title: language.sectionOptions,
       buttons: [
         {
-          title: "Full height",
+          title: language.fullHeight,
           innerHTML:
             '<img alt="100% height" src="images/builder-thumbs/full-height.png"/>',
           value: "full-height",
         },
         {
-          title: "Boxed",
+          title: language.boxed,
           innerHTML: '<img alt="Boxed" src="images/builder-thumbs/boxed.png"/>',
           value: "boxed",
         },
         {
-          title: "Margin",
+          title: language.margin,
           innerHTML:
             '<img alt="Margin" src="images/builder-thumbs/margin.png"/>',
           value: "margin",
         },
         {
-          title: "Margin x2",
+          title: language.marginX2,
           innerHTML:
             '<img alt="Margin x2" src="images/builder-thumbs/margin.png"/>',
           value: "margin-x2",
         },
         {
-          title: "Margin x3",
+          title: language.marginX3,
           innerHTML:
             '<img alt="Margin x2" src="images/builder-thumbs/margin.png"/>',
           value: "margin-x3",
         },
         {
-          title: "Overall",
+          title: language.overall,
           innerHTML:
             '<img alt="Overall" src="images/builder-thumbs/overall.png"/>',
           value: "overall",
         },
         {
-          title: "Separator screen",
+          title: language.separatorScreen,
           innerHTML:
             '<img alt="Border bottom" src="images/builder-thumbs/border-bottom.png"/>',
           value: "section-line",
         },
         {
-          title: "Separator content",
+          title: language.separatorContent,
           innerHTML:
             '<img alt="Border bottom" src="images/builder-thumbs/border-bottom-container.png"/>',
           value: "section-line-container",
@@ -3936,58 +4041,58 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     styleTextOptions: {
-      title: "Text effect",
+      title: language.textEffect,
       buttons: [
         {
-          title: "Shadow",
+          title: language.tEshadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-shadow"><strong>T</strong></h3></div>',
           value: "fx-text-shadow",
         },
         {
-          title: "Thin shadow",
+          title: language.tEThinShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-thin-shadow"><strong>T</strong></h3></div>',
           value: "fx-text-thin-shadow",
         },
         {
-          title: "Hard shadow",
+          title: language.tEHardShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-hard-shadow"><strong>T</strong></h3></div>',
           value: "fx-text-hard-shadow",
         },
         {
-          title: "Pushed",
+          title: language.tEPushedShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-pushed-shadow"><strong>T</strong></h3></div>',
           value: "fx-text-pushed-shadow",
         },
         {
-          title: "Flat shadow",
+          title: language.tEFlatShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-isometric-shadow"><strong>T</strong></h3></div>',
           value: "fx-text-isometric-shadow",
         },
         {
-          title: "Glow",
+          title: language.tEGlowShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-glow"><strong>T</strong></h3></div>',
           value: "fx-text-glow",
         },
         {
-          title: "3D",
+          title: language.tE3DShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-3d"><strong>T</strong></h3></div>',
           value: "fx-text-3d",
         },
         {
-          title: "Isometric",
+          title: language.tEIsometricShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-isometric"><strong>T</strong></h3></div>',
           value: "fx-text-isometric",
         },
         {
-          title: "Anaglyphic",
+          title: language.tEAnaglyphicShadow,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><h3 class="fx-text-anaglyphic"><strong>T</strong></h3></div>',
           value: "fx-text-anaglyphic",
@@ -3997,16 +4102,16 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     sizeTextOptions: {
-      title: "Text size",
+      title: language.textSizeBox,
       buttons: [
         {
-          title: "Small",
+          title: language.textSizeBoxSmall,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><span class="small">Text</span></div>',
           value: "small",
         },
         {
-          title: "Lead",
+          title: language.textSizeBoxLead,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><span class="lead">Text</span></div>',
           value: "lead",
@@ -4016,16 +4121,16 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     colorTextOptions: {
-      title: "Text color",
+      title: language.textColorBox,
       buttons: [
         {
-          title: "Primary",
+          title: language.textColorBoxPrimary,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><strong class="text-primary">Text</strong></div>',
           value: "text-primary",
         },
         {
-          title: "Secondary",
+          title: language.textColorBoxSecondary,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><strong class="text-secondary">Text</strong></div>',
           value: "text-secondary",
@@ -4035,16 +4140,16 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     FormOptions: {
-      title: "Form type",
+      title: language.formType,
       buttons: [
         {
-          title: "Vertical",
+          title: language.verticale,
           innerHTML:
             '<img alt="Shadow" src="images/builder-thumbs/form-vertical.png" />',
           value: "form-vertical",
         },
         {
-          title: "Horizontal",
+          title: language.horizontal,
           innerHTML:
             '<img alt="Shadow" src="images/builder-thumbs/form-inline.png" />',
           value: "form-inline",
@@ -4054,88 +4159,88 @@ var builderOptions = {
       allowSelectNothing: false,
     },
     styleBoxOptions: {
-      title: "Box options",
+      title: language.boxOption,
       buttons: [
         {
-          title: "Shadow",
+          title: language.be_Shadow,
           innerHTML:
             '<img alt="Shadow" src="images/builder-thumbs/shadow.png" />',
           value: "shadow",
         },
         {
-          title: "Default bg",
+          title: language.defaultBack,
           innerHTML:
             '<img alt="Default bg" src="images/builder-thumbs/default-bg.png"/>',
           value: "bg-default",
         },
         {
-          title: "Border",
+          title: language.border,
           innerHTML:
             '<img alt="Border" src="images/builder-thumbs/border.png"/>',
           value: "border",
         },
         {
-          title: "Border x2",
+          title: language.borderx2,
           innerHTML:
             '<img alt="Border x2" src="images/builder-thumbs/border-x2.png"/>',
           value: "border-x2",
         },
         {
-          title: "Padding",
+          title: language.padding,
           innerHTML:
             '<img alt="Padding" src="images/builder-thumbs/padding.png" />',
           value: "padding",
         },
         {
-          title: "Padding x2",
+          title: language.paddingx2,
           innerHTML:
             '<img alt="Padding x2" src="images/builder-thumbs/padding.png" />',
           value: "padding-x2",
         },
         {
-          title: "Padding x3",
+          title: language.paddingx3,
           innerHTML:
             '<img alt="Padding x3" src="images/builder-thumbs/padding.png" />',
           value: "padding-x3",
         },
         {
-          title: "Padding x4",
+          title: language.paddingx4,
           innerHTML:
             '<img alt="Padding x4" src="images/builder-thumbs/padding.png" />',
           value: "padding-x4",
         },
         {
-          title: "Margin",
+          title: language.margin,
           innerHTML:
             '<img alt="margin" src="images/builder-thumbs/margin.png" />',
           value: "margin",
         },
         {
-          title: "Margin x2",
+          title: language.marginX2,
           innerHTML:
             '<img alt="margin x2" src="images/builder-thumbs/margin.png" />',
           value: "margin-x2",
         },
         {
-          title: "Margin x3",
+          title: language.marginX3,
           innerHTML:
             '<img alt="margin x3" src="images/builder-thumbs/margin.png" />',
           value: "margin-x3",
         },
         {
-          title: "Margin x4",
+          title: language.marginX4,
           innerHTML:
             '<img alt="margin x4" src="images/builder-thumbs/margin.png" />',
           value: "margin-x4",
         },
         {
-          title: "Rounded",
+          title: language.rounded,
           innerHTML:
             '<img alt="Rounded" src="images/builder-thumbs/rounded.png"/>',
           value: "rounded",
         },
         {
-          title: "Circle",
+          title: language.circle,
           innerHTML:
             '<img alt="Circle" src="images/builder-thumbs/rounded-circle.png"/>',
           value: "rounded-circle",
@@ -4145,64 +4250,64 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     galleryItemOptions: {
-      title: "Gallery item options",
+      title: language.galleryItemOptionsTitle,
       buttons: [
         {
-          title: "Style 1",
+          title: `${language.styleNumber}: 1`,
           innerHTML:
             '<img alt="Item style 1" src="images/builder-thumbs/gallery-style-1.png" />',
           value: "gallery-style-1",
         },
         {
-          title: "Style 2",
+          title: `${language.styleNumber}: 2`,
           innerHTML:
             '<img alt="Item style 2" src="images/builder-thumbs/gallery-style-2.png" />',
           value: "gallery-style-2",
         },
         {
-          title: "Style 3",
+          title: `${language.styleNumber}: 3`,
           innerHTML:
             '<img alt="Item style 3" src="images/builder-thumbs/gallery-style-3.png" />',
           value: "gallery-style-3",
         },
         {
-          title: "Style 4",
+          title: `${language.styleNumber}: 4`,
           innerHTML:
             '<img alt="Item style 4" src="images/builder-thumbs/gallery-style-4.png" />',
           value: "gallery-style-4",
         },
         {
-          title: "Style 5",
+          title: `${language.styleNumber}: 5`,
           innerHTML:
             '<img alt="Item style 5" src="images/builder-thumbs/gallery-style-5.png" />',
           value: "gallery-style-5",
         },
         {
-          title: "Style 6",
+          title: `${language.styleNumber}: 6`,
           innerHTML:
             '<img alt="Item style 6" src="images/builder-thumbs/gallery-style-6.png" />',
           value: "gallery-style-6",
         },
         {
-          title: "Style 7",
+          title: `${language.styleNumber}: 7`,
           innerHTML:
             '<img alt="Item style 7" src="images/builder-thumbs/gallery-style-7.png" />',
           value: "gallery-style-7",
         },
         {
-          title: "Style 8",
+          title: `${language.styleNumber}: 8`,
           innerHTML:
             '<img alt="Item style 8" src="images/builder-thumbs/gallery-style-8.png" />',
           value: "gallery-style-8",
         },
         {
-          title: "Style 9",
+          title: `${language.styleNumber}: 9`,
           innerHTML:
             '<img alt="Item style 9" src="images/builder-thumbs/gallery-style-9.png" />',
           value: "gallery-style-9",
         },
         {
-          title: "Style 10",
+          title: `${language.styleNumber}: 10`,
           innerHTML:
             '<img alt="Item style 10" src="images/builder-thumbs/gallery-style-10.png" />',
           value: "gallery-style-10",
@@ -4212,40 +4317,40 @@ var builderOptions = {
       allowSelectNothing: false,
     },
     styleSubNavOptions: {
-      title: "Navigation options",
+      title: language.subNavOptions,
       buttons: [
         {
-          title: "Shadow",
+          title: language.be_Shadow,
           innerHTML:
             '<img alt="Shadow" src="images/builder-thumbs/shadow.png" />',
           value: "shadow",
         },
         {
-          title: "Default bg",
+          title: language.defaultBack,
           innerHTML:
             '<img alt="Default bg" src="images/builder-thumbs/default-bg.png"/>',
           value: "bg-default",
         },
         {
-          title: "Padding",
+          title: language.padding,
           innerHTML:
             '<img alt="Padding" src="images/builder-thumbs/padding.png" />',
           value: "padding",
         },
         {
-          title: "Padding x2",
+          title: language.paddingx2,
           innerHTML:
             '<img alt="Padding x2" src="images/builder-thumbs/padding.png" />',
           value: "padding-x2",
         },
         {
-          title: "Padding x3",
+          title: language.paddingx3,
           innerHTML:
             '<img alt="Padding x3" src="images/builder-thumbs/padding.png" />',
           value: "padding-x3",
         },
         {
-          title: "Padding x4",
+          title: language.paddingx4,
           innerHTML:
             '<img alt="Padding x4" src="images/builder-thumbs/padding.png" />',
           value: "padding-x4",
@@ -4287,22 +4392,22 @@ var builderOptions = {
     //            allowSelectNothing: true
     //        },
     colorSvgOptions: {
-      title: "SVG options",
+      title: language.svgOptions,
       buttons: [
         {
-          title: "Default",
+          title: language.default,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><svg width="80px" height="60px" viewBox="0 0 80 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-default"><path d="M40,46 C47.1797017,46 53,40.1797017 53,33 C53,28.2135322 48.6666667,21.8801988 40,14 C31.3333333,21.8801988 27,28.2135322 27,33 C27,40.1797017 32.8202983,46 40,46 Z" id="drop"></path></svg></div>',
           value: "svg-default",
         },
         {
-          title: "Primary",
+          title: language.primary,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><svg width="80px" height="60px" viewBox="0 0 80 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-primary"><path d="M40,46 C47.1797017,46 53,40.1797017 53,33 C53,28.2135322 48.6666667,21.8801988 40,14 C31.3333333,21.8801988 27,28.2135322 27,33 C27,40.1797017 32.8202983,46 40,46 Z" id="drop"></path></svg></div>',
           value: "svg-primary",
         },
         {
-          title: "Secondary",
+          title: language.secondary,
           innerHTML:
             '<div class="preview-container d-flex align-items-center text-center"><svg width="80px" height="60px" viewBox="0 0 80 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-secondary"><path d="M40,46 C47.1797017,46 53,40.1797017 53,33 C53,28.2135322 48.6666667,21.8801988 40,14 C31.3333333,21.8801988 27,28.2135322 27,33 C27,40.1797017 32.8202983,46 40,46 Z" id="drop"></path></svg></div>',
           value: "svg-secondary",
@@ -4312,46 +4417,46 @@ var builderOptions = {
       allowSelectNothing: true,
     },
     mapColorScheme: {
-      title: "Color scheme",
+      title: language.colorScheme,
       buttons: [
         {
-          title: "Light",
+          title: language.light,
           innerHTML:
             '<img alt="Light" src="images/builder-thumbs/map-light.png"/>',
           value: "light",
         },
         {
-          title: "Dark",
+          title: language.dark,
           innerHTML:
             '<img alt="Dark" src="images/builder-thumbs/map-dark.png"/>',
           value: "dark",
         },
         {
-          title: "Dream",
+          title: language.dream,
           innerHTML:
             '<img alt="Dream" src="images/builder-thumbs/map-dream.png"/>',
           value: "dream",
         },
         {
-          title: "Apple",
+          title: language.apple,
           innerHTML:
             '<img alt="Apple" src="images/builder-thumbs/map-apple.png"/>',
           value: "apple",
         },
         {
-          title: "Mono",
+          title: language.mono,
           innerHTML:
             '<img alt="Mono" src="images/builder-thumbs/map-mono.png"/>',
           value: "mono",
         },
         {
-          title: "Clean",
+          title: language.clean,
           innerHTML:
             '<img alt="clean" src="images/builder-thumbs/map-clean.png"/>',
           value: "clean",
         },
         {
-          title: "Night",
+          title: language.night,
           innerHTML:
             '<img alt="night" src="images/builder-thumbs/map-night.png"/>',
           value: "night",
@@ -4361,127 +4466,127 @@ var builderOptions = {
       allowSelectNothing: false,
     },
     buttonType: {
-      title: "Button type",
+      title: language.btnType,
       buttons: [
         {
           innerHTML:
-            '<button type="button" class="btn btn-primary">Primary</button>',
+            '<button type="button" class="btn btn-primary">' + language.prm + '</button>',
           value: "btn-primary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-primary">Primary</button>',
+            '<button type="button" class="btn btn-outline-primary">' + language.prm + '</button>',
           value: "btn-outline-primary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-secondary">Secondary</button>',
+            '<button type="button" class="btn btn-secondary">' + language.sec + '</button>',
           value: "btn-secondary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-secondary">Secondary</button>',
+            '<button type="button" class="btn btn-outline-secondary">' + language.sec + '</button>',
           value: "btn-outline-secondary",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-success">Success</button>',
+            '<button type="button" class="btn btn-success">' + language.sus + '</button>',
           value: "btn-success",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-success">Success</button>',
+            '<button type="button" class="btn btn-outline-success">' + language.sus + '</button>',
           value: "btn-outline-success",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-danger">Danger</button>',
+            '<button type="button" class="btn btn-danger">' + language.dng + '</button>',
           value: "btn-danger",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-danger">Danger</button>',
+            '<button type="button" class="btn btn-outline-danger">' + language.dng + '</button>',
           value: "btn-outline-danger",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-warning">Warning</button>',
+            '<button type="button" class="btn btn-warning">' + language.war + '</button>',
           value: "btn-warning",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-warning">Warning</button>',
+            '<button type="button" class="btn btn-outline-warning">' + language.war + '</button>',
           value: "btn-outline-warning",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-info">Info</button>',
+          innerHTML: '<button type="button" class="btn btn-info">' + language.inf + '</button>',
           value: "btn-info",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-info">Info</button>',
+            '<button type="button" class="btn btn-outline-info">' + language.inf + '</button>',
           value: "btn-outline-info",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-light">Light</button>',
+            '<button type="button" class="btn btn-light">' + language.lgt + '</button>',
           value: "btn-light",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-light">Light</button>',
+            '<button type="button" class="btn btn-outline-light">' + language.lgt + '</button>',
           value: "btn-outline-light",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-dark">Dark</button>',
+          innerHTML: '<button type="button" class="btn btn-dark">' + language.drk + '</button>',
           value: "btn-dark",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-dark">Dark</button>',
+            '<button type="button" class="btn btn-outline-dark">' + language.drk + '</button>',
           value: "btn-outline-dark",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-fb">Facebook</button>',
+            '<button type="button" class="btn btn-fb">' + language.fab + '</button>',
           value: "btn-fb",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-fb">Facebook</button>',
+            '<button type="button" class="btn btn-outline-fb">' + language.fab + '</button>',
           value: "btn-outline-fb",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-gp">Google</button>',
+          innerHTML: '<button type="button" class="btn btn-gp">' + language.gog + '</button>',
           value: "btn-gp",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-gp">Google</button>',
+            '<button type="button" class="btn btn-outline-gp">' + language.gog + '</button>',
           value: "btn-outline-gp",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-tw">Twitter</button>',
+            '<button type="button" class="btn btn-tw">' + language.twt + '</button>',
           value: "btn-tw",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-tw">Twitter</button>',
+            '<button type="button" class="btn btn-outline-tw">' + language.twt + '</button>',
           value: "btn-outline-tw",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-li">Linkedin</button>',
+            '<button type="button" class="btn btn-li">' + language.lked + '</button>',
           value: "btn-li",
         },
         {
           innerHTML:
-            '<button type="button" class="btn btn-outline-li">Linkedin</button>',
+            '<button type="button" class="btn btn-outline-li">' + language.lked + '</button>',
           value: "btn-outline-li",
         },
         {
-          innerHTML: '<button type="button" class="btn btn-link">Link</button>',
+          innerHTML: '<button type="button" class="btn btn-link">' + language.lnk + '</button>',
           value: "btn-link",
         },
       ],
@@ -4489,66 +4594,66 @@ var builderOptions = {
       allowSelectNothing: false,
     },
     buttonOptions: {
-      title: "Button effect",
+      title: language.btnEffect,
       buttons: [
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-3d">3D</button>',
+            '<button type="button" class="btn btn-primary fx-btn-3d">' + language.be_3D + '</button>',
           value: "fx-btn-3d",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-pill">Pill</button>',
+            '<button type="button" class="btn btn-primary fx-btn-pill">' + language.be_Pill + '</button>',
           value: "fx-btn-pill",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-zoom">Zoom</button>',
+            '<button type="button" class="btn btn-primary fx-btn-zoom">' + language.be_Zoom + '</button>',
           value: "fx-btn-zoom",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-up">Up</button>',
+            '<button type="button" class="btn btn-primary fx-btn-up">' + language.be_Up + '</button>',
           value: "fx-btn-up",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-shadow">Shadow</button>',
+            '<button type="button" class="btn btn-primary fx-btn-shadow">' + language.be_Shadow + '</button>',
           value: "fx-btn-shadow",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-hard-shadow">Shadow 2</button>',
+            '<button type="button" class="btn btn-primary fx-btn-hard-shadow">' + language.be_Shadow2 + '</button>',
           value: "fx-btn-hard-shadow",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-hidden-icon">Hidden icon</button>',
+            '<button type="button" class="btn btn-primary fx-btn-hidden-icon">' + language.be_Hiddenicon + '</button>',
           value: "fx-btn-hidden-icon",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-blick">Blick</button>',
+            '<button type="button" class="btn btn-primary fx-btn-blick">' + language.be_Blick + '</button>',
           value: "fx-btn-blick",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-wave">Wave</button>',
+            '<button type="button" class="btn btn-primary fx-btn-wave">' + language.be_Wave + '</button>',
           value: "fx-btn-wave",
         },
         {
           title: "",
           innerHTML:
-            '<button type="button" class="btn btn-primary fx-btn-glow">Glow</button>',
+            '<button type="button" class="btn btn-primary fx-btn-glow">' + language.be_Glow + '</button>',
           value: "fx-btn-glow",
         },
       ],
@@ -4557,16 +4662,23 @@ var builderOptions = {
     },
   },
   baseFilesForProject: {
-    css: ["bootstrap.weber.css", "fx.css"],
-    js: ["jquery-2.1.4.min.js", "bootstrap.min.js"],
-    plugins: [
-      "https://maps.googleapis.com/maps/api/js?key=" + googleKey,
-      "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+    css: [
+      'bootstrap.weber.css'
+      , 'fx.css'
     ],
-  },
-  fullVersionSource:
-    "https://codecanyon.net/item/larabuilder-dragdrop-site-builder-and-cms/25279120",
-  previewSettings: {
-    dir: "/tmp/preview", //Directory to upload like /preview or /../preview
+    js: [
+      'jquery-2.1.4.min.js'
+      , 'bootstrap.min.js'
+    ],
+    plugins: [
+      'https://maps.googleapis.com/maps/api/js?key=' + googleKey
+      , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
+    ]
+  }
+  , fullVersionSource: '../../../../membership/extend'
+  , previewSettings: {
+    
+    //Auth::user()->id
+    dir:  userId + '/' + myProjectID //Directory to upload like /preview or /../preview
   },
 };

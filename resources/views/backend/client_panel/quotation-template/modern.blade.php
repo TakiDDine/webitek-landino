@@ -90,7 +90,7 @@
 														</div>
 													</td>
 													<td class="text-right">
-														<img src="{{ asset('public/images/modern-quotation-bg.jpg') }}" class="wp-300 d-none d-md-inline">
+														<img src="{{ asset('images/modern-quotation-bg.jpg') }}" class="wp-300 d-none d-md-inline">
 													</td>
 												 </tr>
 											</tbody>

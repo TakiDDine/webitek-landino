@@ -195,6 +195,7 @@
 
             $mode = ini_get('magic_quotes_gpc');
             $dataPost = $_POST['data'];
+
             if ($mode) {
                 $dataPost = stripslashes($dataPost);
             }

@@ -9,7 +9,7 @@
     <base href="{{ asset('/backend/assets/builder/builder') }}">
     <!--end::Base Path -->
     <meta charset="utf-8" />
-    <title>{{ get_option('site_title', 'Spotlayer Framework') }}</title>
+    <title>{{ get_option('site_title', 'لاندينو') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -30,7 +30,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="first-show">
+<body class="first-show" {!! $try_demo ? "data-model='bootstrap'" :  '' !!} >
     <script src="{{ asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js') }}"></script>
     <style id="builder-style"></style>
 
@@ -38,7 +38,9 @@
         <div class="supra-preloader">
             {{-- <img src="{{ Auth::user()->company_id != '' ? get_company_logo() : get_logo() }}" style="max-height:150px;"
                 alt="{{ _lang('Project Creator') }}" /> --}}
-            <h3> Landino </h3>
+            <div class="logo-preloader">
+                <img src="{{asset('backend/assets/builder/images/logo-blue.svg')}}" />
+            </div>
             <div class="progress-bar-s">
                 <div class="progress">
                     <div class="load"></div>
@@ -112,56 +114,30 @@
                         <i class="rotate icon-blr-lg-mobile"></i>
                     </div>
                 </label>
-                <iframe id="main" src="{{ url('project/larabuilder') }}"></iframe>
+                <iframe id="main" src="{{ Auth::check() ? url('project/landino') : route('demo.builder') }}"></iframe>
+
             </div>
         </div>
 
-        <div class="modal fade" id="elementsSidebar" tabindex="-1" role="dialog" aria-labelledby="elementsSidebar"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="sidebarContainer">
-                        <div id="sidebar_contentHeader" class="myDiv">
-                            <div class="sidebar-header">
-
-                            </div>
-                            <div id="sidebarContent__headerList">
-
-                                <ul id="uiContainer"></ul>
-                            </div>
-                        </div>
-                        <div id="sidebar_contentList" class="sidebar-body myDiv">
-                            <div class="sidebar__elements-header">
-                                <h3 id="sidebarTitle__list-title"></h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                </button>
-                            </div>
-                            <div class="sidebar-body__content" id="sidebarContent__contentList">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="sidebar-dialog-right" id="elementsSidebarRight" data-collapsed="false" role="document">
             <div class="sidebar-content">
                 <div class="sidebarContainer">
                     <div id="sidebar_contentHeader-right" class="myDiv">
                         <div class="sidebar-header">
-                            <h2 class="sidebar-title"><bdo dir="rtl"> لاندينو </bdo></h2>
-                            <img src="images/builder-svg/logo.svg" />
+                            <a href class="brand">
+                                <img src="{{asset('backend/assets/builder/images/logo.svg')}}" />
+                            </a>
                         </div>
                         <div id="sections-sidebar__Triggerer">
-                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button"
-                                data-toggle="modal" data-target="#elementsSidebar" data-collapsed="true">
+                            <button type="button" id="sidebarTriggerer" class="btn btn-primary" role="button" 
+                                data-collapsed="true">
                                 <span>
                                     <bdo dir="rtl">
                                         إضافة عنصر جديد
                                     </bdo>
                                 </span>
-                                <img src="images/builder-svg/plus.svg" width="30" height="30" />
+                                <img src="{{asset('backend/assets/builder/images/builder-svg/plus.svg')}}" width="30" height="30" />
                         </div>
                         <div class="global-style__container">
                             <div id="sidebarRight__Content">
@@ -186,7 +162,7 @@
         <div id="modal-project-container" class="supra"></div>
         <div id="modal-form-container" class="supra font-style-supra"></div>
         <div id="csrf_field" class="csrf_field" style="display: none">{{ csrf_field() }}</div>
-        <div id="userId" class="userId" style="display: none">{{ Auth::user()->id }}</div>
+        <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0 }}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
 
@@ -206,31 +182,35 @@
     <script src="{{ asset('backend/assets/builder/js/lib/htmlmixed.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/lib/xml.js') }}"></script>
 
-    <script>
+    <script  id="erasable" type="text/javascript">
         @if (env('DEMO_MODE') == true)
             var demoMode = 'active';
         @else
             var demoMode = 'no';
 
             @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
-                /* alert('Please note that you did not add your google map key, so it will accure a javascript problem if you add any component which has a google map without adding the key first from settings'); */
             @endif
         @endif
-        var ajaxbase = '{{ url('api/ajax') }}';
-        var baseurl = '{{ url('/') }}';
-        console.log('baseurl', baseurl)
-        console.log('ajaxbase', ajaxbase)
-        var publicpath = "{{ base_path('public') }}";
-        var basepath = "{{ base_path('public/backend/assets/builder') }}";
-        var googleKey = '{{ get_option('google_map_key') }}';
-        var userId = '{{ Auth::user()->id }}';
-        var project_id = 0;
-        var project_file = '';
-        var project_file_name = '';
+        const ajaxbase = '{{ url('api/ajax') }}';
+        const baseurl = '{{ url('/') }}';
+        const template = '{{ $isTemplate }}' ? true : false;
+      
+        const googleKey = '{{ get_option('google_map_key') }}';
+        const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
+        const project_id = template ? '{{ $name }}' : '';
+        const project_file = template ? '{{ $projectfile }}' : '';
+        const project_file_name = template ? '{{ $name }}' : '';
+        const custom_domain = '';
+        const sub_domain = '';
+        const try_demo = false;
+
+        document.getElementById('erasable').innerHTML = "";
+
     </script>
+    
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
-    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" ></script>
 
 
     <script type="text/javascript">

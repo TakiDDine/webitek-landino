@@ -143,7 +143,7 @@
 												    @foreach($project->members as $project_member)
 												    <tr data-id="row_{{ $project_member->id }}">
 														<td>
-															<img src="{{ asset('public/uploads/profile/'.$project_member->profile_picture) }}" class="project-avatar" data-toggle="tooltip" data-placement="top" title="{{ $project_member->name }}">
+															<img src="{{ asset('uploads/profile/'.$project_member->profile_picture) }}" class="project-avatar" data-toggle="tooltip" data-placement="top" title="{{ $project_member->name }}">
 														</td>
 														<td>{{ $project_member->name }}</td>
 												    </tr>

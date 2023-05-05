@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Project;
-use App\ProjectMember;
+use DB;
+use Auth;
 use Validator;
 use DataTables;
-use Auth;
-use DB; 
+use App\Project;
 use Notification;
+use Carbon\Carbon;
+use App\ProjectMember;
+use Illuminate\Http\Request;
 use App\Notifications\ProjectCreated;
 use App\Notifications\ProjectUpdated;
 
@@ -26,15 +27,15 @@ class BuilderController extends Controller
         date_default_timezone_set(get_company_option('timezone', get_option('timezone','Asia/Dhaka')));
 
         $this->middleware(function ($request, $next) {
-            // if( has_membership_system() == 'enabled' ){
-            //     if( ! has_feature( 'websites_limit' ) ){
-            //         if( ! $request->ajax()){
-            //             return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
-            //         }else{
-            //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
-            //         }
-            //     }
-            // }
+            if( has_membership_system() == 'enabled' ){
+                if( ! has_feature( 'websites_limit' ) ){
+                    if( ! $request->ajax()){
+                        return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
+                    }else{
+                        return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
+                    }
+                }
+            }
 
             return $next($request);
         });
@@ -47,6 +48,7 @@ class BuilderController extends Controller
    */
   public function index()
   {
+
     return view('backend.accounting.project.builder');
   }
 
@@ -58,7 +60,7 @@ class BuilderController extends Controller
   public function larabuilder()
   {
 
-    return view('backend.accounting.project.larabuilder');
+    return view('backend.accounting.project.createlandino');
   }
 
   /**
@@ -83,78 +85,42 @@ class BuilderController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function lara(Request $request)
-  {
+  {    
 
       $data['demo']   =   false;
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;
-      }
-    //   dd($request->template);
+        }
+        
+        
+        define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
+        define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
+        
+        
+        $Viewbuilder = new \App\Utilities\Builder\Html;
+        
+        $data['groups'] =   $Viewbuilder->groups;
+
+        $data['isTemplate'] = false;
+        $data['project']        =   null;
+        $data['projectfile']    = null;
+        $data['name'] = '';
+        $data['try_demo'] = false;
 
 
-      define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-      define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
-
-
-      $Viewbuilder = new \App\Utilities\Builder\Html;
-
-      $data['groups'] =   $Viewbuilder->groups;
       if ($request->has('template')) {
         $template =  $request->template;
         if (!empty($template)) {
 
-
-            //                dd($template);
-
-            // $project = new Project();
-            // $project->name = "untiteld project";
-            // $project->client_id = "0";
-            // $project->status = 'lara';
-            // $project->user_id = Auth::id();
-            // $project->company_id = company_id();
-            // $project->save();
-
-            // create_log('projects', $project->id, _lang('Created Project'));
-
-
-            // //Store Project Members
-            // if (isset($request->members)) {
-            //     foreach ($request->members as $member) {
-            //         $project_member  = new ProjectMember();
-            //         $project_member->project_id = $project->id;
-            //         $project_member->user_id = $member;
-            //         $project_member->save();
-
-            //         create_log('projects', $project->id, _lang('Assign to') . ' ' . $project_member->user->name);
-            //     }
-            // }
-
-
-            // if ($project->client->user->id != null) {
-            //     Notification::send($project->client->user, new ProjectCreated($project));
-            // }
-            // Notification::send($project->members, new ProjectCreated($project));
-
-            // DB::commit();
-
-            // $projectfile = new \App\ProjectFile();
-            // $projectfile->file = "/var/www/landino.io/public/uploads/project_files/$template.supra";
-            // // dd($projectfile->file);
-            // $projectfile->user_id = Auth::id();
-            // $projectfile->company_id = company_id();
-            // $projectfile->related_to = 'projects';
-            // $projectfile->related_id = $project->id;
-            // $projectfile->save();
-
             $data['project']        =   null;
-            $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('/uploads/project_files') . '/', public_path()."/uploads/project_files/$template.supra");
+            $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('uploads/project_files') . '/', public_path() . "/uploads/project_files/$template.supra");
             $data['id']             =   0;
-                // dd($data, public_path(), $data['projectfile']);
+            $data['name'] = $template;
+            $data['isTemplate'] = true;
             define('SUPRA', 1);
-            return view('backend.accounting.project.editlara', ['data' => $data, 'id' => $data['id'], 'projectfile' => $data['projectfile'], 'groups' => $data['groups'] , 'project' => $data['project']]);
+            return view('backend.accounting.project.lara', $data);
         }
     }
-
       return view('backend.accounting.project.lara', $data);
   }
 
@@ -163,7 +129,7 @@ class BuilderController extends Controller
 
     header('Access-Control-Allow-Origin: *');
     define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-    define('SUPRA_BASE_URL', asset('backend/assets/builder'));
+    define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
     define('SUPRA_TMP_PATH', base_path('public'));
     define('CURRENT_USER', Auth::getUser()->id);
     define('CURRENT_COMPANY', Auth::getUser()->company_id);
@@ -183,7 +149,6 @@ class BuilderController extends Controller
   }
 
   public function get_table_data(Request $request){
-
     $company_id = company_id();
     $user_type = Auth::user()->user_type;
 
@@ -230,7 +195,7 @@ class BuilderController extends Controller
                         ->editColumn('members.name', function ($project) {
                             $members = '';
                             foreach($project->members as $member){
-                                $members .= '<img src="'. asset('public/uploads/profile/'.$member->profile_picture) .'" class="project-avatar" data-toggle="tooltip" data-placement="top" title="'. $member->name .'">&nbsp;';
+                                $members .= '<img src="'. asset('uploads/profile/'.$member->profile_picture) .'" class="project-avatar" data-toggle="tooltip" data-placement="top" title="'. $member->name .'">&nbsp;';
                             }
                             return $members;
                         })

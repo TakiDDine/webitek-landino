@@ -41,7 +41,7 @@
 				      <li>{{ _lang('Only XLSX file are allowed.') }}</li>
 				      <li>{{ _lang('First row need to keep blank or use for column name only.') }}</li>
 				      <li>{{ _lang('Required field must needed.') }}</li>
-				      <li><a href="{{ asset('public/xlsx_sample/services.xlsx') }}">{{ _lang('Download Sample File') }}</a></li>
+				      <li><a href="{{ asset('xlsx_sample/services.xlsx') }}">{{ _lang('Download Sample File') }}</a></li>
 				   </ol>
 				</div>
 			</div>

@@ -32,7 +32,7 @@
     </div>
 
     <div class="row">
-        @foreach ($templates as $template)
+        @foreach ($templates as $template) 
             <div class="col-md-4 overflow-hidden mb-3" data-category="{{ $template['category'] ?? null }}">
                 <div
                     class="bg-white rounded tempates-preview-wrapper template-{{ str_replace('-', ' ', $template['name']) }}">
@@ -44,11 +44,11 @@
                         </div>
                         <div class="col-6">
                             <a href="{{ url('/editor?template=' . $template['name']) }}" target="_blank"
-                                class="rounded-lg btn w-100 ">{{ _lang('use template') }}</a>
+                                class="rounded-lg btn w-100 ">{{ _lang('use template') }}</a> 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         @endforeach
     </div>
 

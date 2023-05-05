@@ -46,7 +46,7 @@
 							<div class="dropdown-menu">
 								@if($filemanager->is_dir == 'no')
 									<a href="{{ action('FileManagerController@edit', $filemanager['id']) }}" data-title="{{ _lang('Update File') }}" class="ajax-modal dropdown-item"><i class="far fa-edit"></i> {{ _lang('Edit') }}</a></li>
-									<a class="dropdown-item" href="{{ asset('public/uploads/file_manager/'.$filemanager->file) }}" target="_blank"><i class="fas fa-cloud-download-alt"></i> {{ _lang('Download') }}</a></li>
+									<a class="dropdown-item" href="{{ asset('uploads/file_manager/'.$filemanager->file) }}" target="_blank"><i class="fas fa-cloud-download-alt"></i> {{ _lang('Download') }}</a></li>
 								@else
 									<a href="{{ action('FileManagerController@edit_folder', $filemanager['id']) }}" data-title="{{ _lang('Update Folder') }}" class="ajax-modal dropdown-item"><i class="far fa-edit"></i> {{ _lang('Edit') }}</a></li>
 									<a class="dropdown-item" href="{{ url('file_manager/directory/'.encrypt($filemanager->id)) }}"><i class="fas fa-binoculars"></i> {{ _lang('View') }}</a></li>

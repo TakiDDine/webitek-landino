@@ -2,6 +2,8 @@
 .env
 
 public/tmp/
+public/sites/
+public/uploads/project_files/*
 
 
 .env.*.php

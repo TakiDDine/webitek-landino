@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="bg-wrap">
-        <div class="bg"  style="background-image: url({{ get_option('sub_banner_image') != '' ? asset('public/uploads/media/'.get_option('sub_banner_image')) : theme_asset('assets/images/header-bg.jpg') }}); background-repeat:no-repeat; background-size:cover""></div>
+        <div class="bg"  style="background-image: url({{ get_option('sub_banner_image') != '' ? asset('uploads/media/'.get_option('sub_banner_image')) : theme_asset('assets/images/header-bg.jpg') }}); background-repeat:no-repeat; background-size:cover""></div>
     </div>
 </header>
 @endsection

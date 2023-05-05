@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -33,5 +34,10 @@ class Project extends Model
         } else {
             $this->attributes['sub_domain'] = $value;
         }
+    }
+
+    public function user ()
+    {
+        return $this->belongsTo(User::class);
     }
 }

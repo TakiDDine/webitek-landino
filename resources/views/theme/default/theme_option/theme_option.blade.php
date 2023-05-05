@@ -111,14 +111,14 @@
 							<div class="col-md-12">
 							<div class="form-group">
 								<label class="control-label">{{ _lang('Banner Image') }}</label>						
-								<input type="file" class="dropify" name="home_banner_image" data-allowed-file-extensions="jpg jpeg png" data-default-file="{{ get_option('home_banner_image') != '' ? asset('public/uploads/media/'.get_option('home_banner_image')) : theme_asset('assets/img/avatar-large-3.png') }}">
+								<input type="file" class="dropify" name="home_banner_image" data-allowed-file-extensions="jpg jpeg png" data-default-file="{{ get_option('home_banner_image') != '' ? asset('uploads/media/'.get_option('home_banner_image')) : theme_asset('assets/img/avatar-large-3.png') }}">
 							</div>
 							</div>
 							
 							<div class="col-md-12">
 							<div class="form-group">
 								<label class="control-label">{{ _lang('Sub Page Banner') }}</label>						
-								<input type="file" class="dropify" name="sub_banner_image" data-allowed-file-extensions="jpg jpeg png" data-default-file="{{ get_option('sub_banner_image') != '' ? asset('public/uploads/media/'.get_option('sub_banner_image')) : '' }}">
+								<input type="file" class="dropify" name="sub_banner_image" data-allowed-file-extensions="jpg jpeg png" data-default-file="{{ get_option('sub_banner_image') != '' ? asset('uploads/media/'.get_option('sub_banner_image')) : '' }}">
 							</div>
 							</div>
 
@@ -240,7 +240,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 										<label class="control-label">{{ _lang('About Image') }}</label>						
-										<input type="file" class="dropify" name="about_image[{{$language}}]" data-allowed-file-extensions="jpg jpeg png" data-default-file="{{ get_array_option('about_image',$language) != '' ? asset('public/uploads/media/'.get_array_option('about_image',$language)) : theme_asset('assets/img/cowork-5.jpg') }}">
+										<input type="file" class="dropify" name="about_image[{{$language}}]" data-allowed-file-extensions="jpg jpeg png" data-default-file="{{ get_array_option('about_image',$language) != '' ? asset('uploads/media/'.get_array_option('about_image',$language)) : theme_asset('assets/img/cowork-5.jpg') }}">
 										</div>
 									</div>
 								
@@ -320,7 +320,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 								<label class="control-label">{{ _lang('Website Title') }}</label>						
-								<input type="text" class="form-control" name="website_title" value="{{ get_option('website_title','LaraBuilder') }}">
+								<input type="text" class="form-control" name="website_title" value="{{ get_option('website_title','landino') }}">
 								</div>
 							</div>
 							
