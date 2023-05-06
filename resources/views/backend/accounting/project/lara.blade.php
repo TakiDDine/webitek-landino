@@ -192,7 +192,7 @@
             @endif
         @endif
         var ajaxbase = '{{ url('api/ajax',[], true) }}';
-        const baseurl = '{{ url('/') }}';
+        const baseurl = '{{ url('/',[], true) }}';
         const template = '{{ $isTemplate }}' ? true : false;
       
         const googleKey = '{{ get_option('google_map_key') }}';

@@ -190,7 +190,7 @@
             @endif
         @endif
         var ajaxbase = '{{ url('api/ajax',[], true) }}';
-        const baseurl = '{{ url('/') }}';
+        const baseurl = '{{ url('/',[], true) }}';
         const googleKey = '{{ get_option('google_map_key') }}';
         const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         // const project_id = 0;
