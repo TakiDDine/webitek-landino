@@ -250,6 +250,8 @@ aside.control-panel.supra.active {
   flex-grow: 1;
   max-height: 100%;
   padding: 1rem 1rem 0;
+  overflow: overlay;
+  border-radius: 0 15px 15px 0;
 }
 
 #sidebarContent__headerList h6 {
@@ -916,17 +918,26 @@ i.icon-blr-desktop {
 i.icon-landino-align-left {
   background-image: url(../images/builder-new-icons/align-left.svg);
 }
+i.icon-landino-align-left-black {
+  background-image: url(../images/builder-new-icons/align-left-black.svg);
+}
 
 i.icon-landino-align-right {
   background-image: url(../images/builder-new-icons/align-right.svg);
+}
+i.icon-landino-align-right-black {
+  background-image: url(../images/builder-new-icons/align-right-black.svg);
 }
 
 i.icon-landino-align-center {
   background-image: url(../images/builder-new-icons/align-center.svg);
 }
+i.icon-landino-align-center-black {
+  background-image: url(../images/builder-new-icons/align-center-black.svg);
+}
 
-i.icon-blr-align-justify {
-  background-image: url(../images/builder-icons/align-justify.svg);
+i.icon-landino-align-justify {
+  background-image: url(../images/builder-new-icons/align-justify.svg);
 }
 
 i.icon-landino-arrow-down {
@@ -1598,7 +1609,12 @@ button.close:hover {
 }
 
 .supra-btn.btn-primary {
-  background-color: #00c0ff;
+  background-color: var(--primaryClr);
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+.supra-btn.btn-primary:hover {
+  background-color: var(--secondaryClr);
   color: #ffffff;
   border: 1px solid transparent;
 }
@@ -2289,6 +2305,7 @@ ul:not(.page-mode-edit-sections) .wrap-control {
   stroke:none;
   fill: none;
 }
+.iframeHeader .iframeHeader__mid #saveBtn__save[disabled] .db,
 .iframeHeader .iframeHeader__mid #saveBtn__save .db[disabled] {
   opacity: 0.3;
   cursor: not-allowed;
@@ -2550,6 +2567,7 @@ iframe#main {
   bottom: -45px;
   width: 40px;
   height: 40px;
+  transform: rotate(-90deg);
   color: #ffffff;
   cursor: pointer;
 }
@@ -5069,6 +5087,9 @@ aside.add-sections-items > ul li.wrap-hover {
 #modal-container .modal-body {
   padding: 30px;
   border: none;
+}
+#modal-container .modal-header.sidebarTitle__list{
+  padding: 20px 30px 10px;
 }
 
 #modal-container .modal-body {
@@ -8284,6 +8305,7 @@ input[type="radio"] + .lbl::after {
 }
 #containers-results__content .cs-element.buttons-switch .wrapper {
   gap: 5px 0;
+  flex-direction: row-reverse;
 }
 
 #containers-results__content aside {
