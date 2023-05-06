@@ -918,17 +918,26 @@ i.icon-blr-desktop {
 i.icon-landino-align-left {
   background-image: url(../images/builder-new-icons/align-left.svg);
 }
+i.icon-landino-align-left-black {
+  background-image: url(../images/builder-new-icons/align-left-black.svg);
+}
 
 i.icon-landino-align-right {
   background-image: url(../images/builder-new-icons/align-right.svg);
+}
+i.icon-landino-align-right-black {
+  background-image: url(../images/builder-new-icons/align-right-black.svg);
 }
 
 i.icon-landino-align-center {
   background-image: url(../images/builder-new-icons/align-center.svg);
 }
+i.icon-landino-align-center-black {
+  background-image: url(../images/builder-new-icons/align-center-black.svg);
+}
 
-i.icon-blr-align-justify {
-  background-image: url(../images/builder-icons/align-justify.svg);
+i.icon-landino-align-justify {
+  background-image: url(../images/builder-new-icons/align-justify.svg);
 }
 
 i.icon-landino-arrow-down {
@@ -8296,6 +8305,7 @@ input[type="radio"] + .lbl::after {
 }
 #containers-results__content .cs-element.buttons-switch .wrapper {
   gap: 5px 0;
+  flex-direction: row-reverse;
 }
 
 #containers-results__content aside {
