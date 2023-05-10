@@ -1102,7 +1102,7 @@ class Request {
                 $link_favicon = "\n<link rel=\"icon\" href=\"images/$favicon[2]\" type=\"image/x-icon\">";
                 $zip->addFile( $this->_base_path.'/images/gallery/' . $favicon[2], 'images/' . $favicon[2] );
             }
-            if(isset($user_id)) {
+            if(isset($user_id) && isset($p_id)) {
                 $base_url = '/public/sites/'.$user_id . '/' .$p_id.'/';
             }else{
                 $base_url = '';
@@ -1114,7 +1114,7 @@ class Request {
            <meta charset=\"UTF-8\">
            <title>$page->title</title>
            $link_favicon
-           <base href=\"\" target=\"_blank\">
+           <base href=\"$base_url\" target=\"_blank\">
            <meta name=\"keywords\" content=\"$page->meta_keywords\" />
            <meta name=\"description\" content=\"$page->meta_description\" />
            <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,viewport-fit=cover\">$fonts".''."$default_css".''."$style_gallery".''."$style_magnific
