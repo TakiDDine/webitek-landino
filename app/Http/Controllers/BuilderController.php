@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Project;
-use App\ProjectMember;
+use DB;
+use Auth;
 use Validator;
 use DataTables;
-use Auth;
-use DB;
+use App\Project;
 use Notification;
+use Carbon\Carbon;
+use App\ProjectMember;
+use Illuminate\Http\Request;
 use App\Notifications\ProjectCreated;
 use App\Notifications\ProjectUpdated;
 
@@ -26,15 +27,15 @@ class BuilderController extends Controller
         date_default_timezone_set(get_company_option('timezone', get_option('timezone','Asia/Dhaka')));
 
         $this->middleware(function ($request, $next) {
-            // if( has_membership_system() == 'enabled' ){
-            //     if( ! has_feature( 'websites_limit' ) ){
-            //         if( ! $request->ajax()){
-            //             return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
-            //         }else{
-            //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
-            //         }
-            //     }
-            // }
+            if( has_membership_system() == 'enabled' ){
+                if( ! has_feature( 'websites_limit' ) ){
+                    if( ! $request->ajax()){
+                        return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
+                    }else{
+                        return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
+                    }
+                }
+            }
 
             return $next($request);
         });
@@ -59,7 +60,7 @@ class BuilderController extends Controller
   public function larabuilder()
   {
 
-    return view('backend.accounting.project.larabuilder');
+    return view('backend.accounting.project.createlandino');
   }
 
   /**
@@ -84,24 +85,42 @@ class BuilderController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function lara(Request $request)
-  {
+  {    
 
       $data['demo']   =   false;
       if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
           $data['demo']   =   true;
-      }
+        }
+        
+        
+        define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
+        define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
+        
+        
+        $Viewbuilder = new \App\Utilities\Builder\Html;
+        
+        $data['groups'] =   $Viewbuilder->groups;
+
+        $data['isTemplate'] = false;
+        $data['project']        =   null;
+        $data['projectfile']    = null;
+        $data['name'] = '';
+        $data['try_demo'] = false;
 
 
-      define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));
-      define('SUPRA_BASE_URL', asset('/backend/assets/builder'));
+      if ($request->has('template')) {
+        $template =  $request->template;
+        if (!empty($template)) {
 
-
-      $Viewbuilder = new \App\Utilities\Builder\Html;
-
-      $data['groups'] =   $Viewbuilder->groups;
-
-
-
+            $data['project']        =   null;
+            $data['projectfile']    =   str_replace(public_path() . "/uploads/project_files/", asset('uploads/project_files') . '/', public_path() . "/uploads/project_files/$template.supra");
+            $data['id']             =   0;
+            $data['name'] = $template;
+            $data['isTemplate'] = true;
+            define('SUPRA', 1);
+            return view('backend.accounting.project.lara', $data);
+        }
+    }
       return view('backend.accounting.project.lara', $data);
   }
 

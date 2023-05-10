@@ -32,7 +32,7 @@
     </div>
 
     <div class="row">
-        @foreach ($templates as $template)
+        @foreach ($templates as $template) 
             <div class="col-md-4 overflow-hidden mb-3" data-category="{{ $template['category'] ?? null }}">
                 <div
                     class="bg-white rounded tempates-preview-wrapper template-{{ str_replace('-', ' ', $template['name']) }}">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         @endforeach
     </div>
 
