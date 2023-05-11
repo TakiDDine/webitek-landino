@@ -347,10 +347,8 @@ aside.control-panel.supra.active {
   grid-auto-flow: row dense;
   padding: 0 !important;
   margin-bottom: 2rem !important;
-  
+  gap: 10px;
 }
-
-
 
 #sidebarContent__contentList .add-sections-items li {
   flex: 1;
@@ -361,11 +359,10 @@ aside.control-panel.supra.active {
   border: 2px solid transparent;
   box-shadow: 0 1 1 rgba(100, 116, 139, 0.2);
   border-radius: 6px;
-  margin-top: 1.5rem !important;
   overflow: hidden;
 }
 #sidebarContent__contentList .add-sections-items li:hover {
-  border: 2px solid #3758f9;
+  border: 2px dashed #3758f9;
 }
 .add-sections-items li .sidebarContent__contentList-imgContainer {
   pointer-events: none;

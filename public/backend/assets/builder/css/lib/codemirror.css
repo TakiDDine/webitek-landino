@@ -366,7 +366,7 @@ span.CodeMirror-selectedtext { background: none; }
   button.supra-btn.btn-primary {
   color: #fff !important;
   background-color: #8bc34a !important;
-  border-radius: 0 0 0 6px !important;
+  border-radius: 15px !important;
 }
 #modal-container
   .modal-dialog.html-code-editor

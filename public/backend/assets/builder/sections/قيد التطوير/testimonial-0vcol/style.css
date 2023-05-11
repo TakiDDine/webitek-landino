@@ -60,14 +60,14 @@
   }
 
 #testimonial-0vcol {
-    font-family: 'Noto Sans Arabic', sans-serif !important;
+  font-family: 'Noto Sans Arabic', sans-serif;
     background-color: #ffffff;
     color: #333 ;
     direction: rtl;
     text-align: right;
 }
 #testimonial-0vcol * {
-  font-family: 'Noto Sans Arabic', sans-serif !important;
+  font-family: inherit;
 }
 .testimonial-section-v span.span-head {
   font-size: 13px;

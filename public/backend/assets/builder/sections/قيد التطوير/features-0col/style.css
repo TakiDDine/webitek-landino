@@ -60,14 +60,14 @@
   }
 
 #features-0col {
-    font-family: 'Noto Sans Arabic', sans-serif !important;
+    font-family: 'Noto Sans Arabic', sans-serif ;
     background-color: #ffffff;
     color: #333 ;
     direction: rtl;
     text-align: right;
 }
 #features-0col * {
-  font-family: 'Noto Sans Arabic', sans-serif !important;
+  font-family: inherit;
 }
 .features-section-0 .icon_box {
   background: #2AD167;
@@ -99,4 +99,5 @@
 .features-section-0 p {
   text-align: center;
   margin-bottom: 2em;
+  color: #556987;
 }
