@@ -1,0 +1,179 @@
+/* arabic */
+@font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+  }
+  /* arabic */
+  @font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+  }
+  /* arabic */
+  @font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+  }
+  /* arabic */
+  @font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+  }
+  /* arabic */
+  @font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+  }
+  /* arabic */
+  @font-face {
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2) format('woff2');
+    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+  }
+
+
+#womenCloths__heroSection{
+    padding:0;
+    font-family: 'Sky';
+    text-align: right;
+    font-weight: 800;
+    min-height: 100vh;
+}
+#womenCloths__heroSection *{
+    margin: 0;
+    padding: 0;
+}
+#womenCloths__heroSection h2, #womenCloths__heroSection h1{
+    width: 100%;
+    padding:0;
+    font-family: 'Sky';
+    font-weight: 800;
+}
+#womenCloths__heroSection h3{
+    padding:0;
+    font-family: 'Sky';
+    font-weight: 600;
+    width: 100%;
+}
+#womenCloths__heroSection p{
+    padding: 0;
+    font-family: 'Cairo';
+    font-weight: 400;
+    width: 100%;
+    color: rgb(62 62 62);
+    line-height: 28px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+#womenCloths__heroSection .container{
+    max-width: 100%;
+    padding: 0 80px;
+    padding-right: 0;
+    padding-left: 0;
+    background: linear-gradient(90deg, rgba(225,225,225,0) 60%, rgba(35,35,35,1) 20%);
+    position: relative;
+}
+#womenCloths__heroSection .container .content{
+    flex: 1;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+#womenCloths__heroSection .container .content-img  {
+    flex: 1;
+    flex-shrink: 0;
+}
+#womenCloths__heroSection .container img{
+    
+    width: 85%;
+    object-fit: cover;
+    object-position: top;
+
+}
+#womenCloths__heroSection .container img.bg{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    right:0;
+    z-index: -1;
+
+}
+
+#womenCloths__heroSection .container .content .content-text{
+    padding: 0 25px 0 25px;
+}
+
+#womenCloths__heroSection .container .content .content-text h2{
+    color: black;
+    font-size: 6.5rem;
+}
+#womenCloths__heroSection .container .content .content-text .divider{
+    margin-bottom: 20px;
+    height: 10px;
+    width: 100%;
+    position: relative;
+}
+#womenCloths__heroSection .container .content .content-text .divider div{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background: rgb(255, 172, 0);
+    z-index: 0;
+}
+#womenCloths__heroSection .container .content .content-text h3{
+    color:rgb(255, 172, 0);
+    font-size: 4rem;
+
+}
+#womenCloths__heroSection .container .content .content-text a{
+    padding: 15px 40px;
+    background: rgb(255, 172, 0);
+    color: white;
+    border-radius: 6px;
+
+}
+
+
+
+#womenCloths__heroSection .container .social-media{
+    flex: 0.6;
+}
+#womenCloths__heroSection .container .social-media .social-media-container{
+    padding-right: 40px;
+}
+
+#womenCloths__heroSection .container .social-media .social-icon{
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgb(255, 172, 0);
+    line-height: 0;
+}
+#womenCloths__heroSection .container .social-media .social-icon svg{
+    fill: white;
+}

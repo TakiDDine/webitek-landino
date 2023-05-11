@@ -19,8 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'membership/paypal_ipn',
-		'client/paypal_ipn',
-		'live_chat/auth',
+        '/*',
+       
     ];
 }
