@@ -10,10 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
 if(config('app.app_install') == true) {
 
 Route::get('/', 'WebsiteController@getLandingPage')->name('home');
+Route::get('/{page?}', 'WebsiteController@getLandingPage');
 
 Auth::routes(['verify' => true]);
 

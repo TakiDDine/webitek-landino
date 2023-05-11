@@ -6,6 +6,7 @@ use Throwable;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -51,6 +52,11 @@ class Handler extends ExceptionHandler
         // if($exception instanceof ThrottleRequestsException) {
         //     return redirect()->back()->withInput();
         // }
+        
+        if ($exception instanceof NotFoundHttpException) {
+            
+        return response()->view('error.404', [], 404);
+    }
         return parent::render($request, $exception);
     }
 }

@@ -189,8 +189,8 @@
             @if (get_option('google_map_key') == '' || get_option('google_map_key') == null || empty(get_option('google_map_key')))
             @endif
         @endif
-        const ajaxbase = '{{ url('api/ajax') }}';
-        const baseurl = '{{ url('/') }}';
+        var ajaxbase = '{{ url('api/ajax',[], true) }}';
+        const baseurl = '{{ url('/',[], true) }}';
         const googleKey = '{{ get_option('google_map_key') }}';
         const userId = '{{ Auth::check() ? Auth::user()->id : 0 }}';
         // const project_id = 0;

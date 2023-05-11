@@ -12,7 +12,7 @@ use DB;
 use Auth;
 use Validator;
 use File;
-
+use Illuminate\Support\Facades\Response;
 class WebsiteController extends Controller
 {
 	
@@ -64,9 +64,9 @@ class WebsiteController extends Controller
     }
 
 
-    public function getLandingPage(Request $request)
+    public function getLandingPage(Request $request, $page=null)
     {
-        
+        //dd($request->domain,  getAppDomain());
         $url = $request->domain;
         $values = parse_url($url);
         $host = explode('.',$values['path']);
@@ -81,9 +81,22 @@ class WebsiteController extends Controller
         } else {
             $p = \App\Project::where('custom_domain', $request->domain)
             ->orWhere('sub_domain', $request->domain)->orWhere('sub_domain', $host[0])->first();
-
-            return File::get(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/index.html');
-          
+            //dd($page);
+            
+            if (!$p || $page == 'public') {
+                return view('error.404');
+            }
+            //return File::get(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/index.html');
+            $pageName = $page ? $page.'.html' : 'index.html' ;
+            
+            $content = file_get_contents(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/'.$pageName);
+            //$project = File::get(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/'.$pageName);
+            //dd($project);
+            if(!$content) {
+                 return view('error.404');
+            }
+            //return $project;
+            return Response::make($content, 200)->header('Content-Type', 'text/html');
         }
 
     }
