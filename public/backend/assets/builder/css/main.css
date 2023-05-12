@@ -8866,3 +8866,8 @@ span.input-group-btn.align-up button[title="Check"] i {
     max-width: 260px;
   }
 }
+/* !------ */
+.animated_icon_view {
+  transform: rotate(0deg) !important;
+}
+/* !------ */
