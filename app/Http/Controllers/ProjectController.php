@@ -28,50 +28,50 @@ class ProjectController extends Controller
         date_default_timezone_set(get_company_option('timezone', get_option('timezone','Asia/Dhaka')));
         
         $this->middleware(function ($request, $next) {
-            // if( has_membership_system() == 'enabled' ){
-            //     if( ! has_feature( 'websites_limit' ) ){
-            //         if( ! $request->ajax()){
-            //             return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
-            //         }else{
-            //             return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
-            //         }
-            //     }
+            if( has_membership_system() == 'enabled' ){
+                if( ! has_feature( 'websites_limit' ) ){
+                    if( ! $request->ajax()){
+                        return redirect('membership/extend')->with('message', _lang('Sorry, This feature is not available in your current subscription. You can upgrade your package !'));
+                    }else{
+                        return response()->json(['result'=>'error','message'=>_lang('Sorry, This feature is not available in your current subscription !')]);
+                    }
+                }
                 
-            //     //If request is create/store
-            //     $route_name = \Request::route()->getName();
+                //If request is create/store
+                $route_name = \Request::route()->getName();
                 
-            //     if( $route_name == 'projects.create'){
-            //        if( has_feature_limit( 'websites_limit' ) ){
+                if( $route_name == 'projects.create'){
+                   if( has_feature_limit( 'websites_limit' ) ){
 
-            //         $company_id = company_id();
-            //         $user_type = Auth::user()->user_type;
+                    $company_id = company_id();
+                    $user_type = Auth::user()->user_type;
 
-            //         if($user_type == 'admin') {
-            //             $projects = Project::select('projects.*')->orderBy("projects.id","desc")->count();
-            //         } else {
-            //             $projects = Project::select('projects.*')
-            //                                 //->with('members')
-            //                                 ->where('company_id',$company_id)
-            //                                 ->when($user_type, function ($query, $user_type) {
-            //                                         if($user_type == 'staff'){
-            //                                         return $query->join('project_members','projects.id','project_members.project_id')
-            //                                                         ->where('project_members.user_id',Auth::id());
-            //                                         }
-            //                                     })
-            //                                     ->orderBy("projects.id","desc")->count();
-            //                 if($projects >= Auth::user()->company->websites_limit && Auth::user()->company->websites_limit != 'Unlimited'){
-            //                     if( ! $request->ajax()){
-            //                         return redirect('membership/extend')->with('message', _lang('Your have already reached your usages limit. You can upgrade your package !'));
-            //                     }else{
-            //                         return response()->json(['result'=>'error','message'=> _lang('Your have already reached your usages limit. You can upgrade your package !') ]);
-            //                     }
-            //                 }
-            //             }
-            //         }
+                    if($user_type == 'admin') {
+                        $projects = Project::select('projects.*')->orderBy("projects.id","desc")->count();
+                    } else {
+                        $projects = Project::select('projects.*')
+                                            //->with('members')
+                                            ->where('company_id',$company_id)
+                                            ->when($user_type, function ($query, $user_type) {
+                                                    if($user_type == 'staff'){
+                                                    return $query->join('project_members','projects.id','project_members.project_id')
+                                                                    ->where('project_members.user_id',Auth::id());
+                                                    }
+                                                })
+                                                ->orderBy("projects.id","desc")->count();
+                            if($projects >= Auth::user()->company->websites_limit && Auth::user()->company->websites_limit != 'Unlimited'){
+                                if( ! $request->ajax()){
+                                    return redirect('membership/extend')->with('message', _lang('Your have already reached your usages limit. You can upgrade your package !'));
+                                }else{
+                                    return response()->json(['result'=>'error','message'=> _lang('Your have already reached your usages limit. You can upgrade your package !') ]);
+                                }
+                            }
+                        }
+                    }
 
                     
-            //     }
-            // }
+                }
+            }
             return $next($request);
         });
     }
@@ -109,10 +109,7 @@ class ProjectController extends Controller
     // }
     // return view('backend.accounting.project.list', compact('projects'));
 
-    $data['demo']   =   false;
-    if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-        $data['demo']   =   true;
-    }
+   
     
 
     return view('backend.accounting.project.list');
@@ -153,19 +150,27 @@ class ProjectController extends Controller
                             }
 
                         })
-                        ->addColumn('action', function ($project) {
-                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="post">'
-                            .'<a href="'.action('ProjectController@editSettings', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" class="btn btn-primary btn-xs"><i class="ti-notepad"> </i> '._lang('Settings').'</a>&nbsp;'
-                            .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Update Project') .'" class="btn btn-warning btn-xs"><i class="ti-pencil"></i> '._lang('Edit').'</a>&nbsp;'
+                        ->addColumn('settings', function ($project) {
+                            return '<form class="text-center" method="post">'
+                            .'<a href="'.action('ProjectController@editSettings', $project['id']).'" data-title="'. _lang('Edit Project Details') .'" ><img src="'.asset("/icons/settings.svg").'" alt=""> </a>&nbsp;'
+                            .'</form>';
+                        })
+                        ->addColumn('edit', function ($project) {
+                            return '<form class="text-center" method="post">'
+                            .'<a href="'.action('ProjectController@edit', $project['id']).'" data-title="'. _lang('Update Project') .'"><img src="'.asset("/icons/edit-dark.svg").'" alt=""> </a>&nbsp;'
+                            .'</form>';
+                        })
+                        ->addColumn('delete', function ($project) {
+                            return '<form action="'.secure_url('projects/' . $project['id'].'/delete').'" class="text-center" method="POST" onsubmit="return confirmDelete(event)" >'
                             .csrf_field()
                             .'<input name="_method" type="hidden" value="DELETE">'
-                            .'<button class="btn btn-danger btn-xs btn-remove" type="submit"><i class="ti-eraser"></i> '._lang('Delete').'</button>'
+                            .'<button id="delete"  type="submit" ><img src="'.asset("/icons/delete-dark.svg").'" alt=""> </button>'
                             .'</form>';
                         })
                         ->setRowId(function ($project) {
                           return "row_".$project->id;
                         })
-                        ->rawColumns(['action','members.name','status','name'])
+                        ->rawColumns(['settings', 'edit', 'delete',  'members.name','status','name'])
                         ->make(true);
     }
 
@@ -184,15 +189,11 @@ class ProjectController extends Controller
     {
 
         if($request->is('projects/*')) {
-            $data['demo']   =   false;
-            if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-                $data['demo']   =   true;
-            }
-
-            return \Redirect::to(url('/builder').'/lara');
+           
+            return \Redirect::to(url('/editor'));
         }
         if($request->is('demo/*')) {
-            return \Redirect::to(url('/demo').'/lara');
+            return \Redirect::to(url('/demo').'/builder');
         }
 
 
@@ -396,11 +397,6 @@ class ProjectController extends Controller
         $data['company_id']             =   $project->company_id;
 
 
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
-        }
-
         return view('backend.accounting.project.modal.edit',$data);
         
 
@@ -430,11 +426,6 @@ class ProjectController extends Controller
         $data['id']             =   $project->id;
         $data['company_id']             =   $project->company_id;
 
-
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
-        }
         if( ! $request->ajax()){
 
 
@@ -507,6 +498,11 @@ class ProjectController extends Controller
     public function edit(Request $request,$id)
     {
         
+        
+      
+
+
+        // redirect user to edit page with project id
         if(Auth()->user()->user_type == 'admin') {
             $project = Project::where('id',$id)
             ->first();
@@ -523,11 +519,8 @@ class ProjectController extends Controller
         $data['id']             =   $project->id;
         $data['company_id']             =   $project->company_id;
 
+        $data['try_demo'] = false;
 
-        $data['demo']   =   false;
-        if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-            $data['demo']   =   true;
-        }
 
         if( ! $request->ajax()){
 
@@ -678,9 +671,9 @@ class ProjectController extends Controller
 
 
     if(! $request->ajax()){
-           return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
+           return redirect()->back()->with('success', _lang('Updated Sucessfully'));
         }else{
-        return redirect()->route('projects.index')->with('success', _lang('Updated Sucessfully'));
+        return redirect()->back()->with('success', _lang('Updated Sucessfully'));
        return response()->json(['result'=>'success','action'=>'update', 'message'=>_lang('Updated Sucessfully'), 'data'=>$project, 'table' => '#projects_table']);
     }
 
@@ -978,7 +971,8 @@ class ProjectController extends Controller
         }
         $project->delete();
 
-        $this->rrmdir(public_path('tmp/'.Auth::user()->id.'/'.$id));
+        // delete folders and files from tmp folder with user id
+        $this->deleteFolder(public_path('tmp/').Auth::user()->id);
 
         create_log('projects', $id, _lang('File Removed'));
 
@@ -988,6 +982,23 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')->with('success',_lang('Deleted Sucessfully'));
     }
 
+
+    /**
+     * delete folders and files
+     *
+     * @param [string] $folder
+     * @return void
+     */
+    // remove folder and files 
+    public function deleteFolder($folder) {
+        if (is_dir($folder)) {
+            $files = glob($folder . '/*');
+            foreach ($files as $file) {
+                is_dir($file) ? $this->deleteFolder($file) : unlink($file);
+            }
+            rmdir($folder);
+        }
+    }
     public function imgRemove(Request $request){
         $path = $request->path;
         $name = $request->name;

@@ -99,6 +99,11 @@
             "name": "tourism7",
             "cover": "/public/thumbnails/thumbnail-tourism7.png",
             "category": "tourism"
+        },
+        {
+            "name": "testme",
+            "cover": "/public/thumbnails/thumbnail-juice.png",
+            "category": "tourism"
         }
     ]
 }
