@@ -2572,6 +2572,10 @@ iframe#main {
   cursor: pointer;
 }
 
+.animated_icon_view {
+  transform: rotate(0deg) !important;
+}
+
 /**
  * 2. Preloader
  */

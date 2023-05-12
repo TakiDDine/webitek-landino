@@ -1,10 +1,12 @@
 <?php
 namespace App\Utilities\Builder;
 use \ZipArchive;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cache;
+use App\Utilities\Builder\Ftpuploading;
 use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
-use App\Utilities\Builder\Ftpuploading;
-use Illuminate\Support\Facades\Cache;
+
 class Request {
     protected $_base_path = null;
     protected $_base_url = null;
@@ -980,7 +982,10 @@ class Request {
 
         require_once('Fontstodownload.php');
         $fonts_to_download = new FontsToDownload($data->style, $zip);
-        $fonts .= "\n\t\t<link rel=\"stylesheet\" href=\"css/fonts.css\" />";
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result; 
+        $fonts .= "\n\t\t<link rel=\"stylesheet\" href=\"css/fonts.css$version\" />";
 
         return $fonts_to_download;
     }
@@ -1008,6 +1013,8 @@ class Request {
     protected function _add_page(&$data, &$overall_js, &$zip, &$fonts, &$default_css, &$style_gallery,
                                  &$style_magnific, &$default_js, &$js_plugins, &$fonts_to_download, $user_id, $p_id) {
         $uniqueJs = array();
+        // dd($data->pages, $data);
+        // dump('0',$data->pages);
         foreach ($data->pages as $page) {
             foreach($page->sections as $group_name => $sections) {
                 if (file_exists($this->_base_path.'/sections/' . $group_name . '/overall.js')
@@ -1063,13 +1070,23 @@ class Request {
                     }
                 }
 
+                // dd('last',$page->page_name);
                 $page_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $page_style);
                 
                 $zip->addFromString(
                     'css/' . $page->page_name . '.css'
                     , $page_style
                 );
-                
+                // dump('1',$page->page_name);
+
+                $base_url = '/public/sites/'.$user_id . '/' .$p_id.'/';
+                $currentFilePath = public_path().'/sites/'.$user_id . '/' .$p_id.'/css/' . $page->page_name . '.css';
+                $newFilePath = public_path().'/sites/'.$user_id . '/' .$p_id.'/css/hamza2.css';
+                if (File::exists(public_path().'/sites/'.$user_id . '/' .$p_id.'/css/' . $page->page_name . '.css')) {
+                    // Rename the file
+                    File::move($currentFilePath, $newFilePath);
+                }
+
                 $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css".$version ."\" />";
             }
 
@@ -1079,7 +1096,10 @@ class Request {
                     'js/' . $page->page_name . '.js'
                     , $page->js
                 );
-                $includePajeJs .= "\n\t\t<script src=\"js/".$page->page_name.".js\"></script>";
+                $str=rand();
+                $result = sha1($str);
+                $version = '?v='.$result; 
+                $includePajeJs .= "\n\t\t<script src=\"js/".$page->page_name.".js$version\"></script>";
             }
 
             $preloader = '';
@@ -1102,7 +1122,7 @@ class Request {
                 $link_favicon = "\n<link rel=\"icon\" href=\"images/$favicon[2]\" type=\"image/x-icon\">";
                 $zip->addFile( $this->_base_path.'/images/gallery/' . $favicon[2], 'images/' . $favicon[2] );
             }
-            if(isset($user_id)) {
+            if(isset($user_id) && isset($p_id)) {
                 $base_url = '/public/sites/'.$user_id . '/' .$p_id.'/';
             }else{
                 $base_url = '';
@@ -1114,7 +1134,7 @@ class Request {
            <meta charset=\"UTF-8\">
            <title>$page->title</title>
            $link_favicon
-           <base href=\"\" target=\"_blank\">
+           <base href=\"$base_url\" target=\"_blank\">
            <meta name=\"keywords\" content=\"$page->meta_keywords\" />
            <meta name=\"description\" content=\"$page->meta_description\" />
            <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,viewport-fit=cover\">$fonts".''."$default_css".''."$style_gallery".''."$style_magnific
@@ -1122,7 +1142,7 @@ class Request {
 
           
 
-       </head>
+           </head>
            <body class=\"".$page->style_options."\">$preloader";
 
            
