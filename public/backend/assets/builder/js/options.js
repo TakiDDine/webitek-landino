@@ -4663,12 +4663,15 @@ var builderOptions = {
   },
   baseFilesForProject: {
     css: [
-      'bootstrap.weber.css'
-      , 'fx.css'
+      'bootstrap.weber.css',
+      'fx.css',
+      'swiper-bundle.css'
     ],
     js: [
-      'jquery-2.1.4.min.js'
-      , 'bootstrap.min.js'
+      'jquery-2.1.4.min.js',
+      'bootstrap.min.js',
+      'swiper-bundle.min.js'
+
     ],
     plugins: [
       'https://maps.googleapis.com/maps/api/js?key=' + googleKey
