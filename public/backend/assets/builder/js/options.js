@@ -4664,15 +4664,19 @@ var builderOptions = {
   baseFilesForProject: {
     css: [
       'bootstrap.weber.css'
-      , 'fx.css'
+      , 'fx.css',
+      'swiper-bundle.css',
+
     ],
     js: [
       'jquery-2.1.4.min.js'
-      , 'bootstrap.min.js'
+      , 'bootstrap.min.js',
+      'swiper-bundle.min.js',
+
     ],
     plugins: [
-      'https://maps.googleapis.com/maps/api/js?key=' + googleKey
-      , 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'
+      'https://maps.googleapis.com/maps/api/js?key=' + googleKey, 
+      'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js',
     ]
   }
   , fullVersionSource: '../../../../membership/extend'

@@ -12,6 +12,9 @@
 */
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
+
+Route::get('register', 'Auth\LoginController@showRegisterForm')->name('login');
+Route::post('register', 'Auth\LoginController@register');
 if(config('app.app_install') == true) {
 
 Route::get('/', 'WebsiteController@getLandingPage')->name('home');

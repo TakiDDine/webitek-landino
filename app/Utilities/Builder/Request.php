@@ -1,10 +1,12 @@
 <?php
 namespace App\Utilities\Builder;
 use \ZipArchive;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cache;
+use App\Utilities\Builder\Ftpuploading;
 use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
-use App\Utilities\Builder\Ftpuploading;
-use Illuminate\Support\Facades\Cache;
+
 class Request {
     protected $_base_path = null;
     protected $_base_url = null;
@@ -846,9 +848,10 @@ class Request {
      * @param $style_gallery {string}
      */
     protected function _add_gallery(&$baseFiles) {
-       
+        
         array_push($baseFiles['css'], 'owl.carousel.css');
         array_push($baseFiles['js'], 'owl.carousel.js');
+       
     }
 
     /**
@@ -980,7 +983,10 @@ class Request {
 
         require_once('Fontstodownload.php');
         $fonts_to_download = new FontsToDownload($data->style, $zip);
-        $fonts .= "\n\t\t<link rel=\"stylesheet\" href=\"css/fonts.css\" />";
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result; 
+        $fonts .= "\n\t\t<link rel=\"stylesheet\" href=\"css/fonts.css$version\" />";
 
         return $fonts_to_download;
     }
@@ -994,6 +1000,17 @@ class Request {
         array_push($baseFiles['js'], 'aos.js');
     }
 
+    protected function deleteFiles ($path, $user_id, $p_id, $folder) 
+    {
+        $currentFilePath = $path.$user_id . '/' .$p_id.$folder;
+        if(File::exists($currentFilePath)) {
+
+            $files = File::files($currentFilePath);
+            foreach($files as $file) {
+                File::delete($file);
+            }
+        }
+    }
     /**
      * @param $data {object}
      * @param $overall_js {string}
@@ -1008,6 +1025,20 @@ class Request {
     protected function _add_page(&$data, &$overall_js, &$zip, &$fonts, &$default_css, &$style_gallery,
                                  &$style_magnific, &$default_js, &$js_plugins, &$fonts_to_download, $user_id, $p_id) {
         $uniqueJs = array();
+        // dd($data->pages, $data);
+        // dump('0',$data->pages);
+        if (isset($user_id) && isset($p_id)) {
+             //delete all files css 
+            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/css');
+            //delete all files js 
+            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/js');
+            //delete all files html from root of folder sites 
+            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '');
+             //delete all files images except folder uploqds 
+            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/images');
+        }          
+
+
         foreach ($data->pages as $page) {
             foreach($page->sections as $group_name => $sections) {
                 if (file_exists($this->_base_path.'/sections/' . $group_name . '/overall.js')
@@ -1069,8 +1100,8 @@ class Request {
                     'css/' . $page->page_name . '.css'
                     , $page_style
                 );
-                
-                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css".$version ."\" />";
+
+                $includePajeStyle .= "\n\t\t<link rel=\"stylesheet\" href=\"css/".$page->page_name.".css$version\" />";
             }
 
             $includePajeJs = '';
@@ -1079,7 +1110,10 @@ class Request {
                     'js/' . $page->page_name . '.js'
                     , $page->js
                 );
-                $includePajeJs .= "\n\t\t<script src=\"js/".$page->page_name.".js\"></script>";
+                $str=rand();
+                $result = sha1($str);
+                $version = '?v='.$result; 
+                $includePajeJs .= "\n\t\t<script src=\"js/".$page->page_name.".js$version\"></script>";
             }
 
             $preloader = '';
@@ -1122,7 +1156,7 @@ class Request {
 
           
 
-       </head>
+           </head>
            <body class=\"".$page->style_options."\">$preloader";
 
            
@@ -1304,7 +1338,6 @@ class Request {
             $baseFiles['js'][] = 'csfrhandler.js';    
         }
     
-
         foreach ($baseFiles as $key => $value) {
             
             if ($key !== 'plugins') {
