@@ -266,6 +266,23 @@ Route::group(['middleware' => ['install']], function () {
 
 });
 
+Route::get('preview/{id}/{project}/', function ($id , $project) {
+	$p = \App\Project::find($id);
+		   if (!$p) {
+			   return view('error.404');
+		   }
+		   //dd($p);
+		   if (File::exists(public_path() . '/tmp/'. $p->user_id .'/'. $p->id .'/preview/index.html')) {
+			   $content = file_get_contents(public_path() . '/tmp/'. $p->user_id .'/'. $p->id .'/preview/index.html');
+		   } else{
+			   return view('error.404');
+		   }
+		   if(!$content) {
+				return view('error.404');
+		   }
+		   return Response::make($content, 200)->header('Content-Type', 'text/html');
+});
+
 Route::get('/installation', 'Install\InstallController@index');
 Route::get('install/database', 'Install\InstallController@database');
 Route::post('install/process_install', 'Install\InstallController@process_install');

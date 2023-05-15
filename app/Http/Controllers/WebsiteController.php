@@ -66,7 +66,6 @@ class WebsiteController extends Controller
 
     public function getLandingPage(Request $request, $page=null)
     {
-        //dd($request->domain,  getAppDomain());
         $url = $request->domain;
         $values = parse_url($url);
         $host = explode('.',$values['path']);
@@ -85,6 +84,7 @@ class WebsiteController extends Controller
             if (!$p || $page == 'public') {
                 return view('error.404');
             }
+
             $pageName = $page ? $page.'.html' : 'index.html' ;
             if (File::exists(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/'.$pageName)) {
                 $content = file_get_contents(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/'.$pageName);
