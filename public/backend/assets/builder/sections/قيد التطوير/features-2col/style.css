@@ -63,6 +63,12 @@
   color: #333 ;
   direction: rtl;
 }
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
 .features-section-2 .items_info {
   display: flex;
   flex-direction: column;

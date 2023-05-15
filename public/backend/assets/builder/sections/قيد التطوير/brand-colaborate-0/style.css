@@ -79,6 +79,10 @@
 .brand-section-0 .brand-area svg {
   max-width: 15%;
   height: 100%;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 .brand-section-0 .brand-title {
   margin-bottom: 2em;

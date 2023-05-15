@@ -69,6 +69,12 @@
 #features-0col * {
   font-family: inherit;
 }
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
 .features-section-0 .icon_box {
   background: #2AD167;
   height: 60px;
