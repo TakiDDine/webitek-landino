@@ -1,5 +1,5 @@
 /* default */
-.dark .light , .light  , .dark .light  , .light  {
+/* .dark .light , .light  , .dark .light  , .light  {
 	font-family: 'OpenSans';
 	font-size: 14px;
 	line-height: 1.5;
@@ -353,6 +353,7 @@ section.dark, footer.dark, header.dark {
 	color: rgba(255,255,255,0.5);
 }
 /* end default */
+/*
 @media all and (max-width: 1279px) {
 	.dark h1.light, .light h1, .dark .light h1, h1.light {
 	font-size: 70px;
@@ -386,4 +387,4 @@ section.dark, footer.dark, header.dark {
 	.light h3.dark, .dark h3, .light .dark h3, h3.dark {
 	font-size: 25px;
 	}
-}
+} */

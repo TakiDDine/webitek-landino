@@ -2635,7 +2635,7 @@ iframe#main {
   width: 100%;
   height: 250px;
   background-color: #f4f5f7;
-  background-image: url("https://larabuilder.takiddine.art/public/backend/assets/builder/images/logo-blue.svg");
+  background-image: url("../images/logo-blue.svg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 130px;
