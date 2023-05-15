@@ -6,8 +6,6 @@ if (demoMode === "no") {
       var csrf_field = document
         .getElementById("csrf_field")
         .querySelector("input").value;
-      console.log(csrf_field);
-      console.log("user_id", userId)
       var data = prepareContentToDownload(_this);
 
       var form = new FormData();

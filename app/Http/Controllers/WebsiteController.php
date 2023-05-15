@@ -70,7 +70,7 @@ class WebsiteController extends Controller
         $url = $request->domain;
         $values = parse_url($url);
         $host = explode('.',$values['path']);
-
+        
         if ($request->domain == getAppDomain()) {
             if( get_option('website_enable','yes') == 'no' ){	
                 return redirect('login');

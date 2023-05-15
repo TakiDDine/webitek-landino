@@ -362,13 +362,13 @@ class Request {
 
             //  NOT FTP it's for Preview Button ¯\_( ͡• . ͡•)_/¯
 
-            if ( $_POST['dir'] === '' || !$this->_validation($_POST['dir'], 'url') ) {
-                echo json_encode([
-                    'status' => 500,
-                    'message' => 'Set a dir path in options.js'
-                ]);
-                exit;
-            }
+            // if ( $_POST['dir'] === '' || !$this->_validation($_POST['dir'], 'url') ) {
+            //     echo json_encode([
+            //         'status' => 500,
+            //         'message' => 'Set a dir path in options.js'
+            //     ]);
+            //     exit;
+            // }
 
             if (!file_exists(base_path('public/tmp'))) {
                 mkdir(base_path('public/tmp'), 0777, true);
