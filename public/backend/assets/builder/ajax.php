@@ -9,7 +9,7 @@
 		protected $_base_path = null;
 		protected $_images = array();
 		protected $_videos = array();
-		protected $_file_error = '';
+		protected $_file_error = '';   
 
 		public function __construct() {
 			$this->_base_path = SUPRA_BASE_PATH;
