@@ -43,6 +43,11 @@ if (gsInput) {
 			let date = form.querySelector(".datepicker-group .datepicker-input")
 
 			if (name) {
+			let select = form.querySelector(".select-group select")
+			let radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']")
+			let date = form.querySelector(".datepicker-group .datepicker-input")
+
+			if (name) {
 				let span = document.createElement("span")
 				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
 					span.innerHTML = "please enter a valid name less that 30 characters";
@@ -101,6 +106,89 @@ if (gsInput) {
 					span.innerHTML = "please describe your message in more than 50 character";
 					if (!form.querySelector(".textarea-group span")) {
 						form.querySelector(".textarea-group").appendChild(span)
+					}
+					isValid = false;
+				}
+				}
+				else {
+					span.innerHTML = null
+				}
+			}
+
+			if (phone) {
+				let phoneFormat = phone.getAttribute('data-format')
+				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+
+				if (!regex.test(phone.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
+					span.style.color = "red";
+					if (!form.querySelector(".phone-field-group span")) {
+						form.querySelector(".phone-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+
+			}
+
+			if (email) {
+				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please enter a valid email address";
+					if (!form.querySelector(".email-field-group span")) {
+						form.querySelector(".email-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+			}
+
+			if (textarea) {
+				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please describe your message in more than 50 character";
+					if (!form.querySelector(".textarea-group span")) {
+						form.querySelector(".textarea-group").appendChild(span)
+					}
+					isValid = false;
+				}
+			}
+
+			if (select) {
+				if (!select.selectedIndex) {
+					let span = document.createElement("span")
+					span.innerHTML = "please choose a value from the select menu";
+					if (!form.querySelector(".select-group span")) {
+						form.querySelector(".select-group").appendChild(span)
+					}
+					isValid = false;
+				}
+			}
+
+			if (radios.length > 0) {
+				let radioValid = false;
+				let i = 0
+				while (!radioValid && i < radios.length) {
+					if (radios[i].checked) radioValid = true;
+					i++;
+				}
+				if (!radioValid) {
+					let span = document.createElement("span")
+					span.innerHTML = "please choose a value from the select menu";
+					if (!form.querySelector(".radio-group > span")) {
+						form.querySelector(".radio-group").appendChild(span)
+					}
+					isValid = false;
+				}
+				return radioValid;
+			}
+
+			if (date) {
+				/* !/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value) &&  */
+				if (!/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "Please insert a valide Date";
+					if (!form.querySelector(".datepicker-group span")) {
+						form.querySelector(".datepicker-group").appendChild(span)
 					}
 					isValid = false;
 				}
