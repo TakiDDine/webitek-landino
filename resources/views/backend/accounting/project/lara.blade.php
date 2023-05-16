@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 
 <body class="first-show" {!! $try_demo ? "data-model='bootstrap'" :  '' !!} >
@@ -206,7 +207,7 @@
         document.getElementById('erasable').innerHTML = "";
 
     </script>
-    
+
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" ></script>

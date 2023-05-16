@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/bootstrap-datepicker.css')}}" />
     <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/spectrum.css')}}" />
     <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/owl.carousel.css')}}" />
+    //*------
+    <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/swiper-bundle.css')}}" />
+    //*------
     <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/magnific-popup.css')}}" />
     <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/masonryfilter.css')}}" />
     <link rel="stylesheet" href="{{asset('backend/assets/builder/css/lib/aos.css')}}" />
@@ -52,6 +55,11 @@
 <body class="run">
     <script src="{{asset('backend/assets/builder/js/lib/jquery-2.1.4.min.js')}}"></script>
     <script src="{{asset('backend/assets/builder/js/lib/owl.carousel_builder.js')}}"></script>
+
+    //*------
+    <script src="{{asset('backend/assets/builder/js/lib/swiper-bundle.min.js')}}"></script>
+    //*------
+
     <div class="main font-style-supra">
         <style></style>
     </div>
