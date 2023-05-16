@@ -210,5 +210,36 @@ class WebsiteController extends Controller
         return view('website.reset');
     }
 	
-	
+
+    /**
+     * show preview [ages]
+     *
+     * @param [type] $id
+     * @param [type] $project
+     * @param [type] $page
+     * @return void
+     */
+    public function preview ($id , $project=null, $page=null) {
+        $p = null;
+        // check segment project and page exist to get preview pages with project id (like /3/12/index => in case edit project)
+        if($project && $page) {
+        	$p = \App\Project::find($project);
+        		   if (!$p) {
+        			   return view('error.404');
+        		   }
+        }
+        //Get preview pages with  user id (like /3/index => in case create new project)
+        $user_id = Auth::user()->id;
+        $project_id = $p ? $p->id.'/' : '' ;
+    	$page = isset($page) && $page != '' ? $page.'.html': 'index.html' ;
+    	if (File::exists(public_path() . '/tmp/'. $user_id .'/'. $project_id.'preview/'.$page)) {
+    		$content = file_get_contents(public_path() . '/tmp/'. $user_id .'/'. $project_id .'preview/'.$page);
+    	} else{
+    		return view('error.404');
+    	}
+    	if(!$content) {
+    		return view('error.404');
+    	}
+    	return Response::make($content, 200)->header('Content-Type', 'text/html');
+        }
 }

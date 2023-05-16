@@ -1039,7 +1039,9 @@ class Request {
             $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/images');
         }          
 
-
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result; 
         foreach ($data->pages as $page) {
             foreach($page->sections as $group_name => $sections) {
                 if (file_exists($this->_base_path.'/sections/' . $group_name . '/overall.js')
@@ -1067,9 +1069,9 @@ class Request {
             }
 
             $includePajeStyle = '';
-            $str=rand();
-            $result = sha1($str);
-            $version = '?v='.$result; 
+            // $str=rand();
+            // $result = sha1($str);
+            // $version = '?v='.$result; 
             if ($page->style !== '') {
                 $page_style = preg_replace('#\?t=[0-9]*#im', '', $page->style);
 
@@ -1111,9 +1113,9 @@ class Request {
                     'js/' . $page->page_name . '.js'
                     , $page->js
                 );
-                $str=rand();
-                $result = sha1($str);
-                $version = '?v='.$result; 
+                // $str=rand();
+                // $result = sha1($str);
+                // $version = '?v='.$result; 
                 $includePajeJs .= "\n\t\t<script src=\"js/".$page->page_name.".js$version\"></script>";
             }
 
@@ -1140,16 +1142,12 @@ class Request {
             if(isset($user_id) && isset($p_id)) {
                 $base_url = 'site/'.$user_id . '/' .$p_id.'/';
             }else{
-                //$base_url = '11/';
-            $base_url = '';
-                $userid = Auth::user()->id;
-                //if($userid && !isset($p_id) && !$p_id) $base_url = $userid .'/';
-                //if($userid && isset($p_id) && $p_id ) $base_url = $user_id . '/' .$p_id.'/';
+                $base_url = '';
+
             }
-            //dd( $p_id , $base_url);
-            $str=rand();
-            $result = sha1($str);
-            $version = '?v='.$result;
+            // $str=rand(); 
+            // $result = sha1($str);
+            // $version = '?v='.$result;
             $head = "\t<head>
            <meta charset=\"UTF-8\">
            <title>$page->title</title>
@@ -1168,9 +1166,9 @@ class Request {
            
             $custom_js = '';
             if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
-                $str=rand();
-                $result = sha1($str);
-                $version = '?v='.$result;
+                // $str=rand();
+                // $result = sha1($str);
+                // $version = '?v='.$result;
                 $custom_js = "\n\t\t<script src=\"js/custom.js$version\"></script>";
             }
             $end = "$js_plugins".''."$default_js".''.$custom_js.''."$includePajeJs";
@@ -1343,7 +1341,9 @@ class Request {
         if ($data->form_section) {
             $baseFiles['js'][] = 'csfrhandler.js';    
         }
-    
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result; 
         foreach ($baseFiles as $key => $value) {
             
             if ($key !== 'plugins') {
@@ -1353,9 +1353,9 @@ class Request {
                      //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
                         $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
                         if ($key === 'css') {
-                            $str=rand();
-                            $result = sha1($str);
-                            $version = '?v='.$result; 
+                            // $str=rand();
+                            // $result = sha1($str);
+                            // $version = '?v='.$result; 
                             $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN$version\" />";
                         } elseif ($key === 'js') {
                             $cookie_accepted = '';
@@ -1365,9 +1365,9 @@ class Request {
                             ) {
                                 $cookie_accepted = ' type="text/plain" data-cookiescript="accepted"';
                             }
-                            $str=rand();
-                            $result = sha1($str);
-                            $version = '?v='.$result; 
+                            // $str=rand();
+                            // $result = sha1($str);
+                            // $version = '?v='.$result; 
                             $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN$version\"></script>";
                         }
                     }
@@ -1399,9 +1399,9 @@ class Request {
 
         $custom_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $data->style);
         $custom_style = preg_replace('#.font-style-supra (?:\/\*)?(\w*)(?:\*\/)?#im', '$1', $custom_style);
-        $str=rand();
-        $result = sha1($str);
-        $version = '?v='.$result;
+        // $str=rand();
+        // $result = sha1($str);
+        // $version = '?v='.$result;
         $zip->addFromString( 'css/custom.css', $custom_style);
 
         $overall_js = "";
