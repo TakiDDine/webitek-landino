@@ -1,3 +1,16 @@
+@font-face {
+	font-family: 'Sky';
+	src: url('../fonts/Sky_Bold/Sky-Bold-Arabic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sky';
+	src: url('../fonts/Sky_Bold/Sky-Reg-Arabic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
 #womenCloths__heroSection{
     padding:0;
     font-family: 'Sky';

@@ -101,27 +101,28 @@ class Fonts {
                 if ($fonts_level_1[ $i ] == '.DS_Store') {
                     continue;
                 }
-
+                
                 if ( is_dir( $basePath . '/' . $fonts_level_1[ $i ] ) ) {
                     $this->_searchFontsFiles($basePath . '/' . $fonts_level_1[ $i ]);
                 }
                 if ( is_file( $basePath . '/' . $fonts_level_1[ $i ] ) ) {
                     $pathInfo = pathinfo($basePath . '/' . $fonts_level_1[ $i ]);
-
+                    
                     if (!isset($pathInfo['extension']) || !in_array(
                         strtolower($pathInfo['extension']),
                         ['woff', 'eot', 'ttf', 'svg']
-                    )) {
-                        continue;
-                    }
-
-                    if (array_key_exists($pathInfo['filename'], $this->files)) {
-                        $this->files[$pathInfo['filename']]['fonts'][] = $pathInfo['basename'];
-                    } else {
-                        $this->files[$pathInfo['filename']] = [
-                            'path' => $basePath,
-                            'fonts' => [$pathInfo['basename']]
-                        ];
+                        )) {
+                            continue;
+                        }
+                        
+                        if (array_key_exists($pathInfo['filename'], $this->files)) {
+                            $this->files[$pathInfo['filename']]['fonts'][] = $pathInfo['basename'];
+                        } else {
+                            $this->files[$pathInfo['filename']] = [
+                                'path' => $basePath,
+                                'fonts' => [$pathInfo['basename']]
+                            ];
+                            // dd($fonts_level_1[$i], "ok", $pathInfo['basename'], $basePath, $this->files[$pathInfo['filename']]);
                     }
                 }
             }

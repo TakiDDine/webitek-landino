@@ -708,6 +708,7 @@ class Request {
         $this->_clearTmp($_POST['userId']);
         $mode = ini_get('magic_quotes_gpc');
         $data = $_POST['data'];
+        // dd($data);
         if ($mode) {
             $data = stripslashes($data);
         }
@@ -1037,7 +1038,6 @@ class Request {
              //delete all files images except folder uploqds 
             $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/images');
         }          
-
 
         foreach ($data->pages as $page) {
             foreach($page->sections as $group_name => $sections) {

@@ -1,10 +1,10 @@
 let mySlides = document.querySelectorAll(".mySwiper .swiper-slide");
-let counter = document.querySelector(".slideItem-number");
+let counters = document.querySelectorAll(".slideItem-number");
 let swiperLenght = mySlides.length;
 
 let mySwiper = new Swiper(".mySwiper", {
   spaceBetween: 10,
-  rewind: true,
+  loop: true,
   grabCursor: true,
   slidesPerView: "auto",
 
@@ -14,11 +14,15 @@ let mySwiper = new Swiper(".mySwiper", {
   },
 });
 
-mySwiper.on("slideChange", function () {
-  sliderTracker(mySwiper);
-});
-function sliderTracker(swiper) {
-  let index = swiper.activeIndex + 1;
-  counter.innerText = index;
-}
-counter.innerText = swiperLenght;
+// mySwiper.on("slideChange", function () {
+//   sliderTracker(mySwiper);
+// });
+// function sliderTracker(swiper) {
+//   let index = swiper.activeIndex + 1;
+//   counters.forEach((counter) => {
+//     counter.innerText = index;
+//   });
+// }
+// counters.forEach((counter) => {
+//   counter.innerText = "1";
+// });

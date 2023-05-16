@@ -75,6 +75,7 @@ class Fonts {
     }
 
     protected function _getFontDeclaration($ext, $file, $path) {
+        dd($ext, $file, $path);
         switch ($ext) {
             case "svg":
                 return "\tsrc: url('../$path/$file#ciclefina') format('svg');\n";
