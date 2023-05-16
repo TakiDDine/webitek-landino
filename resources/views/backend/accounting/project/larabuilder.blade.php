@@ -36,7 +36,11 @@
     <link rel="stylesheet" href="./../builder/css/lib/fx.css" />
     <link rel="stylesheet" href="./../builder/css/lib/bootstrap-datepicker.css" />
     <link rel="stylesheet" href="./../builder/css/lib/spectrum.css" />
+
     <link rel="stylesheet" href="./../builder/css/lib/owl.carousel.css" />
+
+    <link rel="stylesheet" href="./../builder/css/lib/swiper-bundle.css" />
+
     <link rel="stylesheet" href="./../builder/css/lib/magnific-popup.css" />
     <link rel="stylesheet" href="./../builder/css/lib/masonryfilter.css" />
     <link rel="stylesheet" href="./../builder/css/lib/aos.css" />
@@ -72,7 +76,10 @@
 
 
     <script src="./../builder/js/lib/jquery-2.1.4.min.js"></script>
+
     <script src="./../builder/js/lib/owl.carousel_builder.js"></script>
+    
+    <script src="./../builder/js/lib/swiper-bundle.min.js"></script>
 
 
 

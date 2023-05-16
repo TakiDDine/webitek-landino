@@ -1,8 +1,23 @@
 node_modules
-<<<<<<< HEAD
 /node_modules
-=======
 /node_modules
 
+.env
 
->>>>>>> underTest
+public/tmp/
+public/sites/
+public/uploads/project_files/*
+
+
+.env.*.php
+.env.php
+.htaccess
+/.htaccess
+*.log
+/node_modules
+/vendor
+
+node_modules
+/node_modules
+/node_modules
+node_modules

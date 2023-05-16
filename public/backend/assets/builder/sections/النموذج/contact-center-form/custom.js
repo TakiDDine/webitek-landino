@@ -38,6 +38,13 @@ if (gsInput) {
 			if (name) {
 				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
 					let span = document.createElement("span")
+			let select = form.querySelector(".select-group select")
+			let radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']")
+			let date = form.querySelector(".datepicker-group .datepicker-input")
+
+			if (name) {
+				let span = document.createElement("span")
+				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
 					span.innerHTML = "please enter a valid name less that 30 characters";
 					if (!form.querySelector(".text-field-group span")) {
 						form.querySelector(".text-field-group").appendChild(span)
@@ -56,6 +63,28 @@ if (gsInput) {
 
 
 			}
+				}
+				else {
+					span.innerHTML = null
+				}
+			}
+
+			if (phone) {
+				let phoneFormat = phone.getAttribute('data-format')
+				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+
+				if (!regex.test(phone.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
+					span.style.color = "red";
+					if (!form.querySelector(".phone-field-group span")) {
+						form.querySelector(".phone-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+
+			}
+
 			if (email) {
 				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
 					let span = document.createElement("span")

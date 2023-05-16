@@ -1,7 +1,7 @@
 const lang = window.document.querySelector("html").attributes.lang.value;
-console.log("options Template", template)
+
 const myProjectID = template ? '' : project_id
-console.log("options myProjectID", myProjectID)
+
 const language = {
   /*------Body------*/
   body: lang == "ar" ? "جسم الصفحة" : "Body",
@@ -208,6 +208,7 @@ var builderOptions = {
         "header:not(.section-carousel)",
       ],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -232,6 +233,7 @@ var builderOptions = {
     {
       domIdentif: ["div.modal-alert"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -256,6 +258,7 @@ var builderOptions = {
     {
       domIdentif: ["div.modal-panel"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -279,6 +282,7 @@ var builderOptions = {
     {
       domIdentif: ["section.section-carousel", "header.section-carousel"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -305,6 +309,7 @@ var builderOptions = {
     {
       domIdentif: ["nav.navbar"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "UpSection",
         "DownSection",
@@ -328,6 +333,7 @@ var builderOptions = {
     {
       domIdentif: [".modal .modal-dialog"],
       controlsElements: [
+        "AddElementDom",
         "ID",
         "BgSection",
         "SettingsSection",
@@ -4655,12 +4661,14 @@ var builderOptions = {
   },
   baseFilesForProject: {
     css: [
-      'bootstrap.weber.css'
-      , 'fx.css'
+      'bootstrap.weber.css',
+      'fx.css',
+      'swiper-bundle.css'
     ],
     js: [
-      'jquery-2.1.4.min.js'
-      , 'bootstrap.min.js'
+      'jquery-2.1.4.min.js',
+      'bootstrap.min.js',
+      'swiper-bundle.min.js'
     ],
     plugins: [
       'https://maps.googleapis.com/maps/api/js?key=' + googleKey
@@ -4671,6 +4679,6 @@ var builderOptions = {
   , previewSettings: {
     
     //Auth::user()->id
-    dir: publicpath + '/tmp/' + userId + '/' + myProjectID + '/preview' //Directory to upload like /preview or /../preview
+    dir:  userId + '/' + myProjectID //Directory to upload like /preview or /../preview
   },
 };

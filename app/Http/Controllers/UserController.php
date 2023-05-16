@@ -240,7 +240,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-        if(env('DEMO_MODE') == true  && User::find($id)->email == "demo@larabuilder.com"){
+        if(env('DEMO_MODE') == true  && User::find($id)->email == "demo@landino.com"){
             if($request->ajax()) {
                 return response()->json(['result' => 'error', 'action' => 'update', 'message' => _lang('DEMO MODE NOT ALLOWED')]);
             }else{
@@ -393,7 +393,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if(env('DEMO_MODE') == true  && User::find($id)->email == "demo@larabuilder.com"){
+        if(env('DEMO_MODE') == true  && User::find($id)->email == "demo@landino.com"){
             return redirect('users')->with('error', _lang('DEMO MODE NOT ALLOWED'));
         }
         DB::beginTransaction();
