@@ -69,7 +69,6 @@ class WebsiteController extends Controller
         $url = $request->domain;
         $values = parse_url($url);
         $host = explode('.',$values['path']);
-
         if ($request->domain == getAppDomain()) {
             if( get_option('website_enable','yes') == 'no' ){	
                 return redirect('login');
@@ -78,6 +77,7 @@ class WebsiteController extends Controller
 
             }
         } else {
+
             $p = \App\Project::where('custom_domain', $request->domain)
             ->orWhere('sub_domain', $request->domain)->orWhere('sub_domain', $host[0])->first();
 
@@ -86,6 +86,7 @@ class WebsiteController extends Controller
             }
 
             $pageName = $page ? $page.'.html' : 'index.html' ;
+
             if (File::exists(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/'.$pageName)) {
                 $content = file_get_contents(public_path() . '/sites/'. $p->user_id .'/'. $p->id .'/'.$pageName);
             } else{

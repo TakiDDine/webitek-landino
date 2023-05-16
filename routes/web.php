@@ -44,6 +44,30 @@ Route::group(['middleware' => ['install']], function () {
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
 	Route::group(['middleware' => ['auth','verified']], function () {
+	    
+	    Route::get('preview/{id}/{project?}/{page?}', function ($id , $project=null, $page=null) {
+        $p = null;
+        //dd($id, is_numeric($id) , $project,is_numeric($project));
+        if($project && $page) {
+        	$p = \App\Project::find($project);
+        		   if (!$p) {
+        			   return view('error.404');
+        		   }
+        }
+        $user_id = Auth::user()->id;
+        $project_id = $p ? $p->id.'/' : '' ;
+    		   //dd(public_path() . '/tmp/'. $user_id .'/'. $project_id.'preview/index.html');
+    		   $page = isset($page) && $page != '' ? $page.'.html': 'index.html' ;
+    		   if (File::exists(public_path() . '/tmp/'. $user_id .'/'. $project_id.'preview/'.$page)) {
+    			   $content = file_get_contents(public_path() . '/tmp/'. $user_id .'/'. $project_id .'preview/'.$page);
+    		   } else{
+    			   return view('error.404');
+    		   }
+    		   if(!$content) {
+    				return view('error.404');
+    		   }
+    		   return Response::make($content, 200)->header('Content-Type', 'text/html');
+        });
 		//Payment CMI
 		Route::get('payments', 'PaymentController@index');
 		Route::get('payments/{payment}/download', 'PaymentController@download');
@@ -266,22 +290,6 @@ Route::group(['middleware' => ['install']], function () {
 
 });
 
-Route::get('preview/{id}/{project}/', function ($id , $project) {
-	$p = \App\Project::find($id);
-		   if (!$p) {
-			   return view('error.404');
-		   }
-		   //dd($p);
-		   if (File::exists(public_path() . '/tmp/'. $p->user_id .'/'. $p->id .'/preview/index.html')) {
-			   $content = file_get_contents(public_path() . '/tmp/'. $p->user_id .'/'. $p->id .'/preview/index.html');
-		   } else{
-			   return view('error.404');
-		   }
-		   if(!$content) {
-				return view('error.404');
-		   }
-		   return Response::make($content, 200)->header('Content-Type', 'text/html');
-});
 
 Route::get('/installation', 'Install\InstallController@index');
 Route::get('install/database', 'Install\InstallController@database');

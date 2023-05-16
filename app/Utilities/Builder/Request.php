@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Utilities\Builder\Ftpuploading;
 use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
+use Auth;
 
 class Request {
     protected $_base_path = null;
@@ -263,7 +264,7 @@ class Request {
         if ($mode) {
             $dataPost = stripslashes($dataPost);
         }
-        $file_name = $this->saveSiteToTmp($dataPost, 'tmp');
+        $file_name = $this->saveSiteToTmp($dataPost, 'tmp', null, $_POST['project_id']);
        
 
         $zip = new ZipArchive();
@@ -1137,10 +1138,15 @@ class Request {
                 $zip->addFile( $this->_base_path.'/images/gallery/' . $favicon[2], 'images/' . $favicon[2] );
             }
             if(isset($user_id) && isset($p_id)) {
-                $base_url = '/public/sites/'.$user_id . '/' .$p_id.'/';
+                $base_url = 'site/'.$user_id . '/' .$p_id.'/';
             }else{
-                $base_url = '';
+                //$base_url = '11/';
+            $base_url = '';
+                $userid = Auth::user()->id;
+                //if($userid && !isset($p_id) && !$p_id) $base_url = $userid .'/';
+                //if($userid && isset($p_id) && $p_id ) $base_url = $user_id . '/' .$p_id.'/';
             }
+            //dd( $p_id , $base_url);
             $str=rand();
             $result = sha1($str);
             $version = '?v='.$result;
