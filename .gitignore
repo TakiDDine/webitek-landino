@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+node_modules
+/node_modules
+/node_modules
+=======
+>>>>>>> finale
 
 .env
 
@@ -14,10 +20,13 @@ public/uploads/project_files/*
 /node_modules
 /vendor
 
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> finale
 node_modules
 /node_modules
 /node_modules
