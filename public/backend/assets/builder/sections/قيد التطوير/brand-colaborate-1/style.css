@@ -84,6 +84,10 @@
 }
 .brand-section-1 .image_container img {
   max-width: 50%;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 .brand-section-1 .brand-title {
   margin: auto;

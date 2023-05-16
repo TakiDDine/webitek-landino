@@ -58,16 +58,14 @@
   src: url(https://fonts.gstatic.com/s/notosansarabic/v18/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlj4wv4o.woff2) format('woff2');
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.features-section-1 {
+.navbar-section-2 {
+  font-family: 'Noto Sans Arabic';
   background-color: #ffffff;
   color: #333 ;
   direction: rtl;
 }
-.features-section-1 .items_info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.navbar-section-2 * {
+  font-family: inherit;
 }
 img {
   -webkit-user-drag: none;
@@ -75,52 +73,104 @@ img {
   -moz-user-drag: none;
   -o-user-drag: none;
 }
-.features-section-1 .items_info div.icon_box {
-  background: #2AD167;
-  height: 60px;
-  width: 60px;
-  border-radius: 7px;
-  color: #FFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2em 0;
+.navbar-section-2 .navbar-wrapper-2 {
+  justify-content: space-between;
+  height: 80px;
+  background-color: #FFF;
 }
-.features-section-1 .items_info p {
-  font-family: 'Noto Sans Arabic', sans-serif;
-  text-align: center;
-  margin-bottom: 2em;
+.navbar-section-2 ul.navbar-nav {
+  padding: 0;
+}
+.navbar-section-2 .navbar-nav a {
   color: #556987;
-  width: 100%;
 }
-.features-section-1 h1,
-.features-section-1 h2,
-.features-section-1 h3,
-.features-section-1 h4 {
-  line-height: 1.7;
-  color: #2A3342;
-  font-weight: 600;
-  text-align: center;
-  font-family: 'Noto Sans Arabic', sans-serif;
-  width: 100%;
+.navbar-section-2 ul.menu-text-element li a {
+  font-weight: bold;
+  color: #556987;
 }
-.features-section-1 .header-text {
-  text-align: center;
+.navbar-section-2 .action-nav-btn {
+  align-items: center;
 }
-.features-section-1 .header-text span.span-features-head {
-  font-family: 'Noto Sans Arabic', sans-serif;
-  font-size: 13px;
-  background-color: #eafaf0 ;
-  color: #2ad167;
+.navbar-section-2 .action-nav-btn a {
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  height: 35px;
   border-radius: 6px;
-  height: 20px;
-  margin-bottom: 15px;
 }
-.features-section-1 .header-text p {
-  font-family: 'Noto Sans Arabic', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
+.navbar-section-2 .action-nav-btn .signup {
+  background-color: #2AD167;
+  color: #FFF;
 }
-.features-section-1 .header-text h2 {
-  font-weight: 700;
+.navbar-section-2 .action-nav-btn .login {
+  color: #556987;
+}
+.navbar-section-2 .main-menu-collapse {
+  background-color: inherit;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: space-between;
+}
+.boxistas {
+  justify-content: end;
+}
+.boxistas .menu-items {
+  margin: 0;
+}
+.nav-item.active {
+  color: red;
+}
+/*Flex order*/
+.navbar-section-2 .logo {
+  order: 2;
+}
+.navbar-section-2 .log-up {
+  order: 3;
+}
+.navbar-section-2 .boxistas {
+  order: 1;
+}
+@media (max-width: 1230px) {
+  /*Flex order*/
+    .navbar-section-2 .logo {
+      order: initial;
+    }
+    .navbar-section-2 .log-up {
+      order: initial;
+    }
+    .navbar-section-2 .boxistas {
+      order: initial;
+    }
+  /*Flex order*/
+  .navbar-section-2 .navbar-wrapper-2 {
+    padding: 0 15px;
+    /* position: relative; */
+  }
+  .navbar-section-2 .container-fluid {
+    box-shadow: 0px 4px 7px -3px rgba(0,0,0,.1);
+  }
+  .navbar-section-2 .main-menu-collapse {
+    padding: 0;
+  }
+  .navbar-section-2 .main-menu-collapse ul {
+    padding: 0;
+    align-items: center;
+  }
+  .main-menu-collapse .action-nav-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1em 0;
+  }
+  .boxistas {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+  .main-menu-collapse .action-nav-btn {
+    flex-direction: column;
+  }
+  .main-menu-collapse .action-nav-btn a {
+    width: 100%;
+    justify-content: center;
+  }
 }
