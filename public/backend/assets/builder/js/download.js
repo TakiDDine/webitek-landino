@@ -6,6 +6,7 @@ if (demoMode === "no") {
       var csrf_field = document
         .getElementById("csrf_field")
         .querySelector("input").value;
+
       var data = prepareContentToDownload(_this);
 
       var form = new FormData();
@@ -32,7 +33,6 @@ function validSubdomain(subdomain) {
 $("#publish-modal-open").on("click", function () {
   if (!_save) return;
   if (!subdomain || subdomain.trim() === "") {
-    console.log("toggle");
     $("#modal-publish").modal("toggle");
   } else {
     $("#publish-btn").trigger("click");
@@ -41,7 +41,6 @@ $("#publish-modal-open").on("click", function () {
 
 function publish(_this) {
   if (!_this._triggerDownload) {
-    console.log(subdomain);
     _this._triggerDownload = true;
 
     var csrf_field = document
@@ -72,11 +71,8 @@ function publish(_this) {
           },
           method: "POST",
           success: (data) => {
-            console.log(data);
             _this.ajax(form, "download", function (data) {
               var data = JSON.parse(data);
-
-              console.log(user_id);
 
               errorDialog.html("");
               errorDialog.hide();
@@ -109,7 +105,6 @@ function publish(_this) {
               });
 
               setTimeout(function () {
-                console.log("reset to false");
                 _this._triggerDownload = false;
               }, 2000);
               _this._resetIndExist();
@@ -128,7 +123,6 @@ function publish(_this) {
             subdomain = "";
 
             setTimeout(function () {
-              console.log("reset to false");
               _this._triggerDownload = false;
             }, 2000);
             _this._resetIndExist();
@@ -206,14 +200,16 @@ function prepareContentToDownload(_this) {
     var aos = "";
 
     for (var name in pObj.sections) {
-      if (sectionNames[pObj.sections[name].getDOMSelf().dataset.group])
+      if (sectionNames[pObj.sections[name].getDOMSelf().dataset.group]){
         sectionNames[pObj.sections[name].getDOMSelf().dataset.group].push(
           name.split("--")[0]
-        );
-      else
+          );
+        }
+        else{
         sectionNames[pObj.sections[name].getDOMSelf().dataset.group] = [
           name.split("--")[0],
         ];
+      }
     }
     var body = document.createElement("body");
     var modalContainer = document.createElement("div");
@@ -225,11 +221,12 @@ function prepareContentToDownload(_this) {
     var page = pObj.getDOMSelf().cloneNode(true);
     if (_this._idActivePage * 1 !== indx) {
       page.innerHTML = pObj.html;
-    }
+    }    
 
     _this._findElForOptions(page);
     _this.clearGalleryOnPage(page);
     _this._clearOptionClasses(page);
+    _this._DeleteTransformFromAttribute(page)
     _this.clearControlButtons(page);
     _this._clearAnimationByClass(page);
     _this._reloadVideoBg(page, "clear");

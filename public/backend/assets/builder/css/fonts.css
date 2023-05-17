@@ -2302,6 +2302,69 @@
 }
 
 @font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-ExtraBold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-ExtraLight.ttf') format('truetype');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NotoKufiArabic';
+	src: url('../fonts/Noto_Kufi_Arabic/NotoKufiArabic-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'NotoSans';
 	src: url('../fonts/Noto_Sans/NotoSans-Bold.ttf') format('truetype');
 	font-weight: 700;
