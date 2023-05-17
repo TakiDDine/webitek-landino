@@ -56,8 +56,7 @@
     <!--begin::Global Theme Styles(used by all pages) -->
     <link href="{{asset('backend/assets/admin/vendors/global/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet"
-        type="text/css">
+    <link href="{{ asset('backend/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
 
 
     <link href="{{asset('/backend/assets/admin/css/demo1/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />

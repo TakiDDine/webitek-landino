@@ -1271,8 +1271,7 @@ $language['Recaptcha Settings'] = 'إعدادات Recaptcha';
 $language['Site Key'] = 'مفتاح الموقع'; 
 $language["Add records below in your domain provider's DNS settings"] = 'أضف السجلات أدناه في إعدادات DNS لمزود المجال الخاص بك'; 
 $language['Update'] = 'تحديث'; 
-$language['Update'] = 'تحديث'; 
-$language['Update'] = 'تحديث'; 
-$language['Update'] = 'تحديث'; 
+$language['This subdomain is already exist'] = 'هذا النطاق الفرعي موجود بالفعل مسبقاً'; 
+$language['This custom domain is already exist'] = 'هذا النطاق المخصص موجود بالفعل مسبقاً'; 
 $language['Update'] = 'تحديث'; 
 

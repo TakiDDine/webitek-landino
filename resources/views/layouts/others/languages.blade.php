@@ -57,4 +57,5 @@
 	var $lang_copied_quotation_link = "{{ _lang('Copied Quotation Link') }}";
 	var $lang_no_user_assigned = "{{ _lang('No User Assigned') }}";
 	var $lang_select_milestone = "{{ _lang('Select Milestone') }}";
+	var $domain = "{{url('')}}";
 </script>

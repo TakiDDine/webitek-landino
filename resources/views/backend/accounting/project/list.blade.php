@@ -178,7 +178,7 @@ th {
 			title: $lang_alert_title,
 			text: $lang_alert_message,
 			icon: 'warning',
-			showCancelButton: true,
+			showCancelButton: true, 
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
 			confirmButtonText: $lang_confirm_button_text,
