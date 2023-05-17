@@ -1,5 +1,4 @@
-var swiper = new Swiper(".tstm-slide", {
-    //grabCursor: true,
+var swiper = new Swiper(".tstm-slide-white", {
     slidesPerView: 1,
     spaceBetween: 50,
     loop: true,
