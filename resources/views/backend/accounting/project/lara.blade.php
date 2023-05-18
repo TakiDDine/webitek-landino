@@ -202,6 +202,7 @@
         const project_file_name = template ? '{{ $name }}' : '';
         const custom_domain = '';
         const sub_domain = '';
+        var domain_url = '' ;
         const try_demo = false;
 
         document.getElementById('erasable').innerHTML = "";
