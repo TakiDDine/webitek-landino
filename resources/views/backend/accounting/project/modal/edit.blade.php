@@ -25,13 +25,17 @@
 
     </style>
     <div class="container col-md-8 shadow-md">
-        
+        @if (Session::has('error-sub'))
+            <div class="alert alert-danger">
+                <p>{{ session('error-sub') }}</p>
+            </div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h3 class="py-4">{{_lang('Settings')}}</h3>
             </div>
             <div class="card-body">
-                <form method="post" class=" p-4" autocomplete="off" action="{{ route('projects.update', ['id'=> $id]) }}" enctype="multipart/form-data">
+                <form method="post" class=" p-4" autocomplete="off" action="{{ route('projects.update', ['id'=> $id]) }}" enctype="multipart/form-data" ">
                     
                     @csrf
                     {{-- <input name="_method" type="hidden" value="PATCH">	 --}}
@@ -70,11 +74,15 @@
                                             </select>
                                         </div>
                                         <div class="">
-                                            <div class="col-md-8">
+                                            <div class="col-md-10">
                                                 <div class="form-group form_customdomain">
                                                     <label class="form-label">{{ _lang('Sub domain')}}</label>
-                                                    <input type="text" name="sub_domain" value="{{$project->sub_domain}}" class="form-control w-full" {{ $project->domain_type ? 'disabled' : '' }} id="input_sub_domain" @if(env('DEMO_MODE') == true) disabled @endif>
-                                                    <span>{{ _lang('test.example.com')}}</span>
+                                                    <div class="d-flex flex-col md-flex-row">
+                                                        <input id="domain" type="text" readonly name="domain" dir="ltr" value="" class="form-control w-50 " {{ $project->domain_type ? 'disabled' : '' }} id="sub_domain_suffix" @if(env('DEMO_MODE') == true) disabled @endif>
+                                                        <input id="subdomain" type="text" name="sub_domain" value="{{$project->sub_domain}}" placeholder="Subdomain" class="form-control w-25" {{ $project->domain_type ? 'disabled' : '' }} id="input_sub_domain" @if(env('DEMO_MODE') == true) disabled @endif>
+
+                                                    </div>
+                                                    <div>Subdomain<span id="sub-title"></span></div>
                                                     @if(env('DEMO_MODE') == true)
                                                 <span class="required">{{ _lang("UNFORTUNATELY IT'S NOT ALLOWED AT DEMO MODE!")}}</span>
                                                 @endif
@@ -154,8 +162,27 @@
     
     
     <script>
+        window.addEventListener('DOMContentLoaded', function() {
+        // Select the input element by its ID
+        var subdomain = document.getElementById('subdomain');
+        // remove https// from domain 
+        const pattern = /\/\/([^/]+)/;
+        const match1 = "{{env('APP_URL')}}".match(pattern);
+        // set the domaine to input domain
+        var domain = document.getElementById('domain');
+        domain.value = '.'+match1[1]
+        // set the domaine to title domain
+        document.getElementById('sub-title').innerHTML =  '.'+match1[1];
+        // Update the value of the input element
+        //extract the current  subdomain
+        subdomaine =  subdomain.value.replace('.'+match1[1], '')
+        //Set subdomain to subdomaine input
+        subdomain.value = subdomaine;
+        })
     
     $('#domain_type_select').on('change', function (e) {
+
+
             var optionSelected = $("option:selected", this);
             var valueSelected = this.value;
     

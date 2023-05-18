@@ -618,9 +618,6 @@ class ProjectController extends Controller
             'custom_domain'     => 'nullable|sometimes|unique:projects,custom_domain,' . $id
         ]);
 
-
-
-
     DB::beginTransaction();    
     $domain_main = '.'.getAppDomain();
 
@@ -629,11 +626,9 @@ class ProjectController extends Controller
     $project = Project::where('id',$id)->first();
 
             if( $request->sub_domain && Project::where('sub_domain', $request->sub_domain.$domain_main)->first()){
-                return response()->json(['result'=>'error','message'=>_lang('This subdomain is already exist')]);
-                return redirect()->back();
+                return redirect()->back()->with('error-sub', _lang('This subdomain is already exist'));
             } elseif ($request->custom_domain  && Project::where('custom_domain', $request->custom_domain)->first()) {
-                return response()->json(['result'=>'error','message'=>_lang('This custom domain is already exist')]);
-                return redirect()->back();
+                return redirect()->back()->with('error-sub', _lang('This custom domain is already exist'));
             }
 
            
