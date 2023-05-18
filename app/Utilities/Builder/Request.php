@@ -742,6 +742,7 @@ class Request {
             $project->user_id        =   $this->_current_user;
             $project->company_id     =   $this->_company_id;
             $project->status         =   'lara';
+            $project->sub_domain     =   bin2hex(random_bytes(10));
             $project->name           =   'Project_'.date('Y-m-d_H:i:s');
             $project->save();
 
@@ -774,7 +775,9 @@ class Request {
         echo json_encode([
             'status' => 200,
             'message' => 'Saved successfully',
-            'project_id' => $project->id 
+            'project_id' => $project->id,
+            'domain_url' => 'https://'.$project->sub_domain.'.'.str_replace(['http://', 'https://'], '' ,env('APP_URL'))
+
             
         ]);
         exit();
