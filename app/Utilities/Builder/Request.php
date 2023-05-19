@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Utilities\Builder\Ftpuploading;
 use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
+use Auth;
 
 class Request {
     protected $_base_path = null;
@@ -263,7 +264,7 @@ class Request {
         if ($mode) {
             $dataPost = stripslashes($dataPost);
         }
-        $file_name = $this->saveSiteToTmp($dataPost, 'tmp');
+        $file_name = $this->saveSiteToTmp($dataPost, 'tmp', null, $_POST['project_id']);
        
 
         $zip = new ZipArchive();
@@ -741,6 +742,7 @@ class Request {
             $project->user_id        =   $this->_current_user;
             $project->company_id     =   $this->_company_id;
             $project->status         =   'lara';
+            $project->sub_domain     =   md5(uniqid(Auth::user()->id, true)).'.'.str_replace(['http://', 'https://'], '' ,env('APP_URL'));
             $project->name           =   'Project_'.date('Y-m-d_H:i:s');
             $project->save();
 
@@ -773,7 +775,9 @@ class Request {
         echo json_encode([
             'status' => 200,
             'message' => 'Saved successfully',
-            'project_id' => $project->id 
+            'project_id' => $project->id,
+            'domain_url' => $project->sub_domain
+
             
         ]);
         exit();
@@ -1038,7 +1042,9 @@ class Request {
             $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/images');
         }          
 
-
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result; 
         foreach ($data->pages as $page) {
             foreach($page->sections as $group_name => $sections) {
                 if (file_exists($this->_base_path.'/sections/' . $group_name . '/overall.js')
@@ -1066,9 +1072,9 @@ class Request {
             }
 
             $includePajeStyle = '';
-            $str=rand();
-            $result = sha1($str);
-            $version = '?v='.$result; 
+            // $str=rand();
+            // $result = sha1($str);
+            // $version = '?v='.$result; 
             if ($page->style !== '') {
                 $page_style = preg_replace('#\?t=[0-9]*#im', '', $page->style);
 
@@ -1110,9 +1116,9 @@ class Request {
                     'js/' . $page->page_name . '.js'
                     , $page->js
                 );
-                $str=rand();
-                $result = sha1($str);
-                $version = '?v='.$result; 
+                // $str=rand();
+                // $result = sha1($str);
+                // $version = '?v='.$result; 
                 $includePajeJs .= "\n\t\t<script src=\"js/".$page->page_name.".js$version\"></script>";
             }
 
@@ -1137,13 +1143,14 @@ class Request {
                 $zip->addFile( $this->_base_path.'/images/gallery/' . $favicon[2], 'images/' . $favicon[2] );
             }
             if(isset($user_id) && isset($p_id)) {
-                $base_url = '/public/sites/'.$user_id . '/' .$p_id.'/';
+                $base_url = 'site/'.$user_id . '/' .$p_id.'/';
             }else{
                 $base_url = '';
+
             }
-            $str=rand();
-            $result = sha1($str);
-            $version = '?v='.$result;
+            // $str=rand(); 
+            // $result = sha1($str);
+            // $version = '?v='.$result;
             $head = "\t<head>
            <meta charset=\"UTF-8\">
            <title>$page->title</title>
@@ -1162,9 +1169,9 @@ class Request {
            
             $custom_js = '';
             if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
-                $str=rand();
-                $result = sha1($str);
-                $version = '?v='.$result;
+                // $str=rand();
+                // $result = sha1($str);
+                // $version = '?v='.$result;
                 $custom_js = "\n\t\t<script src=\"js/custom.js$version\"></script>";
             }
             $end = "$js_plugins".''."$default_js".''.$custom_js.''."$includePajeJs";
@@ -1337,7 +1344,9 @@ class Request {
         if ($data->form_section) {
             $baseFiles['js'][] = 'csfrhandler.js';    
         }
-    
+        $str=rand();
+        $result = sha1($str);
+        $version = '?v='.$result; 
         foreach ($baseFiles as $key => $value) {
             
             if ($key !== 'plugins') {
@@ -1347,9 +1356,9 @@ class Request {
                      //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
                         $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
                         if ($key === 'css') {
-                            $str=rand();
-                            $result = sha1($str);
-                            $version = '?v='.$result; 
+                            // $str=rand();
+                            // $result = sha1($str);
+                            // $version = '?v='.$result; 
                             $default_css .= "\n\t\t<link rel=\"stylesheet\" href=\"$key/$fileN$version\" />";
                         } elseif ($key === 'js') {
                             $cookie_accepted = '';
@@ -1359,9 +1368,9 @@ class Request {
                             ) {
                                 $cookie_accepted = ' type="text/plain" data-cookiescript="accepted"';
                             }
-                            $str=rand();
-                            $result = sha1($str);
-                            $version = '?v='.$result; 
+                            // $str=rand();
+                            // $result = sha1($str);
+                            // $version = '?v='.$result; 
                             $default_js .= "\n\t\t<script$cookie_accepted src=\"$key/$fileN$version\"></script>";
                         }
                     }
@@ -1393,9 +1402,9 @@ class Request {
 
         $custom_style = preg_replace('#(\./)?(sections/[\w/_()-]*/images|images/gallery)#im', '../images', $data->style);
         $custom_style = preg_replace('#.font-style-supra (?:\/\*)?(\w*)(?:\*\/)?#im', '$1', $custom_style);
-        $str=rand();
-        $result = sha1($str);
-        $version = '?v='.$result;
+        // $str=rand();
+        // $result = sha1($str);
+        // $version = '?v='.$result;
         $zip->addFromString( 'css/custom.css', $custom_style);
 
         $overall_js = "";

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	var _url = "{{ url('',[], true )}}";
+	var _url = "{{ url('',[], true)}}" ;
 	var _date_format = "{{ get_company_option('date_format',get_option('date_format','Y-m-d')) }}";
 	var _request_live_chat = "{{ Request::is('live_chat') }}";
     var _pusher_key = "{{ get_option('PUSHER_KEY') }}";

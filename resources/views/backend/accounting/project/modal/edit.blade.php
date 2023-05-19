@@ -167,7 +167,7 @@
         var subdomain = document.getElementById('subdomain');
         // remove https// from domain 
         const pattern = /\/\/([^/]+)/;
-        const match1 = $domain.match(pattern);
+        const match1 = "{{env('APP_URL')}}".match(pattern);
         // set the domaine to input domain
         var domain = document.getElementById('domain');
         domain.value = '.'+match1[1]

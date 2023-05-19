@@ -3,6 +3,7 @@
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectDemoController;
+use App\Http\Controllers\WebsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::group(['middleware' => ['install']], function () {
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
 	Route::group(['middleware' => ['auth','verified']], function () {
+	    //Get preview pages 
+	    Route::get('preview/{id}/{project?}/{page?}', [WebsiteController::class, 'preview']);
 		//Payment CMI
 		Route::get('payments', 'PaymentController@index');
 		Route::get('payments/{payment}/download', 'PaymentController@download');
@@ -265,6 +268,7 @@ Route::group(['middleware' => ['install']], function () {
 
 
 });
+
 
 Route::get('/installation', 'Install\InstallController@index');
 Route::get('install/database', 'Install\InstallController@database');
