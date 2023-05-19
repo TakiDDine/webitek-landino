@@ -59,6 +59,7 @@ class ProjectController extends Controller
                                                     }
                                                 })
                                                 ->orderBy("projects.id","desc")->count();
+                                            
                             if($projects >= Auth::user()->company->websites_limit && Auth::user()->company->websites_limit != 'Unlimited'){
                                 if( ! $request->ajax()){
                                     return redirect('membership/extend')->with('message', _lang('Your have already reached your usages limit. You can upgrade your package !'));
@@ -81,39 +82,7 @@ class ProjectController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
-  {
-    // $company_id = company_id();
 
-    // $user_type = Auth::user()->user_type;
-
-    // $projects = Project::select('projects.*')
-    //     ->with('members')
-    //     ->with('client')
-    //     ->where('company_id', $company_id)
-    //     ->when($user_type, function ($query, $user_type) {
-    //         if ($user_type == 'staff') {
-    //             return $query->join('project_members', 'projects.id', 'project_members.project_id')
-    //                 ->where('project_members.user_id', Auth::id());
-    //         }
-    //     })
-    //     ->orderBy("projects.id", "desc")->get();
-
-
-
-
-
-    // $data['demo']   =   false;
-    // if (Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')) {
-    //     $data['demo']   =   true;
-    // }
-    // return view('backend.accounting.project.list', compact('projects'));
-
-   
-    
-
-    return view('backend.accounting.project.list');
-  }
 
   public function builder()
   {

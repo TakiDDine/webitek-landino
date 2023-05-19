@@ -71,10 +71,10 @@ class BuilderController extends Controller
   public function novi(Request $request)
   {
 
-      $data['demo']   =   false;
-      if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-          $data['demo']   =   true;
-      }
+       $data['demo']   =   false;
+    //   if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+    //       $data['demo']   =   true;
+    //   }
 
       return view('backend.accounting.project.novi', $data);
   }
@@ -87,10 +87,10 @@ class BuilderController extends Controller
   public function lara(Request $request)
   {    
 
-      $data['demo']   =   false;
-      if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
-          $data['demo']   =   true;
-        }
+       $data['demo']   =   false;
+    //   if(Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')){
+    //       $data['demo']   =   true;
+    //     }
         
         
         define('SUPRA_BASE_PATH', base_path('public/backend/assets/builder'));

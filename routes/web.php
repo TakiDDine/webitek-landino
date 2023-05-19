@@ -166,7 +166,7 @@ Route::group(['middleware' => ['install']], function () {
 			//Project Controller
 			Route::post('projects/get_table_data','ProjectController@get_table_data');
 			Route::get('/projects', 'ProjectController@index')->name('projects.index');
-			Route::get('/projects/create', 'ProjectController@create');
+			Route::get('/projects/create', 'ProjectController@create')->name('projects.create');
 			Route::post('/projects/store', 'ProjectController@store');
 			Route::get('/projects/{id}/edit', 'ProjectController@edit');
 			Route::get('/projects/{id}/editSettings', 'ProjectController@editSettings');
@@ -181,7 +181,6 @@ Route::group(['middleware' => ['install']], function () {
 			Route::get('project/landino','BuilderController@larabuilder');
 			Route::get('builder/novi','BuilderController@novi');
 			Route::get('/editor','BuilderController@lara');
-			Route::get('/editor', 'BuilderController@lara');
 			Route::match(['get', 'post'],'api/ajax','BuilderController@ajax');
 			Route::get('test/backend/assets/builder','BuilderController@empty');
 
