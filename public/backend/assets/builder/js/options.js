@@ -2714,7 +2714,8 @@ var builderOptions = {
       domIdentif: [".btn:not(button)"],
       positionControl: "outside-top",
       context: "row",
-      dragItems: "h1, h2, h3, h4, h5, h6, p, span, button, .btn, ul, img, svg",
+      dragItems: "p, h1, h2, h3, h4, .btn, ul, img, svg",
+      // dragItems: "h1, h2, h3, h4, h5, h6, p, span, button, .btn, ul, img, svg",
       controlsElements: [
         "DragElement",
         "StaticLink",
@@ -2747,6 +2748,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
+        "HoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -2798,6 +2800,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
+        "HoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3086,6 +3089,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
+        "HoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3137,6 +3141,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "FontColorES",
+        "HoverColorES",
         "FontFamilyES",
         "FontSizeES",
         "FontStyleES",
@@ -3238,6 +3243,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
+        "HoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3294,6 +3300,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
+        "HoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3352,6 +3359,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
+        "HoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
