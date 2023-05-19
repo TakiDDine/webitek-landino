@@ -209,9 +209,9 @@
 
     </script>
     
-    <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
-    <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
-    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" ></script>
+    <script src="{{ asset('backend/assets/builder/js/options.js').'?v=fgfdgfdr' }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/download.js').'?v=fdsgfgdsf' }}"></script>
+    <script src="{{ asset('backend/assets/builder/js/builder.min.js').'?v=ghghjyj' }}" ></script>
 
 
     <script type="text/javascript">
