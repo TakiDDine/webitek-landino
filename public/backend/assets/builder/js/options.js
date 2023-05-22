@@ -2715,7 +2715,6 @@ var builderOptions = {
       positionControl: "outside-top",
       context: "row",
       dragItems: "p, h1, h2, h3, h4, .btn, ul, img, svg",
-      // dragItems: "h1, h2, h3, h4, h5, h6, p, span, button, .btn, ul, img, svg",
       controlsElements: [
         "DragElement",
         "StaticLink",
@@ -2748,7 +2747,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -2758,6 +2757,7 @@ var builderOptions = {
         "TextTransformES",
         "TextShadowES",
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -2800,7 +2800,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -2810,6 +2810,7 @@ var builderOptions = {
         "TextTransformES",
         "TextShadowES",
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -2960,6 +2961,7 @@ var builderOptions = {
       elementStyle: [
         "FillColorES",
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3089,7 +3091,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3100,6 +3102,7 @@ var builderOptions = {
         "TextShadowES",
         "ElementCBS(styleTextOptions)",
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3141,7 +3144,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontFamilyES",
         "FontSizeES",
         "FontStyleES",
@@ -3243,7 +3246,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3253,6 +3256,7 @@ var builderOptions = {
         "TextTransformES",
         "TextShadowES",
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3300,7 +3304,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3310,6 +3314,7 @@ var builderOptions = {
         "TextTransformES",
         "TextShadowES",
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3334,7 +3339,9 @@ var builderOptions = {
       controlsElements: [
         "DragElement",
         "ElementH",
-        
+        "ElementSettings",
+        "ElementStyle",
+        "AOSSettings",
         "CopyElement",
         "DelElement",
       ],
@@ -3359,7 +3366,7 @@ var builderOptions = {
       elementStyle: [
         "FontFamilyES",
         "FontColorES",
-        "HoverColorES",
+        "FontHoverColorES",
         "FontSizeES",
         "FontStyleES",
         "FontWeightES",
@@ -3398,6 +3405,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3438,6 +3446,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3476,9 +3485,10 @@ var builderOptions = {
         "DelElement",
       ],
       elementStyle: [
+        "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
-        "BackgroundColorES",
         "BackgroundRepeatES",
         "BackgroundSizeES",
         "BorderWidthES",
@@ -3519,6 +3529,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3539,6 +3550,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3567,6 +3579,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3593,6 +3606,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
@@ -3615,6 +3629,7 @@ var builderOptions = {
       ],
       elementStyle: [
         "BackgroundColorES",
+        "BackgroundHoverColorES",
         "BackgroundImageES",
         "BackgroundPositionES",
         "BackgroundRepeatES",
