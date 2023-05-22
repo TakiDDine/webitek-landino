@@ -933,6 +933,33 @@ var builderOptions = {
           },
         ],
       },
+      //!=============
+/*       {
+        name: language.buttonsSecondary,
+        tag: [
+          "h3:hover",
+          "h3:active",
+        ],
+        elements: [
+          {
+            name: "FontColor",
+            title: language.fontHover,
+            order: "1",
+            property: "color",
+            media: {
+              default: {
+                light: {
+                  value: "#080",
+                },
+                dark: {
+                  value: "#e6d",
+                },
+              },
+            },
+          },
+        ]
+      }, */
+      //!=============
       {
         name: language.h3,
         tag: "h3",
@@ -952,6 +979,7 @@ var builderOptions = {
               },
             },
           },
+
           {
             name: "FontSize",
             title: language.fontS,
@@ -2743,6 +2771,9 @@ var builderOptions = {
         "ElementCBS(buttonOptions)",
       ],
       elementStyle: [
+        //! hover---
+        "HoverBgColorES",
+        //! hover---
         "FontFamilyES",
         "FontColorES",
         "FontSizeES",
