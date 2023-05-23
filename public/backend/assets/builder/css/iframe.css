@@ -444,7 +444,8 @@ ul:not(.page-mode-edit-sections) .wrap-control {
     right: 0;
     left: 0;
     background: transparent;
-    z-index: 1000100;
+    /* z-index: 1000100; */
+    z-index: -1;
 }
 
 .spr-outline-control.spr-layer {
