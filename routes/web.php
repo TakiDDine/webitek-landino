@@ -45,8 +45,9 @@ Route::group(['middleware' => ['install']], function () {
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
 	Route::group(['middleware' => ['auth','verified']], function () {
+		
 	    //Get preview pages 
-	    Route::get('preview/{id}/{project?}/{page?}', [WebsiteController::class, 'preview']);
+		Route::get('preview/{id}/{project?}/{page?}', [WebsiteController::class, 'preview']);
 		//Payment CMI
 		Route::get('payments', 'PaymentController@index');
 		Route::get('payments/{payment}/download', 'PaymentController@download');

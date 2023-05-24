@@ -82,7 +82,39 @@ class ProjectController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
+    public function index()
+    {
+        // $company_id = company_id();
 
+        // $user_type = Auth::user()->user_type;
+
+        // $projects = Project::select('projects.*')
+        //     ->with('members')
+        //     ->with('client')
+        //     ->where('company_id', $company_id)
+        //     ->when($user_type, function ($query, $user_type) {
+        //         if ($user_type == 'staff') {
+        //             return $query->join('project_members', 'projects.id', 'project_members.project_id')
+        //                 ->where('project_members.user_id', Auth::id());
+        //         }
+        //     })
+        //     ->orderBy("projects.id", "desc")->get();
+
+
+
+
+
+        // $data['demo']   =   false;
+        // if (Auth::getUser()->company->membership_type == 'trial' && membership_validity() > date('Y-m-d')) {
+        //     $data['demo']   =   true;
+        // }
+        // return view('backend.accounting.project.list', compact('projects'));
+
+
+
+
+        return view('backend.accounting.project.list');
+    }
 
   public function builder()
   {
@@ -967,11 +999,15 @@ class ProjectController extends Controller
         $path = $request->path;
         $name = $request->name;
         $id = $request->userId;
-
-        $imgPath = public_path('backend/assets/builder/images/gallery/uploaded/'.$id.'/'.$name.'.jpg');
-    
+        $filename = pathinfo($path, PATHINFO_FILENAME);
+        $extension = pathinfo($path, PATHINFO_EXTENSION);
+        $imgPath = public_path('backend/assets/builder/images/gallery/uploaded/'.$id.'/'.$filename.'.'.$extension );
+        // dd($imgPath);
         if(File::exists($imgPath)) {
             File::delete($imgPath);
+        }
+        else {
+            return response()->json(["status" => 'ok',"message" => "file Not exist"]);
         }
    
         return response()->json(["status" => "ok"]);

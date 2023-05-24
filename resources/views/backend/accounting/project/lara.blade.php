@@ -165,7 +165,6 @@
         <div id="userId" class="userId" style="display: none">{{ Auth::check() ? Auth::user()->id : 0 }}</div>
         <div id="project_id" class="project_id" style="display: none">0</div>
     </div>
-
     <script>
         localStorage.clear();
     </script>

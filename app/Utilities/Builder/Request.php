@@ -122,7 +122,6 @@ class Request {
      * @param $mode {string}
      */
     protected function _upload_file($path, $arr, $mode,$userId,$project_id, $template = 'false') {
-        
         if ($mode === 'import') {
             if ($template == 'true') {
                 
@@ -142,33 +141,22 @@ class Request {
             mkdir($path . $sub_folder, 0777, true);
             chmod($path . $sub_folder, 0777);
         }
-
+        
         if ($this->_validation($file_name, 'string')) {
             if ( $this->_strposa( strtolower($file_name), $arr ) ) {
                 if ($this->_validation($_FILES['data'], 'file')) {
-                    if ( move_uploaded_file( $_FILES['data']['tmp_name'],
-                        $path . $sub_folder . $file_name ) ) {
+                    if ( $mode !== 'import' && move_uploaded_file( $_FILES['data']['tmp_name'], $path . $sub_folder . $file_name )   ) {
                         if ($mode === 'addgallery') {
-                            echo json_encode( array( 'fileName' => $this->_base_url.'/images/gallery/uploaded/'. $userId . '/' . $file_name ) );
+                            echo json_encode( array( 'fileName' =>'/images/gallery/uploaded/'. $userId . '/' . $file_name ) );
                         } else if ($mode === 'addgalleryvideo') {
                             echo json_encode( array( 'fileName' => $this->_base_url.'/video/gallery/uploaded/'. $userId . '/' . $file_name ) );
-                        } else if ($mode === 'import') {
-                            $zip = new ZipArchive();
-                            $file_name = 'public/uploads/project_files/' . $file_name;
+                        } 
+                        exit();
+                    } else if ($mode === 'import') {
+                        $file_name_project = 'public/uploads/project_files/' . $file_name;
                             
-                            if (preg_match('/.*\.zip/i', $file_name)) {
-                                
-                                if ( $zip->open( $file_name ) ) {
-                                    $zip->extractTo( 'public/tmp/'.$userId.'/' );
-                                    $zip->close();
-                                    unlink( $file_name );
-                                    $this->_readFileProject('public/tmp/project.supra');
-                                }
-                            } else if (preg_match('/.*\.supra/i', $file_name)) {
-                                
-                                $this->_readFileProject($file_name);
-                                // unlink( $file_name );
-                            }
+                        if (preg_match('/.*\.supra/i', $file_name_project)) {
+                            $this->_readFileProject($file_name_project);
                         }
                         exit();
                     } else {
@@ -198,8 +186,7 @@ class Request {
             $content = fread( $file_project, $f_size );
 
             fclose( $file_project );
-            //   unlink( $f_name_project );
-
+            
             echo $content;
             exit();
         }
@@ -712,14 +699,14 @@ class Request {
         if ($mode) {
             $data = stripslashes($data);
         }
-        if (!file_exists(base_path('public/tmp'))) {
-            mkdir(base_path('public/tmp'), 0777, true);
-            chmod(base_path('public/tmp'), 0777);
-        }
-        if (!file_exists(base_path('public/tmp').'/'.$this->_current_user)) {
-            mkdir(base_path('public/tmp').'/'.$this->_current_user, 0777, true);
-            chmod(base_path('public/tmp').'/'.$this->_current_user, 0777);
-        }
+        // if (!file_exists(base_path('public/tmp'))) {
+        //     mkdir(base_path('public/tmp'), 0777, true);
+        //     chmod(base_path('public/tmp'), 0777);
+        // }
+        // if (!file_exists(base_path('public/tmp').'/'.$this->_current_user)) {
+        //     mkdir(base_path('public/tmp').'/'.$this->_current_user, 0777, true);
+        //     chmod(base_path('public/tmp').'/'.$this->_current_user, 0777);
+        // }
 
         if(isset($_POST['id'])){
             $project             =   \App\Project::find($_POST['id']);
@@ -748,7 +735,8 @@ class Request {
 
 
             file_put_contents(public_path()."/uploads/project_files/".$project->id."_project.supra", $data);
-            file_put_contents(public_path()."/tmp/".$_POST['userId'].'/'.$project->id."_project.supra", $data);
+            // dd($data);
+            // file_put_contents(public_path()."/tmp/".$_POST['userId'].'/'.$project->id."_project.supra", $data);
 
 
             $projectfile                = new \App\ProjectFile();
@@ -1240,6 +1228,7 @@ class Request {
      * Calling from ajax to get a file that contains website
      */
     public function Download() {
+        
         $this->_clearTmp($_POST['user_id']);
         $mode = ini_get('magic_quotes_gpc');
         $dataPost = $_POST['data'];
@@ -1448,9 +1437,9 @@ class Request {
 
         $zip->close();
 
+        // dd($filename);
         $file_name = basename($filename);
 
-      //  dd($file_name);
         return $file_name;
     }
 
@@ -1470,19 +1459,22 @@ class Request {
      */
     protected function _clearTmp($user_id = null, $project_id = null) {
         clearstatcache();
-        $tmp = scandir(public_path('tmp/'));
-        if($user_id && file_exists(public_path('tmp/').$user_id) && is_dir(public_path('tmp/').$user_id)) {
-            // rmdir(public_path('tmp/').$user_id);
-            $this->deleteFolder(public_path('tmp/').$user_id);
-        }
-        for ( $j = 2; $j < count( $tmp ); $j ++ ) {
-            // dd($project_id , preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ]));
-            if ($project_id && preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ])) {
-                // dd('hello');
-                unlink(public_path('tmp/').$tmp[ $j ]);
+        if (file_exists(public_path('tmp/'))) {
+
+            $tmp = scandir(public_path('tmp/'));
+            if($user_id && file_exists(public_path('tmp/').$user_id) && is_dir(public_path('tmp/').$user_id)) {
+                // rmdir(public_path('tmp/').$user_id);
+                $this->deleteFolder(public_path('tmp/').$user_id);
             }
-            if (preg_match('/[a-z0-9]*_(project|website)\.zip/i', $tmp[ $j ])) {
-                unlink(public_path('tmp/').$tmp[ $j ]);
+            for ( $j = 2; $j < count( $tmp ); $j ++ ) {
+                // dd($project_id , preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ]));
+                if ($project_id && preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ])) {
+                    // dd('hello');
+                    unlink(public_path('tmp/').$tmp[ $j ]);
+                }
+                if (preg_match('/[a-z0-9]*_(project|website)\.zip/i', $tmp[ $j ])) {
+                    unlink(public_path('tmp/').$tmp[ $j ]);
+                }
             }
         }
     }
