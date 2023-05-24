@@ -76,11 +76,11 @@ img {
   -o-user-drag: none;
 }
 
-/*  */
+/* CONTENT TEXT */
 
 .features-section-3 .header-text {
   text-align: center;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 .features-section-3 .header-text span.span-features-head {
   font-family: 'Noto Sans Arabic', sans-serif;
@@ -95,12 +95,13 @@ img {
   font-family: 'Noto Sans Arabic', sans-serif;
   font-weight: 400;
   font-size: 18px;
+  margin: 0;
 }
 .features-section-3 .header-text h2 {
   font-weight: 700;
 }
 
-/*  */
+/* IMAGES */
 
 .features-section-3 .relative_images_section {
   position: relative;
@@ -114,13 +115,13 @@ img {
   -o-user-drag: none;
 }
 .features-section-3 .relative_images_section .svg_0 {
-  z-index: 10;
+  z-index: 9898;
   position: absolute;
   top: -40px;
   left: -50px;
 }
 .features-section-3 .relative_images_section .svg_1 {
-  z-index: 10;
+  z-index: 9898;
   position: absolute;
   bottom: -30px;
   right: -40px;
@@ -132,6 +133,7 @@ img {
 
 .features-section-3 .img_place {
   margin: 2em 0;
+  justify-content: center;
 }
 
 .features-section-3 .img_place .relative_images_section .image-container {
@@ -139,7 +141,7 @@ img {
   width: 700px;
 }
 
-/*  */
+/* BOXES & ICONS */
 
 .features-section-3 .icon_box {
   background: #2AD167;
@@ -175,5 +177,40 @@ img {
 }
 
 .features-section-3 .feats {
-  margin-bottom: 2em;
+  margin-top: 4em;
+}
+
+/*! media query */
+@media (max-width: 992px) {
+  .features-section-3 .img_place .relative_images_section .image-container {
+    width: 600px;
+  }
+}
+@media (max-width: 768px) {
+  .features-section-3 .img_place .relative_images_section .image-container {
+    width: 500px;
+  }
+  .features-section-3 .relative_images_section .svg_0,
+  .features-section-3 .relative_images_section .svg_1 {
+    display: none;
+  }
+  .features-section-3 .header-text {
+    padding: 0 2em;
+  }
+}
+@media (max-width: 600px) {
+  .features-section-3 .img_place .relative_images_section .image-container {
+    width: 400px;
+  }
+}
+@media (max-width: 500px) {
+  .features-section-3 .img_place {
+    margin: 0;
+  }
+  .features-section-3 .img_place .relative_images_section .image-container {
+    width: auto;
+  }
+}
+@media (max-width: 500px) {
+
 }
