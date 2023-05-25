@@ -210,7 +210,8 @@
     
     <script src="{{ asset('backend/assets/builder/js/options.js') }}"></script>
     <script src="{{ asset('backend/assets/builder/js/download.js') }}"></script>
-    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" ></script>
+    <script src="{{ asset('backend/assets/builder/js/builder.min.js') }}" type="module" ></script>
+    <!-- <script src="{{ asset('backend/assets/builder/js/index.js')}}" type="module" ></script> -->
 
 
     <script type="text/javascript">
