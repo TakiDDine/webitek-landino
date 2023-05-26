@@ -1,4 +1,4 @@
-import Colorpicker from "../global/Colorpicker.js";
+import Colorpicker from "../base/Colorpicker.js";
 
 class FontColorES extends Colorpicker {
   constructor(options) {

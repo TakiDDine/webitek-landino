@@ -1,4 +1,4 @@
-import FourthInput from "../global/FourthInput.js";
+import FourthInput from "../base/FourthInput.js";
 
 class TextShadowES extends FourthInput {
   constructor(options) {

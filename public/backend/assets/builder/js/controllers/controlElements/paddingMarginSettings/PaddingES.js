@@ -6,12 +6,12 @@ class PaddingES extends HalfDropdown {
       throw new ReferenceError("Expected variables elements");
     }
     super({
-      title: Core.prototype.translateWord.keywords_ar.rightPanel.padding,
+      title: this.translateWord.keywords_ar.rightPanel.padding,
       order: options.order || 999999,
       elClass: "",
       callback: () => {
         if (this._padding === "") return this._padding;
-        let _padding = Core.prototype._elementNoPx(this._padding);
+        let _padding = this._elementNoPx(this._padding);
         return _padding;
       },
     });
@@ -31,7 +31,7 @@ class PaddingES extends HalfDropdown {
       pTop = elementStylePadding[1];
       pRight = elementStylePadding[2]
         ? elementStylePadding[2]
-        : elementStylePadding[1];
+        : elementStylePaddi[1];
       pBottom = elementStylePadding[3]
         ? elementStylePadding[3]
         : elementStylePadding[1];

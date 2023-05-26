@@ -86,3 +86,5 @@ class BorderRadiusES extends BaseBorderRadius {
     });
   }
 }
+
+export default BorderRadiusES;

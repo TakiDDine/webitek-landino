@@ -1,10 +1,21 @@
-import PaddingMargin from "../base/PaddingMargin.js";
+import BaseCoordinates from "../global/BaseCoordinates.js";
 
-class Padding extends PaddingMargin {
+class Coordinates extends BaseCoordinates {
   constructor(options) {
     if (options === undefined) {
       throw new ReferenceError("Expected variables elements");
     }
+
+    super({
+      menu: [],
+      title: options.title,
+      order: options.order || 999999,
+      elClass: "",
+      eventName: options.property,
+      callback: () => {
+        return this._properties.media[options.mediaMode][options.mode].value;
+      },
+    });
 
     this._selfDOM = null;
     this._properties = {
@@ -13,21 +24,10 @@ class Padding extends PaddingMargin {
     };
     this._tag = options.tag;
     this._controlElements = options.controlElements;
-
-    PaddingMargin.call(this, {
-      menu: [],
-      title: options.title,
-      order: options.order || 999999,
-      elClass: "",
-      eventName: this._properties.property,
-      callback: () => {
-        return this._properties.media[options.mediaMode][options.mode].value;
-      },
-    });
   }
 
   selectValue(media, mode) {
-    var mediaProperty = this._properties.media[media];
+    let mediaProperty = this._properties.media[media];
 
     this._issetOrNotIsset(mediaProperty, mode);
 
@@ -35,17 +35,17 @@ class Padding extends PaddingMargin {
       mediaProperty = this._properties.media.default;
     }
 
-    var value = mediaProperty[mode].value;
-    var match = ["", "", "", ""];
+    const value = mediaProperty[mode].value;
+    let match = ["auto", "auto", "auto", "auto"];
 
-    if (value !== "none" && value !== "") {
+    if (value !== "none" && value !== "" && value !== "auto") {
       match = value.split(" ");
     }
 
-    var top = match[0] === "0" || match[0] === "0px" ? "" : match[0];
-    var right = match[1] === "0" || match[1] === "0px" ? "" : match[1];
-    var bottom = match[2] === "0" || match[2] === "0px" ? "" : match[2];
-    var left = match[3] === "0" || match[3] === "0px" ? "" : match[3];
+    const top = match[0] === "auto" ? "" : match[0];
+    const right = match[1] === "auto" ? "" : match[1];
+    const bottom = match[2] === "auto" ? "" : match[2];
+    const left = match[3] === "auto" ? "" : match[3];
 
     this._selfDOM.querySelector("input.top").value = top;
     this._selfDOM.querySelector("input.right").value = right;
@@ -53,31 +53,34 @@ class Padding extends PaddingMargin {
     this._selfDOM.querySelector("input.left").value = left;
   }
 
-  _addEventListToPmInput(pmInput, eventName) {
-    var inputs = pmInput.querySelectorAll("input");
+  _addEventListTobCoordinatesInput(bCoordinates, eventName) {
+    const inputs = bCoordinates.querySelectorAll("input");
     Array.prototype.forEach.call(inputs, (input) => {
       input.addEventListener("keyup", (e) => {
         e.preventDefault();
 
-        var top = pmInput.querySelector("input.top").value;
-        var right = pmInput.querySelector("input.right").value;
-        var bottom = pmInput.querySelector("input.bottom").value;
-        var left = pmInput.querySelector("input.left").value;
+        const top = bCoordinates.querySelector("input.top").value;
+        const right = bCoordinates.querySelector("input.right").value;
+        const bottom = bCoordinates.querySelector("input.bottom").value;
+        const left = bCoordinates.querySelector("input.left").value;
 
-        top = top === "" ? "0" : top;
-        right = right === "" ? "0" : right;
-        bottom = bottom === "" ? "0" : bottom;
-        left = left === "" ? "0" : left;
+        const val = `${top} ${right} ${bottom} ${left}`;
 
-        var val = top + " " + right + " " + bottom + " " + left;
+        if (
+          top === "none" &&
+          right === "none" &&
+          bottom === "none" &&
+          left === "none"
+        )
+          val = "";
 
-        var cEvent = {
+        const cEvent = {
           detail: {
             tag: this._tag,
             mode: this._controlElements._mode,
             media: this._controlElements._media,
-            property: this._properties.property,
-            value: val,
+            property: input.getAttribute("name"),
+            value: input.value === "" ? "auto" : input.value,
             valueLikeDefault:
               val ===
                 this._properties.media.default[this._controlElements._mode]
@@ -85,9 +88,9 @@ class Padding extends PaddingMargin {
           },
         };
 
-        var eventCheckSelect = new CustomEvent("globalStyle.change", cEvent);
-
         this._issetOrNotIsset(null, null, cEvent);
+
+        const eventCheckSelect = new CustomEvent("globalStyle.change", cEvent);
 
         document.dispatchEvent(eventCheckSelect);
 
@@ -114,5 +117,4 @@ class Padding extends PaddingMargin {
     });
   }
 }
-
-export default Padding;
+export default Coordinates;

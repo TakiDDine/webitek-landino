@@ -1,4 +1,4 @@
-import PaddingMargin from "../global/PaddingMargin.js";
+import PaddingMargin from "../base/PaddingMargin.js";
 
 class Margin extends PaddingMargin {
   constructor(options) {
