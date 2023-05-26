@@ -3588,9 +3588,9 @@ a[data-toggle="tab"]:hover {
 
 
 .navbar .navbar-nav .sub-menu .sub-menu {
-    left: 100%;
+    right: 100%;
     top: -10px;
-    margin-top: 0;
+    margin-top: 10px;
 }
 
 .fixed-bottom.navbar .navbar-nav .sub-menu .sub-menu {
@@ -3601,6 +3601,9 @@ a[data-toggle="tab"]:hover {
 .navbar:not(.touchmenu) .navbar-nav li:hover > .sub-menu,
 .navbar:not(.touchmenu) .navbar-nav li:hover > .mega-menu-container {
     display: block;
+    border: 1px solid #ededed94;
+    width: 220px;
+    padding: 0;
 }
 
 .navbar.touchmenu .navbar-nav li.tap > .sub-menu,
