@@ -7,11 +7,6 @@ class FontFamily extends DropDown {
       media: options.media,
       property: options.property,
     };
-    console.log("options", options);
-    console.log(
-      "properties.media[options.mediaMode][options.mode].value;",
-      properties.media[options.mediaMode][options.mode].value
-    );
     super({
       menu: [],
       title: options.title,
@@ -22,6 +17,10 @@ class FontFamily extends DropDown {
         return properties.media[options.mediaMode][options.mode].value;
       },
     });
+    this._selfDOM = null;
+    this._properties = properties;
+    this._tag = options.tag;
+    this._controlElements = options.controlElements;
 
     if (options === undefined) {
       throw new ReferenceError("Expected variables elements");
@@ -30,10 +29,7 @@ class FontFamily extends DropDown {
     if (!Array.isArray(typographyFonts)) {
       throw new TypeError("Expected type of Array");
     }
-    this._selfDOM = null;
-    this._properties = properties;
-    this._tag = options.tag;
-    this._controlElements = options.controlElements;
+
     console.log("this._properties", this._properties);
   }
 
@@ -42,7 +38,6 @@ class FontFamily extends DropDown {
     const classItem = args.outerClass ? " " + args.outerClass : "";
     dropDown.className = "item cs-element dropdown-el-full" + classItem;
     dropDown.dataset.order = args.order;
-
     let ul =
       '<ul class="dropdown-menu" aria-labelledby="dropdownMenu' +
       this._countDropDown +

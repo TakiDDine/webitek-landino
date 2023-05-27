@@ -20,7 +20,7 @@ import TextShadowES from "./controlElements/fontSettings/TextShadowES.js";
 import TextTransform from "./controlElements/fontSettings/TextTransform.js";
 import TextTransformES from "./controlElements/fontSettings/TextTransformES.js";
 
-const allControlElements = {
+export const allControlElements = {
   FontColor,
   FontColorES,
   FontHoverColorES,
@@ -43,5 +43,26 @@ const allControlElements = {
   TextTransform,
   TextTransformES,
 };
-
-export default allControlElements;
+export const allControlElementsToString = {
+  FontColor: "FontColor",
+  FontColorES: "FontColorES",
+  FontHoverColorES: "FontHoverColorES",
+  FontFamily: "FontFamily",
+  FontFamilyES: "FontFamilyES",
+  FontSize: "FontSize",
+  FontSizeES: "FontSizeES",
+  FontStyle: "FontStyle",
+  FontStyleES: "FontStyleES",
+  FontWeight: "FontWeight",
+  FontWeightES: "FontWeightES",
+  LetterSpacing: "LetterSpacing",
+  LetterSpacingES: "LetterSpacingES",
+  LineHeight: "LineHeight",
+  LineHeightES: "LineHeightES",
+  TextDecoration: "TextDecoration",
+  TextDecorationES: "TextDecorationES",
+  TextShadow: "TextShadow",
+  TextShadowES: "TextShadowES",
+  TextTransform: "TextTransform",
+  TextTransformES: "TextTransformES",
+};

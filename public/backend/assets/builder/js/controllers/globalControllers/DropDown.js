@@ -20,7 +20,7 @@ class DropDown extends BaseElement {
     const classItem = args.outerClass ? " " + args.outerClass : "";
     dropDown.className = "item cs-element dropdown-el-full" + classItem;
     dropDown.dataset.order = args.order || 999999;
-
+    console.log("inCreate element");
     let ul =
       '<ul class="dropdown-menu" aria-labelledby="dropdownMenu' +
       this._countDropDown +

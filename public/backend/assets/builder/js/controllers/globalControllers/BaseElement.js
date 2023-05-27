@@ -123,6 +123,7 @@ class BaseElement extends Core {
     } else if (e && this._selfDOM.classList.contains("not-isset")) {
       this._selfDOM.classList.remove("not-isset");
       const mediaButton = this.mediaButtonsOnControlStylePL2[e.detail.media];
+      console.log("e.detail.media", e.detail.media);
 
       if (!mediaButton.classList.contains("isset")) {
         mediaButton.classList.add("isset");
