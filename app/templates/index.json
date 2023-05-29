@@ -104,6 +104,11 @@
             "name": "testme",
             "cover": "/public/thumbnails/thumbnail-juice.png",
             "category": "tourism"
+        },
+        {
+            "name": "newOne",
+            "cover": "/public/thumbnails/thumbnail-game.png",
+            "category": "newOne"
         }
     ]
 }
