@@ -101,9 +101,14 @@
             "category": "tourism"
         },
         {
-            "name": "testme",
-            "cover": "/public/thumbnails/thumbnail-juice.png",
-            "category": "tourism"
+            "name": "april",
+            "cover": "/public/thumbnails/thumbnail-april.png",
+            "category": "company"
+        },
+        {
+            "name": "solid",
+            "cover": "/public/thumbnails/thumbnail-solid.png",
+            "category": "company"
         }
     ]
 }
