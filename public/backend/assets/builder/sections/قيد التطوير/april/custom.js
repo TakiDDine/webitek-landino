@@ -1,3 +1,11 @@
+
+setTimeout(() => {
+	window.scrollTo(0, document.body.scrollHeight);
+}, 500)
+setTimeout(() => {
+	window.scrollTo(0, 0);
+}, 500)
+
 // !*****************************
 
 /*
@@ -49,276 +57,215 @@ var ScrollReveal=function(){"use strict";var r={delay:0,distance:"0",duration:60
 //* 
 
 
-(function () {
-    const doc = document.documentElement
+(() => {
+	const doc = document.documentElement;
   
-    doc.classList.remove('no-js')
-    doc.classList.add('js')
+	doc.classList.remove('no-js');
+	doc.classList.add('js');
   
-    // Reveal animations
-    if (document.querySelector(".has-animations")) {
-
-    /* remove class light */
-    document.querySelector(".has-animations").classList.remove("light")
-
-      /* global ScrollReveal */
-      const sr = window.sr = ScrollReveal()
+	// Reveal animations
+	if (document.querySelector('.has-animations')) {
+	  /* remove class light */
+	  document.querySelector('.has-animations').classList.remove('light');
   
-      sr.reveal('.feature, .testimonial', {
-        duration: 600,
-        distance: '50px',
-        easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
-        origin: 'bottom',
-        interval: 100
-      })
+	  /* global ScrollReveal */
+	  const sr = window.sr = ScrollReveal();
   
-      /* global anime */
-      const heroAnimation = anime.timeline({ autoplay: false })
-      const strokedElement = document.querySelector('.stroke-animation')
+	  sr.reveal('.feature, .testimonial', {
+		duration: 600,
+		distance: '50px',
+		easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
+		origin: 'bottom',
+		interval: 100
+	  });
   
-      strokedElement.setAttribute('stroke-dashoffset', anime.setDashoffset(strokedElement))
+	  /* global anime */
+	  const heroAnimation = anime.timeline({ autoplay: false });
+	  const strokedElement = document.querySelector('.stroke-animation');
   
-      heroAnimation.add({
-        targets: '.stroke-animation',
-        strokeDashoffset: {
-          value: 0,
-          duration: 2000,
-          easing: 'easeInOutQuart'
-        },
-        strokeWidth: {
-          value: [0, 2],
-          duration: 2000,
-          easing: 'easeOutCubic'
-        },
-        strokeOpacity: {
-          value: [1, 0],
-          duration: 1000,
-          easing: 'easeOutCubic',
-          delay: 1000
-        },
-        fillOpacity: {
-          value: [0, 1],
-          duration: 500,
-          easing: 'easeOutCubic',
-          delay: 1300
-        }
-      }).add({
-        targets: '.fadeup-animation',
-        offset: 1300, // Starts at 1300ms of the timeline
-        translateY: {
-          value: [100, 0],
-          duration: 1500,
-          easing: 'easeOutElastic',
-          delay: function (el, i) {
-            return i * 150
-          }
-        },
-        opacity: {
-          value: [0, 1],
-          duration: 200,
-          easing: 'linear',
-          delay: function (el, i) {
-            return i * 150
-          }
-        }
-      }).add({
-        targets: '.fadeleft-animation',
-        offset: 1300, // Starts at 1300ms of the timeline
-        translateX: {
-          value: [40, 0],
-          duration: 400,
-          easing: 'easeOutCubic',
-          delay: function (el, i) {
-            return i * 100
-          }
-        },
-        opacity: {
-          value: [0, 1],
-          duration: 200,
-          easing: 'linear',
-          delay: function (el, i) {
-            return i * 100
-          }
-        }
-      })
+	  strokedElement.setAttribute('stroke-dashoffset', anime.setDashoffset(strokedElement));
   
-      doc.classList.add('anime-ready')
-      heroAnimation.play()
-    }
-  }())
-
-  // Select Form In Page
-const form = document.querySelector("form");
-/* 
-		Form Validation.
-*/
-/* 
-		Fetch Script For Forms POST Req.
-		We Have 2 Paths :
-		---1--- Has GOOGLE SHEETS FIELD: 'yes'
-		---2--- Has GOOGLE SHEETS FIELD: 'no'
-*/
-// Declare The GOOGLE SHEETS Input
-let gsInput = form.querySelector(".form-group.interface-field-group input[data-csrf][name=interface]");
-// GOOGLE SHEETS ID
-if (gsInput) {
-	console.log("===HAS GOOGLE SHEETS===")
-
-	// google sheets link
-	let gsUrl = `${window.atob(gsInput.getAttribute("data-csrf"))}`;
-
-	// GET SUBMIT BUTTON
-	let submit = form.querySelector("button[type=submit]");
-
-	// ONSUBMIT FORM EVENT
-	form.addEventListener("submit", (e) => {
-		// PREVENT FROM SUBMIT
-		e.preventDefault()
-
-		const formValidation = () => {
-			let isValid = true;
-
-			let name = form.querySelector(".text-field-group input[type='text']")
-			let email = form.querySelector(".email-field-group input[type='email']")
-			let textarea = form.querySelector(".textarea-group textarea")
-			let phone = form.querySelector(".phone-field-group input[type='tel']")
-			let select = form.querySelector(".select-group select")
-			let radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']")
-			let date = form.querySelector(".datepicker-group .datepicker-input")
-
-			if (name) {
-				let span = document.createElement("span")
-				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
-					span.innerHTML = "please enter a valid name less that 30 characters";
-					if (!form.querySelector(".text-field-group span")) {
-						form.querySelector(".text-field-group").appendChild(span)
-					}
-					isValid = false;
-				}
-				else {
-					span.innerHTML = null
-				}
-			}
-
-			if (phone) {
-				let phoneFormat = phone.getAttribute('data-format')
-				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
-
-				if (!regex.test(phone.value)) {
-					let span = document.createElement("span")
-					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
-					span.style.color = "red";
-					if (!form.querySelector(".phone-field-group span")) {
-						form.querySelector(".phone-field-group").appendChild(span)
-					}
-					isValid = false;
-				}
-
-			}
-
-			if (email) {
-				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
-					let span = document.createElement("span")
-					span.innerHTML = "please enter a valid email address";
-					if (!form.querySelector(".email-field-group span")) {
-						form.querySelector(".email-field-group").appendChild(span)
-					}
-					isValid = false;
-				}
-			}
-
-			if (textarea) {
-				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
-					let span = document.createElement("span")
-					span.innerHTML = "please describe your message in more than 50 character";
-					if (!form.querySelector(".textarea-group span")) {
-						form.querySelector(".textarea-group").appendChild(span)
-					}
-					isValid = false;
-				}
-			}
-
-			if (select) {
-				if (!select.selectedIndex) {
-					let span = document.createElement("span")
-					span.innerHTML = "please choose a value from the select menu";
-					if (!form.querySelector(".select-group span")) {
-						form.querySelector(".select-group").appendChild(span)
-					}
-					isValid = false;
-				}
-			}
-
-			if (radios.length > 0) {
-				let radioValid = false;
-				let i = 0
-				while (!radioValid && i < radios.length) {
-					if (radios[i].checked) radioValid = true;
-					i++;
-				}
-				if (!radioValid) {
-					let span = document.createElement("span")
-					span.innerHTML = "please choose a value from the select menu";
-					if (!form.querySelector(".radio-group > span")) {
-						form.querySelector(".radio-group").appendChild(span)
-					}
-					isValid = false;
-				}
-				return radioValid;
-			}
-
-			if (date) {
-				/* !/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value) &&  */
-				if (!/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value)) {
-					let span = document.createElement("span")
-					span.innerHTML = "Please insert a valide Date";
-					if (!form.querySelector(".datepicker-group span")) {
-						form.querySelector(".datepicker-group").appendChild(span)
-					}
-					isValid = false;
-				}
-			}
-
-			return isValid;
-		};
-
-		const valide = formValidation();
-
-		if (valide) {
-			// GET FORM DATA
-			let data = new FormData(form);
-			// Send Google Sheets Form to data form
-			data.append('INTERFACE', gsUrl)
-			// Security
-			data.append('cbr', form.getAttribute('cbr'))
-			data.append('tbs', form.getAttribute('tbs'))
-
-			// Fetch "POST" Request
-			fetch("https://larabuilde3.takiddine.art/api/interface", {
-				method: "POST",
-				body: data
-			}).then(response => {
-				if (!response.ok) {
-					throw new Error(response.statusText);
-				}
-				return response.text();
-			}).then(response => {
-				const res = response;
-				console.log(res)
-				submit.innerHTML = 'Success Request 🍎';
-			}).catch(error => {
-				console.error(error)
-			})
-
-		} else {
-			return false;
+	  heroAnimation.add({
+		targets: '.stroke-animation',
+		strokeDashoffset: {
+		  value: 0,
+		  duration: 2000,
+		  easing: 'easeInOutQuart'
+		},
+		strokeWidth: {
+		  value: [0, 2],
+		  duration: 2000,
+		  easing: 'easeOutCubic'
+		},
+		strokeOpacity: {
+		  value: [1, 0],
+		  duration: 1000,
+		  easing: 'easeOutCubic',
+		  delay: 1000
+		},
+		fillOpacity: {
+		  value: [0, 1],
+		  duration: 500,
+		  easing: 'easeOutCubic',
+		  delay: 1300
 		}
+	  }).add({
+		targets: '.fadeup-animation',
+		offset: 1300, // Starts at 1300ms of the timeline
+		translateY: {
+		  value: [100, 0],
+		  duration: 1500,
+		  easing: 'easeOutElastic',
+		  delay: (el, i) => i * 150
+		},
+		opacity: {
+		  value: [0, 1],
+		  duration: 200,
+		  easing: 'linear',
+		  delay: (el, i) => i * 150
+		}
+	  }).add({
+		targets: '.fadeleft-animation',
+		offset: 1300, // Starts at 1300ms of the timeline
+		translateX: {
+		  value: [40, 0],
+		  duration: 400,
+		  easing: 'easeOutCubic',
+		  delay: (el, i) => i * 100
+		},
+		opacity: {
+		  value: [0, 1],
+		  duration: 200,
+		  easing: 'linear',
+		  delay: (el, i) => i * 100
+		}
+	  });
+  
+	  doc.classList.add('anime-ready');
+	  heroAnimation.play();
+	}
+  })();
+  
 
+// Select Form In Page
+const form = document.querySelector("form");
 
-	})
+/* 
+  Form Validation.
+*/
+const formValidation = () => {
+  let isValid = true;
+
+  const addErrorMessage = (field, message) => {
+    if (!field.parentElement.querySelector("span")) {
+      const span = document.createElement("span");
+      span.innerHTML = message;
+      field.parentElement.appendChild(span);
+    }
+    isValid = false;
+  };
+
+  const name = form.querySelector(".text-field-group input[type='text']");
+  const email = form.querySelector(".email-field-group input[type='email']");
+  const textarea = form.querySelector(".textarea-group textarea");
+  const phone = form.querySelector(".phone-field-group input[type='tel']");
+  const select = form.querySelector(".select-group select");
+  const radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']");
+  const date = form.querySelector(".datepicker-group .datepicker-input");
+
+  if (name && !/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
+    addErrorMessage(name, "Please enter a valid name less than 30 characters.");
+  }
+
+  if (phone) {
+    const phoneFormat = phone.getAttribute("data-format");
+    const regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+    if (!regex.test(phone.value)) {
+      addErrorMessage(phone, `Please enter a valid phone format: ${phoneFormat}`);
+    }
+  }
+
+  if (email && !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
+    addErrorMessage(email, "Please enter a valid email address.");
+  }
+
+  if (textarea && !/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
+    addErrorMessage(textarea, "Please describe your message in more than 50 characters.");
+  }
+
+  if (select && !select.selectedIndex) {
+    addErrorMessage(select, "Please choose a value from the select menu.");
+  }
+
+  if (radios.length > 0) {
+    let radioValid = false;
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        radioValid = true;
+        break;
+      }
+    }
+    if (!radioValid) {
+      addErrorMessage(document.querySelector(".radio-group"), "Please choose a value from the select menu.");
+    }
+  }
+
+  if (date && !/^\d{1,2}.\d{1,2}.\d{4}$/gm.test(date.value)) {
+    addErrorMessage(date, "Please insert a valid date.");
+  }
+
+  return isValid;
+};
+
+/* 
+  Fetch Script For Forms POST Req.
+  We Have 2 Paths :
+  ---1--- Has GOOGLE SHEETS FIELD: 'yes'
+  ---2--- Has GOOGLE SHEETS FIELD: 'no'
+*/
+const gsInput = form.querySelector(".form-group.interface-field-group input[data-csrf][name=interface]");
+
+if (gsInput) {
+  console.log("===HAS GOOGLE SHEETS===");
+
+  const gsUrl = window.atob(gsInput.getAttribute("data-csrf"));
+  const submit = form.querySelector("button[type=submit]");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const isValid = formValidation();
+
+    if (isValid) {
+      const data = new FormData(form);
+      data.append("INTERFACE", gsUrl);
+      data.append("cbr", form.getAttribute("cbr"));
+      data.append("tbs", form.getAttribute("tbs"));
+
+      fetch("https://larabuilde3.takiddine.art/api/interface", {
+        method: "POST",
+        body: data,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.text();
+        })
+        .then((response) => {
+          console.log(response);
+          submit.innerHTML = "Success Request 🍎";
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      return false;
+    }
+  });
 } else {
-	form.addEventListener("submit", (e) => {
-		// OTHER CODE REQUEST NEDDED
-		console.log("===HASN'T GOOGLE SHEETS===")
-	})
+  form.addEventListener("submit", (e) => {
+    console.log("===DOESN'T HAVE GOOGLE SHEETS FIELD===");
+    // OTHER CODE REQUEST NEEDED
+  });
 }
