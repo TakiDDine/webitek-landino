@@ -104,6 +104,11 @@
             "name": "april",
             "cover": "/public/thumbnails/thumbnail-april.png",
             "category": "company"
+        },
+        {
+            "name": "solid",
+            "cover": "/public/thumbnails/thumbnail-solid.png",
+            "category": "company"
         }
     ]
 }
