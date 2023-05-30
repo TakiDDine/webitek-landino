@@ -101,14 +101,14 @@
             "category": "tourism"
         },
         {
-            "name": "testme",
-            "cover": "/public/thumbnails/thumbnail-juice.png",
-            "category": "tourism"
+            "name": "april",
+            "cover": "/public/thumbnails/thumbnail-april.png",
+            "category": "company"
         },
         {
-            "name": "newOne",
-            "cover": "/public/thumbnails/thumbnail-game.png",
-            "category": "newOne"
+            "name": "solid",
+            "cover": "/public/thumbnails/thumbnail-solid.png",
+            "category": "company"
         }
     ]
 }
