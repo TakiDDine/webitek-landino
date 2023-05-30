@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&family=Heebo:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+/* ARABIC MODE THEME */
+#april:not(section.hero), .hero-copy  {
+    text-align: right;
+    direction: rtl;
+}
+section.hero {
+    direction: ltr !important;
+}
 
 
 html {
@@ -43,7 +52,7 @@ hr {
 }
 
 pre {
-    font-family: monospace, monospace;
+    font-family: 'Tajawal', sans-serif;
     font-size: 1em
 }
 
@@ -72,7 +81,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
+    font-family: 'Tajawal', sans-serif;
     font-size: 1em
 }
 
@@ -128,7 +137,7 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: sans-serif;
+    font-family: 'Tajawal', sans-serif;
     font-size: 100%;
     line-height: 1.15;
     margin: 0
@@ -368,7 +377,7 @@ button,
 input,
 select,
 textarea {
-    font-family: "Heebo", sans-serif
+    font-family: 'Tajawal', sans-serif;
 }
 
 a {
@@ -396,7 +405,7 @@ h6,
 .h6 {
     clear: both;
     color: #11103E;
-    font-family: Fira Sans, serif;
+    font-family: 'Tajawal', sans-serif;
     font-weight: 600
 }
 
@@ -479,6 +488,10 @@ h6,
 }
 
 @media (max-width: 640px) {
+
+    #april:not(section.hero), .hero-copy {
+        text-align: center;
+    }
     .contact_form {
         max-width: 440px;
         margin: auto;
@@ -627,7 +640,7 @@ pre .h3,
 pre .h4,
 pre .h5,
 pre .h6 {
-    font-family: "Courier 10 Pitch", Courier, monospace
+    font-family: 'Tajawal', sans-serif;
 }
 
 pre,
@@ -653,7 +666,7 @@ code,
 kbd,
 tt,
 var {
-    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    font-family: 'Tajawal', sans-serif;
     font-size: 16px;
     padding: 2px 4px
 }
@@ -1368,7 +1381,7 @@ input .inline-input {
 .site-header-inner {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center
 }
 
@@ -1818,7 +1831,8 @@ input .inline-input {
 
 .newsletter-form {
     max-width: 440px;
-    margin: 0 auto
+    margin: 0 auto;
+    justify-content: center;
 }
 
 @media (min-width: 641px) {
@@ -1926,7 +1940,7 @@ main {
 
 .footer-links li+li,
 .footer-social-links li+li {
-    margin-left: 16px
+    margin-right: 16px
 }
 
 .footer-social-links li {
