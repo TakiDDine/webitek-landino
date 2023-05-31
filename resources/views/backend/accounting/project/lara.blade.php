@@ -6,7 +6,7 @@
 
 <head>
     <!--begin::Base Path (base relative path for assets of this page) -->
-    <base href="{{ asset('/backend/assets/builder/builder') }}">
+    <base href="{{ asset('/storage/') }}">
     <!--end::Base Path -->
     <meta charset="utf-8" />
     <title>{{ get_option('site_title', 'لاندينو') }}</title>
@@ -203,7 +203,7 @@
         const sub_domain = '';
         var domain_url = '' ;
         const try_demo = false;
-
+        var project_id_toSwitch_edit = 0 ;
         document.getElementById('erasable').innerHTML = "";
 
     </script>

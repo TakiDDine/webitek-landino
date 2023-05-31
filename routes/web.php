@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ProjectDemoController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\ProjectDemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::group(['middleware' => ['install']], function () {
 
 	Route::group(['middleware' => ['auth','verified']], function () {
 		
+		//Upload image
+		Route::post('/api/upload', [UploadController::class, 'uploadImage']);
 	    //Get preview pages 
 		Route::get('preview/{id}/{project?}/{page?}', [WebsiteController::class, 'preview']);
 		//Payment CMI

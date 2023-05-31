@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Project;
-use App\ProjectMember;
-use Validator;
-use DataTables;
-use Auth;
 use DB;
-use Notification;
-use App\Notifications\ProjectCreated;
-use App\Notifications\ProjectUpdated;
+use Auth;
 use File;
 use Session;
+use Validator;
+use DataTables;
+use App\Project;
+use Notification;
+use App\ProjectMember;
+use Illuminate\Http\Request;
+use App\Notifications\ProjectCreated;
+use App\Notifications\ProjectUpdated;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -1001,10 +1002,10 @@ class ProjectController extends Controller
         $id = $request->userId;
         $filename = pathinfo($path, PATHINFO_FILENAME);
         $extension = pathinfo($path, PATHINFO_EXTENSION);
-        $imgPath = public_path('backend/assets/builder/images/gallery/uploaded/'.$id.'/'.$filename.'.'.$extension );
-        // dd($imgPath);
-        if(File::exists($imgPath)) {
-            File::delete($imgPath);
+        $imgPath = 'images/gallery/uploaded/'.$id.'/'.$filename.'.'.$extension ;
+        if (Storage::exists($imgPath)) {
+            Storage::delete($imgPath);
+
         }
         else {
             return response()->json(["status" => 'ok',"message" => "file Not exist"]);

@@ -14,6 +14,7 @@ if (demoMode === "no") {
       form.append("data", JSON.stringify(data));
       form.append("_token", csrf_field);
       form.append('user_id', userId)
+      form.append("project_id", project_id_toSwitch_edit ? project_id_toSwitch_edit : project_id);
       _this.ajax(form, "download", function (data) {
         var data = JSON.parse(data);
         window.downloadFile(baseurl + "/public/tmp/"+userId+'/' + data.file, data.file);
@@ -54,7 +55,7 @@ function publish(_this) {
     var form = new FormData();
     form.append("data", JSON.stringify(data));
     form.append("_token", csrf_field);
-
+    form.append("project_id", project_id_toSwitch_edit ? project_id_toSwitch_edit : project_id);
     var errorDialog = $("#error-dialog");
 
     errorDialog.html("");

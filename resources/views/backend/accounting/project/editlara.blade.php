@@ -6,7 +6,7 @@
 
 <head>
     <!--begin::Base Path (base relative path for assets of this page) -->
-    <base href="{{ asset('/backend/assets/builder/builder') }}">
+    <base href="{{ asset('/storage/') }}">
     <!--end::Base Path -->
     <meta charset="utf-8" />
     <title>{{ get_option('site_title', 'لاندينو') }}</title>
@@ -196,7 +196,7 @@
         // const project_id = 0;
         // const project_file = '';
         // const project_file_name = '';
-
+        var project_id_toSwitch_edit = 0;
         const project_id = '{{ $id }}';
         const custom_domain = '{{ \App\Project::where('id', $id)->first()->custom_domain }}';
         const sub_domain = '{{ \App\Project::where('id', $id)->first()->sub_domain }}';

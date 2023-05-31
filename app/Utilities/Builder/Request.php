@@ -469,7 +469,8 @@ class Request {
      */
     public function Getgallery() {
         $type = $_POST['type'];
-        $base_path = $this->_base_path.'/images/gallery';
+        // $base_path = $this->_base_path.'/images/gallery';
+        $base_path = storage_path().'/app/public/images/gallery';
         $this->_images = scandir($base_path);
         unset($this->_images[0]);
         unset($this->_images[1]);
@@ -490,7 +491,7 @@ class Request {
                     $size       = getimagesize( $base_path . '/' . $image );
                     $response['general'][] = array(
                         'name'   => $image . '?t=' . time(),
-                        'path'   => './images/gallery/' . $image
+                        'path'   => '/public/storage/images/gallery/' . $image
                     ,	'width'  => (isset($size[0]) ? $size[0] : 90)
                     ,	'height' => (isset($size[1]) ? $size[1] : 90)
                     );
@@ -504,7 +505,7 @@ class Request {
                     }
                     $response['general'][] = array(
                         'name'   => $image . '?t=' . time(),
-                        'path'   => './images/gallery/' . $image
+                        'path'   => '/public/storage/images/gallery/' . $image
                     ,   'srcset' => $srcset
                     ,	'width'  => (isset($size[0]) ? $size[0] : 90)
                     ,	'height' => (isset($size[1]) ? $size[1] : 90)
@@ -526,7 +527,7 @@ class Request {
                             $size       = getimagesize( $base_path . '/' . $image . '/' . $imageL2 );
                             $response[$image][] = array(
                                 'name'   => $imageL2 . '?t=' . time(),
-                                'path'   => './images/gallery/' . $image . '/' . $imageL2
+                                'path'   => '/public/storage/images/gallery/' . $image . '/' . $imageL2
                             ,	'width'  => (isset($size[0]) ? $size[0] : 90)
                             ,	'height' => (isset($size[1]) ? $size[1] : 90)
                             );
@@ -540,7 +541,7 @@ class Request {
                             }
                             $response[$image][] = array(
                                 'name'   => $imageL2 . '?t=' . time(),
-                                'path'   => './images/gallery/' . $image . '/' . $imageL2
+                                'path'   => '/public/storage/images/gallery/' . $image . '/' . $imageL2
                             ,   'srcset' => $srcset
                             ,	'width'  => (isset($size[0]) ? $size[0] : 90)
                             ,	'height' => (isset($size[1]) ? $size[1] : 90)
@@ -562,7 +563,7 @@ class Request {
                                 $size       = getimagesize( $base_path . '/uploaded/' . $_POST['userId'] . '/' . $imageL2 );
                                 $response['uploaded'][] = array(
                                     'name'   => $imageL2 . '?t=' . time(),
-                                    'path'   => './images/gallery/' . '/uploaded/' . $_POST['userId'] . '/' . $imageL2
+                                    'path'   => '/public/storage/images/gallery/' . '/uploaded/' . $_POST['userId'] . '/' . $imageL2
                                 ,	'width'  => (isset($size[0]) ? $size[0] : 90)
                                 ,	'height' => (isset($size[1]) ? $size[1] : 90)
                                 );
@@ -576,7 +577,7 @@ class Request {
                                 }
                                 $response['uploaded'][] = array(
                                     'name'   => $imageL2 . '?t=' . time(),
-                                    'path'   => './images/gallery/' . '/uploaded/' . $_POST['userId'] . '/' . $imageL2
+                                    'path'   => '/public/storage/images/gallery/' . '/uploaded/' . $_POST['userId'] . '/' . $imageL2
                                 ,   'srcset' => $srcset
                                 ,	'width'  => (isset($size[0]) ? $size[0] : 90)
                                 ,	'height' => (isset($size[1]) ? $size[1] : 90)
@@ -735,7 +736,6 @@ class Request {
 
 
             file_put_contents(public_path()."/uploads/project_files/".$project->id."_project.supra", $data);
-            // dd($data);
             // file_put_contents(public_path()."/tmp/".$_POST['userId'].'/'.$project->id."_project.supra", $data);
 
 
@@ -758,6 +758,23 @@ class Request {
         }
         $p_id = $_POST['id'] ?? $projectfile->id;
 
+        if (isset($_POST['userId']) && isset($p_id )) {
+            
+            if (File::exists(public_path().'/sites/'.$_POST['userId'].'/'.$p_id)) {
+                File::deleteDirectory(public_path().'/sites/'.$_POST['userId'].'/'.$p_id );
+                File::makeDirectory(public_path().'/sites/'. $_POST['userId'].'/'.$p_id, 0755, true);
+
+            }
+            //delete all files css 
+        //    $this->deleteFiles (public_path().'/sites/', $_POST['userId'], $p_id , '/css');
+        //    //delete all files js 
+        //    $this->deleteFiles (public_path().'/sites/', $_POST['userId'], $p_id , '/js');
+        //    //delete all files html from root of folder sites 
+        //    $this->deleteFiles (public_path().'/sites/', $_POST['userId'], $p_id , '');
+        //     //delete all files images except folder uploqds 
+        //    $this->deleteFiles (public_path().'/sites/', $_POST['userId'], $p_id , '/images');
+        //    $this->deleteFiles (public_path().'/sites/', $_POST['userId'], $p_id , '/images/uploaded/'.$_POST['userId']);
+       }  
         $this->_savePublic($data2, $p_id);
 
         echo json_encode([
@@ -766,7 +783,6 @@ class Request {
             'project_id' => $project->id,
             'domain_url' => $project->sub_domain
 
-            
         ]);
         exit();
     }
@@ -1015,21 +1031,9 @@ class Request {
      * @param $js_plugins {string}
      */
     protected function _add_page(&$data, &$overall_js, &$zip, &$fonts, &$default_css, &$style_gallery,
-                                 &$style_magnific, &$default_js, &$js_plugins, &$fonts_to_download, $user_id, $p_id) {
+                                 &$style_magnific, &$default_js, &$js_plugins, &$fonts_to_download, $user_id, $p_id, $folder=null) {
         $uniqueJs = array();
-        // dd($data->pages, $data);
-        // dump('0',$data->pages);
-        if (isset($user_id) && isset($p_id)) {
-             //delete all files css 
-            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/css');
-            //delete all files js 
-            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/js');
-            //delete all files html from root of folder sites 
-            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '');
-             //delete all files images except folder uploqds 
-            $this->deleteFiles (public_path().'/sites/', $user_id, $p_id, '/images');
-        }          
-
+      
         $str=rand();
         $result = sha1($str);
         $version = '?v='.$result; 
@@ -1069,13 +1073,14 @@ class Request {
                 preg_match_all('#(/)?images/gallery/([^"\'\s]*)#i', $page_style, $customImages);
                 if (!empty($customImages[2]) && count($customImages[2]) > 0) {
                     foreach($customImages[2] as $image) {
-                        if (file_exists($this->_base_path.'/'.'images/gallery/'. $image)) {
-                            $zip->addFile( $this->_base_path.'/'.'images/gallery/'. $image, 'images/' . $image );
+                        if (file_exists(public_path().'/'.'storage/images/gallery/'. $image)) {
+                            $zip->addFile( public_path().'/'.'storage/images/gallery/'. $image, 'images/' . $image );
                         }
                     }
                 }
 
                 preg_match_all('#sections/[\w/_()-]*/images/([^"\')&]*)#i', $page_style, $defaultImages);
+
                 if (!empty($defaultImages[0]) && count($defaultImages[0]) > 0) {
                     foreach($defaultImages[0] as $key => $image) {
                         if (preg_match('/(.*)\s2x/i',$image,$img)) {
@@ -1118,19 +1123,21 @@ class Request {
                 $preloader_css = "\n\t\t<link rel=\"stylesheet\" href=\"css/preloader.css\" />";
             }
             preg_match_all('#(/)?images/gallery/([^"\'\s]*)#i', $preloader, $customImages);
+
             if (!empty($customImages[2]) && count($customImages[2]) > 0) {
                 foreach($customImages[2] as $image) {
-                    $zip->addFile( $this->_base_path.'/images/gallery/'. $image, 'images/' . $image );
+                    $zip->addFile( public_path().'/storage/images/gallery/'. $image, 'images/' . $image );
                 }
             }
             $preloader = preg_replace('#(http.*)?(\./)?(sections/[\w/_()-]*/images|images/gallery)#i', 'images', $preloader);
+
             preg_match('#(/)?images/gallery/(.*)#i', $page->favicon, $favicon);
             $link_favicon = "";
             if (!empty($favicon) && file_exists($this->_base_path.'/images/gallery/' . $favicon[2])) {
                 $link_favicon = "\n<link rel=\"icon\" href=\"images/$favicon[2]\" type=\"image/x-icon\">";
-                $zip->addFile( $this->_base_path.'/images/gallery/' . $favicon[2], 'images/' . $favicon[2] );
+                $zip->addFile( public_path().'/storage/images/gallery/' . $favicon[2], 'images/' . $favicon[2] );
             }
-            if(isset($user_id) && isset($p_id)) {
+            if(isset($user_id) && isset($p_id) && $folder !== 'tmp' ) {
                 $base_url = 'site/'.$user_id . '/' .$p_id.'/';
             }else{
                 $base_url = '';
@@ -1155,24 +1162,61 @@ class Request {
            <body class=\"".$page->style_options."\">$preloader";
 
            
-            $custom_js = '';
-            if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
-                // $str=rand();
-                // $result = sha1($str);
-                // $version = '?v='.$result;
-                $custom_js = "\n\t\t<script src=\"js/custom.js$version\"></script>";
+           $custom_js = '';
+           if (preg_match('/\w/', $overall_js) || preg_match('/\w/', $data->js_over_all)) {
+               // $str=rand();
+               // $result = sha1($str);
+               // $version = '?v='.$result;
+               $custom_js = "\n\t\t<script src=\"js/custom.js$version\"></script>";
             }
             $end = "$js_plugins".''."$default_js".''.$custom_js.''."$includePajeJs";
-
+            
             $content = preg_replace('#\?t=[0-9]*#im', '', $page->content);
-
+            
             preg_match_all('#(/)?images/gallery/([^"\'\)&]*)#i', $content, $customImages);
+
             if (!empty($customImages[2]) && count($customImages[2]) > 0) {
                 foreach($customImages[2] as $image) {
                     if (preg_match('/(.*)\s2x/i',$image,$img)) {
                         $zip->addFile( $this->_base_path.'/images/gallery/' . $img[1], 'images/' . $img[1] );
                     } else {
-                        $zip->addFile( $this->_base_path.'/images/gallery/' . $image, 'images/' . $image );
+                        $storagePath = Storage::path('images/gallery/' . $image);
+                        $publicPath = public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image;
+                        if (!file_exists(dirname($publicPath))) {
+                            mkdir($publicPath, 0777, true);
+                            chmod($publicPath, 0777);
+                        }
+                        // check if Download mode
+                        if ($folder == 'tmp') {
+                            if (Storage::exists($image) ) {
+
+                                $zip->addFile( Storage::path($image), 'images/' . $image );
+                            }
+                            if (Storage::exists('images/gallery/' . $image)) {
+
+                                $zip->addFile( $storagePath, 'images/' . $image );
+                            }
+                        }
+                        else if (Storage::exists('images/gallery/' . $image) && !File::exists($publicPath)) {
+                            $target_path =  public_path().'/sites/'.$user_id.'/'.$p_id.'/images/uploaded/'.$user_id.'/';
+                            
+                            if (!file_exists($target_path)) {
+                                mkdir($target_path, 0777, true);
+                                chmod($target_path, 0777);
+                            }
+                            // creates a symbolic link between the image file in the storage folder and the desired location in the public 
+                            symlink($storagePath, $publicPath);        
+                        }
+                        else if (Storage::exists($image) && !File::exists(public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image)) {
+                            $target_path =  public_path().'/sites/'.$user_id.'/'.$p_id.'/images/uploaded/'.$user_id.'/';
+                            if (!file_exists($target_path)) {
+                                mkdir($target_path, 0777, true);
+                                chmod($target_path, 0777);
+                            }
+                            // creates a symbolic link between the image file in the storage folder and the desired location in the public 
+                            symlink( Storage::path($image), public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image);
+                        }
+
                     }
                 }
             }
@@ -1192,7 +1236,6 @@ class Request {
 
             preg_match_all('#(mp4|ogv|jpg).*?(/)?(video/(?:gallery/)?)([^"\',&]*)#i', $page->content, $customVideo);
             $trigger_video_deflt = false;
-            //				var_dump($customVideo);die;
             if (!empty($customVideo[4]) && count($customVideo[4]) > 0) {
                 foreach ( $customVideo[4] as $key => $video ) {
                     if ($customVideo[3][$key] === 'video/' && !$trigger_video_deflt) {
@@ -1205,7 +1248,6 @@ class Request {
                         if (empty($type)) {
                             $type = '.' . $customVideo[1][$key];
                             $zip->addFile( $this->_base_path.'/video/gallery/' . $video . $type, 'video/' . $video . $type );
-                            //								var_dump('video/gallery/' . $video . $type);die;
                         } else {
                             $zip->addFile( $this->_base_path.'/video/gallery/' . $video, 'video/' . $video );
                         }
@@ -1243,8 +1285,9 @@ class Request {
             mkdir(base_path('public/tmp').'/'.$_POST['user_id'], 0777, true);
             chmod(base_path('public/tmp').'/'.$_POST['user_id'], 0777);
         }
+        
 
-        $file_name = $this->saveSiteToTmp($dataPost, 'tmp', $_POST['user_id']);
+        $file_name = $this->saveSiteToTmp($dataPost, 'tmp', $_POST['user_id'], $_POST['project_id']);
 
         echo json_encode(array('file' => $file_name));
         exit();
@@ -1265,7 +1308,6 @@ class Request {
 
         // save zip file in user folder 
         $userFolder = $folder == 'tmp' ? $user_id . '/' : '';
-        // dd($userFolder, $folder, $user_id);
         $filename = "public/" . $folder. '/'  .$userFolder . uniqid() . "_website.zip";
 
         $zip = new ZipArchive;
@@ -1342,7 +1384,6 @@ class Request {
                 if ( is_array( $value ) ) {
                     foreach ( $value as $fileN ) {
 
-                     //   dd('hna' .$this->_base_path.' key:'.$key.' value :'.$fileN.' filename :'.$fileN );
                         $zip->addFile( $this->_base_path.'/'.$key . '/lib/' . $fileN, $key . '/' . $fileN );
                         if ($key === 'css') {
                             // $str=rand();
@@ -1399,7 +1440,7 @@ class Request {
         $overall_js = "";
 
         $this->_add_page($data, $overall_js, $zip, $fonts, $default_css, $style_gallery,
-            $style_magnific, $default_js, $js_plugins, $fonts_to_download, $user_id, $p_id);
+            $style_magnific, $default_js, $js_plugins, $fonts_to_download, $user_id, $p_id, $folder);
 
         if (preg_match('/\w/', $overall_js)) {
             preg_match_all('#\/\/cookie-dependent-start([\s\S]*?)\/\/cookie-dependent-end#im', $overall_js, $cookieDependentArr);
@@ -1437,7 +1478,6 @@ class Request {
 
         $zip->close();
 
-        // dd($filename);
         $file_name = basename($filename);
 
         return $file_name;
@@ -1467,9 +1507,7 @@ class Request {
                 $this->deleteFolder(public_path('tmp/').$user_id);
             }
             for ( $j = 2; $j < count( $tmp ); $j ++ ) {
-                // dd($project_id , preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ]));
                 if ($project_id && preg_match('/'.$project_id.'_project\.supra/i', $tmp[ $j ])) {
-                    // dd('hello');
                     unlink(public_path('tmp/').$tmp[ $j ]);
                 }
                 if (preg_match('/[a-z0-9]*_(project|website)\.zip/i', $tmp[ $j ])) {
