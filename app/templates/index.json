@@ -109,6 +109,11 @@
             "name": "solid",
             "cover": "/public/thumbnails/thumbnail-solid.png",
             "category": "company"
+        },
+        {
+            "name": "seo-company",
+            "cover": "/public/thumbnails/thumbnail-seo-company.jpg",
+            "category": "company"
         }
     ]
 }
