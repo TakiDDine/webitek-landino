@@ -5,6 +5,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectDemoController;
+use App\Http\Controllers\dashboard\ProjectController as Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -308,3 +309,4 @@ Route::get('console/run','CronJobsController@run');
 // Affiliate
 Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
 Route::middleware('throttle:2,1')->post('/s/{affiliate_id}', 'Auth\RegisterController@register');
+

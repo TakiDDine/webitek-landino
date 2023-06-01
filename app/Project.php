@@ -15,6 +15,7 @@ class Project extends Model
      * @var string
      */
     protected $table = 'projects';
+    protected $fillable = ['name', 'sub_domain'];
 
     public function members(){
     	return $this->belongsToMany('App\User','project_members', 'project_id', 'user_id');
@@ -39,5 +40,16 @@ class Project extends Model
     public function user ()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * projectCount function
+     *
+     * @param [integer] $user_id
+     * @param [string] $name
+     * @return int
+     */
+    public function ScopeCount($user_id, $name) {
+        return $this->where(['user_id' => $user_id, ['name' , 'like', '%'.$name.'%']])->count();
     }
 }

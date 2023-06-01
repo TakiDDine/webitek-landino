@@ -4,8 +4,9 @@ namespace App\Exceptions;
 
 use Throwable;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
@@ -49,7 +50,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        
+     
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json(['error' =>'Not Found'], 404);
+        }
         if ($exception instanceof NotFoundHttpException) {
             
             return response()->view('error.404', [], 404);

@@ -95,4 +95,14 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
     {
         return $this->role == 'admin' ? 'tailwind' : 'bootstrap';
     }
+
+    /**
+     * The templates that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function templates(): BelongsToMany
+    {
+        return $this->belongsToMany(Template::class);
+    }
 }
