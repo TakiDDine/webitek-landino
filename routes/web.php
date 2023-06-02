@@ -5,7 +5,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectDemoController;
-use App\Http\Controllers\dashboard\ProjectController as Project;
+use App\Http\Controllers\dashboard\ProjectController as Porject;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::group(['middleware' => ['install']], function () {
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
 	Route::group(['middleware' => ['auth','verified']], function () {
-		
+				
 		//Upload image
 		Route::post('/api/upload', [UploadController::class, 'uploadImage']);
 	    //Get preview pages 
@@ -61,7 +61,7 @@ Route::group(['middleware' => ['install']], function () {
 		Route::any('payment/cmi/success', 'PaymentController@successCmi')->name('cmi.success');
 		Route::get('payment/cmi/failed', 'PaymentController@successCmi')->name('cmi.failed');
 
-		Route::middleware(['google.analytics'])->get('/dashboard', 'DashboardController@index');
+		Route::middleware(['google.analytics'])->get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 		// Templtes
 		Route::get('/templates', 'TemplateController@index');

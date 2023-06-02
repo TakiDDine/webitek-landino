@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Project;
 use Laravel\Paddle\Billable;
 use App\Notifications\DBNotification;
 use Illuminate\Database\Eloquent\Model;
@@ -101,8 +102,18 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function templates(): BelongsToMany
+    public function templates()
     {
-        return $this->belongsToMany(Template::class);
+        return $this->belongsToMany(Template::class, 'user_template')->withTimesTamps();
+    }
+
+    /**
+    * Get all of the project for the User
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function seachProjects()
+    {
+        return $this->hasMany(Project::class);
     }
 }

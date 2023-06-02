@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\User;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
-    private $user_id = 2;
+    private $user_id = 1;
     public function __construct ()
     {
         // $this->middleware(function($request, $next) {
@@ -41,7 +42,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        // dd('hello');
+        return view('dashboard.projects');
     }
 
     /**
@@ -188,5 +190,16 @@ class ProjectController extends Controller
             'message' => 'file not found',
         ], 404);
 
+    }
+
+    public function search(Request $request) 
+    {
+
+        $user = User::find($this->user_id);
+        $projects = $user->seachProjects()->where('name' , 'like','%'.$request->name.'%')->get();
+        return response()->json([
+            'status' => true,
+            'projects' => $projects
+        ]);
     }
 }
