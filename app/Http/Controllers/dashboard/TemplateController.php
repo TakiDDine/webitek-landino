@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\User;
+use App\Category;
 use App\Template;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TemplateController extends Controller
 {
-    protected $user_id = 3;
+    protected $user_id = 2;
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +19,11 @@ class TemplateController extends Controller
      */
     public function index()
     {
-        $templates = Template::orderBy('likes', 'desc')->get();
+        $templates = Category::with('templates')->get();
+        $templates->makeHidden(['created_at', 'updated_at', 'deleted_at']);;
         return response()->json([
             'status' => true,
-            'templates' => $templates
+            'all_templates' => $templates
         ]);
     }
 
@@ -45,26 +47,26 @@ class TemplateController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name'          => 'required|string',
-            'category'      => 'required|string',
+            'category_id'   => 'required|integer|exists:categories,id',
             'desktop_image' => 'string',
             'tablet_image'  => 'string',
             'mobile_image'  => 'string',
             'tags'          => 'array',
 
         ]);
-
+        
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
                 'massage' => $validator->errors()
-            ]);
+            ], 400);
         }
 
-        $templates = Template::create($validator->validated());
+        $template = Template::create($validator->validated());
         return response()->json([
             'status' => true,
-            'templates' => $templates
-        ]);
+            'template' => $template
+        ], 201);
     }
 
     /**
@@ -99,8 +101,8 @@ class TemplateController extends Controller
     public function update(Request $request, Template $template)
     {
         $validator = Validator::make($request->all(),[
-            'name'          => 'string',
-            'category'      => 'string',
+            'name'          => 'required|string',
+            'category_id'   => 'required|integer|exists:categories,id',
             'desktop_image' => 'string',
             'tablet_image'  => 'string',
             'mobile_image'  => 'string',
@@ -142,20 +144,23 @@ class TemplateController extends Controller
      */
     public function favorite(Template $template)
     {
-       
+      
         $user = User::find($this->user_id);
-        
-
+        //favorite and unfavorite template
         if ($user->templates()->toggle($template->id)['attached']) {
             $template->increment('likes', 1);
+            $status = 'favorited';
         } else {
             $template->decrement('likes', 1);
+            $status = 'unfavorited';
+
         }
         
         return response()->json([
             'status' => true,
-            'favorites' => $user->templates
+            'favorites' => 'The template '. $status . ' successfully'
         ]);
+        
     }
 
     /**

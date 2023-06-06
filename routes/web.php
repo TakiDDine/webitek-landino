@@ -2,10 +2,8 @@
 
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UploadController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectDemoController;
-use App\Http\Controllers\dashboard\ProjectController as Porject;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +45,7 @@ Route::group(['middleware' => ['install']], function () {
     Route::match(['get', 'post'],'register/client_signup','\App\Http\Controllers\Auth\RegisterController@client_signup');
 
 	Route::group(['middleware' => ['auth','verified']], function () {
-				
+		
 		//Upload image
 		Route::post('/api/upload', [UploadController::class, 'uploadImage']);
 	    //Get preview pages 

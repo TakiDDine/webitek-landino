@@ -11,11 +11,13 @@ class Template extends Model
 {
     use SoftDeletes,  HasFactory;
 
-    protected $fillable = ['name', 'category', 'desktop_image', 'tablet_image', 'mobile_image', 'tags'];
+    protected $fillable = ['name', 'category_id', 'desktop_image', 'tablet_image', 'mobile_image', 'tags'];
 
     protected $casts = [
         'tags' => 'array'
     ];
+
+    protected $hidden = ['pivot'];
 
     /* The users that belong to the Template
     *

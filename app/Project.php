@@ -43,13 +43,14 @@ class Project extends Model
     }
 
     /**
-     * projectCount function
+     * count projects with specific name function
      *
      * @param [integer] $user_id
      * @param [string] $name
      * @return int
      */
-    public function ScopeCount($user_id, $name) {
+    public function counter($user_id, $name) {
+
         return $this->where(['user_id' => $user_id, ['name' , 'like', '%'.$name.'%']])->count();
     }
 }

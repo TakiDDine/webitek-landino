@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\User;
 use App\Project;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
-    private $user_id = 1;
+    private $user_id = 2;
     public function __construct ()
     {
         // $this->middleware(function($request, $next) {
@@ -42,8 +43,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        // dd('hello');
-        return view('dashboard.projects');
+        //
     }
 
     /**
@@ -108,16 +108,6 @@ class ProjectController extends Controller
             'project' => $project
         ]);
         
-        // if ($project = Project::find($id)) {
-        //     $project->name = $request->name;
-        //     $project->save();
-
-        // }
-
-        // return response()->json([
-        //     'status' => false,
-        //     'message'=> 'Porject not found'
-        // ], 404);
     }
 
     /**
@@ -155,22 +145,22 @@ class ProjectController extends Controller
     public function duplicate(Project $project) {
 
         $path_supra = public_path().'/uploads/project_files/'.$project->id.'_project.supra';
-
         if (File::exists($path_supra)) {
             // count projects has name like original project 
-            $count_porjects = $project->projectCount($this->user_id, $project->name);
-            //Add version if two projects has same name
-            $duplicate_project_name = strpos($project->name, 'copy') ? 
+            $count_porjects = $project->counter($this->user_id, $project->name);
+
+            //Add version if two projects has the same name
+            $duplicate_project_name = Str::contains($project->name, 'copy') ? 
                                     $project->name. '-' . $count_porjects: 
                                     $project->name. ' copy ' . $count_porjects;
-                                    
+
             //duplicate project
             $replicated = $project->replicate()->fill([
                 'name' => $duplicate_project_name,
                 'sub_domain' => md5(uniqid($this->user_id, true)).'.'.str_replace(['http://', 'https://'], '' ,env('APP_URL')),
                 'custom_domain' => ''
             ]);
-
+            // and save it 
             $replicated->save();
 
             if ($replicated) {
@@ -192,6 +182,13 @@ class ProjectController extends Controller
 
     }
 
+    
+    /**
+     * search function
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function search(Request $request) 
     {
 
@@ -201,5 +198,22 @@ class ProjectController extends Controller
             'status' => true,
             'projects' => $projects
         ]);
+    }
+
+    /**
+     * archive function
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function archive () 
+    {
+        $projects = User::find($this->user_id)->projectsTrashed()->get();
+
+        return response()->json([
+            'status' => true,
+            'projects' => $projects
+        ]);
+        
+        
     }
 }

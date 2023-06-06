@@ -33,7 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 
     /**
@@ -115,5 +115,15 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
     public function seachProjects()
     {
         return $this->hasMany(Project::class);
+    }
+    
+    /**
+     * projects treshed function
+     *
+     * @return void
+     */
+    public function projectsTrashed(){
+        
+        return $this->hasMany(Project::class)->onlyTrashed();
     }
 }
