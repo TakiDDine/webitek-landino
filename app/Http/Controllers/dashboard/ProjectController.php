@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\User;
 use App\Project;
+use App\ProjectFile;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,12 +16,20 @@ use Illuminate\Support\Facades\Validator;
 class ProjectController extends Controller
 {
     private $user_id = 2;
-    public function __construct ()
+    public function __construct (Project $project)
     {
-        // $this->middleware(function($request, $next) {
-        //     // $this->user_id = Auth::user()->id;
-        //     $next($request);
-        // });
+        $this->middleware(function($request, $next) {
+            // $this->user_id = Auth::user()->id;
+            $user = User::find($this->user_id );
+            $project = $request->route('project');
+            if (!$user->hasPojects->contains($project) ) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Project Not Found!',
+                ], 404);
+            }
+            return $next($request);
+        })->only(['update', 'destroy', 'duplicate', 'updateName']);
     }
     /**
      * Display a listing of the resource.
@@ -29,7 +38,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('user_id', $this->user_id)->get();
+        $user = User::find($this->user_id );
+        $projects = $user->hasPojects()->get();
+
         return response()->json([
             'status' => true,
             'projects' => $projects
@@ -99,7 +110,7 @@ class ProjectController extends Controller
                 'message' => $validator->errors()
             ], 400);
         }
-
+        
         // update name project
         $project->update($validator->validated());
         return response()->json([
@@ -116,24 +127,16 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        $project = Project::find($id);
-
-        if ($project) {
-            
-            $project_deleted = $project->delete();
-            
-            return response()->json([
-                'status' => true,
-                'message' => 'project deleted succssfully'
-            ], 204);
-        }
-
+       //delete project
+        $project->delete();
+        
         return response()->json([
-            'status' => false,
-            'message' => 'project not found'
-        ],404);
+            'status' => true,
+            'message' => 'project deleted succssfully'
+        ], 204);
+        
     }
 
     /**
@@ -162,6 +165,15 @@ class ProjectController extends Controller
             ]);
             // and save it 
             $replicated->save();
+
+            //duplicate project file
+            $replicate_file = $project->file->replicate()->fill([
+                'file' => public_path().'/uploads/project_files/'.$replicated->id.'_project.supra',
+                'related_id' => $replicated->id
+            ]);
+            // and save it 
+            $replicate_file->save();
+
 
             if ($replicated) {
                 //duplicate file
@@ -216,4 +228,5 @@ class ProjectController extends Controller
         
         
     }
+
 }

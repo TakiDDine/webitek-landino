@@ -39,7 +39,7 @@ Route::get('categories', [CategoryController::class, 'index']);
  * Project routes
  */
 Route::get('/projects', [ProjectController::class, 'index']);
-Route::delete('/project/{id}', [ProjectController::class, 'destroy']); 
+Route::delete('/project/{project}', [ProjectController::class, 'destroy']); 
 Route::put('/project/{project}', [ProjectController::class, 'updateName']);
 Route::post('/project/search', [ProjectController::class, 'search']);
 Route::post('/duplicate/{project}', [ProjectController::class, 'duplicate']);

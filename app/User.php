@@ -65,6 +65,10 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
         return $this->belongsToMany('App\Project','project_members', 'user_id', 'project_id')->orderBy('id','desc');
     }
 
+    public function hasPojects(){
+        return $this->hasMany(Project::class);
+    }
+
     public function tasks(){
         return $this->hasMany('App\Task', 'assigned_user_id')->orderBy('id','desc');
     }
@@ -118,7 +122,7 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
     }
     
     /**
-     * projects treshed function
+     * projects trashed function
      *
      * @return void
      */

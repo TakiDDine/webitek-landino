@@ -15,6 +15,8 @@ class ProjectFile extends Model
      */
     protected $table = 'files';
 
+    protected $fillable = ['file', 'related_id'];
+
     public function user(){
     	return $this->belongsTo('App\User','user_id')->withDefault();
     }

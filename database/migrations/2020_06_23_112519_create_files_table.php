@@ -16,7 +16,7 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('related_to',20)->nullable();
-			$table->bigInteger('related_id')->nullable();
+			$table->foreignId('related_id')->constrained('projects')->nullable();
 			$table->text('file');
 			$table->bigInteger('user_id');
 			$table->bigInteger('company_id');

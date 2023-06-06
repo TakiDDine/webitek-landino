@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\ProjectFile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -52,5 +53,15 @@ class Project extends Model
     public function counter($user_id, $name) {
 
         return $this->where(['user_id' => $user_id, ['name' , 'like', '%'.$name.'%']])->count();
+    }
+
+    /**
+     * file function
+     *
+     * @return void
+     */
+    public function file()
+    {
+        return $this->hasOne(ProjectFile::class, 'related_id');
     }
 }
