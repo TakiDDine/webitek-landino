@@ -308,3 +308,27 @@ Route::get('console/run','CronJobsController@run');
 // Affiliate
 Route::get('/s/{affiliate_id}', 'Auth\RegisterController@showRegistrationForm')->name('register.affiliate');
 Route::middleware('throttle:2,1')->post('/s/{affiliate_id}', 'Auth\RegisterController@register');
+
+
+/**
+ * Dahboard routes
+ */
+Route::get('/test/layouts', function () {
+	
+    return view('dashboard.user.layouts.app');
+});
+Route::get('/test/dashboard', function () {
+    return view('dashboard.user.dashboard');
+});
+
+Route::get('/test/templates', function () {
+    return view('dashboard.user.templates');
+});
+
+Route::get('/test/projects', function () {
+    return view('dashboard.user.projects');
+});
+
+Route::get('/test/profile', function () {
+    return view('dashboard.user.profile');
+});

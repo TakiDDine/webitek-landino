@@ -1,12 +1,13 @@
 <?php
 namespace App\Utilities\Builder;
+use Auth;
 use \ZipArchive;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cache;
 use App\Utilities\Builder\Ftpuploading;
 use Illuminate\Support\Facades\Storage;
 use App\Utilities\Builder\FontsToDownload;
-use Auth;
 
 class Request {
     protected $_base_path = null;
@@ -1033,7 +1034,6 @@ class Request {
     protected function _add_page(&$data, &$overall_js, &$zip, &$fonts, &$default_css, &$style_gallery,
                                  &$style_magnific, &$default_js, &$js_plugins, &$fonts_to_download, $user_id, $p_id, $folder=null) {
         $uniqueJs = array();
-      
         $str=rand();
         $result = sha1($str);
         $version = '?v='.$result; 
@@ -1074,7 +1074,20 @@ class Request {
                 if (!empty($customImages[2]) && count($customImages[2]) > 0) {
                     foreach($customImages[2] as $image) {
                         if (file_exists(public_path().'/'.'storage/images/gallery/'. $image)) {
-                            $zip->addFile( public_path().'/'.'storage/images/gallery/'. $image, 'images/' . $image );
+                            if ($folder == 'tmp') {
+                                $zip->addFile( public_path().'/'.'storage/images/gallery/'. $image, 'images/' . $image );
+                            }
+
+                            if (Storage::exists('images/gallery/'.$image) && !File::exists(public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image)) {
+                                $target_path =  public_path().'/sites/'.$user_id.'/'.$p_id.'/images/';
+
+                                if (!file_exists($target_path)) {
+                                    mkdir($target_path, 0777, true);
+                                    chmod($target_path, 0777);
+                                }
+                                // creates a symbolic link between the image file in the storage folder and the desired location in the public 
+                                symlink( Storage::path('images/gallery/'.$image), public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image);
+                            }
                         }
                     }
                 }
@@ -1123,10 +1136,14 @@ class Request {
                 $preloader_css = "\n\t\t<link rel=\"stylesheet\" href=\"css/preloader.css\" />";
             }
             preg_match_all('#(/)?images/gallery/([^"\'\s]*)#i', $preloader, $customImages);
-
             if (!empty($customImages[2]) && count($customImages[2]) > 0) {
                 foreach($customImages[2] as $image) {
-                    $zip->addFile( public_path().'/storage/images/gallery/'. $image, 'images/' . $image );
+                    // $zip->addFile( public_path().'/storage/images/gallery/'. $image, 'images/' . $image );
+                    if (Storage::exists('images/gallery/'.$image) && !File::exists(public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image)) {
+                        $target_path =  public_path().'/sites/'.$user_id.'/'.$p_id.'/images/';
+                        // creates a symbolic link between the image file in the storage folder and the desired location in the public 
+                        symlink( Storage::path('images/gallery/'.$image), public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image);
+                    }
                 }
             }
             $preloader = preg_replace('#(http.*)?(\./)?(sections/[\w/_()-]*/images|images/gallery)#i', 'images', $preloader);
@@ -1182,7 +1199,7 @@ class Request {
                     } else {
                         $storagePath = Storage::path('images/gallery/' . $image);
                         $publicPath = public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image;
-                        if (!file_exists(dirname($publicPath))) {
+                        if (Str::contains($image, '/') && !file_exists(dirname($publicPath))) {
                             mkdir($publicPath, 0777, true);
                             chmod($publicPath, 0777);
                         }
@@ -1199,7 +1216,7 @@ class Request {
                         }
                         else if (Storage::exists('images/gallery/' . $image) && !File::exists($publicPath)) {
                             $target_path =  public_path().'/sites/'.$user_id.'/'.$p_id.'/images/uploaded/'.$user_id.'/';
-                            
+
                             if (!file_exists($target_path)) {
                                 mkdir($target_path, 0777, true);
                                 chmod($target_path, 0777);
@@ -1209,7 +1226,8 @@ class Request {
                         }
                         else if (Storage::exists($image) && !File::exists(public_path().'/sites/'.$user_id.'/'.$p_id.'/images/'.$image)) {
                             $target_path =  public_path().'/sites/'.$user_id.'/'.$p_id.'/images/uploaded/'.$user_id.'/';
-                            if (!file_exists($target_path)) {
+
+                            if (Str::contains($image, '/') && !file_exists($target_path)) {
                                 mkdir($target_path, 0777, true);
                                 chmod($target_path, 0777);
                             }

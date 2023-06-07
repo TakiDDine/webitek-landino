@@ -11,5 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//     .sass('resources/sass/app.scss', 'public/css');
+
+    mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    // .sass('resources/sass/_sidebar.scss', 'public/css')
+    // .sass('resources/sass/_dashboard.scss', 'public/css')
+    // .sass('resources/sass/_templates.scss', 'public/css')
+    // .sass('resources/sass/_projects.scss', 'public/css')
+    // .sass('resources/sass/_profile.scss', 'public/css');

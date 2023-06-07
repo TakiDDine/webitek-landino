@@ -1,0 +1,25 @@
+.sidebar {
+  width: 250px;
+  background-color: blue;
+  color: white;
+}
+
+.sidebar ul.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul.sidebar-menu li {
+  padding: 10px;
+}
+
+.sidebar ul.sidebar-menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul.sidebar-menu li a:hover {
+  text-decoration: underline;
+}
+
