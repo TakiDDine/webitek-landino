@@ -59,6 +59,11 @@ return [
             'url' => env('APP_URL').'/storage/media',
         ],
 
+        'fonts' => [
+            'driver' => 'local',
+            'root' => public_path('dashboard/assets/font'),
+        ],
+        
     ],
 
     /*

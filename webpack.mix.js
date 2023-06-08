@@ -14,8 +14,10 @@ const mix = require('laravel-mix');
 // mix.js('resources/js/app.js', 'public/js')
 //     .sass('resources/sass/app.scss', 'public/css');
 
-    mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+mix.js('resources/js/dashboard/app.js', 'public/dashboard/app.js')
+// js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/dashboard/assets/sass/main.scss', 'public/dashboard/assets/sass/main.css');
+    // .sass('resources/sass/app.scss', 'public/css')
     // .sass('resources/sass/_sidebar.scss', 'public/css')
     // .sass('resources/sass/_dashboard.scss', 'public/css')
     // .sass('resources/sass/_templates.scss', 'public/css')

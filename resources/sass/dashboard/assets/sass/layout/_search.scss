@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the search of the site/application.
+// -----------------------------------------------------------------------------
+
+.search {
+  grid-column: 3/11;
+  .text {
+    .search-new_project {
+      a {
+        font-size: 13px;
+      }
+    }
+  }
+  .search__wraper {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin: .7em 0 0;
+    position: relative;
+    svg {
+      stroke: $svg-strok-color-normal;
+    }
+    input {
+      &::placeholder {
+        color: $input_color;
+      }
+      &:focus + svg {
+        stroke: $blue-marine; // Color when input is focused
+      }
+    }
+    
+  }
+}

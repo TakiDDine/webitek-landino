@@ -1,0 +1,139 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.sidebar {
+	background-color: $sidebar-background;
+	.brand-menu {
+		height: 60vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-top: 3em;
+
+		.actions {
+			.user_profile {
+				margin: 1.5em 0;
+				.box {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin: 1.5em 0;
+					.user {
+						display: flex;
+						img {
+							border-radius: $border-radius;
+							max-width: 48px;
+							height: 48px;
+						}
+					}
+					.collaps_menu {
+						position: relative;
+						svg {
+							cursor: pointer;
+						}
+						nav.user_settings {
+							position: absolute;
+							width: 180px;
+							z-index: 10;
+							box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.1);
+							background-color: $white-0;
+							border-radius: $border-radius;
+							pointer-events: none;
+							opacity: 0;
+							display: none;
+							ul {
+								margin: 1.5em 0;
+								padding: 0 1.2em;
+								li {
+									list-style: none;
+									margin: 1.2em 0;
+									a {
+										color: $main-color;
+										text-decoration: none;
+										font-weight: $medium-font-weight;
+										font-size: 13px;
+										display: block;
+										pointer-events: all;
+										&:hover{
+											@include transition(printString(color) $transition-delay-timingfunc);
+											color: $blue-marine;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.main_menu {
+				margin: 1.5em 0;
+				ul {
+					margin: 0;
+					padding: 0;
+					li {
+						list-style: none;
+						margin: 1.2em 0;
+						a {
+							display: flex;
+							align-items: center;
+							color: $main-color;
+							text-decoration: none;
+							font-weight: $medium-font-weight;
+							font-size: 16px;
+							svg {
+								stroke: $svg-strok-color-dark;
+								width: 32px;
+							}
+							span {
+								margin-right: 10px;
+							}
+							&:hover span,
+							&:hover svg {
+								@include transition(printString(color) $transition-delay-timingfunc);
+								color: $blue-marine;
+								stroke: $blue-marine;
+							}
+						}
+						a.active {
+							@include transition(printString(color) $transition-delay-timingfunc);
+							color: $blue-marine;
+							svg {
+								@include transition(printString(color) $transition-delay-timingfunc);
+								color: $blue-marine;
+								stroke: $blue-marine;
+							}
+						}
+					}
+				}
+			}
+			.new_project {
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	.archive {
+		a {
+			display: flex;
+			align-items: center;
+			margin: 1.2em 0;
+			color: $main-color;
+			text-decoration: none;
+			font-weight: $medium-font-weight;
+			font-size: 16px;
+			svg {
+				stroke: $svg-strok-color-dark;
+			}
+			span {
+				margin-right: 10px;
+			}
+			&:hover span,
+			&:hover svg {
+				@include transition(printString(color) $transition-delay-timingfunc);
+				color: $blue-marine;
+				stroke: $blue-marine;
+			}
+		}
+	}
+}

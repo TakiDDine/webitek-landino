@@ -1,0 +1,6 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+@function printString($string) {
+  @return $string
+}

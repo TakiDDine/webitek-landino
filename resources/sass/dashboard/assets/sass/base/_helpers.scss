@@ -1,0 +1,62 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/**
+ * Main content containers
+*/
+.container {
+  //max-width: $content-width;
+  margin-left: auto; 
+  margin-right: auto; 
+  padding: 0 1.2rem;
+  width: 100%; 
+}
+/**
+ * Hide text while making it readable for screen readers
+*/
+.hide-text {
+  overflow: hidden;
+  padding: 0; 
+  text-indent: 101%;
+  white-space: nowrap;
+}
+/**
+ * Hide element while making it readable for screen readers
+*/
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/**
+ * the seperatore line bettewen elements
+*/
+hr.sp {
+  height: 2px;
+  background-color: $seperator-background;
+  border: 0;
+  margin: 0;
+}
+/**
+ * Show / Hide Element On Click
+*/
+.show {
+  opacity: 1 !important;
+  display: block !important;
+  @include transition(printString(opacity) $transition-delay-timingfunc);
+}

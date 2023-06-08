@@ -1,43 +1,24 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Dashboard</title>
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
-    <body>
-        <div class="dashboard">
-            <div class="sidebar">
-                <div class="sidebar-logo">
-                    Your Logo
-                </div>
-                <ul class="sidebar-menu">
-                    <li class="menu-item ">
-                        <div class="menu-icon">
-                            <!-- Your icon HTML or use an icon font like Font Awesome -->
-                        </div>
-                        <div class="menu-text">
-                            <a href="/test/dashboard">dashboard</a>
-                        </div>
-                    </li>
-                    <li class="menu-item">
-                        <div class="menu-icon">
-                            <!-- Your icon HTML or use an icon font like Font Awesome -->
-                        </div>
-                        <div class="menu-text">
-                            <a href="/test/templates">templates</a>
-                        </div>
-                        <div class="menu-badge">
-                            5
-                        </div>
-                    </li>
-                    <!-- Add more menu items -->
-                </ul>
-            </div>
-            <div class="content">
-                <!-- Main content -->
-                @yield('content')
-            </div>
-        </div>
-        <script src="{{ asset('js/app.js') }}"></script>
-    </body>
+<html lang="ar">
+  <head>
+    <base href="{{asset('').'dashboard/'}}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المشاريع</title>
+    <link rel="stylesheet" href="{{asset('dashboard/assets/sass/main.css')}}" />
+    <link
+      rel="shortcut icon"
+      href="{{asset('/assets/images/icon/favicon.ico')}}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    
+    <div id="app">
+    </div>
+
+
+    <script src="{{asset('dashboard/app.js')}}" type="module"></script>
+  </body>
 </html>

@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+input:not([type="checkbox"], [type="radio"]) {
+  font-size: 15px;
+  font-weight: $medium-font-weight;
+  color: $input_color;
+  border: 0;
+  outline: 0;
+  padding: 1.05rem 1.25rem;
+  width: 100%;
+  min-width: 320px;
+  height: 45px;
+  line-height: 2;
+}

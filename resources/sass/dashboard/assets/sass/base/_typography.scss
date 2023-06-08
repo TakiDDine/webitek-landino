@@ -1,0 +1,52 @@
+/**
+ * Basic typography style for copy text
+ */
+
+//?~~~~ Font Family Variables ~~~~?//
+$font-family-base: "Swissra", Arial, sans-serif;
+$font-family-secoudary: "Inter", -apple-system,BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+//?~~~~ Font sizes ~~~~?//
+$base-font-size: 16px;
+$heading-1-size: 2.5rem;
+$heading-2-size: 2rem;
+$heading-3-size: 1.8rem;
+
+//?~~~~ Line heights ~~~~?/
+$extra-line-height: 1.7;
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+//?~~~~ Font weights ~~~~?/
+$thin-font-weight: 100;
+$normal-font-weight: 400;
+$medium-font-weight: 500;
+$bold-font-weight: 700;
+
+//?~~~~ Heading styles ~~~~?/
+h1 {
+  font-size: $heading-1-size;
+  font-weight: $bold-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: 1rem;
+}
+h2 {
+  font-size: $heading-2-size;
+  font-weight: $bold-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: 0.8rem;
+}
+h3 {
+  font-size: $heading-3-size;
+  font-weight: $bold-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: 0.6rem;
+}
+
+//?~~~~ Body text styles ~~~~?/
+body {
+  font-family: $font-family-base;
+  font-size: $base-font-size;
+  font-weight: $normal-font-weight;
+  line-height: $base-line-height;
+  color: $main-color ;
+}

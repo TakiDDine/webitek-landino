@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the Header of the site/application.
+// -----------------------------------------------------------------------------
+.page__header {
+  grid-column: 3/11;
+  .page__header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .7em;
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+  }
+}

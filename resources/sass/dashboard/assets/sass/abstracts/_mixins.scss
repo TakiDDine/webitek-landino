@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+@mixin font-face($font-family, $font-path, $font-weight, $font-style) {
+	@font-face {
+		font-family: $font-family;
+		src: url("#{$font-path}.eot");
+		src: url("#{$font-path}.eot?#iefix") format("embedded-opentype"),
+			url("#{$font-path}.woff2") format("woff2"),
+			url("#{$font-path}.woff") format("woff"),
+			url("#{$font-path}.ttf") format("truetype");
+		font-weight: $font-weight;
+		font-style: $font-style;
+		font-display: swap;
+	}
+}
+
+/* SASS transtions */
+@mixin transition($x...){
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+  transition: $x;
+}

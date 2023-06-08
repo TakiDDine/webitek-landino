@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+//*~~~~ Color Palette Variables  ~~~~*//
+//*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*//
+$white-0: #fff;
+$gray-0: #ddd;
+$gray-1: #bbb;
+$gray-2: #BABABA; 
+$gray-3: #D6D6D6;
+$gray-4: #e8e8e8;
+$gray-5: #9C9C9C;
+$gray-6: #DFDFDF;
+$blue-marine: #0D74E3;
+$main-color: #4F4F4F;
+$primary-selection-background: #47a3f3;
+$primary-selection-text: #fefefe;
+$sidebar-background: #F8F8F8;
+$seperator-background: #D6D6D6;
+$buttons-background: $blue-marine;
+$buttons-background-hover: #0A5CB5;;
+$transition-delay-timingfunc: 0.22s cubic-bezier(0.645, 0.045, 0.355, 1);
+$input_color: $gray-2;
+$svg-strok-color-dark: $main-color;
+$svg-strok-color-normal: $gray-2;
+
+//*~~~~~~~~ Switched Variables  ~~~~~~*//
+//*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*//~
+$direction: rtl;
+$text-align-right: right;
+$text-align-left: left;
+$border-radius: 10px;
+
+//?~~~~ Selection Text & Background Variables ~~~~?//
+$selection-background: $primary-selection-background;
+$selection-text: $primary-selection-text;
+
+//?~~~~ Backgrounds Color ~~~~?//
+$background-color: $white-0;
+
+//?~~~~ ScrollBar Color ~~~~?//
+$scrollbar-color: $gray-0;
+$scrollbar-track: $gray-1;
