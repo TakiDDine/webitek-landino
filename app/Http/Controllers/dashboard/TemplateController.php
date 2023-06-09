@@ -7,6 +7,8 @@ use App\Category;
 use App\Template;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\TemplateResource;
 use Illuminate\Support\Facades\Validator;
 
 class TemplateController extends Controller
@@ -20,12 +22,14 @@ class TemplateController extends Controller
     public function index()
     {
         $templates = Category::with('templates')->get();
-        $templates->makeHidden(['created_at', 'updated_at', 'deleted_at']);;
+        $templates->makeHidden(['created_at', 'updated_at', 'deleted_at']);
+        // return categories with templates
         return response()->json([
             'status' => true,
-            'all_templates' => $templates
+            'data' => CategoryResource::collection($templates),
+         
         ]);
-    }
+    }     
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +38,7 @@ class TemplateController extends Controller
      */
     public function create(Request $request)
     {
-        
+
     }
 
     /**
@@ -48,13 +52,13 @@ class TemplateController extends Controller
         $validator = Validator::make($request->all(),[
             'name'          => 'required|string',
             'category_id'   => 'required|integer|exists:categories,id',
-            'desktop_image' => 'string',
-            'tablet_image'  => 'string',
-            'mobile_image'  => 'string',
+            'desktop_image' => 'string|nullable',
+            'tablet_image'  => 'string|nullable',
+            'mobile_image'  => 'string|nullable',
             'tags'          => 'array',
 
         ]);
-        
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
@@ -103,9 +107,9 @@ class TemplateController extends Controller
         $validator = Validator::make($request->all(),[
             'name'          => 'required|string',
             'category_id'   => 'required|integer|exists:categories,id',
-            'desktop_image' => 'string',
-            'tablet_image'  => 'string',
-            'mobile_image'  => 'string',
+            'desktop_image' => 'string|nullable',
+            'tablet_image'  => 'string|nullable',
+            'mobile_image'  => 'string|nullable',
             'tags'          => 'array',
             'tags.*'        => 'distinct|string|unique:templates,tags',
 
@@ -144,7 +148,7 @@ class TemplateController extends Controller
      */
     public function favorite(Template $template)
     {
-      
+
         $user = User::find($this->user_id);
         //favorite and unfavorite template
         if ($user->templates()->toggle($template->id)['attached']) {
@@ -155,12 +159,12 @@ class TemplateController extends Controller
             $status = 'unfavorited';
 
         }
-        
+
         return response()->json([
             'status' => true,
             'favorites' => 'The template '. $status . ' successfully'
         ]);
-        
+
     }
 
     /**

@@ -182,7 +182,7 @@ class ProjectController extends Controller
                 return response()->json([
                     'status' => true,
                     'message' => 'project duplicated succssfully',
-                    'repilicated' => $replicated
+                    'project' => $replicated
                 ], 200);
             }
 

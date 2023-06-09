@@ -1,6 +1,6 @@
 import Core from "./core.js";
 import Sidebar from "./sidebar/sidebare.js";
-import Page from "./project/page.js"
+import Page from "./project/page.js";
 
 document.addEventListener("DOMContentLoaded", function() {
   const core = new Core();

@@ -332,3 +332,4 @@ Route::get('/test/projects', function () {
 Route::get('/test/profile', function () {
     return view('dashboard.user.profile');
 });
+

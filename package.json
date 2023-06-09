@@ -24,5 +24,6 @@
         "vue-template-compiler": "^2.7.14"
     },
     "dependencies": {
+        "dotenv": "^16.1.4"
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\GoogleSheetsController;
+use App\Http\Controllers\dashboard\ProfileController;
 use App\Http\Controllers\dashboard\ProjectController;
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\TemplateController;
@@ -50,9 +51,12 @@ Route::get('/archive', [ProjectController::class, 'archive']);
  */
 
 Route::get('templates', [TemplateController::class, 'index']);
+Route::get('templates1', [TemplateController::class, 'index1']);
 Route::post('template', [TemplateController::class, 'store']);
 Route::put('template/{template}', [TemplateController::class, 'update']);
 Route::put('favorite/{template}', [TemplateController::class, 'favorite']);
 Route::get('favorites', [TemplateController::class, 'favorites']);
 
 
+Route::get('profile', [ProfileController::class, 'profile']);
+Route::put('profile/update-account', [ProfileController::class, 'updateAccount']);
