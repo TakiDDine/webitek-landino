@@ -17,6 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+
         return response()->json([
             'status' => true,
             'categories' => $categories
@@ -39,7 +40,7 @@ class CategoryController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => $validator->errors()->first()
-            ]);
+            ], 400);
         }
 
         $category = Category::create($validator->validated());
@@ -78,7 +79,7 @@ class CategoryController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => $validator->errors()->first()
-            ]);
+            ], 400);
         }
 
         $category->update($validator->validated());

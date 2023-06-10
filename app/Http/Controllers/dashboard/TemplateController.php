@@ -119,7 +119,7 @@ class TemplateController extends Controller
             return response()->json([
                 'status' => false,
                 'massage' => $validator->errors()
-            ]);
+            ], 400);
         }
 
         $template = $template->update($validator->validated());
@@ -149,7 +149,7 @@ class TemplateController extends Controller
     public function favorite(Template $template)
     {
 
-        $user = User::find($this->user_id);
+        $user = User::find($this->user_id); //Auth::user();
         //favorite and unfavorite template
         if ($user->templates()->toggle($template->id)['attached']) {
             $template->increment('likes', 1);
@@ -174,9 +174,9 @@ class TemplateController extends Controller
      */
     public function favorites()
     {
-        $user = User::find($this->user_id);
-
+        $user = User::find($this->user_id); //Auth::user();
         $favorites = $user->templates;
+
         return response()->json([
             'status' => true,
             'favorites' => $favorites

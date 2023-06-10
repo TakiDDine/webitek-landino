@@ -16,13 +16,16 @@ use Illuminate\Support\Facades\Validator;
 class ProjectController extends Controller
 {
     private $user_id = 2;
+    protected $user = null;
     public function __construct (Project $project)
     {
+        $this->user = User::find($this->user_id );
+
         $this->middleware(function($request, $next) {
-            // $this->user_id = Auth::user()->id;
-            $user = User::find($this->user_id );
+            // // $this->user = Auth::user();
+            $this->user = User::find($this->user_id );
             $project = $request->route('project');
-            if (!$user->hasPojects->contains($project) ) {
+            if (!$this->user->hasPojects->contains($project) ) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Project Not Found!',
@@ -30,6 +33,12 @@ class ProjectController extends Controller
             }
             return $next($request);
         })->only(['update', 'destroy', 'duplicate', 'updateName']);
+
+        // $this->middleware(function($request, $next) {
+        //     // $this->user = Auth::user();
+        //     // $this->user = User::find($this->user_id );
+        //     return $next($request);
+        // })->only(['index']);
     }
     /**
      * Display a listing of the resource.
@@ -39,7 +48,7 @@ class ProjectController extends Controller
     public function index()
     {
         $user = User::find($this->user_id );
-        $projects = $user->hasPojects()->get();
+        $projects = $this->user->hasPojects()->get();
 
         return response()->json([
             'status' => true,
@@ -174,7 +183,6 @@ class ProjectController extends Controller
             // and save it 
             $replicate_file->save();
 
-
             if ($replicated) {
                 //duplicate file
                 File::copy($path_supra, public_path().'/uploads/project_files/'.$replicated->id.'_project.supra');
@@ -205,7 +213,7 @@ class ProjectController extends Controller
     {
 
         $user = User::find($this->user_id);
-        $projects = $user->seachProjects()->where('name' , 'like','%'.$request->name.'%')->get();
+        $projects = $this->user->seachProjects()->where('name' , 'like','%'.$request->name.'%')->get();
         return response()->json([
             'status' => true,
             'projects' => $projects
@@ -219,7 +227,7 @@ class ProjectController extends Controller
      */
     public function archive () 
     {
-        $projects = User::find($this->user_id)->projectsTrashed()->get();
+        $projects = $this->user->projectsTrashed()->get();
 
         return response()->json([
             'status' => true,

@@ -57,6 +57,9 @@ Route::put('template/{template}', [TemplateController::class, 'update']);
 Route::put('favorite/{template}', [TemplateController::class, 'favorite']);
 Route::get('favorites', [TemplateController::class, 'favorites']);
 
-
-Route::get('profile', [ProfileController::class, 'profile']);
+/**
+ * User profile
+ */
+Route::get('profile', [ProfileController::class, 'show']);
 Route::put('profile/update-account', [ProfileController::class, 'updateAccount']);
+Route::put('profile/update-password', [ProfileController::class, 'updatePassword']);
