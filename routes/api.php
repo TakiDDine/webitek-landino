@@ -6,6 +6,8 @@ use App\Http\Controllers\dashboard\ProfileController;
 use App\Http\Controllers\dashboard\ProjectController;
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\TemplateController;
+use App\Http\Controllers\dashboard\SubscriptionController;
+use App\Http\Controllers\dashboard\SubscriptionPlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +65,11 @@ Route::get('favorites', [TemplateController::class, 'favorites']);
 Route::get('profile', [ProfileController::class, 'show']);
 Route::put('profile/update-account', [ProfileController::class, 'updateAccount']);
 Route::put('profile/update-password', [ProfileController::class, 'updatePassword']);
+
+/**
+ * Subscription plan 
+ */
+ Route::get('/plans', [SubscriptionPlanController::class, 'index']);
+ Route::post('/plans', [SubscriptionPlanController::class, 'store']);
+ Route::post('/subscribe', [SubscriptionController::class, 'store']);
+ Route::delete('/plans/{subscriptionPlan}', [SubscriptionPlanController::class, 'destroy']);

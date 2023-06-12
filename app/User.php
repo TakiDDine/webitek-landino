@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Project;
+use App\Subscription;
+use App\SubscriptionPlan;
 use Laravel\Paddle\Billable;
 use App\Notifications\DBNotification;
 use Illuminate\Database\Eloquent\Model;
@@ -126,8 +128,19 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
      *
      * @return void
      */
+
     public function projectsTrashed(){
         
         return $this->hasMany(Project::class)->onlyTrashed();
+    }
+
+    /**
+     * subcriptions relationship function
+     *
+     * @return void
+     */
+    public function subcribes()
+    {
+        return $this->belongsToMany(SubscriptionPlan::class, 'user_id')->widthDefault();
     }
 }
