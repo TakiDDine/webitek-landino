@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller

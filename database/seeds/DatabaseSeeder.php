@@ -3,6 +3,7 @@
 use App\SubscriptionPlan;
 use Illuminate\Database\Seeder;
 use Database\Seeders\PlanSeeder;
+use Database\Seeders\TemplateSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
 		//    UtilitySeeder::class,
-           PlanSeeder::class
+        //    PlanSeeder::class,
+           TemplateSeeder::class,
 		]);
 
     }

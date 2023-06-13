@@ -141,6 +141,6 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
      */
     public function subcribes()
     {
-        return $this->belongsToMany(SubscriptionPlan::class, 'user_id')->widthDefault();
+        return $this->belongsToMany(SubscriptionPlan::class, 'subscription-users', 'user_id', 'plan_id')->withTimestamps();
     }
 }

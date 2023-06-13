@@ -24,9 +24,9 @@ class TemplateResource extends JsonResource
             'tablet_image' => $this->tablet_image,
             'mobile_image' => $this->mobile_image,
             'likes' => $this->likes,
-            'deleted_at' => $this->deleted_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'deleted_at' => $this->deleted_at,
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }

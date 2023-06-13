@@ -20,6 +20,7 @@ class CreateSubscriptionsTable extends Migration
             $table->dateTime('date_expiration')->nullable();
             $table->decimal('price', 10, 2)->default(0);
             $table->boolean('is_active')->default(true);
+            $table->string('payment_type')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

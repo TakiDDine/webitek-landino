@@ -18,7 +18,6 @@ class CreateSubscriptionPlansTable extends Migration
             $table->string('name');
             $table->string('type')->nullable();
             $table->unsignedInteger('limit_website')->nullable();
-            $table->unsignedInteger('duration')->nullable();
             $table->decimal('cost_per_month',10, 2)->default(0);
             $table->decimal('cost_per_year',10, 2)->default(0); 
             $table->string('code_promo')->nullable();

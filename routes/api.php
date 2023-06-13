@@ -27,6 +27,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('throttle:20,1')->post('/addsheet', [GoogleSheetsController::class, 'index']);
 
+// Routes accessible to admins only
+Route::middleware('admin')->group(function () {
+    // Add your admin-specific routes here
+});
+
+
+// Routes accessible to users only
+Route::middleware('user')->group(function () {
+    // Add your user-specific routes here
+
+});
 /**
  * Categoty api 
  */
@@ -71,5 +82,6 @@ Route::put('profile/update-password', [ProfileController::class, 'updatePassword
  */
  Route::get('/plans', [SubscriptionPlanController::class, 'index']);
  Route::post('/plans', [SubscriptionPlanController::class, 'store']);
+ Route::put('/plans/{subscriptionPlan}', [SubscriptionPlanController::class, 'update']);
  Route::post('/subscribe', [SubscriptionController::class, 'store']);
  Route::delete('/plans/{subscriptionPlan}', [SubscriptionPlanController::class, 'destroy']);

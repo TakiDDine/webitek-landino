@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'category' => $this->name,
-            'templates' => TemplateResource::collection($this->templates),
+            'templates' => TemplateResource::collection($this->whenLoaded('templates')),
         ];
     }
 }

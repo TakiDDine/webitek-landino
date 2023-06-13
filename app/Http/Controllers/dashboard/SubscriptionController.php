@@ -7,15 +7,16 @@ use App\Subscription;
 use App\SubscriptionPlan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class SubscriptionController extends Controller
 {
-    protected $user = null;
-    public function __contruct() 
+    protected $user = null;    
+    public function __construct() 
     {
         $this->middleware(function($request, $next) {
             $this->user = User::find(2);
-            return next($request);
+            return $next($request);
         });
     }
     /**
@@ -36,12 +37,27 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        $plan = SubscriptionPlan::find(2);
+        $validator = Validator::make($request->all(), [
+            'plan_id' => 'required|exists:subscription_plans,id',
+            'type'    =>  'nullable|string',
+            'duration' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => true,
+                'message' => $validator->errors()
+            ]);
+        }
+
+        $plan = SubscriptionPlan::find($request->plan_id);
+
         // return $plan->id;
-        $this->user->subcribes()->associate($plan);
+        $this->user->subcribes()->attach($plan->id);
+        
         return response()->json([
             'status' => true,
-            'plan' => $plan
+            'plan' => $plan,
         ]);
     }
 

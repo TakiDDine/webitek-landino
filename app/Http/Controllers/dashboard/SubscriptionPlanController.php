@@ -82,14 +82,14 @@ class SubscriptionPlanController extends Controller
         $validator = Validator::make($request->all(),[
             'name'          => 'required|string',
             'type'          => 'required|string',
-            'cost_per_month'=> 'required|float',
-            'limit_website' => 'required|float',
-            'cost_per_year' => 'required|float',
+            'cost_per_month'=> 'required|numeric',
+            'limit_website' => 'required|integer',
+            'cost_per_year' => 'required|numeric',
             'code_promo'    => 'nullable|string',
             'features'      => 'nullable|string',
             'payment_type'  => 'nullable|string',
         ]);
-
+        
         if ($validator->fails()) {
             return response()->json([
                 'status'  => false,

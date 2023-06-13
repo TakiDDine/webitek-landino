@@ -31,6 +31,7 @@ class CreateProjectsTable extends Migration
             $table->string('sub_domain')->unique()->nullable();
             $table->string('custom_domain')->unique()->nullable();
             $table->bigInteger('company_id');
+            $table->text('cover_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
