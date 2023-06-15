@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'google.analytics' => \App\Http\Middleware\GoogleAnalyticsMiddleware::class,
         'user' => \App\Http\Middleware\UserMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'auth:api' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
 	];
 
     /**

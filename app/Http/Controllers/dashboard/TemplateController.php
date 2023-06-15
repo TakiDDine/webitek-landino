@@ -157,12 +157,13 @@ class TemplateController extends Controller
         } else {
             $template->decrement('likes', 1);
             $status = 'unfavorited';
-
         }
 
         return response()->json([
             'status' => true,
-            'favorites' => 'The template '. $status . ' successfully'
+            'message' => 'The template '. $status . ' successfully',
+            'is_liked' => $template->users->contains(User::find(2)),
+            'likes' => $template->likes
         ]);
 
     }

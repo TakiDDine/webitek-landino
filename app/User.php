@@ -3,9 +3,11 @@
 namespace App;
 
 use App\Project;
+use App\Template;
 use App\Subscription;
 use App\SubscriptionPlan;
 use Laravel\Paddle\Billable;
+use Laravel\Passport\HasApiTokens;
 use App\Notifications\DBNotification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +20,7 @@ use RexlManu\LaravelTickets\Interfaces\TicketReference;
 
 class User extends Authenticatable implements MustVerifyEmail, TicketReference
 {
-    use Notifiable, SoftDeletes,  Billable, HasTickets;
+    use HasApiTokens, Notifiable, SoftDeletes,  Billable, HasTickets;
 
     /**
      * The attributes that are mass assignable.
@@ -110,8 +112,7 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
      */
     public function templates()
     {
-        return $this->belongsToMany(Template::class, 'user_template')->withTimesTamps();
-    }
+        return $this->belongsToMany(Template::class, 'user_template', 'user_id', 'template_id');    }
 
     /**
     * Get all of the project for the User
@@ -142,5 +143,11 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
     public function subcribes()
     {
         return $this->belongsToMany(SubscriptionPlan::class, 'subscription-users', 'user_id', 'plan_id')->withTimestamps();
+    }
+
+
+    public function scopeTemplateLiked($query, $template_id)
+    {
+        return (boolean)$query->has('templates');
     }
 }

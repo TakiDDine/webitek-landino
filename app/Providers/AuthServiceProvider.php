@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\User;
 use App\Policies\TicketPolicy;
+use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use RexlManu\LaravelTickets\Models\Ticket;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -27,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
+        Passport::routes();
         Gate::before(function(User $user, $ability) {
             if ($ability == 'can:tickets.all') {
                 return $user->user_type == 'admin';

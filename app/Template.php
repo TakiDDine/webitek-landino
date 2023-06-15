@@ -23,9 +23,8 @@ class Template extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
     */
-    public function users(): BelongsToMany
+    public function users()
     {
-        return $this->belongsToMany(User::class);
-    }
+        return $this->belongsToMany(User::class, 'user_template', 'template_id', 'user_id');    }
     
 }

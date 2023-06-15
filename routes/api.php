@@ -6,6 +6,7 @@ use App\Http\Controllers\dashboard\ProfileController;
 use App\Http\Controllers\dashboard\ProjectController;
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\TemplateController;
+use App\Http\Controllers\dashboard\Auth\AuthController;
 use App\Http\Controllers\dashboard\SubscriptionController;
 use App\Http\Controllers\dashboard\SubscriptionPlanController;
 
@@ -26,6 +27,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::middleware('throttle:20,1')->post('/addsheet', [GoogleSheetsController::class, 'index']);
+
+
+ /**
+  * regiseter, login, logout
+*/
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware(['auth:api'])->group(function() {
+
+    //logout
+    Route::post('/dashbord/logout', [AuthController::class, 'logout']);
+});
 
 // Routes accessible to admins only
 Route::middleware('admin')->group(function () {
