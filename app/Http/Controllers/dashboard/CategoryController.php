@@ -5,11 +5,16 @@ namespace App\Http\Controllers\dashboard;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+    public function __construct ()
+    {
+        $this->middleware(AdminMiddleware::class)->only(['store', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -99,7 +104,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return response()->noContent();
+
     }
 }
 

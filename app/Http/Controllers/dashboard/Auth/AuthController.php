@@ -50,6 +50,12 @@ class AuthController extends Controller
         
     }
 
+    /**
+     * login function
+     *
+     * @param Request $request
+     * @return response
+     */
     public function login (Request $request) 
     {
         $validator = Validator::make($request->only(['email','password']),[
@@ -86,7 +92,9 @@ class AuthController extends Controller
      */
     public function logout (TokenRepository $tokenRepository)
     {
-        return 'hello';
+        // return 'hello';
+        $user = Auth::user()->token();
+        $user->revoke();
         $tokenRepository->revokeAccessToken(Auth::user()->token());
         return response()->json(['message' => 'Logged out successfully'], 200);
     }

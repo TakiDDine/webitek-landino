@@ -17,14 +17,18 @@ class ProjectController extends Controller
 {
     private $user_id = 2;
     protected $user = null;
+    protected $user1 = null;
+    
     public function __construct (Project $project)
     {
-        $this->user = User::find($this->user_id );
 
         $this->middleware(function($request, $next) {
-            // // $this->user = Auth::user();
-            $this->user = User::find($this->user_id );
+
+            // $this->user = Auth::user();
+            $this->user = User::find(2);
             $project = $request->route('project');
+
+            // check if the project is for the authenticated user
             if (!$this->user->hasPojects->contains($project) ) {
                 return response()->json([
                     'status' => false,
@@ -34,11 +38,12 @@ class ProjectController extends Controller
             return $next($request);
         })->only(['update', 'destroy', 'duplicate', 'updateName']);
 
-        // $this->middleware(function($request, $next) {
-        //     // $this->user = Auth::user();
-        //     // $this->user = User::find($this->user_id );
-        //     return $next($request);
-        // })->only(['index']);
+         $this->middleware(function($request, $next) {
+            // $this->user = Auth::user();
+            $this->user = User::find(2);
+
+            return $next($request);
+        })->only(['index']);
     }
     /**
      * Display a listing of the resource.
@@ -47,14 +52,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $user = User::find($this->user_id );
         $projects = $this->user->hasPojects()->get();
 
         return response()->json([
             'status' => true,
             'projects' => $projects
-        ]);
+        ], 200);
     }
+
+ 
 
     /**
      * Show the form for creating a new resource.
@@ -212,7 +218,7 @@ class ProjectController extends Controller
     public function search(Request $request) 
     {
 
-        $user = User::find($this->user_id);
+        $user = $this->user;
         $projects = $this->user->seachProjects()->where('name' , 'like','%'.$request->name.'%')->get();
         return response()->json([
             'status' => true,
