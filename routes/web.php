@@ -5,6 +5,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectDemoController;
 use App\Http\Controllers\dashboard\ProjectController;
+use App\Http\Controllers\dashboard\Auth\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,9 @@ Route::group(['middleware' => ['install']], function () {
 
 	Route::get('/reset/password', 'WebsiteController@reset');
 
-	Route::get('/email/verify', function () {
-		return view('auth.verify-email');
-	})->middleware('auth')->name('verification.notice');
+	// Route::get('/email/verify', function () {
+	// 	return view('auth.verify-email');
+	// })->middleware('auth')->name('verification.notice');
 
 	
 	// Try Demo 
@@ -333,3 +334,6 @@ Route::get('/test/profile', function () {
     return view('dashboard.user.profile');
 });
 
+// Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+//     ->middleware(['signed'])
+//     ->name('verification.verify');

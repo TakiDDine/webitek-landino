@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\TokenRepository;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -41,7 +42,8 @@ class AuthController extends Controller
             'user_type' => 'user'
         ]);
 
-    
+        event(new Registered($user));
+        $user->markEmailAsverified();
         $token = $user->createToken('landino')->accessToken;
         return response()->json([
             'status' => true,

@@ -12,6 +12,7 @@ use App\Notifications\DBNotification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use RexlManu\LaravelTickets\Traits\HasTickets;
 use RexlManu\LaravelTickets\Traits\HasTicketReference;
@@ -149,5 +150,14 @@ class User extends Authenticatable implements MustVerifyEmail, TicketReference
     public function scopeTemplateLiked($query, $template_id)
     {
         return (boolean)$query->has('templates');
+    }
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
     }
 }

@@ -8,8 +8,12 @@ use App\Http\Controllers\dashboard\ProjectController;
 use App\Http\Controllers\dashboard\CategoryController;
 use App\Http\Controllers\dashboard\TemplateController;
 use App\Http\Controllers\dashboard\Auth\AuthController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\dashboard\SubscriptionController;
 use App\Http\Controllers\dashboard\SubscriptionPlanController;
+use App\Http\Controllers\dashboard\Auth\VerificationController;
+use App\Http\Controllers\dashboard\Auth\ResetPasswordController;
+use App\Http\Controllers\dashboard\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +43,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:api'])->group(function() {
 
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+     
+        return response()->json(['success' => true, 'message' => 'The Email ']);
+    })->name('verification.verify');
     //logout
     Route::post('/dashbord/logout', [AuthController::class, 'logout']);
     
@@ -50,7 +59,12 @@ Route::middleware(['auth:api'])->group(function() {
     Route::put('category/{category}', [CategoryController::class, 'update']);
     // Route::get('categories', [CategoryController::class, 'index']);
 
-
+/**
+ * User profile
+ */
+Route::get('profile', [ProfileController::class, 'show']);
+Route::put('profile/update-account', [ProfileController::class, 'updateAccount']);
+Route::put('profile/update-password', [ProfileController::class, 'updatePassword']);
 
     
     /**
@@ -138,9 +152,9 @@ Route::get('favorites', [TemplateController::class, 'favorites']);
 /**
  * User profile
  */
-Route::get('profile', [ProfileController::class, 'show']);
-Route::put('profile/update-account', [ProfileController::class, 'updateAccount']);
-Route::put('profile/update-password', [ProfileController::class, 'updatePassword']);
+// Route::get('profile', [ProfileController::class, 'show']);
+// Route::put('profile/update-account', [ProfileController::class, 'updateAccount']);
+// Route::put('profile/update-password', [ProfileController::class, 'updatePassword']);
 
 /**
  * Subscription plan 
@@ -150,3 +164,21 @@ Route::put('profile/update-password', [ProfileController::class, 'updatePassword
  Route::put('/plans/{subscriptionPlan}', [SubscriptionPlanController::class, 'update']);
  Route::post('/subscribe', [SubscriptionController::class, 'store']);
  Route::delete('/plans/{subscriptionPlan}', [SubscriptionPlanController::class, 'destroy']);
+
+
+ /**
+  * Reset password 
+  */
+
+// Route::post('password/forgot', [ForgotPasswordController::class, 'forgot'])->name('password.forgot');
+// Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.reset');
+Route::post('password/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
+Route::post('password/reset', [ResetPasswordController::class, 'reset']);
+
+Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+    // ->middleware(['signed'])
+    ->name('verification.verify');
+
+// Route::post('email/resend', [VerificationController::class, 'resend'])
+
+Route::post('email/resend', [VerificationController::class, 'resend'])->middleware(['auth:api']);
