@@ -33,6 +33,16 @@ if (gsInput) {
 			let email = form.querySelector(".email-field-group input[type='email']")
 			let textarea = form.querySelector(".textarea-group textarea")
 			let phone = form.querySelector(".phone-field-group input[type='tel']")
+			let phoneFormat = phone.getAttribute('data-format')
+
+			if (name) {
+				if (!/^([a-zA-Z ]){5,30}(\s)*$/.test(name.value)) {
+					let span = document.createElement("span")
+			let select = form.querySelector(".select-group select")
+			let radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']")
+			let date = form.querySelector(".datepicker-group .datepicker-input")
+
+			if (name) {
 			let select = form.querySelector(".select-group select")
 			let radios = form.querySelectorAll(".radio-group .radio-inline input[type='radio']")
 			let date = form.querySelector(".datepicker-group .datepicker-input")
@@ -45,6 +55,60 @@ if (gsInput) {
 						form.querySelector(".text-field-group").appendChild(span)
 					}
 					isValid = false;
+				}
+			}
+			if (phone) {
+				// ===> /^\((\+\s?\d{1,3})\)[- ]?(\d{3,8})[-](\d{4,8})$/gm ===> 
+				// ===> /^\((\+\d{1,3})\)?[-](\d{3,16})$/gm 							 ===> (+000)-xxxxxxxx
+				// ===> /^\d{1,3}[-](\d{3,16})$/gm                         ===> 000-xxxxxxxx
+				// ===> /^\+\d{1,3}[-](\d{3,16})$/gm                       ===> +000-xxxxxxxx
+				// ===> /^\d{1,3}\s(\d{3,16})$/gm                    			 ===> 000 xxxxxxxxx
+
+
+
+
+			}
+				}
+				else {
+					span.innerHTML = null
+				}
+			}
+
+			if (phone) {
+				let phoneFormat = phone.getAttribute('data-format')
+				let regex = /^\+\d{1,3}\s(\d{3,16})$/gm;
+
+				if (!regex.test(phone.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = `please enter a valid phone format: ${phoneFormat}`;
+					span.style.color = "red";
+					if (!form.querySelector(".phone-field-group span")) {
+						form.querySelector(".phone-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+
+			}
+
+			if (email) {
+				if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3}(\s)*)+$/g.test(email.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please enter a valid email address";
+					if (!form.querySelector(".email-field-group span")) {
+						form.querySelector(".email-field-group").appendChild(span)
+					}
+					isValid = false;
+				}
+			}
+			if (textarea) {
+				if (!/^\S.*(?:\r?\n\s.*)*$/gmu.test(textarea.value)) {
+					let span = document.createElement("span")
+					span.innerHTML = "please describe your message in more than 50 character";
+					if (!form.querySelector(".textarea-group span")) {
+						form.querySelector(".textarea-group").appendChild(span)
+					}
+					isValid = false;
+				}
 				}
 				else {
 					span.innerHTML = null
